@@ -1,1 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Come In — English</title>
+<style>
+  :root{
+    --navy:#1a2a4a;
+    --navy-2:#23365c;
+    --teal:#1fb6c4;
+    --teal-soft:#7fd9e2;
+    --cream:#f3efe4;
+    --ink:#1a2233;
+    --card:#ffffff;
+    --shadow:0 6px 18px rgba(26,42,74,.16);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+    background:var(--cream);color:var(--ink);
+    font-size:20px;line-height:1.7;letter-spacing:.02em;
+    -webkit-text-size-adjust:100%;text-align:left;
+  }
+  .wrap{max-width:560px;margin:0 auto;padding:16px 16px 40px;}
 
+  header{
+    background:linear-gradient(135deg,var(--navy),var(--navy-2));
+    color:#fff;border-radius:20px;padding:24px 20px;margin-bottom:18px;box-shadow:var(--shadow);
+  }
+  .eyebrow{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-soft);margin:0 0 4px;}
+  h1{margin:0;font-size:38px;line-height:1.1;}
+  .hello{margin:10px 0 0;font-size:17px;color:#dfe7f2;}
+
+  .section-title{font-size:18px;color:var(--navy);margin:6px 4px 10px;font-weight:700;}
+
+  .tile{
+    display:flex;align-items:center;gap:8px;
+    background:var(--card);border-radius:18px;margin-bottom:12px;
+    box-shadow:var(--shadow);overflow:hidden;
+  }
+  .tile-main{
+    flex:1;display:flex;align-items:center;gap:14px;
+    padding:20px 18px;text-decoration:none;color:var(--ink);min-width:0;
+  }
+  .tile-main:active{transform:scale(.99);}
+  .tile-emoji{font-size:38px;flex:0 0 auto;}
+  .tile-text{min-width:0;}
+  .tile-name{display:block;font-weight:700;font-size:23px;}
+  .tile-sub{display:block;font-size:15px;color:#5a6a82;letter-spacing:0;}
+  .tile-arrow{margin-left:auto;color:var(--teal);font-size:26px;font-weight:800;flex:0 0 auto;}
+  .tile-speak{
+    flex:0 0 auto;width:54px;align-self:stretch;border:none;
+    background:#eef6f7;border-left:2px solid #e3eef0;color:var(--navy);
+    font-size:24px;cursor:pointer;font-family:inherit;
+  }
+  .tile-speak:active{background:#dceef1;}
+
+  .tile.locked{box-shadow:none;background:#edf0f5;}
+  .tile.locked .tile-main{color:#8b97a8;cursor:default;}
+  .tile.locked .tile-emoji{filter:grayscale(1);opacity:.6;}
+  .tile.locked .tile-arrow{color:#b7c0cd;}
+  .lock-badge{margin-left:auto;font-size:18px;color:#8b97a8;font-weight:700;flex:0 0 auto;}
+
+  a:focus-visible,button:focus-visible{outline:3px solid var(--teal);outline-offset:2px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">English</p>
+    <h1>Come In</h1>
+    <p class="hello">Choose your book 👇</p>
+  </header>
+
+  <p class="section-title">Books</p>
+
+  <div class="tile">
+    <a class="tile-main" href="ci3/index.html">
+      <span class="tile-emoji">📘</span>
+      <span class="tile-text"><span class="tile-name">Come In 3</span><span class="tile-sub">Klasse 3</span></span>
+      <span class="tile-arrow">›</span>
+    </a>
+    <button class="tile-speak" data-say="Come In 3">🔊</button>
+  </div>
+
+  <div class="tile locked">
+    <div class="tile-main">
+      <span class="tile-emoji">📗</span>
+      <span class="tile-text"><span class="tile-name">Come In 4</span><span class="tile-sub">Klasse 4</span></span>
+      <span class="lock-badge">🔒 bald</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+"use strict";
+var chosenVoice=null;
+function pickVoice(){
+  var vs=window.speechSynthesis.getVoices();
+  chosenVoice=vs.find(function(v){return /en-GB/i.test(v.lang);})
+          ||vs.find(function(v){return /^en/i.test(v.lang);})||vs[0]||null;
+}
+if("speechSynthesis" in window){ pickVoice(); window.speechSynthesis.onvoiceschanged=pickVoice; }
+function speak(text){
+  if(!("speechSynthesis" in window)||!text) return;
+  window.speechSynthesis.cancel();
+  var u=new SpeechSynthesisUtterance(text);
+  if(chosenVoice) u.voice=chosenVoice;
+  u.lang="en-GB"; u.rate=0.85; u.pitch=1.0;
+  window.speechSynthesis.speak(u);
+}
+document.querySelectorAll("[data-say]").forEach(function(el){
+  el.addEventListener("click",function(e){ e.preventDefault(); e.stopPropagation(); speak(el.getAttribute("data-say")); });
+});
+document.body.addEventListener("touchstart",function once(){ if("speechSynthesis" in window) pickVoice(); },{once:true});
+</script>
+</body>
+</html>

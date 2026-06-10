@@ -1,1 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Come In 3 — Test 1</title>
+<style>
+  :root{
+    --navy:#1a2a4a;--navy-2:#23365c;--teal:#1fb6c4;--teal-soft:#7fd9e2;
+    --cream:#f3efe4;--ink:#1a2233;--good:#2bb673;--warn:#e8a13a;
+    --card:#ffffff;--shadow:0 6px 18px rgba(26,42,74,.16);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;background:var(--cream);color:var(--ink);font-size:20px;line-height:1.7;letter-spacing:.02em;-webkit-text-size-adjust:100%;text-align:left;}
+  .wrap{max-width:560px;margin:0 auto;padding:16px 16px 40px;}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;border-radius:20px;padding:18px 20px;margin-bottom:16px;box-shadow:var(--shadow);}
+  .unit-name{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-soft);margin:0 0 2px;}
+  h1{margin:0;font-size:30px;line-height:1.2;}
+  .hdr-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:6px;}
+  .speedbtn{background:rgba(255,255,255,.15);color:#fff;border:2px solid var(--teal-soft);border-radius:20px;padding:6px 12px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;}
+  .speedbtn:active{transform:scale(.97);}
+  .progress-track{height:12px;background:rgba(255,255,255,.18);border-radius:8px;margin-top:14px;overflow:hidden;}
+  .progress-fill{height:100%;width:0;background:var(--teal);border-radius:8px;transition:width .4s ease;}
+  .menu-title{font-size:18px;color:var(--navy);margin:6px 4px 10px;font-weight:700;}
+  .menu-item{display:flex;align-items:center;gap:14px;background:var(--card);border:none;border-radius:18px;padding:18px;margin-bottom:12px;width:100%;box-shadow:var(--shadow);cursor:pointer;text-align:left;font-size:20px;color:var(--ink);font-family:inherit;}
+  .menu-item:active{transform:scale(.98);}
+  .menu-emoji{font-size:30px;flex:0 0 auto;}
+  .menu-label{font-weight:700;}
+  .menu-done{color:var(--good);font-weight:800;margin-left:auto;font-size:18px;}
+  .menu-sub{display:block;font-size:15px;color:#5a6a82;font-weight:400;letter-spacing:0;}
+  .rule{background:#fff;border-left:8px solid var(--teal);border-radius:14px;padding:16px 18px;margin-bottom:16px;box-shadow:var(--shadow);}
+  .rule-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px;}
+  .rule-title{font-weight:700;color:var(--navy);font-size:18px;}
+  .rule p{margin:6px 0;}
+  .rule b{color:var(--navy);}
+  .card{background:var(--card);border-radius:20px;padding:20px;box-shadow:var(--shadow);margin-bottom:16px;}
+  .theme-tag{display:inline-block;font-size:14px;font-weight:700;letter-spacing:.03em;padding:5px 12px;border-radius:20px;margin-bottom:12px;background:var(--navy);color:#fff;}
+  .theme-tag.teal{background:var(--teal);color:#06343a;}
+  .prompt{font-size:21px;font-weight:700;color:var(--navy);margin:0 0 14px;}
+  .sentence{font-size:24px;line-height:1.5;margin:10px 0 4px;color:var(--ink);}
+  .speak{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--teal);color:#06343a;border:none;border-radius:14px;padding:12px 18px;font-size:18px;font-weight:700;font-family:inherit;cursor:pointer;margin:4px 0 14px;}
+  .speak:active{transform:scale(.97);}
+  .speak .ico{font-size:22px;}
+  .speak-mini{background:#eef6f7;color:var(--navy);border:2px solid var(--teal-soft);border-radius:12px;padding:8px 12px;font-size:16px;font-weight:700;font-family:inherit;cursor:pointer;display:inline-flex;align-items:center;gap:6px;}
+  .options{display:flex;flex-direction:column;gap:12px;margin-top:8px;}
+  .opt{background:#f4f7fb;border:3px solid #dfe6f0;border-radius:16px;padding:16px 14px;font-size:22px;font-weight:700;color:var(--ink);cursor:pointer;font-family:inherit;text-align:left;display:flex;align-items:center;gap:12px;}
+  .opt:active{transform:scale(.98);}
+  .opt.correct{background:#e7f7ef;border-color:var(--good);color:#10623e;}
+  .opt.wrong{background:#fdeede;border-color:var(--warn);color:#8a5410;}
+  .opt-label{flex:1;}
+  .opt-speak{flex:0 0 auto;width:44px;height:44px;border-radius:12px;background:#eef6f7;border:2px solid var(--teal-soft);display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;}
+  .pickgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:8px;}
+  .picktile{background:#f4f7fb;border:3px solid #dfe6f0;border-radius:18px;padding:16px 8px;cursor:pointer;font-family:inherit;display:flex;flex-direction:column;align-items:center;gap:8px;}
+  .picktile:active{transform:scale(.96);}
+  .picktile.correct{background:#e7f7ef;border-color:var(--good);}
+  .picktile.wrong{background:#fdeede;border-color:var(--warn);}
+  .picktile .pemoji{font-size:46px;line-height:1;font-weight:800;color:var(--navy);}
+  .picktile .opt-speak{width:42px;height:36px;}
+  .swatch{width:56px;height:56px;border-radius:50%;border:3px solid rgba(0,0,0,.16);display:inline-block;}
+  .mtile .swatch{width:40px;height:40px;border-width:2px;}
+  .swipe-swatch{width:96px;height:96px;border-radius:50%;border:3px solid rgba(0,0,0,.16);margin:0 auto 6px;}
+  .match{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px;}
+  .mcol{display:flex;flex-direction:column;gap:10px;}
+  .mtile{background:#f4f7fb;border:3px solid #dfe6f0;border-radius:14px;padding:12px;font-size:19px;font-weight:700;color:var(--ink);cursor:pointer;font-family:inherit;text-align:center;min-height:60px;display:flex;align-items:center;justify-content:center;gap:8px;line-height:1.3;}
+  .mtile .em{font-size:30px;flex:0 0 auto;}
+  .mtile.sel{border-color:var(--teal);background:#e9f7f9;}
+  .mtile.done{background:#e7f7ef;border-color:var(--good);color:#10623e;opacity:.75;}
+  .mtile.wrong{border-color:var(--warn);background:#fdeede;}
+  .mtile:active{transform:scale(.97);}
+  .swipe-card{background:#f4f7fb;border:3px solid #dfe6f0;border-radius:20px;padding:24px 18px;text-align:center;}
+  .swipe-emoji{font-size:72px;line-height:1;margin-bottom:6px;}
+  .swipe-sentence{font-size:24px;font-weight:700;color:var(--navy);margin:10px 0 4px;display:inline-block;padding:4px 8px;}
+  .swipe-btns{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;}
+  .swipe-btn{border:none;border-radius:18px;padding:20px;font-size:26px;font-weight:800;font-family:inherit;cursor:pointer;}
+  .swipe-btn.no{background:#fdeede;color:#8a5410;}
+  .swipe-btn.yes{background:#e7f7ef;color:#10623e;}
+  .swipe-btn:active{transform:scale(.96);}
+  .puz-build{min-height:64px;background:#eef2f8;border:3px dashed #c7d2e2;border-radius:14px;padding:10px;display:flex;flex-wrap:wrap;gap:8px;margin:10px 0;align-items:center;}
+  .puz-bank{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;}
+  .puztile{background:var(--navy);color:#fff;border:none;border-radius:12px;padding:12px 14px;font-size:20px;font-weight:700;font-family:inherit;cursor:pointer;}
+  .puztile:active{transform:scale(.95);}
+  .puztile.inbuild{background:var(--teal);color:#06343a;}
+  .reading{background:#fff3c4 !important;box-shadow:0 0 0 3px #f4c020 inset;border-radius:10px;}
+  .feedback{margin-top:16px;border-radius:16px;padding:16px;font-size:19px;font-weight:700;display:none;}
+  .feedback.show{display:block;}
+  .feedback.good{background:#e7f7ef;color:#10623e;}
+  .feedback.soft{background:#fff4e2;color:#8a5410;}
+  .feedback .fb-rule{font-weight:400;margin-top:6px;color:#4a4030;}
+  .nav{display:flex;gap:12px;margin-top:8px;}
+  .btn{flex:1;border:none;border-radius:16px;padding:16px;font-size:19px;font-weight:800;font-family:inherit;cursor:pointer;}
+  .btn.primary{background:var(--teal);color:#06343a;}
+  .btn.ghost{background:#e7ecf4;color:var(--navy);}
+  .btn:active{transform:scale(.98);}
+  .btn:disabled{opacity:.4;}
+  .backbtn{background:none;border:none;color:var(--navy);font-size:17px;font-weight:700;font-family:inherit;cursor:pointer;padding:8px 4px;margin-bottom:6px;display:inline-flex;align-items:center;gap:6px;}
+  .hublink{display:inline-flex;align-items:center;gap:6px;color:var(--navy);font-size:17px;font-weight:700;text-decoration:none;padding:8px 4px;margin-bottom:4px;}
+  .hublink:active{opacity:.7;}
+  #confetti{position:fixed;inset:0;pointer-events:none;z-index:50;}
+  .confetti-bit{position:absolute;width:10px;height:14px;border-radius:2px;will-change:transform,opacity;}
+  .hidden{display:none;}
+  .done-screen{text-align:center;padding:30px 10px;}
+  .done-screen .big{font-size:56px;}
+  .done-screen h2{color:var(--navy);font-size:26px;margin:10px 0;}
+  @media (prefers-reduced-motion: reduce){*{transition:none !important;animation:none !important;}}
+</style>
+<style>
+  .intro-card{background:#fff;border-radius:20px;padding:24px 20px;box-shadow:var(--shadow);margin-bottom:16px;}
+  .intro-card h2{color:var(--navy);margin:0 0 8px;font-size:24px;}
+  .intro-card p{margin:8px 0;}
+  .qcount{font-size:15px;color:#5a6a82;font-weight:700;margin:0 0 8px;}
+  .ltile{background:var(--navy);color:#fff;border:none;border-radius:12px;padding:14px 16px;font-size:24px;font-weight:800;font-family:inherit;cursor:pointer;min-width:46px;}
+  .ltile:active{transform:scale(.95);}
+  .ltile.inbuild{background:var(--teal);color:#06343a;}
+  .spell-anchor{text-align:center;margin-bottom:6px;}
+  .report-score{font-size:52px;font-weight:800;color:var(--navy);text-align:center;margin:6px 0 0;}
+  .report-sub{text-align:center;font-size:19px;font-weight:700;margin:4px 0 18px;color:#10623e;}
+  .unit-row{background:#f4f7fb;border-radius:14px;padding:14px 16px;margin-bottom:10px;}
+  .ur-top{display:flex;align-items:center;gap:12px;}
+  .ur-name{font-weight:700;flex:1;font-size:19px;}
+  .ur-pct{font-weight:800;font-size:22px;}
+  .ur-bar{height:10px;background:#dfe6f0;border-radius:6px;margin-top:8px;overflow:hidden;}
+  .ur-fill{height:100%;border-radius:6px;}
+  .ur-practice{margin-top:10px;}
+  a.btn{display:flex;align-items:center;justify-content:center;text-decoration:none;}
+</style>
 
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="unit-name">Come In 3</p>
+    <div class="hdr-row">
+      <h1 id="screenTitle">📝 Test 1</h1>
+      <button class="speedbtn" id="speedBtn" onclick="toggleRate()">🐇 normal</button>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  </header>
+
+  <div id="intro">
+    <a class="hublink" href="index.html">‹ Themen</a>
+    <div class="intro-card">
+      <h2>📝 Test 1 — Wiederholung</h2>
+      <p>Units 1–4: 👋 Welcome, 🎒 At school, 🎃 Halloween, 🧍 Body.</p>
+      <p>Höre gut zu und tippe die richtige Antwort. Manchmal sollst du ein Wort <b>schreiben</b> — tippe die Buchstaben in die richtige Reihenfolge.</p>
+      <p>Kein Stress! Am Ende siehst du, was super lief und was du nochmal üben kannst. 💪</p>
+    </div>
+    <button class="btn primary" onclick="startTest()">Los geht's! ▶</button>
+  </div>
+
+  <div id="quiz" class="hidden">
+    <a class="hublink" href="index.html">‹ Themen</a>
+    <p class="qcount" id="qcount"></p>
+    <div id="cardSlot"></div>
+    <div class="feedback" id="feedback"></div>
+    <div class="nav">
+      <button class="btn ghost hidden" id="checkBtn" onclick="checkSpell()">Check</button>
+      <button class="btn primary hidden" id="nextBtn" onclick="nextQ()">Next ›</button>
+    </div>
+  </div>
+
+  <div id="report" class="hidden">
+    <div class="intro-card">
+      <p class="report-score" id="repScore">–</p>
+      <p class="report-sub" id="repSub"></p>
+      <div id="repUnits"></div>
+    </div>
+    <div class="nav">
+      <button class="btn ghost" onclick="location.reload()">🔁 Nochmal</button>
+      <a class="btn primary" href="index.html">‹ Themen</a>
+    </div>
+  </div>
+</div>
+<div id="confetti"></div>
+<script>
+"use strict";
+var COL={red:"#e23b3b",blue:"#2f6fe0",green:"#2fae5a",yellow:"#f4c020"};
+
+/* SPEECH + rate + read-along */
+var chosenVoice=null, curRate=0.85;
+try{ var sr=localStorage.getItem("comeIn3.rate"); if(sr) curRate=parseFloat(sr); }catch(e){}
+function pickVoice(){ var vs=window.speechSynthesis.getVoices(); chosenVoice=vs.find(function(v){return /en-GB/i.test(v.lang);})||vs.find(function(v){return /^en/i.test(v.lang);})||vs[0]||null; }
+if("speechSynthesis" in window){ pickVoice(); window.speechSynthesis.onvoiceschanged=pickVoice; }
+function clearReading(){ document.querySelectorAll(".reading").forEach(function(e){e.classList.remove("reading");}); }
+function speak(text,target){ if(!("speechSynthesis" in window)||!text) return; window.speechSynthesis.cancel(); clearReading(); var u=new SpeechSynthesisUtterance(text); if(chosenVoice)u.voice=chosenVoice; u.lang="en-GB"; u.rate=curRate; u.pitch=1.0; if(target){ target.classList.add("reading"); u.onend=function(){target.classList.remove("reading");}; u.onerror=function(){target.classList.remove("reading");}; } window.speechSynthesis.speak(u); }
+function toggleRate(){ curRate=(curRate>0.7)?0.5:0.85; try{localStorage.setItem("comeIn3.rate",String(curRate));}catch(e){} updateRateBtn(); }
+function updateRateBtn(){ var b=document.getElementById("speedBtn"); if(b) b.textContent=(curRate<=0.7)?"🐢 langsam":"🐇 normal"; }
+
+/* UNIT META */
+var UNITS=[
+  {key:"welcome",  label:"👋 Welcome",       file:"welcome.html"},
+  {key:"school",   label:"🎒 At school",     file:"school.html"},
+  {key:"halloween",label:"🎃 Halloween",     file:"halloween.html"},
+  {key:"body",     label:"🧍 Body",          file:"body.html"}
+];
+
+/* TEST QUESTIONS (mixed, tagged by unit) */
+var TEST=[
+  {unit:"welcome",type:"choose",grid:true,say:"red",prompt:"Which colour?",options:[{swatch:COL.red,s:"red"},{swatch:COL.blue,s:"blue"},{swatch:COL.green,s:"green"}],correct:0},
+  {unit:"welcome",type:"choose",grid:true,say:"seven",prompt:"Which number?",options:[{t:"7",s:"seven"},{t:"3",s:"three"},{t:"9",s:"nine"}],correct:0},
+  {unit:"welcome",type:"spell",word:"blue",swatch:COL.blue},
+  {unit:"welcome",type:"swipe",swatch:COL.red,text:"This is red.",answer:true},
+
+  {unit:"school",type:"choose",grid:true,say:"scissors",prompt:"Which picture?",options:[{t:"✂️",s:"scissors"},{t:"📏",s:"ruler"},{t:"📚",s:"book"}],correct:0},
+  {unit:"school",type:"choose",say:"glue",prompt:"Which word?",options:["glue","ruler","book"],correct:0},
+  {unit:"school",type:"spell",word:"book",emoji:"📚"},
+  {unit:"school",type:"swipe",emoji:"🪑",text:"This is a chair.",answer:true},
+
+  {unit:"halloween",type:"choose",grid:true,say:"ghost",prompt:"Which picture?",options:[{t:"👻",s:"ghost"},{t:"🦇",s:"bat"},{t:"🕷️",s:"spider"}],correct:0},
+  {unit:"halloween",type:"choose",show:"🐱 🐱",say:"two cats",prompt:"How many?",options:["cat","cats","cates"],correct:1},
+  {unit:"halloween",type:"spell",word:"bat",emoji:"🦇"},
+  {unit:"halloween",type:"swipe",emoji:"🕷️",text:"This is a bat.",answer:false},
+
+  {unit:"body",type:"choose",grid:true,say:"nose",prompt:"Which one?",options:[{t:"👃",s:"nose"},{t:"👂",s:"ear"},{t:"👁️",s:"eye"}],correct:0},
+  {unit:"body",type:"choose",show:"🦶 🦶",say:"two feet",prompt:"How many?",options:["foot","feet","foots"],correct:1},
+  {unit:"body",type:"spell",word:"hand",emoji:"✋"},
+  {unit:"body",type:"swipe",emoji:"👂",text:"This is your ear.",answer:true}
+];
+
+/* STATE */
+var idx=0, answered=false, results={};
+function $(id){return document.getElementById(id);}
+
+function startTest(){
+  idx=0; results={};
+  $("intro").classList.add("hidden"); $("report").classList.add("hidden"); $("quiz").classList.remove("hidden");
+  loadQ();
+}
+function setBar(p){ $("progressFill").style.width=p+"%"; }
+
+function loadQ(){
+  answered=false; clearReading();
+  var q=TEST[idx];
+  setBar(Math.round(idx/TEST.length*100));
+  $("qcount").textContent="Frage "+(idx+1)+" von "+TEST.length;
+  $("feedback").className="feedback"; $("feedback").innerHTML="";
+  $("nextBtn").classList.add("hidden"); $("checkBtn").classList.add("hidden");
+  var html="";
+  if(q.type==="choose") html=renderChoose(q);
+  else if(q.type==="swipe") html=renderSwipe(q);
+  else if(q.type==="spell"){ html=renderSpell(q); $("checkBtn").classList.remove("hidden"); }
+  $("cardSlot").innerHTML='<div class="card">'+html+'</div>';
+  wireSpeak($("cardSlot"));
+  if(q.type==="choose") wireChoose(q);
+  if(q.type==="swipe") wireSwipe(q);
+  if(q.type==="spell") wireSpell(q);
+}
+
+function record(unit,pts){ if(!results[unit]) results[unit]={pts:0,n:0}; results[unit].pts+=pts; results[unit].n+=1; }
+
+/* CHOOSE */
+function normOpt(o){ return (typeof o==="string")?{t:o,s:o}:o; }
+function optInner(o){ return o.swatch ? '<span class="swatch" style="background:'+o.swatch+'"></span>' : '<span class="pemoji">'+o.t+'</span>'; }
+function renderChoose(q){
+  var opts=q.options.map(normOpt), html="";
+  if(q.show){ html+='<div class="sentence" data-say="'+esc(q.say)+'">'+q.show+'</div>'; }
+  html+='<button class="speak" data-say="'+esc(q.say)+'"><span class="ico">🔊</span> Listen</button>';
+  html+='<p class="prompt">'+q.prompt+'</p>';
+  if(q.grid){ html+='<div class="pickgrid">'; for(var i=0;i<opts.length;i++){ html+='<button class="picktile choice" data-i="'+i+'">'+optInner(opts[i])+'<span class="opt-speak" data-say="'+esc(opts[i].s)+'">🔊</span></button>'; } html+='</div>'; }
+  else { html+='<div class="options">'; for(var j=0;j<opts.length;j++){ html+='<button class="opt choice" data-i="'+j+'"><span class="opt-label">'+opts[j].t+'</span><span class="opt-speak" data-say="'+esc(opts[j].s)+'">🔊</span></button>'; } html+='</div>'; }
+  return html;
+}
+function wireChoose(q){ document.querySelectorAll("#cardSlot .choice").forEach(function(o){ o.addEventListener("click",function(){ if(answered) return; answerChoose(parseInt(o.getAttribute("data-i"),10),q); }); }); }
+function answerChoose(i,q){
+  answered=true; var opts=q.options.map(normOpt);
+  var btns=document.querySelectorAll("#cardSlot .choice");
+  btns.forEach(function(b,k){ if(k===q.correct) b.classList.add("correct"); b.style.pointerEvents="none"; });
+  var ok=(i===q.correct); record(q.unit, ok?1:0);
+  if(ok){ good("Richtig! ⚽"); } else { btns[i].classList.add("wrong"); soft("💛 Fast! Die richtige ist grün."); }
+  speak(opts[q.correct].s); next();
+}
+
+/* SWIPE */
+function renderSwipe(q){
+  var vis=q.swatch?'<div class="swipe-swatch" style="background:'+q.swatch+'"></div>':(q.emoji?'<div class="swipe-emoji">'+q.emoji+'</div>':"");
+  return '<div class="swipe-card">'+vis+'<div class="swipe-sentence" id="swSent" data-say="'+esc(q.text)+'">'+q.text+'</div>'+
+    '<div><button class="speak" data-say="'+esc(q.text)+'" data-hl="#swSent"><span class="ico">🔊</span> Listen</button></div>'+
+    '<div class="swipe-btns"><button class="swipe-btn no" data-ans="no">❌ No</button><button class="swipe-btn yes" data-ans="yes">✅ Yes</button></div></div>';
+}
+function wireSwipe(q){ document.querySelectorAll("#cardSlot .swipe-btn").forEach(function(b){ b.addEventListener("click",function(){ if(answered) return; answerSwipe(b.getAttribute("data-ans")==="yes",q); }); }); }
+function answerSwipe(picked,q){
+  answered=true; document.querySelectorAll("#cardSlot .swipe-btn").forEach(function(b){b.style.pointerEvents="none";});
+  var ok=(picked===q.answer); record(q.unit, ok?1:0);
+  if(ok){ good("Richtig! ⚽"); } else { soft("💛 Fast!"); }
+  speak(q.text, document.getElementById("swSent")); next();
+}
+
+/* SPELL (letter tiles) */
+var spellBuild=[];
+function renderSpell(q){
+  spellBuild=[];
+  var anchor=q.swatch?'<div class="swipe-swatch" style="background:'+q.swatch+'"></div>':(q.emoji?'<div class="swipe-emoji">'+q.emoji+'</div>':"");
+  var letters=shuffle(q.word.split(""));
+  var bank='<div class="puz-bank" id="spBank">';
+  letters.forEach(function(ch){ bank+='<button class="ltile" data-w="'+esc(ch)+'">'+ch+'</button>'; });
+  bank+='</div>';
+  return '<div class="spell-anchor">'+anchor+'</div>'+
+    '<button class="speak" data-say="'+esc(q.word)+'"><span class="ico">🔊</span> Listen</button>'+
+    '<p class="prompt">Schreibe das Wort:</p>'+
+    '<div class="puz-build" id="spBuild"><span style="color:#9aa7bd">tap letters…</span></div>'+bank;
+}
+function wireSpell(q){
+  document.querySelectorAll("#spBank .ltile").forEach(function(t){
+    t.addEventListener("click",function(){ if(answered) return; if(t.classList.contains("inbuild")) return; t.classList.add("inbuild"); spellBuild.push(t.getAttribute("data-w")); renderSpellBuild(); });
+  });
+}
+function renderSpellBuild(){
+  var area=$("spBuild");
+  if(spellBuild.length===0){ area.innerHTML='<span style="color:#9aa7bd">tap letters…</span>'; return; }
+  area.innerHTML="";
+  spellBuild.forEach(function(ch,i){ var t=document.createElement("button"); t.className="ltile inbuild"; t.textContent=ch; t.onclick=function(){ if(answered) return; spellBuild.splice(i,1); syncSpBank(); renderSpellBuild(); }; area.appendChild(t); });
+}
+function syncSpBank(){
+  var used=spellBuild.slice();
+  document.querySelectorAll("#spBank .ltile").forEach(function(bt){ var w=bt.getAttribute("data-w"), k=used.indexOf(w); if(k>=0){ bt.classList.add("inbuild"); used.splice(k,1); } else { bt.classList.remove("inbuild"); } });
+}
+function checkSpell(){
+  if(answered) return;
+  var q=TEST[idx];
+  var built=spellBuild.join("");
+  if(built.length===0) return;
+  var cp=0; for(var i=0;i<q.word.length;i++){ if(built[i]===q.word[i]) cp++; }
+  var correct=(built===q.word);
+  var pts=correct?1:cp/q.word.length;
+  answered=true; record(q.unit, pts);
+  if(correct){ good("Richtig geschrieben! 🌟⚽"); } else { soft("💛 Fast! Richtig: <b>"+q.word+"</b>"); }
+  speak(q.word); next();
+}
+
+/* feedback + flow */
+function good(msg){ var f=$("feedback"); f.className="feedback good show"; f.innerHTML=msg; burst(); }
+function soft(msg){ var f=$("feedback"); f.className="feedback soft show"; f.innerHTML=msg; }
+function next(){ $("checkBtn").classList.add("hidden"); $("nextBtn").classList.remove("hidden"); }
+function nextQ(){ idx++; if(idx>=TEST.length){ showReport(); return; } loadQ(); }
+
+/* REPORT */
+function showReport(){
+  setBar(100);
+  $("quiz").classList.add("hidden"); $("report").classList.remove("hidden");
+  var totPts=0; UNITS.forEach(function(u){ var r=results[u.key]||{pts:0,n:0}; totPts+=r.pts; });
+  var overall=Math.round(totPts/TEST.length*100);
+  $("repScore").textContent=overall+"% richtig";
+  var sub = overall>=90 ? "Weltklasse! 🏆⚽" : (overall>=70 ? "Stark gespielt! ⚽" : "Gut geübt — weiter so! 💪");
+  $("repSub").textContent=sub;
+  var html="";
+  UNITS.forEach(function(u){
+    var r=results[u.key]||{pts:0,n:0};
+    var pct = r.n? Math.round(r.pts/r.n*100) : 0;
+    var icon = pct>=90?"✅":(pct>=70?"👍":"⚠️");
+    var col = pct>=90?"#2bb673":(pct>=70?"#1fb6c4":"#e8a13a");
+    html+='<div class="unit-row"><div class="ur-top"><span class="ur-name">'+u.label+'</span><span class="ur-pct" style="color:'+col+'">'+pct+'% '+icon+'</span></div>';
+    html+='<div class="ur-bar"><div class="ur-fill" style="width:'+pct+'%;background:'+col+'"></div></div>';
+    if(pct<70){ html+='<div class="ur-practice"><a class="btn small ghost" href="'+u.file+'">▶ '+u.label+' nochmal üben</a></div>'; }
+    html+='</div>';
+  });
+  $("repUnits").innerHTML=html;
+  speak("Well done!"); burst();
+}
+
+/* helpers */
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;"); }
+function shuffle(a){ for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+function wireSpeak(root){ root.querySelectorAll("[data-say]").forEach(function(el){ el.addEventListener("click",function(e){ e.stopPropagation(); var target=el; if(el.classList.contains("opt-speak")) target=el.closest(".opt")||el.closest(".picktile")||el; else if(el.getAttribute("data-hl")) target=document.querySelector(el.getAttribute("data-hl"))||el; speak(el.getAttribute("data-say"),target); }); }); }
+function burst(){ if(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return; var c=$("confetti"),colors=["#1fb6c4","#1a2a4a","#7fd9e2","#ffffff","#2bb673"]; for(var i=0;i<26;i++){(function(){ var b=document.createElement("div"); b.className="confetti-bit"; b.style.background=colors[Math.floor(Math.random()*colors.length)]; b.style.left=(40+Math.random()*20)+"%"; b.style.top="40%"; c.appendChild(b); var dx=(Math.random()-0.5)*400,dy=-(150+Math.random()*250),rot=(Math.random()-0.5)*720,dur=900+Math.random()*700; b.animate([{transform:"translate(0,0) rotate(0deg)",opacity:1},{transform:"translate("+dx+"px,"+(dy+400)+"px) rotate("+rot+"deg)",opacity:0}],{duration:dur,easing:"cubic-bezier(.2,.6,.4,1)"}); setTimeout(function(){b.remove();},dur); })(); } }
+
+updateRateBtn();
+document.body.addEventListener("touchstart",function once(){ if("speechSynthesis" in window) pickVoice(); },{once:true});
+</script>
+</body>
+</html>

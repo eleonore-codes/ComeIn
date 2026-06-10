@@ -94,6 +94,8 @@
   .btn:active{transform:scale(.98);}
   .btn:disabled{opacity:.4;}
   .backbtn{background:none;border:none;color:var(--navy);font-size:17px;font-weight:700;font-family:inherit;cursor:pointer;padding:8px 4px;margin-bottom:6px;display:inline-flex;align-items:center;gap:6px;}
+  .hublink{display:inline-flex;align-items:center;gap:6px;color:var(--navy);font-size:17px;font-weight:700;text-decoration:none;padding:8px 4px;margin-bottom:4px;}
+  .hublink:active{opacity:.7;}
   #confetti{position:fixed;inset:0;pointer-events:none;z-index:50;}
   .confetti-bit{position:absolute;width:10px;height:14px;border-radius:2px;will-change:transform,opacity;}
   .hidden{display:none;}
@@ -115,6 +117,7 @@
   </header>
 
   <div id="menu">
+    <a class="hublink" href="index.html">‹ Themen</a>
     <p class="menu-title">Choose a game</p>
     <button class="menu-item" onclick="startTopic(0)"><span class="menu-emoji">🎒</span><span><span class="menu-label">Listen &amp; tap</span><span class="menu-sub">Hear it, tap the picture</span></span><span class="menu-done" data-done="0"></span></button>
     <button class="menu-item" onclick="startTopic(1)"><span class="menu-emoji">🔗</span><span><span class="menu-label">Match it</span><span class="menu-sub">School words and pictures</span></span><span class="menu-done" data-done="1"></span></button>
@@ -169,13 +172,13 @@ function speak(text,target){
   window.speechSynthesis.speak(u);
 }
 function toggleRate(){
-  curRate = (curRate>0.78) ? 0.7 : 0.85;
+  curRate = (curRate>0.7) ? 0.5 : 0.85;
   try{ localStorage.setItem("comeIn3.rate", String(curRate)); }catch(e){}
   updateRateBtn();
 }
 function updateRateBtn(){
   var b=document.getElementById("speedBtn");
-  if(b) b.textContent = (curRate<=0.78) ? "🐢 langsam" : "🐇 normal";
+  if(b) b.textContent = (curRate<=0.7) ? "🐢 langsam" : "🐇 normal";
 }
 
 /* ---------- PROGRESS (localStorage) ---------- */

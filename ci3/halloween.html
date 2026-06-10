@@ -1,1 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Come In 3 — Halloween</title>
+<style>
+  :root{
+    --navy:#1a2a4a;--navy-2:#23365c;--teal:#1fb6c4;--teal-soft:#7fd9e2;
+    --cream:#f3efe4;--ink:#1a2233;--good:#2bb673;--warn:#e8a13a;
+    --card:#ffffff;--shadow:0 6px 18px rgba(26,42,74,.16);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;background:var(--cream);color:var(--ink);font-size:20px;line-height:1.7;letter-spacing:.02em;-webkit-text-size-adjust:100%;text-align:left;}
+  .wrap{max-width:560px;margin:0 auto;padding:16px 16px 40px;}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;border-radius:20px;padding:18px 20px;margin-bottom:16px;box-shadow:var(--shadow);}
+  .unit-name{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-soft);margin:0 0 2px;}
+  h1{margin:0;font-size:30px;line-height:1.2;}
+  .hdr-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:6px;}
+  .speedbtn{background:rgba(255,255,255,.15);color:#fff;border:2px solid var(--teal-soft);border-radius:20px;padding:6px 12px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;}
+  .speedbtn:active{transform:scale(.97);}
+  .progress-track{height:12px;background:rgba(255,255,255,.18);border-radius:8px;margin-top:14px;overflow:hidden;}
+  .progress-fill{height:100%;width:0;background:var(--teal);border-radius:8px;transition:width .4s ease;}
+  .menu-title{font-size:18px;color:var(--navy);margin:6px 4px 10px;font-weight:700;}
+  .menu-item{display:flex;align-items:center;gap:14px;background:var(--card);border:none;border-radius:18px;padding:18px;margin-bottom:12px;width:100%;box-shadow:var(--shadow);cursor:pointer;text-align:left;font-size:20px;color:var(--ink);font-family:inherit;}
+  .menu-item:active{transform:scale(.98);}
+  .menu-emoji{font-size:30px;flex:0 0 auto;}
+  .menu-label{font-weight:700;}
+  .menu-done{color:var(--good);font-weight:800;margin-left:auto;font-size:18px;}
+  .menu-sub{display:block;font-size:15px;color:#5a6a82;font-weight:400;letter-spacing:0;}
+  .rule{background:#fff;border-left:8px solid var(--teal);border-radius:14px;padding:16px 18px;margin-bottom:16px;box-shadow:var(--shadow);}
+  .rule-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px;}
+  .rule-title{font-weight:700;color:var(--navy);font-size:18px;}
+  .rule p{margin:6px 0;}
+  .rule b{color:var(--navy);}
+  .card{background:var(--card);border-radius:20px;padding:20px;box-shadow:var(--shadow);margin-bottom:16px;}
+  .theme-tag{display:inline-block;font-size:14px;font-weight:700;letter-spacing:.03em;padding:5px 12px;border-radius:20px;margin-bottom:12px;background:var(--navy);color:#fff;}
+  .theme-tag.teal{background:var(--teal);color:#06343a;}
+  .prompt{font-size:21px;font-weight:700;color:var(--navy);margin:0 0 14px;}
+  .sentence{font-size:24px;line-height:1.5;margin:10px 0 4px;color:var(--ink);}
+  .speak{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--teal);color:#06343a;border:none;border-radius:14px;padding:12px 18px;font-size:18px;font-weight:700;font-family:inherit;cursor:pointer;margin:4px 0 14px;}
+  .speak:active{transform:scale(.97);}
+  .speak .ico{font-size:22px;}
+  .speak-mini{background:#eef6f7;color:var(--navy);border:2px solid var(--teal-soft);border-radius:12px;padding:8px 12px;font-size:16px;font-weight:700;font-family:inherit;cursor:pointer;display:inline-flex;align-items:center;gap:6px;}
+  .options{display:flex;flex-direction:column;gap:12px;margin-top:8px;}
+  .opt{background:#f4f7fb;border:3px solid #dfe6f0;border-radius:16px;padding:16px 14px;font-size:22px;font-weight:700;color:var(--ink);cursor:pointer;font-family:inherit;text-align:left;display:flex;align-items:center;gap:12px;}
+  .opt:active{transform:scale(.98);}
+  .opt.correct{background:#e7f7ef;border-color:var(--good);color:#10623e;}
+  .opt.wrong{background:#fdeede;border-color:var(--warn);color:#8a5410;}
+  .opt-label{flex:1;}
+  .opt-speak{flex:0 0 auto;width:44px;height:44px;border-radius:12px;background:#eef6f7;border:2px solid var(--teal-soft);display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;}
+  .pickgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:8px;}
+  .picktile{background:#f4f7fb;border:3px solid #dfe6f0;border-radius:18px;padding:16px 8px;cursor:pointer;font-family:inherit;display:flex;flex-direction:column;align-items:center;gap:8px;}
+  .picktile:active{transform:scale(.96);}
+  .picktile.correct{background:#e7f7ef;border-color:var(--good);}
+  .picktile.wrong{background:#fdeede;border-color:var(--warn);}
+  .picktile .pemoji{font-size:46px;line-height:1;font-weight:800;color:var(--navy);}
+  .picktile .opt-speak{width:42px;height:36px;}
+  .swatch{width:56px;height:56px;border-radius:50%;border:3px solid rgba(0,0,0,.16);display:inline-block;}
+  .mtile .swatch{width:40px;height:40px;border-width:2px;}
+  .swipe-swatch{width:96px;height:96px;border-radius:50%;border:3px solid rgba(0,0,0,.16);margin:0 auto 6px;}
+  .match{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px;}
+  .mcol{display:flex;flex-direction:column;gap:10px;}
+  .mtile{background:#f4f7fb;border:3px solid #dfe6f0;border-radius:14px;padding:12px;font-size:19px;font-weight:700;color:var(--ink);cursor:pointer;font-family:inherit;text-align:center;min-height:60px;display:flex;align-items:center;justify-content:center;gap:8px;line-height:1.3;}
+  .mtile .em{font-size:30px;flex:0 0 auto;}
+  .mtile.sel{border-color:var(--teal);background:#e9f7f9;}
+  .mtile.done{background:#e7f7ef;border-color:var(--good);color:#10623e;opacity:.75;}
+  .mtile.wrong{border-color:var(--warn);background:#fdeede;}
+  .mtile:active{transform:scale(.97);}
+  .swipe-card{background:#f4f7fb;border:3px solid #dfe6f0;border-radius:20px;padding:24px 18px;text-align:center;}
+  .swipe-emoji{font-size:72px;line-height:1;margin-bottom:6px;}
+  .swipe-sentence{font-size:24px;font-weight:700;color:var(--navy);margin:10px 0 4px;display:inline-block;padding:4px 8px;}
+  .swipe-btns{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;}
+  .swipe-btn{border:none;border-radius:18px;padding:20px;font-size:26px;font-weight:800;font-family:inherit;cursor:pointer;}
+  .swipe-btn.no{background:#fdeede;color:#8a5410;}
+  .swipe-btn.yes{background:#e7f7ef;color:#10623e;}
+  .swipe-btn:active{transform:scale(.96);}
+  .puz-build{min-height:64px;background:#eef2f8;border:3px dashed #c7d2e2;border-radius:14px;padding:10px;display:flex;flex-wrap:wrap;gap:8px;margin:10px 0;align-items:center;}
+  .puz-bank{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;}
+  .puztile{background:var(--navy);color:#fff;border:none;border-radius:12px;padding:12px 14px;font-size:20px;font-weight:700;font-family:inherit;cursor:pointer;}
+  .puztile:active{transform:scale(.95);}
+  .puztile.inbuild{background:var(--teal);color:#06343a;}
+  .reading{background:#fff3c4 !important;box-shadow:0 0 0 3px #f4c020 inset;border-radius:10px;}
+  .feedback{margin-top:16px;border-radius:16px;padding:16px;font-size:19px;font-weight:700;display:none;}
+  .feedback.show{display:block;}
+  .feedback.good{background:#e7f7ef;color:#10623e;}
+  .feedback.soft{background:#fff4e2;color:#8a5410;}
+  .feedback .fb-rule{font-weight:400;margin-top:6px;color:#4a4030;}
+  .nav{display:flex;gap:12px;margin-top:8px;}
+  .btn{flex:1;border:none;border-radius:16px;padding:16px;font-size:19px;font-weight:800;font-family:inherit;cursor:pointer;}
+  .btn.primary{background:var(--teal);color:#06343a;}
+  .btn.ghost{background:#e7ecf4;color:var(--navy);}
+  .btn:active{transform:scale(.98);}
+  .btn:disabled{opacity:.4;}
+  .backbtn{background:none;border:none;color:var(--navy);font-size:17px;font-weight:700;font-family:inherit;cursor:pointer;padding:8px 4px;margin-bottom:6px;display:inline-flex;align-items:center;gap:6px;}
+  .hublink{display:inline-flex;align-items:center;gap:6px;color:var(--navy);font-size:17px;font-weight:700;text-decoration:none;padding:8px 4px;margin-bottom:4px;}
+  .hublink:active{opacity:.7;}
+  #confetti{position:fixed;inset:0;pointer-events:none;z-index:50;}
+  .confetti-bit{position:absolute;width:10px;height:14px;border-radius:2px;will-change:transform,opacity;}
+  .hidden{display:none;}
+  .done-screen{text-align:center;padding:30px 10px;}
+  .done-screen .big{font-size:56px;}
+  .done-screen h2{color:var(--navy);font-size:26px;margin:10px 0;}
+  @media (prefers-reduced-motion: reduce){*{transition:none !important;animation:none !important;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="unit-name">Come In 3</p>
+    <div class="hdr-row">
+      <h1 id="screenTitle">🎃 Halloween</h1>
+      <button class="speedbtn" id="speedBtn" onclick="toggleRate()">🐇 normal</button>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  </header>
 
+  <div id="menu">
+    <a class="hublink" href="index.html">‹ Themen</a>
+    <p class="menu-title">Choose a game</p>
+    <button class="menu-item" onclick="startTopic(0)"><span class="menu-emoji">🎃</span><span><span class="menu-label">Listen &amp; tap</span><span class="menu-sub">Hear it, tap the picture</span></span><span class="menu-done" data-done="0"></span></button>
+    <button class="menu-item" onclick="startTopic(1)"><span class="menu-emoji">🔗</span><span><span class="menu-label">Match it</span><span class="menu-sub">Spooky words and pictures</span></span><span class="menu-done" data-done="1"></span></button>
+    <button class="menu-item" onclick="startTopic(2)"><span class="menu-emoji">🔢</span><span><span class="menu-label">One or many?</span><span class="menu-sub">Singular and plural</span></span><span class="menu-done" data-done="2"></span></button>
+    <button class="menu-item" onclick="startTopic(3)"><span class="menu-emoji">👋</span><span><span class="menu-label">Right or wrong?</span><span class="menu-sub">Swipe yes or no</span></span><span class="menu-done" data-done="3"></span></button>
+    <button class="menu-item" onclick="startTopic(4)"><span class="menu-emoji">🧩</span><span><span class="menu-label">Build the sentence</span><span class="menu-sub">Put the words in order</span></span><span class="menu-done" data-done="4"></span></button>
+</div>
+
+  <div id="quiz" class="hidden">
+    <button class="backbtn" onclick="goMenu()">‹ Menu</button>
+    <div id="ruleSlot"></div>
+    <div id="cardSlot"></div>
+    <div class="feedback" id="feedback"></div>
+    <div class="nav">
+      <button class="btn ghost" id="checkBtn" onclick="checkAnswer()">Check</button>
+      <button class="btn primary hidden" id="nextBtn" onclick="nextQuestion()">Next ›</button>
+    </div>
+  </div>
+
+  <div id="done" class="hidden done-screen">
+    <div class="big">🏆</div>
+    <h2 id="doneMsg">Super!</h2>
+    <div class="nav"><button class="btn primary" onclick="goMenu()">Back to games</button></div>
+  </div>
+</div>
+<div id="confetti"></div>
+
+<script>
+"use strict";
+
+/* ---------- SPEECH (en-GB) + speed toggle + read-along ---------- */
+var chosenVoice=null;
+var curRate=0.85;
+try{ var sr=localStorage.getItem("comeIn3.rate"); if(sr) curRate=parseFloat(sr); }catch(e){}
+function pickVoice(){
+  var vs=window.speechSynthesis.getVoices();
+  chosenVoice=vs.find(function(v){return /en-GB/i.test(v.lang);})||vs.find(function(v){return /^en/i.test(v.lang);})||vs[0]||null;
+}
+if("speechSynthesis" in window){ pickVoice(); window.speechSynthesis.onvoiceschanged=pickVoice; }
+function clearReading(){ document.querySelectorAll(".reading").forEach(function(e){e.classList.remove("reading");}); }
+function speak(text,target){
+  if(!("speechSynthesis" in window)||!text) return;
+  window.speechSynthesis.cancel(); clearReading();
+  var u=new SpeechSynthesisUtterance(text);
+  if(chosenVoice) u.voice=chosenVoice;
+  u.lang="en-GB"; u.rate=curRate; u.pitch=1.0;
+  if(target){
+    target.classList.add("reading");
+    u.onend=function(){ target.classList.remove("reading"); };
+    u.onerror=function(){ target.classList.remove("reading"); };
+  }
+  window.speechSynthesis.speak(u);
+}
+function toggleRate(){
+  curRate = (curRate>0.7) ? 0.5 : 0.85;
+  try{ localStorage.setItem("comeIn3.rate", String(curRate)); }catch(e){}
+  updateRateBtn();
+}
+function updateRateBtn(){
+  var b=document.getElementById("speedBtn");
+  if(b) b.textContent = (curRate<=0.7) ? "🐢 langsam" : "🐇 normal";
+}
+
+/* ---------- PROGRESS (localStorage) ---------- */
+var UNIT_KEY="halloween";
+function getProgress(){ try{ return JSON.parse(localStorage.getItem("comeIn3.progress")||"{}"); }catch(e){ return {}; } }
+function markGameDone(topicIndex){
+  try{
+    var m=getProgress(); var arr=m[UNIT_KEY]||[];
+    if(arr.indexOf(topicIndex)<0) arr.push(topicIndex);
+    m[UNIT_KEY]=arr; localStorage.setItem("comeIn3.progress", JSON.stringify(m));
+  }catch(e){}
+}
+function paintMenuDone(){
+  var done=(getProgress()[UNIT_KEY]||[]);
+  document.querySelectorAll(".menu-done").forEach(function(s){
+    var i=parseInt(s.getAttribute("data-done"),10);
+    s.textContent = done.indexOf(i)>=0 ? "✓" : "";
+  });
+}
+
+/* ---------- CONTENT ---------- */
+var UNIT_NAME="Halloween";
+
+var topics=[
+  /* 0 — Listen & tap (grid emoji) */
+  {
+    title:"Listen & tap",
+    rule:`<div class="rule-head"><span class="rule-title">🎃 Listen &amp; tap</span><button class="speak-mini" data-say="Listen, then tap the right picture.">🔊 Rule</button></div>
+          <p>Tap <b>🔊 Listen</b>, then tap the right picture.</p>`,
+    questions:[
+      {type:"choose",grid:true,theme:"🎃 Listen",teal:true,prompt:"Which picture?",say:"ghost",
+        options:[{t:"👻",s:"ghost"},{t:"🦇",s:"bat"},{t:"🕷️",s:"spider"}],correct:0,aff:"Tooor! Genau richtig! ⚽",wrong:"💛 Fast! 👻 ist ghost."},
+      {type:"choose",grid:true,theme:"🎃 Listen",teal:true,prompt:"Which picture?",say:"spider",
+        options:[{t:"🐱",s:"cat"},{t:"🕷️",s:"spider"},{t:"🦉",s:"owl"}],correct:1,aff:"Gruselig gut! 🕷️⚽",wrong:"💛 Fast! 🕷️ ist spider."},
+      {type:"choose",grid:true,theme:"🎃 Listen",teal:true,prompt:"Which picture?",say:"bat",
+        options:[{t:"🦇",s:"bat"},{t:"🐭",s:"mouse"},{t:"🧛",s:"vampire"}],correct:0,aff:"Pole Position! 🏁",wrong:"💛 Fast! 🦇 ist bat."},
+      {type:"choose",grid:true,theme:"🎃 Listen",teal:true,prompt:"Which picture?",say:"witch",
+        options:[{t:"💀",s:"skeleton"},{t:"🧙",s:"witch"},{t:"👹",s:"monster"}],correct:1,aff:"Stark! 🧙⚽",wrong:"💛 Fast! 🧙 ist witch."},
+      {type:"choose",grid:true,theme:"🎃 Listen",teal:true,prompt:"Which picture?",say:"skeleton",
+        options:[{t:"🦉",s:"owl"},{t:"🐀",s:"rat"},{t:"💀",s:"skeleton"}],correct:2,aff:"Schnell wie ein Rennwagen! 🏎️💨",wrong:"💛 Fast! 💀 ist skeleton."}
+    ]
+  },
+
+  /* 1 — Match word <-> emoji */
+  {
+    title:"Match it",
+    rule:`<div class="rule-head"><span class="rule-title">🔗 Match it</span><button class="speak-mini" data-say="Tap a word, then tap its picture.">🔊 Rule</button></div>
+          <p>Tap a <b>word</b>, then tap its <b>picture</b>.</p><p>Tap 🔊 on a word to hear it.</p>`,
+    questions:[
+      {type:"match",theme:"🔗 Match",teal:true,pairs:[["ghost","👻"],["bat","🦇"],["spider","🕷️"],["cat","🐱"]],
+        aff:"Alle Paare! Mannschaftsleistung! ⚽🏆",wrong:"💛 Fast! Tippe das Wort, dann das Bild."},
+      {type:"match",theme:"🔗 Match",teal:true,pairs:[["witch","🧙"],["vampire","🧛"],["monster","👹"],["skeleton","💀"]],
+        aff:"Perfekt verbunden! 🏁",wrong:"💛 Fast! Probier es in Ruhe."},
+      {type:"match",theme:"🔗 Match",teal:true,pairs:[["owl","🦉"],["mouse","🐭"],["rat","🐀"]],
+        aff:"Geschafft — Doppelpass sitzt! ⚽",wrong:"💛 Fast! Schau nochmal hin."}
+    ]
+  },
+
+  /* 2 — One or many? (plurals, choose text) */
+  {
+    title:"One or many?",
+    rule:`<div class="rule-head"><span class="rule-title">🔢 One or many?</span><button class="speak-mini" data-say="One cat. Two cats. Tap the right word.">🔊 Rule</button></div>
+          <p>One 🐱 = <b>cat</b>. Two 🐱🐱 = <b>cats</b>.</p><p>Look, listen, and tap the right word.</p>`,
+    questions:[
+      {type:"choose",theme:"🔢 Plural",teal:true,show:"🐱 🐱",prompt:"How many? Tap the word.",say:"two cats",
+        options:["cat","cats","cates"],correct:1,aff:"Tooor! ⚽",wrong:"💛 Fast! Zwei = cats (mit -s)."},
+      {type:"choose",theme:"🔢 Plural",teal:true,show:"🦇 🦇 🦇",prompt:"How many? Tap the word.",say:"three bats",
+        options:["bat","bats","bates"],correct:1,aff:"Volltreffer! ⚽",wrong:"💛 Fast! Drei = bats (mit -s)."},
+      {type:"choose",theme:"🔢 Plural",teal:true,show:"🧙 🧙",prompt:"How many? Tap the word.",say:"two witches",
+        options:["witch","witches","witchs"],correct:1,aff:"Stark! 🧙⚽",wrong:"💛 Fast! witch → witches (mit -es)."},
+      {type:"choose",theme:"🔢 Plural",teal:true,show:"🐭 🐭",prompt:"How many? Tap the word.",say:"two mice",
+        options:["mouse","mice","mouses"],correct:1,aff:"Pole Position! 🏁",wrong:"💛 Fast! mouse → mice (besonderes Wort!)."},
+      {type:"choose",theme:"🔢 Plural",teal:true,show:"👻 👻 👻",prompt:"How many? Tap the word.",say:"three ghosts",
+        options:["ghost","ghostes","ghosts"],correct:2,aff:"Schnell und richtig! 🏎️💨",wrong:"💛 Fast! Drei = ghosts (mit -s)."}
+    ]
+  },
+
+  /* 3 — Right or wrong? (swipe) */
+  {
+    title:"Right or wrong?",
+    rule:`<div class="rule-head"><span class="rule-title">👋 Right or wrong?</span><button class="speak-mini" data-say="Look and listen. Tap yes if it is right. Tap no if it is wrong.">🔊 Rule</button></div>
+          <p>Look at the picture and listen.</p><p>Tap ✅ <b>yes</b> if it is right. Tap ❌ <b>no</b> if it is wrong.</p>`,
+    questions:[
+      {type:"swipe",theme:"👻 Check",emoji:"👻",text:"This is a ghost.",answer:true,aff:"Richtig! Sicher wie ein Elfmeter! ⚽",wrong:"💛 Fast! 👻 ist a ghost — richtig."},
+      {type:"swipe",theme:"🕷️ Check",emoji:"🕷️",text:"This is a bat.",answer:false,aff:"Erkannt! Gutes Auge! 🏎️",wrong:"💛 Fast! 🕷️ ist a spider, nicht a bat."},
+      {type:"swipe",theme:"🧛 Check",emoji:"🧛",text:"This is a vampire.",answer:true,aff:"Tor! Genau! ⚽",wrong:"💛 Fast! 🧛 ist a vampire — richtig."},
+      {type:"swipe",theme:"🐭 Check",emoji:"🐭",text:"This is an owl.",answer:false,aff:"Stark gebremst und richtig! 🏁",wrong:"💛 Fast! 🐭 ist a mouse, nicht an owl."},
+      {type:"swipe",theme:"🧙 Check",emoji:"🧙",text:"This is a witch.",answer:true,aff:"Sauber! ⚽",wrong:"💛 Fast! 🧙 ist a witch — richtig."}
+    ]
+  },
+
+  /* 4 — Build the sentence (puzzle) */
+  {
+    title:"Build the sentence",
+    rule:`<div class="rule-head"><span class="rule-title">🧩 Build the sentence</span><button class="speak-mini" data-say="Tap the words in the right order.">🔊 Rule</button></div>
+          <p>Tap the words in the right order.</p><p>Tap 🔊 to hear the whole sentence.</p>`,
+    questions:[
+      {type:"puzzle",theme:"🧩 Order",teal:true,words:["Are","you","scared","of","spiders?"],aff:"Frage gebaut wie ein Profi! ⚽",wrong:`💛 Fast! Beginne mit "Are".`},
+      {type:"puzzle",theme:"🧩 Order",teal:true,words:["Is","it","a","ghost?"],aff:"Satz steht! 🏎️",wrong:`💛 Fast! Beginne mit "Is".`},
+      {type:"puzzle",theme:"🧩 Order",teal:true,words:["I'm","not","scared!"],aff:"Perfekt! 🏆",wrong:`💛 Fast! Beginne mit "I'm".`}
+    ]
+  }
+];
+
+/* =========================================================
+   SHARED ENGINE (generic + grid + swatch + speed + read-along + progress)
+   ========================================================= */
+var curTopic=0, curQ=0, answered=false;
+function $(id){return document.getElementById(id);}
+
+function startTopic(i){
+  curTopic=i; curQ=0;
+  $("menu").classList.add("hidden"); $("done").classList.add("hidden"); $("quiz").classList.remove("hidden");
+  $("screenTitle").textContent=topics[i].title;
+  $("ruleSlot").innerHTML='<div class="rule">'+topics[i].rule+'</div>';
+  wireSpeak($("ruleSlot"));
+  loadQuestion();
+}
+function goMenu(){
+  if("speechSynthesis" in window) window.speechSynthesis.cancel();
+  clearReading();
+  $("quiz").classList.add("hidden"); $("done").classList.add("hidden"); $("menu").classList.remove("hidden");
+  $("screenTitle").textContent="🎃 Halloween"; setBar(0); paintMenuDone();
+}
+function setBar(p){ $("progressFill").style.width=p+"%"; }
+
+function loadQuestion(){
+  answered=false; clearReading();
+  var t=topics[curTopic], q=t.questions[curQ];
+  setBar(Math.round(curQ/t.questions.length*100));
+  $("feedback").className="feedback"; $("feedback").innerHTML="";
+  $("nextBtn").classList.add("hidden"); $("checkBtn").classList.remove("hidden"); $("checkBtn").disabled=false;
+  var html='<span class="theme-tag '+(q.teal?"teal":"")+'">'+(q.theme||"")+'</span>';
+  if(q.type==="choose"){ html+=renderChoose(q); $("checkBtn").classList.add("hidden"); }
+  else if(q.type==="match"){ html+=renderMatch(q); $("checkBtn").classList.add("hidden"); }
+  else if(q.type==="swipe"){ html+=renderSwipe(q); $("checkBtn").classList.add("hidden"); }
+  else if(q.type==="puzzle"){ html+=renderPuzzle(q); }
+  $("cardSlot").innerHTML='<div class="card">'+html+'</div>';
+  wireSpeak($("cardSlot"));
+  if(q.type==="choose") wireChoose(q);
+  if(q.type==="match") wireMatch(q);
+  if(q.type==="swipe") wireSwipe(q);
+  if(q.type==="puzzle") wirePuzzle(q);
+}
+
+/* ---------- CHOOSE ---------- */
+function normOpt(o){ return (typeof o==="string")?{t:o,s:o}:o; }
+function optInner(o){ return o.swatch ? '<span class="swatch" style="background:'+o.swatch+'"></span>' : '<span class="pemoji">'+o.t+'</span>'; }
+function renderChoose(q){
+  var opts=q.options.map(normOpt), html="";
+  if(q.show){ html+='<div class="sentence" data-say="'+esc(q.say)+'">'+q.show+'</div>'; }
+  html+='<button class="speak" data-say="'+esc(q.say)+'"><span class="ico">🔊</span> Listen</button>';
+  html+='<p class="prompt">'+q.prompt+'</p>';
+  if(q.grid){
+    html+='<div class="pickgrid">';
+    for(var i=0;i<opts.length;i++){ html+='<button class="picktile choice" data-i="'+i+'">'+optInner(opts[i])+'<span class="opt-speak" data-say="'+esc(opts[i].s)+'">🔊</span></button>'; }
+    html+='</div>';
+  }else{
+    html+='<div class="options">';
+    for(var j=0;j<opts.length;j++){ html+='<button class="opt choice" data-i="'+j+'"><span class="opt-label">'+opts[j].t+'</span><span class="opt-speak" data-say="'+esc(opts[j].s)+'">🔊</span></button>'; }
+    html+='</div>';
+  }
+  return html;
+}
+function wireChoose(q){
+  document.querySelectorAll("#cardSlot .choice").forEach(function(opt){
+    opt.addEventListener("click",function(){ if(answered) return; answerChoose(parseInt(opt.getAttribute("data-i"),10),q); });
+  });
+}
+function answerChoose(i,q){
+  answered=true;
+  var opts=q.options.map(normOpt);
+  var btns=document.querySelectorAll("#cardSlot .choice");
+  btns.forEach(function(b,idx){ if(idx===q.correct) b.classList.add("correct"); b.style.pointerEvents="none"; });
+  if(i===q.correct){ win(q.aff,""); } else{ btns[i].classList.add("wrong"); soft(q.wrong,""); }
+  speak(opts[q.correct].s); showNext();
+}
+
+/* ---------- MATCH ---------- */
+var matchSel=null, matchDone=0, matchTotal=0;
+function rightInner(v){ return (typeof v==="string" && v.charAt(0)==="#") ? '<span class="swatch" style="background:'+v+'"></span>' : '<span class="em">'+v+'</span>'; }
+function renderMatch(q){
+  matchSel=null; matchDone=0; matchTotal=q.pairs.length;
+  var left=q.pairs.map(function(p){return p[0];});
+  var right=shuffle(q.pairs.map(function(p){return p[1];}));
+  var L='<div class="mcol">';
+  left.forEach(function(w){ L+='<button class="mtile" data-type="word" data-val="'+esc(w)+'">'+w+' <span class="em" data-say="'+esc(w)+'">🔊</span></button>'; });
+  L+='</div>';
+  var R='<div class="mcol">';
+  right.forEach(function(v){ R+='<button class="mtile" data-type="emoji" data-val="'+esc(v)+'">'+rightInner(v)+'</button>'; });
+  R+='</div>';
+  return '<p class="prompt">Match the pairs</p><div class="match">'+L+R+'</div>';
+}
+function wireMatch(q){
+  var pairsMap={}; q.pairs.forEach(function(p){pairsMap[p[0]]=p[1];});
+  document.querySelectorAll("#cardSlot .mtile").forEach(function(t){
+    t.addEventListener("click",function(){
+      if(t.classList.contains("done")) return;
+      if(t.getAttribute("data-type")==="word") speak(t.getAttribute("data-val"),t);
+      if(!matchSel){ if(t.getAttribute("data-type")!=="word") return; matchSel=t; t.classList.add("sel"); return; }
+      if(matchSel===t){ t.classList.remove("sel"); matchSel=null; return; }
+      if(t.getAttribute("data-type")==="word"){ matchSel.classList.remove("sel"); matchSel=t; t.classList.add("sel"); return; }
+      var word=matchSel.getAttribute("data-val"), em=t.getAttribute("data-val");
+      if(pairsMap[word]===em){
+        matchSel.classList.remove("sel"); matchSel.classList.add("done"); t.classList.add("done"); matchSel=null; matchDone++;
+        if(matchDone===matchTotal){ answered=true; win(q.aff,""); showNext(); }
+      }else{
+        var bad=t; matchSel.classList.remove("sel"); bad.classList.add("wrong"); soft(q.wrong,""); matchSel=null;
+        setTimeout(function(){ bad.classList.remove("wrong"); $("feedback").className="feedback"; },900);
+      }
+    });
+  });
+}
+
+/* ---------- SWIPE ---------- */
+function renderSwipe(q){
+  var vis = q.swatch ? '<div class="swipe-swatch" style="background:'+q.swatch+'"></div>' : (q.emoji?'<div class="swipe-emoji">'+q.emoji+'</div>':"");
+  return '<div class="swipe-card">'+vis+
+    '<div class="swipe-sentence" id="swSent" data-say="'+esc(q.text)+'">'+q.text+'</div>'+
+    '<div><button class="speak" data-say="'+esc(q.text)+'" data-hl="#swSent"><span class="ico">🔊</span> Listen</button></div>'+
+    '<div class="swipe-btns"><button class="swipe-btn no" data-ans="no">❌ No</button><button class="swipe-btn yes" data-ans="yes">✅ Yes</button></div></div>';
+}
+function wireSwipe(q){
+  document.querySelectorAll("#cardSlot .swipe-btn").forEach(function(b){
+    b.addEventListener("click",function(){ if(answered) return; answerSwipe(b.getAttribute("data-ans")==="yes",q); });
+  });
+}
+function answerSwipe(picked,q){
+  answered=true;
+  document.querySelectorAll("#cardSlot .swipe-btn").forEach(function(b){b.style.pointerEvents="none";});
+  if(picked===q.answer){ win(q.aff,""); } else{ soft(q.wrong,""); }
+  speak(q.text, document.getElementById("swSent")); showNext();
+}
+
+/* ---------- PUZZLE ---------- */
+var puzBuild=[];
+function renderPuzzle(q){
+  puzBuild=[];
+  var bank=shuffle(q.words.slice());
+  var b='<div class="puz-bank" id="puzBank">';
+  bank.forEach(function(w){ b+='<button class="puztile" data-w="'+esc(w)+'">'+w+'</button>'; });
+  b+='</div>';
+  return '<p class="prompt">Put the words in order</p><button class="speak" data-say="'+esc(q.words.join(" "))+'"><span class="ico">🔊</span> Listen</button><div class="puz-build" id="puzBuild"><span style="color:#9aa7bd">tap words…</span></div>'+b;
+}
+function wirePuzzle(q){
+  document.querySelectorAll("#puzBank .puztile").forEach(function(tile){
+    tile.addEventListener("click",function(){ if(tile.classList.contains("inbuild")) return; tile.classList.add("inbuild"); puzBuild.push(tile.getAttribute("data-w")); renderBuild(); });
+  });
+}
+function renderBuild(){
+  var area=$("puzBuild");
+  if(puzBuild.length===0){ area.innerHTML='<span style="color:#9aa7bd">tap words…</span>'; return; }
+  area.innerHTML="";
+  puzBuild.forEach(function(w,i){
+    var t=document.createElement("button"); t.className="puztile inbuild"; t.textContent=w;
+    t.onclick=function(){ puzBuild.splice(i,1); syncBank(); renderBuild(); };
+    area.appendChild(t);
+  });
+}
+function syncBank(){
+  var used=puzBuild.slice();
+  document.querySelectorAll("#puzBank .puztile").forEach(function(bt){
+    var w=bt.getAttribute("data-w"), idx=used.indexOf(w);
+    if(idx>=0){ bt.classList.add("inbuild"); used.splice(idx,1); } else{ bt.classList.remove("inbuild"); }
+  });
+}
+function checkAnswer(){
+  var q=topics[curTopic].questions[curQ];
+  if(q.type!=="puzzle" || answered) return;
+  if(puzBuild.join(" ")===q.words.join(" ")){ answered=true; win(q.aff,""); speak(q.words.join(" ")); showNext(); }
+  else{ soft(q.wrong,""); }
+}
+
+/* ---------- feedback + flow ---------- */
+function win(msg,rule){ var f=$("feedback"); f.className="feedback good show"; f.innerHTML=msg+(rule?'<div class="fb-rule">'+rule+'</div>':""); burst(); }
+function soft(msg,rule){ var f=$("feedback"); f.className="feedback soft show"; f.innerHTML=msg+(rule?'<div class="fb-rule">'+rule+'</div>':""); }
+function showNext(){ $("checkBtn").classList.add("hidden"); $("nextBtn").classList.remove("hidden"); }
+function nextQuestion(){
+  var t=topics[curTopic]; curQ++;
+  if(curQ>=t.questions.length){
+    setBar(100); markGameDone(curTopic);
+    $("quiz").classList.add("hidden"); $("done").classList.remove("hidden");
+    $("doneMsg").textContent="Super! You finished "+t.title+"! 🏆"; speak("Well done!"); burst(); return;
+  }
+  loadQuestion();
+}
+
+/* ---------- helpers ---------- */
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;"); }
+function shuffle(a){ for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var tmp=a[i]; a[i]=a[j]; a[j]=tmp; } return a; }
+function wireSpeak(root){
+  root.querySelectorAll("[data-say]").forEach(function(el){
+    el.addEventListener("click",function(e){
+      e.stopPropagation();
+      var target=el;
+      if(el.classList.contains("opt-speak")) target=el.closest(".opt")||el.closest(".picktile")||el;
+      else if(el.getAttribute("data-hl")) target=document.querySelector(el.getAttribute("data-hl"))||el;
+      speak(el.getAttribute("data-say"), target);
+    });
+  });
+}
+
+/* ---------- confetti ---------- */
+function burst(){
+  if(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var c=$("confetti"), colors=["#1fb6c4","#1a2a4a","#7fd9e2","#ffffff","#2bb673"];
+  for(var i=0;i<26;i++){(function(){
+    var bit=document.createElement("div"); bit.className="confetti-bit";
+    bit.style.background=colors[Math.floor(Math.random()*colors.length)];
+    bit.style.left=(40+Math.random()*20)+"%"; bit.style.top="40%"; c.appendChild(bit);
+    var dx=(Math.random()-0.5)*400, dy=-(150+Math.random()*250), rot=(Math.random()-0.5)*720, dur=900+Math.random()*700;
+    bit.animate([{transform:"translate(0,0) rotate(0deg)",opacity:1},{transform:"translate("+dx+"px,"+(dy+400)+"px) rotate("+rot+"deg)",opacity:0}],{duration:dur,easing:"cubic-bezier(.2,.6,.4,1)"});
+    setTimeout(function(){bit.remove();},dur);
+  })();}
+}
+
+/* ---------- init ---------- */
+updateRateBtn();
+paintMenuDone();
+document.body.addEventListener("touchstart",function once(){ if("speechSynthesis" in window) pickVoice(); },{once:true});
+</script>
+</body>
+</html>

@@ -5,82 +5,63 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Come In 3 — Topics</title>
 <style>
-  :root{
-    --navy:#1a2a4a;
-    --navy-2:#23365c;
-    --teal:#1fb6c4;
-    --teal-soft:#7fd9e2;
-    --cream:#f3efe4;
-    --ink:#1a2233;
-    --card:#ffffff;
-    --shadow:0 6px 18px rgba(26,42,74,.16);
-  }
+  :root{--navy:#1a2a4a;--navy-2:#23365c;--teal:#1fb6c4;--teal-soft:#7fd9e2;--cream:#f3efe4;--ink:#1a2233;--good:#2bb673;--card:#ffffff;--shadow:0 6px 18px rgba(26,42,74,.16);}
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
   html,body{margin:0;padding:0;}
-  body{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
-    background:var(--cream);color:var(--ink);
-    font-size:20px;line-height:1.7;letter-spacing:.02em;
-    -webkit-text-size-adjust:100%;text-align:left;
-  }
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;background:var(--cream);color:var(--ink);font-size:20px;line-height:1.7;letter-spacing:.02em;-webkit-text-size-adjust:100%;text-align:left;}
   .wrap{max-width:560px;margin:0 auto;padding:16px 16px 40px;}
-
-  header{
-    background:linear-gradient(135deg,var(--navy),var(--navy-2));
-    color:#fff;border-radius:20px;padding:20px;margin-bottom:18px;box-shadow:var(--shadow);
-  }
+  header{background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;border-radius:20px;padding:20px;margin-bottom:18px;box-shadow:var(--shadow);}
   .eyebrow{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-soft);margin:0 0 2px;}
   h1{margin:0;font-size:32px;line-height:1.15;}
   .hello{margin:8px 0 0;font-size:17px;color:#dfe7f2;}
   .backline{margin:0 0 10px;}
   .backlink{color:var(--navy);font-size:16px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:6px;}
-
   .section-title{font-size:18px;color:var(--navy);margin:6px 4px 10px;font-weight:700;}
-
-  .tile{
-    display:flex;align-items:center;gap:8px;
-    background:var(--card);border-radius:18px;margin-bottom:12px;
-    box-shadow:var(--shadow);overflow:hidden;
-  }
-  .tile-main{
-    flex:1;display:flex;align-items:center;gap:14px;
-    padding:18px;text-decoration:none;color:var(--ink);min-width:0;
-  }
+  .tile{display:flex;align-items:center;gap:8px;background:var(--card);border-radius:18px;margin-bottom:12px;box-shadow:var(--shadow);overflow:hidden;}
+  .tile-main{flex:1;display:flex;align-items:center;gap:14px;padding:18px;text-decoration:none;color:var(--ink);min-width:0;}
   .tile-main:active{transform:scale(.99);}
   .tile-emoji{font-size:34px;flex:0 0 auto;}
   .tile-text{min-width:0;}
   .tile-name{display:block;font-weight:700;font-size:21px;}
   .tile-sub{display:block;font-size:15px;color:#5a6a82;letter-spacing:0;}
+  .tile-badge{margin-left:auto;font-size:14px;font-weight:800;color:#10623e;background:#e7f7ef;border-radius:20px;padding:4px 10px;flex:0 0 auto;}
   .tile-arrow{margin-left:auto;color:var(--teal);font-size:26px;font-weight:800;flex:0 0 auto;}
-  .tile-speak{
-    flex:0 0 auto;width:54px;align-self:stretch;border:none;
-    background:#eef6f7;border-left:2px solid #e3eef0;color:var(--navy);
-    font-size:24px;cursor:pointer;font-family:inherit;
-  }
+  .tile-badge + .tile-arrow{margin-left:8px;}
+  .tile-speak{flex:0 0 auto;width:54px;align-self:stretch;border:none;background:#eef6f7;border-left:2px solid #e3eef0;color:var(--navy);font-size:24px;cursor:pointer;font-family:inherit;}
   .tile-speak:active{background:#dceef1;}
-
-  .soon{
-    background:#edf0f5;border:2px dashed #c7d2e2;border-radius:16px;
-    padding:16px;color:#5a6a82;font-weight:700;text-align:center;margin-top:4px;
-  }
-
+  .soon{background:#edf0f5;border:2px dashed #c7d2e2;border-radius:16px;padding:16px;color:#5a6a82;font-weight:700;text-align:center;margin-top:4px;}
   a:focus-visible,button:focus-visible{outline:3px solid var(--teal);outline-offset:2px;}
 </style>
 </head>
 <body>
 <div class="wrap">
-
   <p class="backline"><a class="backlink" href="../index.html">‹ Bücher</a></p>
-
   <header>
     <p class="eyebrow">Come In 3</p>
     <h1>📘 English</h1>
     <p class="hello">Hi! 👋 Tap a topic to play.</p>
   </header>
-
   <p class="section-title">Choose a topic</p>
 
-  <div class="tile">
+  <div class="tile" data-key="welcome" data-total="5">
+    <a class="tile-main" href="welcome.html">
+      <span class="tile-emoji">👋</span>
+      <span class="tile-text"><span class="tile-name">Welcome</span><span class="tile-sub">colours &amp; numbers</span></span>
+      <span class="tile-arrow">›</span>
+    </a>
+    <button class="tile-speak" data-say="Welcome">🔊</button>
+  </div>
+
+  <div class="tile" data-key="school" data-total="5">
+    <a class="tile-main" href="school.html">
+      <span class="tile-emoji">🎒</span>
+      <span class="tile-text"><span class="tile-name">At school</span><span class="tile-sub">classroom things</span></span>
+      <span class="tile-arrow">›</span>
+    </a>
+    <button class="tile-speak" data-say="At school">🔊</button>
+  </div>
+
+  <div class="tile" data-key="time" data-total="5">
     <a class="tile-main" href="time.html">
       <span class="tile-emoji">⏰</span>
       <span class="tile-text"><span class="tile-name">Time</span><span class="tile-sub">o'clock</span></span>
@@ -89,7 +70,7 @@
     <button class="tile-speak" data-say="Time">🔊</button>
   </div>
 
-  <div class="tile">
+  <div class="tile" data-key="year" data-total="5">
     <a class="tile-main" href="year.html">
       <span class="tile-emoji">📅</span>
       <span class="tile-text"><span class="tile-name">The year</span><span class="tile-sub">months &amp; seasons</span></span>
@@ -98,7 +79,7 @@
     <button class="tile-speak" data-say="The year">🔊</button>
   </div>
 
-  <div class="tile">
+  <div class="tile" data-key="beach" data-total="5">
     <a class="tile-main" href="beach.html">
       <span class="tile-emoji">🏖️</span>
       <span class="tile-text"><span class="tile-name">At the beach</span><span class="tile-sub">holiday fun</span></span>
@@ -108,28 +89,28 @@
   </div>
 
   <div class="soon">Bald mehr Spiele! 🔜</div>
-
 </div>
 
 <script>
 "use strict";
-var chosenVoice=null;
-function pickVoice(){
-  var vs=window.speechSynthesis.getVoices();
-  chosenVoice=vs.find(function(v){return /en-GB/i.test(v.lang);})
-          ||vs.find(function(v){return /^en/i.test(v.lang);})||vs[0]||null;
-}
+var chosenVoice=null, curRate=0.85;
+try{ var sr=localStorage.getItem("comeIn3.rate"); if(sr) curRate=parseFloat(sr); }catch(e){}
+function pickVoice(){ var vs=window.speechSynthesis.getVoices(); chosenVoice=vs.find(function(v){return /en-GB/i.test(v.lang);})||vs.find(function(v){return /^en/i.test(v.lang);})||vs[0]||null; }
 if("speechSynthesis" in window){ pickVoice(); window.speechSynthesis.onvoiceschanged=pickVoice; }
-function speak(text){
-  if(!("speechSynthesis" in window)||!text) return;
-  window.speechSynthesis.cancel();
-  var u=new SpeechSynthesisUtterance(text);
-  if(chosenVoice) u.voice=chosenVoice;
-  u.lang="en-GB"; u.rate=0.85; u.pitch=1.0;
-  window.speechSynthesis.speak(u);
-}
-document.querySelectorAll("[data-say]").forEach(function(el){
-  el.addEventListener("click",function(e){ e.preventDefault(); e.stopPropagation(); speak(el.getAttribute("data-say")); });
+function speak(text){ if(!("speechSynthesis" in window)||!text) return; window.speechSynthesis.cancel(); var u=new SpeechSynthesisUtterance(text); if(chosenVoice) u.voice=chosenVoice; u.lang="en-GB"; u.rate=curRate; u.pitch=1.0; window.speechSynthesis.speak(u); }
+document.querySelectorAll("[data-say]").forEach(function(el){ el.addEventListener("click",function(e){ e.preventDefault(); e.stopPropagation(); speak(el.getAttribute("data-say")); }); });
+
+/* progress badges */
+var prog={}; try{ prog=JSON.parse(localStorage.getItem("comeIn3.progress")||"{}"); }catch(e){}
+document.querySelectorAll(".tile[data-key]").forEach(function(t){
+  var key=t.getAttribute("data-key"), total=parseInt(t.getAttribute("data-total"),10);
+  var done=(prog[key]||[]).length;
+  if(done>0){
+    var b=document.createElement("span"); b.className="tile-badge";
+    b.textContent=(done>=total)?("⭐ "+total+"/"+total):("★ "+done+"/"+total);
+    var arrow=t.querySelector(".tile-arrow");
+    if(arrow) arrow.parentNode.insertBefore(b,arrow);
+  }
 });
 document.body.addEventListener("touchstart",function once(){ if("speechSynthesis" in window) pickVoice(); },{once:true});
 </script>

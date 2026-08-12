@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Come In 4 — Topics</title>
+<style>
+:root{
+--navy:#1a2a4a;--navy-2:#23365c;--teal:#1fb6c4;--teal-soft:#7fd9e2;
+--cream:#f3efe4;--ink:#1a2233;--card:#ffffff;
+--shadow:0 6px 18px rgba(26,42,74,.16);
+--gold:#f4c020;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;padding:0;}
+body{
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+background:var(--cream);color:var(--ink);
+font-size:20px;line-height:1.7;letter-spacing:.02em;
+-webkit-text-size-adjust:100%;text-align:left;
+}
+.wrap{max-width:560px;margin:0 auto;padding:16px 16px 40px;}
+header{
+background:linear-gradient(135deg,var(--navy),var(--navy-2));
+color:#fff;border-radius:20px;padding:24px 20px;margin-bottom:18px;box-shadow:var(--shadow);
+}
+.eyebrow{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-soft);margin:0 0 4px;}
+h1{margin:0;font-size:38px;line-height:1.1;}
+.hello{margin:10px 0 0;font-size:17px;color:#dfe7f2;}
+.backlink{display:inline-flex;align-items:center;gap:6px;color:var(--navy);font-size:17px;font-weight:700;text-decoration:none;padding:8px 4px;margin-bottom:4px;}
+.backlink:active{opacity:.7;}
+.section-title{font-size:18px;color:var(--navy);margin:18px 4px 10px;font-weight:700;}
+.tile{
+display:flex;align-items:center;gap:8px;
+background:var(--card);border-radius:18px;margin-bottom:12px;
+box-shadow:var(--shadow);overflow:hidden;
+}
+.tile.test{border-left:6px solid var(--teal);}
+.tile.champion{border-left:6px solid var(--gold);}
+.tile-main{
+flex:1;display:flex;align-items:center;gap:14px;
+padding:20px 18px;text-decoration:none;color:var(--ink);min-width:0;
+}
+.tile-main:active{transform:scale(.99);}
+.tile-emoji{font-size:38px;flex:0 0 auto;}
+.tile-text{min-width:0;}
+.tile-name{display:block;font-weight:700;font-size:23px;}
+.tile-sub{display:block;font-size:15px;color:#5a6a82;letter-spacing:0;}
+.tile-arrow{margin-left:auto;color:var(--teal);font-size:26px;font-weight:800;flex:0 0 auto;}
+.tile-speak{
+flex:0 0 auto;width:54px;align-self:stretch;border:none;
+background:#eef6f7;border-left:2px solid #e3eef0;color:var(--navy);
+font-size:24px;cursor:pointer;font-family:inherit;
+}
+.tile-speak:active{background:#dceef1;}
+.hint{font-size:15px;color:#5a6a82;text-align:center;margin-top:20px;}
+a:focus-visible,button:focus-visible{outline:3px solid var(--teal);outline-offset:2px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<a class="backlink" href="../index.html" style="color:var(--teal-soft);">‹ Bücher</a>
+<p class="eyebrow">Come In 4</p>
+<h1>📗 English</h1>
+<p class="hello">Hi! 👋 Tap a topic to play.</p>
+</header>
+
+<p class="section-title">Choose a topic</p>
+
+<div class="tile">
+<a class="tile-main" href="welcome.html">
+<span class="tile-emoji">👋</span>
+<span class="tile-text"><span class="tile-name">Welcome back</span><span class="tile-sub">colours, numbers &amp; weather</span></span>
+<span class="tile-arrow">›</span>
+</a>
+<button class="tile-speak" data-say="Welcome back">🔊</button>
+</div>
+
+<div class="tile">
+<a class="tile-main" href="hobbies.html">
+<span class="tile-emoji">🎨</span>
+<span class="tile-text"><span class="tile-name">Hobbies</span><span class="tile-sub">free time &amp; the time</span></span>
+<span class="tile-arrow">›</span>
+</a>
+<button class="tile-speak" data-say="Hobbies">🔊</button>
+</div>
+
+<div class="tile">
+<a class="tile-main" href="fruit.html">
+<span class="tile-emoji">🍓</span>
+<span class="tile-text"><span class="tile-name">Fruits and vegetables</span><span class="tile-sub">food &amp; smoothies</span></span>
+<span class="tile-arrow">›</span>
+</a>
+<button class="tile-speak" data-say="Fruits and vegetables">🔊</button>
+</div>
+
+<div class="tile">
+<a class="tile-main" href="traffic.html">
+<span class="tile-emoji">🚗</span>
+<span class="tile-text"><span class="tile-name">Traffic</span><span class="tile-sub">vehicles &amp; directions</span></span>
+<span class="tile-arrow">›</span>
+</a>
+<button class="tile-speak" data-say="Traffic">🔊</button>
+</div>
+
+<div class="tile test">
+<a class="tile-main" href="test1.html">
+<span class="tile-emoji">📝</span>
+<span class="tile-text"><span class="tile-name">Test 1</span><span class="tile-sub">Wiederholung Units 1–4</span></span>
+<span class="tile-arrow">›</span>
+</a>
+<button class="tile-speak" data-say="Test 1">🔊</button>
+</div>
+
+<div class="tile">
+<a class="tile-main" href="sea.html">
+<span class="tile-emoji">🐙</span>
+<span class="tile-text"><span class="tile-name">Under the sea</span><span class="tile-sub">sea creatures</span></span>
+<span class="tile-arrow">›</span>
+</a>
+<button class="tile-speak" data-say="Under the sea">🔊</button>
+</div>
+
+<div class="tile">
+<a class="tile-main" href="jobs.html">
+<span class="tile-emoji">👷</span>
+<span class="tile-text"><span class="tile-name">Jobs</span><span class="tile-sub">professions &amp; chores</span></span>
+<span class="tile-arrow">›</span>
+</a>
+<button class="tile-speak" data-say="Jobs">🔊</button>
+</div>
+
+<div class="tile">
+<a class="tile-main" href="superheroes.html">
+<span class="tile-emoji">🦸</span>
+<span class="tile-text"><span class="tile-name">Superheroes</span><span class="tile-sub">powers &amp; costumes</span></span>
+<span class="tile-arrow">›</span>
+</a>
+<button class="tile-speak" data-say="Superheroes">🔊</button>
+</div>
+
+<div class="tile">
+<a class="tile-main" href="home.html">
+<span class="tile-emoji">🏠</span>
+<span class="tile-text"><span class="tile-name">At home</span><span class="tile-sub">furniture &amp; prepositions</span></span>
+<span class="tile-arrow">›</span>
+</a>
+<button class="tile-speak" data-say="At home">🔊</button>
+</div>
+
+<div class="tile test">
+<a class="tile-main" href="test2.html">
+<span class="tile-emoji">📝</span>
+<span class="tile-text"><span class="tile-name">Test 2</span><span class="tile-sub">Wiederholung Units 5–8</span></span>
+<span class="tile-arrow">›</span>
+</a>
+<button class="tile-speak" data-say="Test 2">🔊</button>
+</div>
+
+<div class="tile">
+<a class="tile-main" href="mall.html">
+<span class="tile-emoji">🛍️</span>
+<span class="tile-text"><span class="tile-name">At the mall</span><span class="tile-sub">shops, clothes &amp; money</span></span>
+<span class="tile-arrow">›</span>
+</a>
+<button class="tile-speak" data-say="At the mall">🔊</button>
+</div>
+
+<div class="tile">
+<a class="tile-main" href="dragon.html">
+<span class="tile-emoji">🐉</span>
+<span class="tile-text"><span class="tile-name">Funny and the dragon</span><span class="tile-sub">castle &amp; knights</span></span>
+<span class="tile-arrow">›</span>
+</a>
+<button class="tile-speak" data-say="Funny and the dragon">🔊</button>
+</div>
+
+<div class="tile">
+<a class="tile-main" href="animals.html">
+<span class="tile-emoji">🦁</span>
+<span class="tile-text"><span class="tile-name">Animals</span><span class="tile-sub">wild animals &amp; adjectives</span></span>
+<span class="tile-arrow">›</span>
+</a>
+<button class="tile-speak" data-say="Animals">🔊</button>
+</div>
+
+<div class="tile test">
+<a class="tile-main" href="test3.html">
+<span class="tile-emoji">📝</span>
+<span class="tile-text"><span class="tile-name">Test 3</span><span class="tile-sub">Wiederholung Units 9–11</span></span>
+<span class="tile-arrow">›</span>
+</a>
+<button class="tile-speak" data-say="Test 3">🔊</button>
+</div>
+
+<div class="tile champion">
+<a class="tile-main" href="testfinal.html">
+<span class="tile-emoji">🏆</span>
+<span class="tile-text"><span class="tile-name">Champion-Test</span><span class="tile-sub">Alle Units · große Challenge</span></span>
+<span class="tile-arrow">›</span>
+</a>
+<button class="tile-speak" data-say="Champion Test">🔊</button>
+</div>
+
+<p class="hint">Bald mehr Spiele! 🔜</p>
+</div>
+
+<script>
+"use strict";
+var chosenVoice=null;
+function pickVoice(){
+var vs=window.speechSynthesis.getVoices();
+chosenVoice=vs.find(function(v){return /en-GB/i.test(v.lang);})
+||vs.find(function(v){return /^en/i.test(v.lang);})||vs[0]||null;
+}
+if("speechSynthesis" in window){ pickVoice(); window.speechSynthesis.onvoiceschanged=pickVoice; }
+function speak(text){
+if(!("speechSynthesis" in window)||!text) return;
+window.speechSynthesis.cancel();
+var u=new SpeechSynthesisUtterance(text);
+if(chosenVoice) u.voice=chosenVoice;
+u.lang="en-GB"; u.rate=0.85; u.pitch=1.0;
+window.speechSynthesis.speak(u);
+}
+document.querySelectorAll("[data-say]").forEach(function(el){
+el.addEventListener("click",function(e){ e.preventDefault(); e.stopPropagation(); speak(el.getAttribute("data-say")); });
+});
+document.body.addEventListener("touchstart",function once(){ if("speechSynthesis" in window) pickVoice(); },{once:true});
+</script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Come In 4 — Test 3</title>
+<title>English 4 — Test 3</title>
 <style>
   :root{
     --navy:#1a2a4a;--navy-2:#23365c;--teal:#1fb6c4;--teal-soft:#7fd9e2;
@@ -129,7 +129,7 @@
 <body>
 <div class="wrap">
   <header>
-    <p class="unit-name">Come In 4</p>
+    <p class="unit-name">English 4</p>
     <div class="hdr-row">
       <h1 id="screenTitle">📝 Test 3</h1>
       <button class="speedbtn" id="speedBtn" onclick="toggleRate()">🐇 normal</button>
@@ -193,30 +193,86 @@ var UNITS=[
   {key:"animals", label:"🦁 Animals",                  file:"animals.html"}
 ];
 
-/* TEST QUESTIONS (mixed, tagged by unit) */
-var TEST=[
-  {unit:"mall",type:"choose",grid:true,say:"bakery",prompt:"Which shop?",options:[{t:"🥖",s:"bakery"},{t:"🛒",s:"supermarket"},{t:"🍦",s:"ice-cream stand"}],correct:0},
-  {unit:"mall",type:"choose",show:"👖",say:"It's twelve pounds.",prompt:"How much are the jeans?",options:["It's twelve pounds.","It's twelve pence.","It's two pounds."],correct:0},
-  {unit:"mall",type:"spell",word:"bag",emoji:"👜"},
-  {unit:"mall",type:"swipe",emoji:"🍕",text:"This is pizza.",answer:true},
+/* TEST QUESTIONS (mixed, tagged by unit)
+   Each slot has 2 variants so a repeat run of the test drills different
+   items from each unit instead of the exact same 12 every time. */
+var TEST_KEY="test3";
+var TEST=[];
+var TEST_POOL=[
+  [
+    {unit:"mall",type:"choose",grid:true,say:"bakery",prompt:"Which shop?",options:[{t:"🥖",s:"bakery"},{t:"🛒",s:"supermarket"},{t:"🍦",s:"ice-cream stand"}],correct:0},
+    {unit:"mall",type:"choose",grid:true,say:"supermarket",prompt:"Which shop?",options:[{t:"🥖",s:"bakery"},{t:"🛒",s:"supermarket"},{t:"🍦",s:"ice-cream stand"}],correct:1}
+  ],
+  [
+    {unit:"mall",type:"choose",show:"👖",say:"It's twelve pounds.",prompt:"How much are the jeans?",options:["It's twelve pounds.","It's twelve pence.","It's two pounds."],correct:0},
+    {unit:"mall",type:"choose",show:"🧦",say:"It's three pounds.",prompt:"How much are the socks?",options:["It's three pounds.","It's three pence.","It's thirty pounds."],correct:0}
+  ],
+  [
+    {unit:"mall",type:"spell",word:"bag",emoji:"👜"},
+    {unit:"mall",type:"spell",word:"cap",emoji:"🧢"}
+  ],
+  [
+    {unit:"mall",type:"swipe",emoji:"🍕",text:"This is pizza.",answer:true},
+    {unit:"mall",type:"swipe",emoji:"🍩",text:"This is a donut.",answer:true}
+  ],
 
-  {unit:"dragon",type:"choose",grid:true,say:"dragon",prompt:"Which picture?",options:[{t:"🐉",s:"dragon"},{t:"🏰",s:"castle"},{t:"👸",s:"princess"}],correct:0},
-  {unit:"dragon",type:"choose",say:"He has a sword and armour.",prompt:"Who is it?",options:["knight","maid","prince"],correct:0},
-  {unit:"dragon",type:"spell",word:"gate",emoji:"⛩️"},
-  {unit:"dragon",type:"swipe",emoji:"⚔️",text:"This is a sword.",answer:true},
+  [
+    {unit:"dragon",type:"choose",grid:true,say:"dragon",prompt:"Which picture?",options:[{t:"🐉",s:"dragon"},{t:"🏰",s:"castle"},{t:"👸",s:"princess"}],correct:0},
+    {unit:"dragon",type:"choose",grid:true,say:"castle",prompt:"Which picture?",options:[{t:"🐉",s:"dragon"},{t:"🏰",s:"castle"},{t:"👸",s:"princess"}],correct:1}
+  ],
+  [
+    {unit:"dragon",type:"choose",say:"He has a sword and armour.",prompt:"Who is it?",options:["knight","maid","prince"],correct:0},
+    {unit:"dragon",type:"choose",say:"She can cast magic spells.",prompt:"Who is it?",options:["witch","knight","maid"],correct:0}
+  ],
+  [
+    {unit:"dragon",type:"spell",word:"gate",emoji:"⛩️"},
+    {unit:"dragon",type:"spell",word:"horse",emoji:"🐴"}
+  ],
+  [
+    {unit:"dragon",type:"swipe",emoji:"⚔️",text:"This is a sword.",answer:true},
+    {unit:"dragon",type:"swipe",emoji:"🚩",text:"This is a flag.",answer:true}
+  ],
 
-  {unit:"animals",type:"choose",grid:true,say:"lion",prompt:"Which picture?",options:[{t:"🦁",s:"lion"},{t:"🐯",s:"tiger"},{t:"🐘",s:"elephant"}],correct:0},
-  {unit:"animals",type:"choose",show:"🐢",say:"slowest",prompt:"slow, slower, ...?",options:["slowest","slowier","more slow"],correct:0},
-  {unit:"animals",type:"spell",word:"lion",emoji:"🦁"},
-  {unit:"animals",type:"swipe",emoji:"🦅",text:"An eagle can fly.",answer:true}
+  [
+    {unit:"animals",type:"choose",grid:true,say:"lion",prompt:"Which picture?",options:[{t:"🦁",s:"lion"},{t:"🐯",s:"tiger"},{t:"🐘",s:"elephant"}],correct:0},
+    {unit:"animals",type:"choose",grid:true,say:"tiger",prompt:"Which picture?",options:[{t:"🦁",s:"lion"},{t:"🐯",s:"tiger"},{t:"🐘",s:"elephant"}],correct:1}
+  ],
+  [
+    {unit:"animals",type:"choose",show:"🐢",say:"slowest",prompt:"slow, slower, ...?",options:["slowest","slowier","more slow"],correct:0},
+    {unit:"animals",type:"choose",show:"🐆",say:"fastest",prompt:"fast, faster, ...?",options:["fastest","fastier","more fast"],correct:0}
+  ],
+  [
+    {unit:"animals",type:"spell",word:"lion",emoji:"🦁"},
+    {unit:"animals",type:"spell",word:"bear",emoji:"🐻"}
+  ],
+  [
+    {unit:"animals",type:"swipe",emoji:"🦅",text:"An eagle can fly.",answer:true},
+    {unit:"animals",type:"swipe",emoji:"🐌",text:"A snail can fly.",answer:false}
+  ]
 ];
+
+/* ---------- variant picking (no-repeat-on-replay) ---------- */
+function getLastVariants(){ try{ return JSON.parse(localStorage.getItem("comeIn4.lastVariant")||"{}"); }catch(e){ return {}; } }
+function setLastVariants(m){ try{ localStorage.setItem("comeIn4.lastVariant", JSON.stringify(m)); }catch(e){} }
+function pickVariant(slotIdx,variants){
+  if(variants.length===1) return variants[0];
+  var map=getLastVariants(), key=TEST_KEY+"."+slotIdx, last=map[key];
+  var choices=[]; for(var i=0;i<variants.length;i++){ if(i!==last) choices.push(i); }
+  var pick=choices[Math.floor(Math.random()*choices.length)];
+  map[key]=pick; setLastVariants(map);
+  return variants[pick];
+}
+function buildQuestions(){
+  return TEST_POOL.map(function(slot,slotIdx){ return pickVariant(slotIdx,slot); });
+}
+
 
 /* STATE */
 var idx=0, answered=false, results={};
 function $(id){return document.getElementById(id);}
 
 function startTest(){
-  idx=0; results={};
+  idx=0; results={}; TEST=buildQuestions();
   $("intro").classList.add("hidden"); $("report").classList.add("hidden"); $("quiz").classList.remove("hidden");
   loadQ();
 }

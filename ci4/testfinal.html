@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Come In 4 — Champion-Test</title>
+<title>English 4 — Champion-Test</title>
 <style>
   :root{
     --navy:#1a2a4a;--navy-2:#23365c;--teal:#1fb6c4;--teal-soft:#7fd9e2;
@@ -129,7 +129,7 @@
 <body>
 <div class="wrap">
   <header>
-    <p class="unit-name">Come In 4</p>
+    <p class="unit-name">English 4</p>
     <div class="hdr-row">
       <h1 id="screenTitle">🏆 Champion-Test</h1>
       <button class="speedbtn" id="speedBtn" onclick="toggleRate()">🐇 normal</button>
@@ -141,7 +141,7 @@
     <a class="hublink" href="index.html">‹ Themen</a>
     <div class="intro-card">
       <h2>🏆 Champion-Test</h2>
-      <p>Eine Frage aus jeder Unit — alle 11 Themen von Come In 4!</p>
+      <p>Eine Frage aus jeder Unit — alle 11 Themen von English 4!</p>
       <p>Höre gut zu und tippe die richtige Antwort. Am Ende siehst du dein Ergebnis für jeden Block.</p>
       <p>Kein Stress! Am Ende siehst du, was super lief und was du nochmal üben kannst. 💪</p>
     </div>
@@ -193,27 +193,79 @@ var BLOCKS=[
   {label:"Block 3 · Units 9–11", units:["mall","dragon","animals"],                   file:"test3.html"}
 ];
 
-/* TEST QUESTIONS — one per unit, all 11 units */
-var TEST=[
-  {unit:"welcome",type:"choose",grid:true,say:"blue",prompt:"Which colour?",options:[{swatch:"#2f6fe0",s:"blue"},{swatch:"#e23b3b",s:"red"},{swatch:"#2fae5a",s:"green"}],correct:0},
-  {unit:"hobbies",type:"choose",grid:true,say:"play football",prompt:"Which picture?",options:[{t:"⚽",s:"play football"},{t:"🏀",s:"play basketball"},{t:"🎾",s:"play tennis"}],correct:0},
-  {unit:"fruit",type:"choose",grid:true,say:"apple",prompt:"Which picture?",options:[{t:"🍎",s:"apple"},{t:"🍌",s:"banana"},{t:"🍊",s:"orange"}],correct:0},
-  {unit:"traffic",type:"choose",grid:true,say:"car",prompt:"Which picture?",options:[{t:"🚗",s:"car"},{t:"🚌",s:"bus"},{t:"🚕",s:"taxi"}],correct:0},
-  {unit:"sea",type:"choose",grid:true,say:"crab",prompt:"Which picture?",options:[{t:"🦀",s:"crab"},{t:"🐙",s:"octopus"},{t:"🐬",s:"dolphin"}],correct:0},
-  {unit:"jobs",type:"choose",grid:true,say:"doctor",prompt:"Which picture?",options:[{t:"🩺",s:"doctor"},{t:"💉",s:"nurse"},{t:"🥐",s:"baker"}],correct:0},
-  {unit:"superheroes",type:"choose",grid:true,say:"fly",prompt:"Which picture?",options:[{t:"🕊️",s:"fly"},{t:"🧗",s:"climb up walls"},{t:"🔥",s:"throw fireballs"}],correct:0},
-  {unit:"home",type:"choose",grid:true,say:"bed",prompt:"Which picture?",options:[{t:"🛏️",s:"bed"},{t:"🪑",s:"chair"},{t:"🛋️",s:"sofa"}],correct:0},
-  {unit:"mall",type:"choose",grid:true,say:"supermarket",prompt:"Which shop?",options:[{t:"🛒",s:"supermarket"},{t:"🍦",s:"ice-cream stand"},{t:"🥖",s:"bakery"}],correct:0},
-  {unit:"dragon",type:"choose",grid:true,say:"dragon",prompt:"Which picture?",options:[{t:"🐉",s:"dragon"},{t:"🏰",s:"castle"},{t:"👸",s:"princess"}],correct:0},
-  {unit:"animals",type:"choose",grid:true,say:"lion",prompt:"Which picture?",options:[{t:"🦁",s:"lion"},{t:"🐯",s:"tiger"},{t:"🐘",s:"elephant"}],correct:0}
+/* TEST QUESTIONS — one per unit, all 11 units
+   Each slot has 2 variants so a repeat run drills a different item per unit. */
+var TEST_KEY="testfinal";
+var TEST=[];
+var TEST_POOL=[
+  [
+    {unit:"welcome",type:"choose",grid:true,say:"blue",prompt:"Which colour?",options:[{swatch:"#2f6fe0",s:"blue"},{swatch:"#e23b3b",s:"red"},{swatch:"#2fae5a",s:"green"}],correct:0},
+    {unit:"welcome",type:"choose",grid:true,say:"red",prompt:"Which colour?",options:[{swatch:"#2f6fe0",s:"blue"},{swatch:"#e23b3b",s:"red"},{swatch:"#2fae5a",s:"green"}],correct:1}
+  ],
+  [
+    {unit:"hobbies",type:"choose",grid:true,say:"play football",prompt:"Which picture?",options:[{t:"⚽",s:"play football"},{t:"🏀",s:"play basketball"},{t:"🎾",s:"play tennis"}],correct:0},
+    {unit:"hobbies",type:"choose",grid:true,say:"play tennis",prompt:"Which picture?",options:[{t:"⚽",s:"play football"},{t:"🏀",s:"play basketball"},{t:"🎾",s:"play tennis"}],correct:2}
+  ],
+  [
+    {unit:"fruit",type:"choose",grid:true,say:"apple",prompt:"Which picture?",options:[{t:"🍎",s:"apple"},{t:"🍌",s:"banana"},{t:"🍊",s:"orange"}],correct:0},
+    {unit:"fruit",type:"choose",grid:true,say:"orange",prompt:"Which picture?",options:[{t:"🍎",s:"apple"},{t:"🍌",s:"banana"},{t:"🍊",s:"orange"}],correct:2}
+  ],
+  [
+    {unit:"traffic",type:"choose",grid:true,say:"car",prompt:"Which picture?",options:[{t:"🚗",s:"car"},{t:"🚌",s:"bus"},{t:"🚕",s:"taxi"}],correct:0},
+    {unit:"traffic",type:"choose",grid:true,say:"bus",prompt:"Which picture?",options:[{t:"🚗",s:"car"},{t:"🚌",s:"bus"},{t:"🚕",s:"taxi"}],correct:1}
+  ],
+  [
+    {unit:"sea",type:"choose",grid:true,say:"crab",prompt:"Which picture?",options:[{t:"🦀",s:"crab"},{t:"🐙",s:"octopus"},{t:"🐬",s:"dolphin"}],correct:0},
+    {unit:"sea",type:"choose",grid:true,say:"octopus",prompt:"Which picture?",options:[{t:"🦀",s:"crab"},{t:"🐙",s:"octopus"},{t:"🐬",s:"dolphin"}],correct:1}
+  ],
+  [
+    {unit:"jobs",type:"choose",grid:true,say:"doctor",prompt:"Which picture?",options:[{t:"🩺",s:"doctor"},{t:"💉",s:"nurse"},{t:"🥐",s:"baker"}],correct:0},
+    {unit:"jobs",type:"choose",grid:true,say:"nurse",prompt:"Which picture?",options:[{t:"🩺",s:"doctor"},{t:"💉",s:"nurse"},{t:"🥐",s:"baker"}],correct:1}
+  ],
+  [
+    {unit:"superheroes",type:"choose",grid:true,say:"fly",prompt:"Which picture?",options:[{t:"🕊️",s:"fly"},{t:"🧗",s:"climb up walls"},{t:"🔥",s:"throw fireballs"}],correct:0},
+    {unit:"superheroes",type:"choose",grid:true,say:"climb up walls",prompt:"Which picture?",options:[{t:"🕊️",s:"fly"},{t:"🧗",s:"climb up walls"},{t:"🔥",s:"throw fireballs"}],correct:1}
+  ],
+  [
+    {unit:"home",type:"choose",grid:true,say:"bed",prompt:"Which picture?",options:[{t:"🛏️",s:"bed"},{t:"🪑",s:"chair"},{t:"🛋️",s:"sofa"}],correct:0},
+    {unit:"home",type:"choose",grid:true,say:"chair",prompt:"Which picture?",options:[{t:"🛏️",s:"bed"},{t:"🪑",s:"chair"},{t:"🛋️",s:"sofa"}],correct:1}
+  ],
+  [
+    {unit:"mall",type:"choose",grid:true,say:"supermarket",prompt:"Which shop?",options:[{t:"🛒",s:"supermarket"},{t:"🍦",s:"ice-cream stand"},{t:"🥖",s:"bakery"}],correct:0},
+    {unit:"mall",type:"choose",grid:true,say:"bakery",prompt:"Which shop?",options:[{t:"🛒",s:"supermarket"},{t:"🍦",s:"ice-cream stand"},{t:"🥖",s:"bakery"}],correct:2}
+  ],
+  [
+    {unit:"dragon",type:"choose",grid:true,say:"dragon",prompt:"Which picture?",options:[{t:"🐉",s:"dragon"},{t:"🏰",s:"castle"},{t:"👸",s:"princess"}],correct:0},
+    {unit:"dragon",type:"choose",grid:true,say:"princess",prompt:"Which picture?",options:[{t:"🐉",s:"dragon"},{t:"🏰",s:"castle"},{t:"👸",s:"princess"}],correct:2}
+  ],
+  [
+    {unit:"animals",type:"choose",grid:true,say:"lion",prompt:"Which picture?",options:[{t:"🦁",s:"lion"},{t:"🐯",s:"tiger"},{t:"🐘",s:"elephant"}],correct:0},
+    {unit:"animals",type:"choose",grid:true,say:"elephant",prompt:"Which picture?",options:[{t:"🦁",s:"lion"},{t:"🐯",s:"tiger"},{t:"🐘",s:"elephant"}],correct:2}
+  ]
 ];
+
+/* ---------- variant picking (no-repeat-on-replay) ---------- */
+function getLastVariants(){ try{ return JSON.parse(localStorage.getItem("comeIn4.lastVariant")||"{}"); }catch(e){ return {}; } }
+function setLastVariants(m){ try{ localStorage.setItem("comeIn4.lastVariant", JSON.stringify(m)); }catch(e){} }
+function pickVariant(slotIdx,variants){
+  if(variants.length===1) return variants[0];
+  var map=getLastVariants(), key=TEST_KEY+"."+slotIdx, last=map[key];
+  var choices=[]; for(var i=0;i<variants.length;i++){ if(i!==last) choices.push(i); }
+  var pick=choices[Math.floor(Math.random()*choices.length)];
+  map[key]=pick; setLastVariants(map);
+  return variants[pick];
+}
+function buildQuestions(){
+  return TEST_POOL.map(function(slot,slotIdx){ return pickVariant(slotIdx,slot); });
+}
+
 
 /* STATE */
 var idx=0, answered=false, results={};
 function $(id){return document.getElementById(id);}
 
 function startTest(){
-  idx=0; results={};
+  idx=0; results={}; TEST=buildQuestions();
   $("intro").classList.add("hidden"); $("report").classList.add("hidden"); $("quiz").classList.remove("hidden");
   loadQ();
 }

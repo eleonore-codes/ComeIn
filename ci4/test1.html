@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Come In 4 — Test 1</title>
+<title>English 4 — Test 1</title>
 <style>
   :root{
     --navy:#1a2a4a;--navy-2:#23365c;--teal:#1fb6c4;--teal-soft:#7fd9e2;
@@ -129,7 +129,7 @@
 <body>
 <div class="wrap">
   <header>
-    <p class="unit-name">Come In 4</p>
+    <p class="unit-name">English 4</p>
     <div class="hdr-row">
       <h1 id="screenTitle">📝 Test 1</h1>
       <button class="speedbtn" id="speedBtn" onclick="toggleRate()">🐇 normal</button>
@@ -194,35 +194,103 @@ var UNITS=[
   {key:"traffic", label:"🚗 Traffic",                  file:"traffic.html"}
 ];
 
-/* TEST QUESTIONS (mixed, tagged by unit) */
-var TEST=[
-  {unit:"welcome",type:"choose",grid:true,say:"blue",prompt:"Which colour?",options:[{swatch:"#2f6fe0",s:"blue"},{swatch:"#e23b3b",s:"red"},{swatch:"#2fae5a",s:"green"}],correct:0},
-  {unit:"welcome",type:"choose",say:"twelve",prompt:"Which number?",options:["twelve","seven","nine"],correct:0},
-  {unit:"welcome",type:"spell",word:"red",swatch:"#e23b3b"},
-  {unit:"welcome",type:"swipe",emoji:"📅",text:"There are seven days in a week.",answer:true},
+/* TEST QUESTIONS (mixed, tagged by unit)
+   Each slot has 2 variants so a repeat run of the test drills different
+   items from each unit instead of the exact same 16 every time. */
+var TEST_KEY="test1";
+var TEST=[];
+var TEST_POOL=[
+  [
+    {unit:"welcome",type:"choose",grid:true,say:"blue",prompt:"Which colour?",options:[{swatch:"#2f6fe0",s:"blue"},{swatch:"#e23b3b",s:"red"},{swatch:"#2fae5a",s:"green"}],correct:0},
+    {unit:"welcome",type:"choose",grid:true,say:"yellow",prompt:"Which colour?",options:[{swatch:"#f4c020",s:"yellow"},{swatch:"#f07d1a",s:"orange"},{swatch:"#6b4fc4",s:"purple"}],correct:0}
+  ],
+  [
+    {unit:"welcome",type:"choose",say:"twelve",prompt:"Which number?",options:["twelve","seven","nine"],correct:0},
+    {unit:"welcome",type:"choose",say:"fifty",prompt:"Which number?",options:["forty","fifty","sixty"],correct:1}
+  ],
+  [
+    {unit:"welcome",type:"spell",word:"red",swatch:"#e23b3b"},
+    {unit:"welcome",type:"spell",word:"blue",swatch:"#2f6fe0"}
+  ],
+  [
+    {unit:"welcome",type:"swipe",emoji:"📅",text:"There are seven days in a week.",answer:true},
+    {unit:"welcome",type:"swipe",emoji:"📅",text:"Sunday comes before Saturday.",answer:false}
+  ],
 
-  {unit:"hobbies",type:"choose",grid:true,say:"play tennis",prompt:"Which picture?",options:[{t:"🎾",s:"play tennis"},{t:"🏀",s:"play basketball"},{t:"⚽",s:"play football"}],correct:0},
-  {unit:"hobbies",type:"choose",show:"🕒",say:"It's quarter past three.",prompt:"What's the time?",options:["quarter past three","half past three","three o'clock"],correct:0},
-  {unit:"hobbies",type:"spell",word:"swim",emoji:"🏊"},
-  {unit:"hobbies",type:"swipe",emoji:"🥁",text:"This is play the drums.",answer:true},
+  [
+    {unit:"hobbies",type:"choose",grid:true,say:"play tennis",prompt:"Which picture?",options:[{t:"🎾",s:"play tennis"},{t:"🏀",s:"play basketball"},{t:"⚽",s:"play football"}],correct:0},
+    {unit:"hobbies",type:"choose",grid:true,say:"ride a bike",prompt:"Which picture?",options:[{t:"🚲",s:"ride a bike"},{t:"🐴",s:"ride a horse"},{t:"🏂",s:"snowboard"}],correct:0}
+  ],
+  [
+    {unit:"hobbies",type:"choose",show:"🕒",say:"It's quarter past three.",prompt:"What's the time?",options:["quarter past three","half past three","three o'clock"],correct:0},
+    {unit:"hobbies",type:"choose",show:"🕡",say:"It's half past six.",prompt:"What's the time?",options:["half past six","quarter to six","six o'clock"],correct:0}
+  ],
+  [
+    {unit:"hobbies",type:"spell",word:"swim",emoji:"🏊"},
+    {unit:"hobbies",type:"spell",word:"sing",emoji:"🎤"}
+  ],
+  [
+    {unit:"hobbies",type:"swipe",emoji:"🥁",text:"This is play the drums.",answer:true},
+    {unit:"hobbies",type:"swipe",emoji:"🚲",text:"This is ride a bike.",answer:true}
+  ],
 
-  {unit:"fruit",type:"choose",grid:true,say:"apple",prompt:"Which picture?",options:[{t:"🍎",s:"apple"},{t:"🍌",s:"banana"},{t:"🍊",s:"orange"}],correct:0},
-  {unit:"fruit",type:"choose",show:"🍒",say:"cherries",prompt:"What's the plural of cherry?",options:["cherries","cherrys","cherryes"],correct:0},
-  {unit:"fruit",type:"spell",word:"pear",emoji:"🍐"},
-  {unit:"fruit",type:"swipe",emoji:"🍅",text:"This is a tomato.",answer:true},
+  [
+    {unit:"fruit",type:"choose",grid:true,say:"apple",prompt:"Which picture?",options:[{t:"🍎",s:"apple"},{t:"🍌",s:"banana"},{t:"🍊",s:"orange"}],correct:0},
+    {unit:"fruit",type:"choose",grid:true,say:"watermelon",prompt:"Which picture?",options:[{t:"🍇",s:"grapes"},{t:"🍑",s:"peach"},{t:"🍉",s:"watermelon"}],correct:2}
+  ],
+  [
+    {unit:"fruit",type:"choose",show:"🍒",say:"cherries",prompt:"What's the plural of cherry?",options:["cherries","cherrys","cherryes"],correct:0},
+    {unit:"fruit",type:"choose",show:"🍅",say:"tomatoes",prompt:"What's the plural of tomato?",options:["tomatoes","tomatos","tomatoies"],correct:0}
+  ],
+  [
+    {unit:"fruit",type:"spell",word:"pear",emoji:"🍐"},
+    {unit:"fruit",type:"spell",word:"kiwi",emoji:"🥝"}
+  ],
+  [
+    {unit:"fruit",type:"swipe",emoji:"🍅",text:"This is a tomato.",answer:true},
+    {unit:"fruit",type:"swipe",emoji:"🥕",text:"This is a cucumber.",answer:false}
+  ],
 
-  {unit:"traffic",type:"choose",grid:true,say:"train",prompt:"Which picture?",options:[{t:"🚆",s:"train"},{t:"🚌",s:"bus"},{t:"✈️",s:"plane"}],correct:0},
-  {unit:"traffic",type:"choose",show:"🌳",say:"Turn right.",prompt:"Where's the park?",options:["Turn right.","Turn left.","Go straight on."],correct:0},
-  {unit:"traffic",type:"spell",word:"taxi",emoji:"🚕"},
-  {unit:"traffic",type:"swipe",emoji:"🚢",text:"This is a ship.",answer:true}
+  [
+    {unit:"traffic",type:"choose",grid:true,say:"train",prompt:"Which picture?",options:[{t:"🚆",s:"train"},{t:"🚌",s:"bus"},{t:"✈️",s:"plane"}],correct:0},
+    {unit:"traffic",type:"choose",grid:true,say:"taxi",prompt:"Which picture?",options:[{t:"🚕",s:"taxi"},{t:"🚗",s:"car"},{t:"🚌",s:"bus"}],correct:0}
+  ],
+  [
+    {unit:"traffic",type:"choose",show:"🌳",say:"Turn right.",prompt:"Where's the park?",options:["Turn right.","Turn left.","Go straight on."],correct:0},
+    {unit:"traffic",type:"choose",show:"🏨",say:"Go straight on, then turn left.",prompt:"Where's the hotel?",options:["Go straight on, then turn left.","Turn right.","Turn left."],correct:0}
+  ],
+  [
+    {unit:"traffic",type:"spell",word:"taxi",emoji:"🚕"},
+    {unit:"traffic",type:"spell",word:"bus",emoji:"🚌"}
+  ],
+  [
+    {unit:"traffic",type:"swipe",emoji:"🚢",text:"This is a ship.",answer:true},
+    {unit:"traffic",type:"swipe",emoji:"🚁",text:"This is a plane.",answer:false}
+  ]
 ];
+
+/* ---------- variant picking (no-repeat-on-replay) ---------- */
+function getLastVariants(){ try{ return JSON.parse(localStorage.getItem("comeIn4.lastVariant")||"{}"); }catch(e){ return {}; } }
+function setLastVariants(m){ try{ localStorage.setItem("comeIn4.lastVariant", JSON.stringify(m)); }catch(e){} }
+function pickVariant(slotIdx,variants){
+  if(variants.length===1) return variants[0];
+  var map=getLastVariants(), key=TEST_KEY+"."+slotIdx, last=map[key];
+  var choices=[]; for(var i=0;i<variants.length;i++){ if(i!==last) choices.push(i); }
+  var pick=choices[Math.floor(Math.random()*choices.length)];
+  map[key]=pick; setLastVariants(map);
+  return variants[pick];
+}
+function buildQuestions(){
+  return TEST_POOL.map(function(slot,slotIdx){ return pickVariant(slotIdx,slot); });
+}
+
 
 /* STATE */
 var idx=0, answered=false, results={};
 function $(id){return document.getElementById(id);}
 
 function startTest(){
-  idx=0; results={};
+  idx=0; results={}; TEST=buildQuestions();
   $("intro").classList.add("hidden"); $("report").classList.add("hidden"); $("quiz").classList.remove("hidden");
   loadQ();
 }

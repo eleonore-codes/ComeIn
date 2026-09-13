@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Come In 4 — Funny and the dragon</title>
+<title>English 4 — The dragon</title>
 <style>
   :root{
     --navy:#1a2a4a;--navy-2:#23365c;--teal:#1fb6c4;--teal-soft:#7fd9e2;
@@ -108,7 +108,7 @@
 <body>
 <div class="wrap">
   <header>
-    <p class="unit-name">Come In 4</p>
+    <p class="unit-name">English 4</p>
     <div class="hdr-row">
       <h1 id="screenTitle">🐉 Funny and the dragon</h1>
       <button class="speedbtn" id="speedBtn" onclick="toggleRate()">🐇 normal</button>
@@ -203,94 +203,191 @@ function paintMenuDone(){
 var UNIT_NAME="Funny and the dragon";
 
 var topics=[
-  /* 0 — Listen & tap (grid emoji) — Castle vocabulary */
+  /* 0 — Listen & tap (grid emoji) — Castle vocabulary
+     Each slot has 2 variants (same picture trio, different target picture). */
   {
     title:"Listen & tap",
     rule:`<div class="rule-head"><span class="rule-title">🐉 Listen &amp; tap</span><button class="speak-mini" data-say="Listen, then tap the right picture.">🔊 Rule</button></div>
           <p>Tap <b>🔊 Listen</b>, then tap the right picture.</p>`,
-    questions:[
-      {type:"choose",grid:true,theme:"🐉 Listen",teal:true,prompt:"Which picture?",say:"dragon",
-        options:[{t:"🐉",s:"dragon"},{t:"🏰",s:"castle"},{t:"👸",s:"princess"}],correct:0,aff:"Tooor! Genau richtig! ⚽",wrong:"💛 Fast! 🐉 ist dragon."},
-      {type:"choose",grid:true,theme:"🐉 Listen",teal:true,prompt:"Which picture?",say:"castle",
-        options:[{t:"🏰",s:"castle"},{t:"🗼",s:"tower"},{t:"⛩️",s:"gate"}],correct:0,aff:"Volltreffer! 🏰⚽",wrong:"💛 Fast! 🏰 ist castle."},
-      {type:"choose",grid:true,theme:"🐉 Listen",teal:true,prompt:"Which picture?",say:"princess",
-        options:[{t:"👸",s:"princess"},{t:"🤴",s:"prince"},{t:"🤺",s:"knight"}],correct:0,aff:"Pole Position! 🏁",wrong:"💛 Fast! 👸 ist princess."},
-      {type:"choose",grid:true,theme:"🐉 Listen",teal:true,prompt:"Which picture?",say:"prince",
-        options:[{t:"🤴",s:"prince"},{t:"👸",s:"princess"},{t:"🧹",s:"maid"}],correct:0,aff:"Stark! 🤴⚽",wrong:"💛 Fast! 🤴 ist prince."},
-      {type:"choose",grid:true,theme:"🐉 Listen",teal:true,prompt:"Which picture?",say:"sword",
-        options:[{t:"⚔️",s:"sword"},{t:"🛡️",s:"armour"},{t:"🤺",s:"knight"}],correct:0,aff:"Schnell wie ein Rennwagen! 🏎️💨",wrong:"💛 Fast! ⚔️ ist sword."}
+    pool:[
+      [
+        {type:"choose",grid:true,theme:"🐉 Listen",teal:true,prompt:"Which picture?",say:"dragon",
+          options:[{t:"🐉",s:"dragon"},{t:"🏰",s:"castle"},{t:"👸",s:"princess"}],correct:0,aff:"Tooor! Genau richtig! ⚽",wrong:"💛 Fast! 🐉 ist dragon."},
+        {type:"choose",grid:true,theme:"🐉 Listen",teal:true,prompt:"Which picture?",say:"castle",
+          options:[{t:"🐉",s:"dragon"},{t:"🏰",s:"castle"},{t:"👸",s:"princess"}],correct:1,aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! 🏰 ist castle."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🐉 Listen",teal:true,prompt:"Which picture?",say:"castle",
+          options:[{t:"🏰",s:"castle"},{t:"🗼",s:"tower"},{t:"⛩️",s:"gate"}],correct:0,aff:"Volltreffer! 🏰⚽",wrong:"💛 Fast! 🏰 ist castle."},
+        {type:"choose",grid:true,theme:"🐉 Listen",teal:true,prompt:"Which picture?",say:"tower",
+          options:[{t:"🏰",s:"castle"},{t:"🗼",s:"tower"},{t:"⛩️",s:"gate"}],correct:1,aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! 🗼 ist tower."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🐉 Listen",teal:true,prompt:"Which picture?",say:"princess",
+          options:[{t:"👸",s:"princess"},{t:"🤴",s:"prince"},{t:"🤺",s:"knight"}],correct:0,aff:"Pole Position! 🏁",wrong:"💛 Fast! 👸 ist princess."},
+        {type:"choose",grid:true,theme:"🐉 Listen",teal:true,prompt:"Which picture?",say:"prince",
+          options:[{t:"👸",s:"princess"},{t:"🤴",s:"prince"},{t:"🤺",s:"knight"}],correct:1,aff:"Zielgerade! 🏁",wrong:"💛 Fast! 🤴 ist prince."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🐉 Listen",teal:true,prompt:"Which picture?",say:"prince",
+          options:[{t:"🤴",s:"prince"},{t:"👸",s:"princess"},{t:"🧹",s:"maid"}],correct:0,aff:"Stark! 🤴⚽",wrong:"💛 Fast! 🤴 ist prince."},
+        {type:"choose",grid:true,theme:"🐉 Listen",teal:true,prompt:"Which picture?",say:"princess",
+          options:[{t:"🤴",s:"prince"},{t:"👸",s:"princess"},{t:"🧹",s:"maid"}],correct:1,aff:"Super Dribbling! ⚽",wrong:"💛 Fast! 👸 ist princess."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🐉 Listen",teal:true,prompt:"Which picture?",say:"sword",
+          options:[{t:"⚔️",s:"sword"},{t:"🛡️",s:"armour"},{t:"🤺",s:"knight"}],correct:0,aff:"Schnell wie ein Rennwagen! 🏎️💨",wrong:"💛 Fast! ⚔️ ist sword."},
+        {type:"choose",grid:true,theme:"🐉 Listen",teal:true,prompt:"Which picture?",say:"armour",
+          options:[{t:"⚔️",s:"sword"},{t:"🛡️",s:"armour"},{t:"🤺",s:"knight"}],correct:1,aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! 🛡️ ist armour."}
+      ]
     ]
   },
 
-  /* 1 — Match word <-> emoji */
+  /* 1 — Match word <-> emoji
+     Each slot has 2 variants drawing on the unit's full fantasy vocabulary. */
   {
     title:"Match it",
     rule:`<div class="rule-head"><span class="rule-title">🔗 Match it</span><button class="speak-mini" data-say="Tap a word, then tap its picture.">🔊 Rule</button></div>
           <p>Tap a <b>word</b>, then tap its <b>picture</b>.</p><p>Tap 🔊 on a word to hear it.</p>`,
-    questions:[
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["armour","🛡️"],["castle","🏰"],["dragon","🐉"],["sword","⚔️"]],
-        aff:"Alle Paare! Mannschaftsleistung! ⚽🏆",wrong:"💛 Fast! Tippe das Wort, dann das Bild."},
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["knight","🤺"],["prince","🤴"],["princess","👸"],["tower","🗼"]],
-        aff:"Perfekt verbunden! 🏁",wrong:"💛 Fast! Probier es in Ruhe."},
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["gate","⛩️"],["lair","🕳️"],["maid","🧹"]],
-        aff:"Geschafft — Doppelpass sitzt! ⚽",wrong:"💛 Fast! Schau nochmal hin."}
+    pool:[
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["armour","🛡️"],["castle","🏰"],["dragon","🐉"],["sword","⚔️"]],
+          aff:"Alle Paare! Mannschaftsleistung! ⚽🏆",wrong:"💛 Fast! Tippe das Wort, dann das Bild."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["witch","🧙‍♀️"],["wizard","🧙‍♂️"],["horse","🐴"],["flag","🚩"]],
+          aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! Tippe das Wort, dann das Bild."}
+      ],
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["knight","🤺"],["prince","🤴"],["princess","👸"],["tower","🗼"]],
+          aff:"Perfekt verbunden! 🏁",wrong:"💛 Fast! Probier es in Ruhe."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["armour","🛡️"],["castle","🏰"],["dragon","🐉"],["sword","⚔️"]],
+          aff:"Zielgerade! 🏁",wrong:"💛 Fast! Probier es in Ruhe."}
+      ],
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["gate","⛩️"],["lair","🕳️"],["maid","🧹"]],
+          aff:"Geschafft — Doppelpass sitzt! ⚽",wrong:"💛 Fast! Schau nochmal hin."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["knight","🤺"],["prince","🤴"],["princess","👸"]],
+          aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Schau nochmal hin."}
+      ]
     ]
   },
 
-  /* 2 — Who is it? (choose, listening comprehension) */
+  /* 2 — Who is it? (choose, listening comprehension)
+     Each slot has 2 variants with a different clue. */
   {
     title:"Who is it?",
     rule:`<div class="rule-head"><span class="rule-title">❓ Who is it?</span><button class="speak-mini" data-say="Listen to the clue, then tap who it is.">🔊 Rule</button></div>
           <p>Listen to the clue, then tap <b>who it is</b>.</p>`,
-    questions:[
-      {type:"choose",theme:"❓ Listen",teal:true,prompt:"Who is it?",say:"He wears a crown and lives in a castle.",
-        options:["prince","dragon","maid"],correct:0,aff:"Tor! ⚽",wrong:"💛 Fast! Es war prince."},
-      {type:"choose",theme:"❓ Listen",teal:true,prompt:"Who is it?",say:"She wears a crown and lives in a castle.",
-        options:["knight","princess","carriage"],correct:1,aff:"Volltreffer! ⚽",wrong:"💛 Fast! Es war princess."},
-      {type:"choose",theme:"❓ Listen",teal:true,prompt:"Who is it?",say:"He has a sword and armour.",
-        options:["knight","maid","prince"],correct:0,aff:"Pole Position! 🏎️",wrong:"💛 Fast! Es war knight."},
-      {type:"choose",theme:"❓ Listen",teal:true,prompt:"Who is it?",say:"It can fly and breathe fire.",
-        options:["dragon","carriage","gate"],correct:0,aff:"Sauber! ⚽",wrong:"💛 Fast! Es war dragon."},
-      {type:"choose",theme:"❓ Listen",teal:true,prompt:"Who is it?",say:"She cleans the castle.",
-        options:["princess","maid","knight"],correct:1,aff:"Stark! ⚽",wrong:"💛 Fast! Es war maid."}
+    pool:[
+      [
+        {type:"choose",theme:"❓ Listen",teal:true,prompt:"Who is it?",say:"He wears a crown and lives in a castle.",
+          options:["prince","dragon","maid"],correct:0,aff:"Tor! ⚽",wrong:"💛 Fast! Es war prince."},
+        {type:"choose",theme:"❓ Listen",teal:true,prompt:"Who is it?",say:"She can cast magic spells.",
+          options:["knight","witch","prince"],correct:1,aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! Es war witch."}
+      ],
+      [
+        {type:"choose",theme:"❓ Listen",teal:true,prompt:"Who is it?",say:"She wears a crown and lives in a castle.",
+          options:["knight","princess","carriage"],correct:1,aff:"Volltreffer! ⚽",wrong:"💛 Fast! Es war princess."},
+        {type:"choose",theme:"❓ Listen",teal:true,prompt:"Who is it?",say:"He can cast magic spells and has a long beard.",
+          options:["wizard","dragon","maid"],correct:0,aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! Es war wizard."}
+      ],
+      [
+        {type:"choose",theme:"❓ Listen",teal:true,prompt:"Who is it?",say:"He has a sword and armour.",
+          options:["knight","maid","prince"],correct:0,aff:"Pole Position! 🏎️",wrong:"💛 Fast! Es war knight."},
+        {type:"choose",theme:"❓ Listen",teal:true,prompt:"What is it?",say:"You ride it to travel fast.",
+          options:["horse","dragon","carriage"],correct:0,aff:"Zielgerade! 🏁",wrong:"💛 Fast! Es war horse."}
+      ],
+      [
+        {type:"choose",theme:"❓ Listen",teal:true,prompt:"What is it?",say:"It can fly and breathe fire.",
+          options:["dragon","carriage","gate"],correct:0,aff:"Sauber! ⚽",wrong:"💛 Fast! Es war dragon."},
+        {type:"choose",theme:"❓ Listen",teal:true,prompt:"What is it?",say:"It waves in the wind on top of the castle.",
+          options:["flag","gate","tower"],correct:0,aff:"Super Dribbling! ⚽",wrong:"💛 Fast! Es war flag."}
+      ],
+      [
+        {type:"choose",theme:"❓ Listen",teal:true,prompt:"Who is it?",say:"She cleans the castle.",
+          options:["princess","maid","knight"],correct:1,aff:"Stark! ⚽",wrong:"💛 Fast! Es war maid."},
+        {type:"choose",theme:"❓ Listen",teal:true,prompt:"Who is it?",say:"He protects the king and fights with a sword.",
+          options:["wizard","knight","maid"],correct:1,aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Es war knight."}
+      ]
     ]
   },
 
-  /* 3 — Right or wrong? (swipe) */
+  /* 3 — Right or wrong? (swipe)
+     Each slot has 2 variants with a different picture/statement pair. */
   {
     title:"Right or wrong?",
     rule:`<div class="rule-head"><span class="rule-title">👋 Right or wrong?</span><button class="speak-mini" data-say="Look and listen. Tap yes if it is right. Tap no if it is wrong.">🔊 Rule</button></div>
           <p>Look at the picture and listen.</p><p>Tap ✅ <b>yes</b> if it is right. Tap ❌ <b>no</b> if it is wrong.</p>`,
-    questions:[
-      {type:"swipe",theme:"🐉 Check",emoji:"🐉",text:"This is a dragon.",answer:true,aff:"Erkannt! Gutes Auge! 🏎️",wrong:"💛 Fast! 🐉 ist a dragon — richtig."},
-      {type:"swipe",theme:"🏰 Check",emoji:"🏰",text:"This is a tower.",answer:false,aff:"Richtig! Sicher wie ein Elfmeter! ⚽",wrong:"💛 Fast! 🏰 ist a castle, nicht a tower."},
-      {type:"swipe",theme:"⚔️ Check",emoji:"⚔️",text:"This is a sword.",answer:true,aff:"Tor! Genau! ⚽",wrong:"💛 Fast! ⚔️ ist a sword — richtig."},
-      {type:"swipe",theme:"🤴 Check",emoji:"🤴",text:"This is a princess.",answer:false,aff:"Stark gebremst und richtig! 🏁",wrong:"💛 Fast! 🤴 ist a prince, nicht a princess."},
-      {type:"swipe",theme:"🧹 Check",emoji:"🧹",text:"This is a maid.",answer:true,aff:"Sauber! ⚽",wrong:"💛 Fast! 🧹 ist a maid — richtig."}
+    pool:[
+      [
+        {type:"swipe",theme:"🐉 Check",emoji:"🐉",text:"This is a dragon.",answer:true,aff:"Erkannt! Gutes Auge! 🏎️",wrong:"💛 Fast! 🐉 ist a dragon — richtig."},
+        {type:"swipe",theme:"🧙‍♀️ Check",emoji:"🧙‍♀️",text:"This is a witch.",answer:true,aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! 🧙‍♀️ ist a witch — richtig."}
+      ],
+      [
+        {type:"swipe",theme:"🏰 Check",emoji:"🏰",text:"This is a tower.",answer:false,aff:"Richtig! Sicher wie ein Elfmeter! ⚽",wrong:"💛 Fast! 🏰 ist a castle, nicht a tower."},
+        {type:"swipe",theme:"🐴 Check",emoji:"🐴",text:"This is a horse.",answer:true,aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! 🐴 ist a horse — richtig."}
+      ],
+      [
+        {type:"swipe",theme:"⚔️ Check",emoji:"⚔️",text:"This is a sword.",answer:true,aff:"Tor! Genau! ⚽",wrong:"💛 Fast! ⚔️ ist a sword — richtig."},
+        {type:"swipe",theme:"🧙‍♂️ Check",emoji:"🧙‍♂️",text:"This is a wizard.",answer:true,aff:"Zielgerade! 🏁",wrong:"💛 Fast! 🧙‍♂️ ist a wizard — richtig."}
+      ],
+      [
+        {type:"swipe",theme:"🤴 Check",emoji:"🤴",text:"This is a princess.",answer:false,aff:"Stark gebremst und richtig! 🏁",wrong:"💛 Fast! 🤴 ist a prince, nicht a princess."},
+        {type:"swipe",theme:"🚩 Check",emoji:"🚩",text:"This is a flag.",answer:true,aff:"Super Dribbling! ⚽",wrong:"💛 Fast! 🚩 ist a flag — richtig."}
+      ],
+      [
+        {type:"swipe",theme:"🧹 Check",emoji:"🧹",text:"This is a maid.",answer:true,aff:"Sauber! ⚽",wrong:"💛 Fast! 🧹 ist a maid — richtig."},
+        {type:"swipe",theme:"🛡️ Check",emoji:"🛡️",text:"This is a sword.",answer:false,aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! 🛡️ ist armour, nicht a sword."}
+      ]
     ]
   },
 
-  /* 4 — Build the sentence (puzzle) */
+  /* 4 — Build the sentence (puzzle)
+     Each slot has 2 variants reusing vocabulary from the games above. */
   {
     title:"Build the sentence",
     rule:`<div class="rule-head"><span class="rule-title">🧩 Build the sentence</span><button class="speak-mini" data-say="Tap the words in the right order.">🔊 Rule</button></div>
           <p>Tap the words in the right order.</p><p>Tap 🔊 to hear the whole sentence.</p>`,
-    questions:[
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["Please","help","us."],aff:"Satz steht! ⚽",wrong:"💛 Fast! Beginne mit \"Please\"."},
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["No","reason","to","panic."],aff:"Frage gebaut wie ein Profi! 🏎️",wrong:"💛 Fast! Beginne mit \"No\"."},
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["The","dragon","lives","in","a","lair."],aff:"Perfekt! 🏆",wrong:"💛 Fast! Beginne mit \"The\"."}
+    pool:[
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["Please","help","us."],aff:"Satz steht! ⚽",wrong:"💛 Fast! Beginne mit \"Please\"."},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["Please","open","the","gate."],aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! Beginne mit \"Please\"."}
+      ],
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["No","reason","to","panic."],aff:"Frage gebaut wie ein Profi! 🏎️",wrong:"💛 Fast! Beginne mit \"No\"."},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["No","time","to","lose."],aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Beginne mit \"No\"."}
+      ],
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["The","dragon","lives","in","a","lair."],aff:"Perfekt! 🏆",wrong:"💛 Fast! Beginne mit \"The\"."},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["The","witch","lives","in","a","tower."],aff:"Zielgerade! 🏁",wrong:"💛 Fast! Beginne mit \"The\"."}
+      ]
     ]
   }
 ];
 
+/* ---------- variant picking (no-repeat-on-replay) ---------- */
+function getLastVariants(){ try{ return JSON.parse(localStorage.getItem("comeIn4.lastVariant")||"{}"); }catch(e){ return {}; } }
+function setLastVariants(m){ try{ localStorage.setItem("comeIn4.lastVariant", JSON.stringify(m)); }catch(e){} }
+function pickVariant(topicIdx,slotIdx,variants){
+  if(variants.length===1) return variants[0];
+  var map=getLastVariants(), key=UNIT_KEY+"."+topicIdx+"."+slotIdx, last=map[key];
+  var choices=[]; for(var i=0;i<variants.length;i++){ if(i!==last) choices.push(i); }
+  var pick=choices[Math.floor(Math.random()*choices.length)];
+  map[key]=pick; setLastVariants(map);
+  return variants[pick];
+}
+function buildQuestions(topicIdx){
+  return topics[topicIdx].pool.map(function(slot,slotIdx){ return pickVariant(topicIdx,slotIdx,slot); });
+}
+
+
 /* =========================================================
    SHARED ENGINE (generic + grid + swatch + speed + read-along + progress)
    ========================================================= */
-var curTopic=0, curQ=0, answered=false;
+var curTopic=0, curQ=0, answered=false, sessionQuestions=[];
 function $(id){return document.getElementById(id);}
 
 function startTopic(i){
-  curTopic=i; curQ=0;
+  curTopic=i; curQ=0; sessionQuestions=buildQuestions(i);
   $("menu").classList.add("hidden"); $("done").classList.add("hidden"); $("quiz").classList.remove("hidden");
   $("screenTitle").textContent=topics[i].title;
   $("ruleSlot").innerHTML='<div class="rule">'+topics[i].rule+'</div>';
@@ -307,8 +404,8 @@ function setBar(p){ $("progressFill").style.width=p+"%"; }
 
 function loadQuestion(){
   answered=false; clearReading();
-  var t=topics[curTopic], q=t.questions[curQ];
-  setBar(Math.round(curQ/t.questions.length*100));
+  var q=sessionQuestions[curQ];
+  setBar(Math.round(curQ/sessionQuestions.length*100));
   $("feedback").className="feedback"; $("feedback").innerHTML="";
   $("nextBtn").classList.add("hidden"); $("checkBtn").classList.remove("hidden"); $("checkBtn").disabled=false;
   var html='<span class="theme-tag '+(q.teal?"teal":"")+'">'+(q.theme||"")+'</span>';
@@ -446,7 +543,7 @@ function syncBank(){
   });
 }
 function checkAnswer(){
-  var q=topics[curTopic].questions[curQ];
+  var q=sessionQuestions[curQ];
   if(q.type!=="puzzle" || answered) return;
   if(puzBuild.join(" ")===q.words.join(" ")){ answered=true; win(q.aff,""); speak(q.words.join(" ")); showNext(); }
   else{ soft(q.wrong,""); }
@@ -457,11 +554,11 @@ function win(msg,rule){ var f=$("feedback"); f.className="feedback good show"; f
 function soft(msg,rule){ var f=$("feedback"); f.className="feedback soft show"; f.innerHTML=msg+(rule?'<div class="fb-rule">'+rule+'</div>':""); }
 function showNext(){ $("checkBtn").classList.add("hidden"); $("nextBtn").classList.remove("hidden"); }
 function nextQuestion(){
-  var t=topics[curTopic]; curQ++;
-  if(curQ>=t.questions.length){
+  curQ++;
+  if(curQ>=sessionQuestions.length){
     setBar(100); markGameDone(curTopic);
     $("quiz").classList.add("hidden"); $("done").classList.remove("hidden");
-    $("doneMsg").textContent="Super! You finished "+t.title+"! 🏆"; speak("Well done!"); burst(); return;
+    $("doneMsg").textContent="Super! You finished "+topics[curTopic].title+"! 🏆"; speak("Well done!"); burst(); return;
   }
   loadQuestion();
 }

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Come In 4 — Test 2</title>
+<title>English 4 — Test 2</title>
 <style>
   :root{
     --navy:#1a2a4a;--navy-2:#23365c;--teal:#1fb6c4;--teal-soft:#7fd9e2;
@@ -129,7 +129,7 @@
 <body>
 <div class="wrap">
   <header>
-    <p class="unit-name">Come In 4</p>
+    <p class="unit-name">English 4</p>
     <div class="hdr-row">
       <h1 id="screenTitle">📝 Test 2</h1>
       <button class="speedbtn" id="speedBtn" onclick="toggleRate()">🐇 normal</button>
@@ -194,35 +194,103 @@ var UNITS=[
   {key:"home",        label:"🏠 At home",       file:"home.html"}
 ];
 
-/* TEST QUESTIONS (mixed, tagged by unit) */
-var TEST=[
-  {unit:"sea",type:"choose",grid:true,say:"crab",prompt:"Which picture?",options:[{t:"🦀",s:"crab"},{t:"🐙",s:"octopus"},{t:"🐬",s:"dolphin"}],correct:0},
-  {unit:"sea",type:"choose",say:"starfish",prompt:"Which word?",options:["starfish","jellyfish","seahorse"],correct:0},
-  {unit:"sea",type:"spell",word:"crab",emoji:"🦀"},
-  {unit:"sea",type:"swipe",emoji:"🦭",text:"This is a seal.",answer:true},
+/* TEST QUESTIONS (mixed, tagged by unit)
+   Each slot has 2 variants so a repeat run of the test drills different
+   items from each unit instead of the exact same 16 every time. */
+var TEST_KEY="test2";
+var TEST=[];
+var TEST_POOL=[
+  [
+    {unit:"sea",type:"choose",grid:true,say:"crab",prompt:"Which picture?",options:[{t:"🦀",s:"crab"},{t:"🐙",s:"octopus"},{t:"🐬",s:"dolphin"}],correct:0},
+    {unit:"sea",type:"choose",grid:true,say:"dolphin",prompt:"Which picture?",options:[{t:"🦀",s:"crab"},{t:"🐙",s:"octopus"},{t:"🐬",s:"dolphin"}],correct:2}
+  ],
+  [
+    {unit:"sea",type:"choose",say:"starfish",prompt:"Which word?",options:["starfish","jellyfish","seahorse"],correct:0},
+    {unit:"sea",type:"choose",say:"jellyfish",prompt:"Which word?",options:["starfish","jellyfish","seahorse"],correct:1}
+  ],
+  [
+    {unit:"sea",type:"spell",word:"crab",emoji:"🦀"},
+    {unit:"sea",type:"spell",word:"shark",emoji:"🦈"}
+  ],
+  [
+    {unit:"sea",type:"swipe",emoji:"🦭",text:"This is a seal.",answer:true},
+    {unit:"sea",type:"swipe",emoji:"🐙",text:"This is a crab.",answer:false}
+  ],
 
-  {unit:"jobs",type:"choose",grid:true,say:"teacher",prompt:"Which picture?",options:[{t:"🧑‍🏫",s:"teacher"},{t:"🧑‍🍳",s:"cook"},{t:"💇",s:"hairdresser"}],correct:0},
-  {unit:"jobs",type:"choose",show:"🎤",say:"singer",prompt:"sing + er = ?",options:["singer","singger","singerer"],correct:0},
-  {unit:"jobs",type:"spell",word:"cook",emoji:"🧑‍🍳"},
-  {unit:"jobs",type:"swipe",emoji:"🧹",text:"I sweep the floor.",answer:true},
+  [
+    {unit:"jobs",type:"choose",grid:true,say:"teacher",prompt:"Which picture?",options:[{t:"🧑‍🏫",s:"teacher"},{t:"🧑‍🍳",s:"cook"},{t:"💇",s:"hairdresser"}],correct:0},
+    {unit:"jobs",type:"choose",grid:true,say:"cook",prompt:"Which picture?",options:[{t:"🧑‍🏫",s:"teacher"},{t:"🧑‍🍳",s:"cook"},{t:"💇",s:"hairdresser"}],correct:1}
+  ],
+  [
+    {unit:"jobs",type:"choose",show:"🎤",say:"singer",prompt:"sing + er = ?",options:["singer","singger","singerer"],correct:0},
+    {unit:"jobs",type:"choose",show:"🎨",say:"painter",prompt:"paint + er = ?",options:["painter","paintter","painterer"],correct:0}
+  ],
+  [
+    {unit:"jobs",type:"spell",word:"cook",emoji:"🧑‍🍳"},
+    {unit:"jobs",type:"spell",word:"pilot",emoji:"🧑‍✈️"}
+  ],
+  [
+    {unit:"jobs",type:"swipe",emoji:"🧹",text:"I sweep the floor.",answer:true},
+    {unit:"jobs",type:"swipe",emoji:"🚒",text:"A firefighter puts out fires.",answer:true}
+  ],
 
-  {unit:"superheroes",type:"choose",grid:true,say:"fly",prompt:"Which picture?",options:[{t:"🕊️",s:"fly"},{t:"🧗",s:"climb up walls"},{t:"🔥",s:"throw fireballs"}],correct:0},
-  {unit:"superheroes",type:"choose",show:"👢",say:"His boots are black.",prompt:"Is or are?",options:["His boots is black.","His boots are black."],correct:1},
-  {unit:"superheroes",type:"spell",word:"cape",emoji:"🧥"},
-  {unit:"superheroes",type:"swipe",emoji:"❤️‍🩹",text:"My superhero can heal.",answer:true},
+  [
+    {unit:"superheroes",type:"choose",grid:true,say:"fly",prompt:"Which picture?",options:[{t:"🕊️",s:"fly"},{t:"🧗",s:"climb up walls"},{t:"🔥",s:"throw fireballs"}],correct:0},
+    {unit:"superheroes",type:"choose",grid:true,say:"throw fireballs",prompt:"Which picture?",options:[{t:"🕊️",s:"fly"},{t:"🧗",s:"climb up walls"},{t:"🔥",s:"throw fireballs"}],correct:2}
+  ],
+  [
+    {unit:"superheroes",type:"choose",show:"👢",say:"His boots are black.",prompt:"Is or are?",options:["His boots is black.","His boots are black."],correct:1},
+    {unit:"superheroes",type:"choose",show:"👢",say:"Her boots are gold.",prompt:"Is or are?",options:["Her boots is gold.","Her boots are gold."],correct:1}
+  ],
+  [
+    {unit:"superheroes",type:"spell",word:"cape",emoji:"🧥"},
+    {unit:"superheroes",type:"spell",word:"mask",emoji:"🎭"}
+  ],
+  [
+    {unit:"superheroes",type:"swipe",emoji:"❤️‍🩹",text:"My superhero can heal.",answer:true},
+    {unit:"superheroes",type:"swipe",emoji:"🧊",text:"My superhero can freeze things.",answer:true}
+  ],
 
-  {unit:"home",type:"choose",grid:true,say:"bed",prompt:"Which picture?",options:[{t:"🛏️",s:"bed"},{t:"🪑",s:"chair"},{t:"🛋️",s:"sofa"}],correct:0},
-  {unit:"home",type:"choose",say:"an attic",prompt:"a or an?",options:["a attic","an attic"],correct:1},
-  {unit:"home",type:"spell",word:"lamp",emoji:"💡"},
-  {unit:"home",type:"swipe",emoji:"🛋️",text:"This is a sofa.",answer:true}
+  [
+    {unit:"home",type:"choose",grid:true,say:"bed",prompt:"Which picture?",options:[{t:"🛏️",s:"bed"},{t:"🪑",s:"chair"},{t:"🛋️",s:"sofa"}],correct:0},
+    {unit:"home",type:"choose",grid:true,say:"sofa",prompt:"Which picture?",options:[{t:"🛏️",s:"bed"},{t:"🪑",s:"chair"},{t:"🛋️",s:"sofa"}],correct:2}
+  ],
+  [
+    {unit:"home",type:"choose",say:"an attic",prompt:"a or an?",options:["a attic","an attic"],correct:1},
+    {unit:"home",type:"choose",say:"an oven",prompt:"a or an?",options:["a oven","an oven"],correct:1}
+  ],
+  [
+    {unit:"home",type:"spell",word:"lamp",emoji:"💡"},
+    {unit:"home",type:"spell",word:"door",emoji:"🚪"}
+  ],
+  [
+    {unit:"home",type:"swipe",emoji:"🛋️",text:"This is a sofa.",answer:true},
+    {unit:"home",type:"swipe",emoji:"🪟",text:"This is a window.",answer:true}
+  ]
 ];
+
+/* ---------- variant picking (no-repeat-on-replay) ---------- */
+function getLastVariants(){ try{ return JSON.parse(localStorage.getItem("comeIn4.lastVariant")||"{}"); }catch(e){ return {}; } }
+function setLastVariants(m){ try{ localStorage.setItem("comeIn4.lastVariant", JSON.stringify(m)); }catch(e){} }
+function pickVariant(slotIdx,variants){
+  if(variants.length===1) return variants[0];
+  var map=getLastVariants(), key=TEST_KEY+"."+slotIdx, last=map[key];
+  var choices=[]; for(var i=0;i<variants.length;i++){ if(i!==last) choices.push(i); }
+  var pick=choices[Math.floor(Math.random()*choices.length)];
+  map[key]=pick; setLastVariants(map);
+  return variants[pick];
+}
+function buildQuestions(){
+  return TEST_POOL.map(function(slot,slotIdx){ return pickVariant(slotIdx,slot); });
+}
+
 
 /* STATE */
 var idx=0, answered=false, results={};
 function $(id){return document.getElementById(id);}
 
 function startTest(){
-  idx=0; results={};
+  idx=0; results={}; TEST=buildQuestions();
   $("intro").classList.add("hidden"); $("report").classList.add("hidden"); $("quiz").classList.remove("hidden");
   loadQ();
 }

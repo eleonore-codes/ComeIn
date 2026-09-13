@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Come In 4 — Fruits and vegetables</title>
+<title>English 4 — Fruits and vegetables</title>
 <style>
   :root{
     --navy:#1a2a4a;--navy-2:#23365c;--teal:#1fb6c4;--teal-soft:#7fd9e2;
@@ -108,7 +108,7 @@
 <body>
 <div class="wrap">
   <header>
-    <p class="unit-name">Come In 4</p>
+    <p class="unit-name">English 4</p>
     <div class="hdr-row">
       <h1 id="screenTitle">🍓 Fruits and vegetables</h1>
       <button class="speedbtn" id="speedBtn" onclick="toggleRate()">🐇 normal</button>
@@ -203,94 +203,191 @@ function paintMenuDone(){
 var UNIT_NAME="Fruits and vegetables";
 
 var topics=[
-  /* 0 — Listen & tap (grid emoji) — Fruits */
+  /* 0 — Listen & tap (grid emoji) — Fruits
+     Each slot has 2 variants (same picture trio, different target picture). */
   {
     title:"Listen & tap",
     rule:`<div class="rule-head"><span class="rule-title">🍎 Listen &amp; tap</span><button class="speak-mini" data-say="Listen, then tap the right picture.">🔊 Rule</button></div>
           <p>Tap <b>🔊 Listen</b>, then tap the right picture.</p>`,
-    questions:[
-      {type:"choose",grid:true,theme:"🍎 Listen",teal:true,prompt:"Which picture?",say:"apple",
-        options:[{t:"🍎",s:"apple"},{t:"🍌",s:"banana"},{t:"🍊",s:"orange"}],correct:0,aff:"Tooor! Genau richtig! ⚽",wrong:"💛 Fast! 🍎 ist apple."},
-      {type:"choose",grid:true,theme:"🍎 Listen",teal:true,prompt:"Which picture?",say:"banana",
-        options:[{t:"🍐",s:"pear"},{t:"🍌",s:"banana"},{t:"🍉",s:"watermelon"}],correct:1,aff:"Volltreffer! 🍌⚽",wrong:"💛 Fast! 🍌 ist banana."},
-      {type:"choose",grid:true,theme:"🍎 Listen",teal:true,prompt:"Which picture?",say:"carrot",
-        options:[{t:"🥕",s:"carrot"},{t:"🥒",s:"cucumber"},{t:"🫑",s:"pepper"}],correct:0,aff:"Pole Position! 🏁",wrong:"💛 Fast! 🥕 ist carrot."},
-      {type:"choose",grid:true,theme:"🍎 Listen",teal:true,prompt:"Which picture?",say:"tomato",
-        options:[{t:"🫑",s:"pepper"},{t:"🥒",s:"cucumber"},{t:"🍅",s:"tomato"}],correct:2,aff:"Stark! 🍅⚽",wrong:"💛 Fast! 🍅 ist tomato."},
-      {type:"choose",grid:true,theme:"🍎 Listen",teal:true,prompt:"Which picture?",say:"watermelon",
-        options:[{t:"🍉",s:"watermelon"},{t:"🍑",s:"peach"},{t:"🍇",s:"grapes"}],correct:0,aff:"Schnell wie ein Rennwagen! 🏎️💨",wrong:"💛 Fast! 🍉 ist watermelon."}
+    pool:[
+      [
+        {type:"choose",grid:true,theme:"🍎 Listen",teal:true,prompt:"Which picture?",say:"apple",
+          options:[{t:"🍎",s:"apple"},{t:"🍌",s:"banana"},{t:"🍊",s:"orange"}],correct:0,aff:"Tooor! Genau richtig! ⚽",wrong:"💛 Fast! 🍎 ist apple."},
+        {type:"choose",grid:true,theme:"🍎 Listen",teal:true,prompt:"Which picture?",say:"orange",
+          options:[{t:"🍎",s:"apple"},{t:"🍌",s:"banana"},{t:"🍊",s:"orange"}],correct:2,aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! 🍊 ist orange."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🍎 Listen",teal:true,prompt:"Which picture?",say:"banana",
+          options:[{t:"🍐",s:"pear"},{t:"🍌",s:"banana"},{t:"🍉",s:"watermelon"}],correct:1,aff:"Volltreffer! 🍌⚽",wrong:"💛 Fast! 🍌 ist banana."},
+        {type:"choose",grid:true,theme:"🍎 Listen",teal:true,prompt:"Which picture?",say:"pear",
+          options:[{t:"🍐",s:"pear"},{t:"🍌",s:"banana"},{t:"🍉",s:"watermelon"}],correct:0,aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! 🍐 ist pear."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🍎 Listen",teal:true,prompt:"Which picture?",say:"carrot",
+          options:[{t:"🥕",s:"carrot"},{t:"🥒",s:"cucumber"},{t:"🫑",s:"pepper"}],correct:0,aff:"Pole Position! 🏁",wrong:"💛 Fast! 🥕 ist carrot."},
+        {type:"choose",grid:true,theme:"🍎 Listen",teal:true,prompt:"Which picture?",say:"cucumber",
+          options:[{t:"🥕",s:"carrot"},{t:"🥒",s:"cucumber"},{t:"🫑",s:"pepper"}],correct:1,aff:"Zielgerade! 🏁",wrong:"💛 Fast! 🥒 ist cucumber."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🍎 Listen",teal:true,prompt:"Which picture?",say:"tomato",
+          options:[{t:"🫑",s:"pepper"},{t:"🥒",s:"cucumber"},{t:"🍅",s:"tomato"}],correct:2,aff:"Stark! 🍅⚽",wrong:"💛 Fast! 🍅 ist tomato."},
+        {type:"choose",grid:true,theme:"🍎 Listen",teal:true,prompt:"Which picture?",say:"pepper",
+          options:[{t:"🫑",s:"pepper"},{t:"🥒",s:"cucumber"},{t:"🍅",s:"tomato"}],correct:0,aff:"Super Dribbling! ⚽",wrong:"💛 Fast! 🫑 ist pepper."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🍎 Listen",teal:true,prompt:"Which picture?",say:"watermelon",
+          options:[{t:"🍉",s:"watermelon"},{t:"🍑",s:"peach"},{t:"🍇",s:"grapes"}],correct:0,aff:"Schnell wie ein Rennwagen! 🏎️💨",wrong:"💛 Fast! 🍉 ist watermelon."},
+        {type:"choose",grid:true,theme:"🍎 Listen",teal:true,prompt:"Which picture?",say:"peach",
+          options:[{t:"🍉",s:"watermelon"},{t:"🍑",s:"peach"},{t:"🍇",s:"grapes"}],correct:1,aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! 🍑 ist peach."}
+      ]
     ]
   },
 
-  /* 1 — Match word <-> emoji */
+  /* 1 — Match word <-> emoji
+     Each slot has 2 variants drawing on the unit's full fruit/veg vocabulary. */
   {
     title:"Match it",
     rule:`<div class="rule-head"><span class="rule-title">🔗 Match it</span><button class="speak-mini" data-say="Tap a word, then tap its picture.">🔊 Rule</button></div>
           <p>Tap a <b>word</b>, then tap its <b>picture</b>.</p><p>Tap 🔊 on a word to hear it.</p>`,
-    questions:[
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["apple","🍎"],["banana","🍌"],["orange","🍊"],["pear","🍐"]],
-        aff:"Alle Paare! Mannschaftsleistung! ⚽🏆",wrong:"💛 Fast! Tippe das Wort, dann das Bild."},
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["cherry","🍒"],["grapes","🍇"],["peach","🍑"],["pineapple","🍍"]],
-        aff:"Perfekt verbunden! 🏁",wrong:"💛 Fast! Probier es in Ruhe."},
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["carrot","🥕"],["cucumber","🥒"],["pepper","🫑"]],
-        aff:"Geschafft — Doppelpass sitzt! ⚽",wrong:"💛 Fast! Schau nochmal hin."}
+    pool:[
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["apple","🍎"],["banana","🍌"],["orange","🍊"],["pear","🍐"]],
+          aff:"Alle Paare! Mannschaftsleistung! ⚽🏆",wrong:"💛 Fast! Tippe das Wort, dann das Bild."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["strawberry","🍓"],["watermelon","🍉"],["tomato","🍅"],["kiwi","🥝"]],
+          aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! Tippe das Wort, dann das Bild."}
+      ],
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["cherry","🍒"],["grapes","🍇"],["peach","🍑"],["pineapple","🍍"]],
+          aff:"Perfekt verbunden! 🏁",wrong:"💛 Fast! Probier es in Ruhe."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["lemon","🍋"],["apple","🍎"],["banana","🍌"],["orange","🍊"]],
+          aff:"Zielgerade! 🏁",wrong:"💛 Fast! Probier es in Ruhe."}
+      ],
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["carrot","🥕"],["cucumber","🥒"],["pepper","🫑"]],
+          aff:"Geschafft — Doppelpass sitzt! ⚽",wrong:"💛 Fast! Schau nochmal hin."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["pineapple","🍍"],["peach","🍑"],["grapes","🍇"]],
+          aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Schau nochmal hin."}
+      ]
     ]
   },
 
-  /* 2 — Make the plural (choose text) */
+  /* 2 — Make the plural (choose text)
+     Each slot has 2 variants targeting a different noun's plural form. */
   {
     title:"Make the plural",
     rule:`<div class="rule-head"><span class="rule-title">➕ Make the plural</span><button class="speak-mini" data-say="Listen, then tap the right plural.">🔊 Rule</button></div>
           <p>One becomes many! Tap <b>🔊 Listen</b>, then tap the right plural.</p>`,
-    questions:[
-      {type:"choose",theme:"➕ cherry",teal:true,show:"🍒",prompt:"What's the plural of cherry?",say:"cherries",
-        options:["cherrys","cherries","cherryes"],correct:1,aff:"Tor! ⚽",wrong:"💛 Fast! Es heißt cherries."},
-      {type:"choose",theme:"➕ strawberry",teal:true,show:"🍓",prompt:"What's the plural of strawberry?",say:"strawberries",
-        options:["strawberries","strawberrys","strawberryes"],correct:0,aff:"Volltreffer! ⚽",wrong:"💛 Fast! Es heißt strawberries."},
-      {type:"choose",theme:"➕ tomato",teal:true,show:"🍅",prompt:"What's the plural of tomato?",say:"tomatoes",
-        options:["tomatos","tomatoes","tomatoies"],correct:1,aff:"Pole Position! 🏎️",wrong:"💛 Fast! Es heißt tomatoes."},
-      {type:"choose",theme:"➕ apple",teal:true,show:"🍎",prompt:"What's the plural of apple?",say:"apples",
-        options:["apples","applies","appleies"],correct:0,aff:"Sauber! ⚽",wrong:"💛 Fast! Es heißt apples."},
-      {type:"choose",theme:"➕ peach",teal:true,show:"🍑",prompt:"What's the plural of peach?",say:"peaches",
-        options:["peachs","peaches","peachies"],correct:1,aff:"Stark! ⚽",wrong:"💛 Fast! Es heißt peaches."}
+    pool:[
+      [
+        {type:"choose",theme:"➕ cherry",teal:true,show:"🍒",prompt:"What's the plural of cherry?",say:"cherries",
+          options:["cherrys","cherries","cherryes"],correct:1,aff:"Tor! ⚽",wrong:"💛 Fast! Es heißt cherries."},
+        {type:"choose",theme:"➕ banana",teal:true,show:"🍌",prompt:"What's the plural of banana?",say:"bananas",
+          options:["bananaes","bananas","bananers"],correct:1,aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! Es heißt bananas."}
+      ],
+      [
+        {type:"choose",theme:"➕ strawberry",teal:true,show:"🍓",prompt:"What's the plural of strawberry?",say:"strawberries",
+          options:["strawberries","strawberrys","strawberryes"],correct:0,aff:"Volltreffer! ⚽",wrong:"💛 Fast! Es heißt strawberries."},
+        {type:"choose",theme:"➕ carrot",teal:true,show:"🥕",prompt:"What's the plural of carrot?",say:"carrots",
+          options:["carrots","carrotes","carrotts"],correct:0,aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! Es heißt carrots."}
+      ],
+      [
+        {type:"choose",theme:"➕ tomato",teal:true,show:"🍅",prompt:"What's the plural of tomato?",say:"tomatoes",
+          options:["tomatos","tomatoes","tomatoies"],correct:1,aff:"Pole Position! 🏎️",wrong:"💛 Fast! Es heißt tomatoes."},
+        {type:"choose",theme:"➕ orange",teal:true,show:"🍊",prompt:"What's the plural of orange?",say:"oranges",
+          options:["oranges","orangs","orangies"],correct:0,aff:"Zielgerade! 🏁",wrong:"💛 Fast! Es heißt oranges."}
+      ],
+      [
+        {type:"choose",theme:"➕ apple",teal:true,show:"🍎",prompt:"What's the plural of apple?",say:"apples",
+          options:["apples","applies","appleies"],correct:0,aff:"Sauber! ⚽",wrong:"💛 Fast! Es heißt apples."},
+        {type:"choose",theme:"➕ watermelon",teal:true,show:"🍉",prompt:"What's the plural of watermelon?",say:"watermelons",
+          options:["watermelones","watermelons","watermelonis"],correct:1,aff:"Super Dribbling! ⚽",wrong:"💛 Fast! Es heißt watermelons."}
+      ],
+      [
+        {type:"choose",theme:"➕ peach",teal:true,show:"🍑",prompt:"What's the plural of peach?",say:"peaches",
+          options:["peachs","peaches","peachies"],correct:1,aff:"Stark! ⚽",wrong:"💛 Fast! Es heißt peaches."},
+        {type:"choose",theme:"➕ pear",teal:true,show:"🍐",prompt:"What's the plural of pear?",say:"pears",
+          options:["pears","pearies","pearos"],correct:0,aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Es heißt pears."}
+      ]
     ]
   },
 
-  /* 3 — Right or wrong? (swipe) */
+  /* 3 — Right or wrong? (swipe)
+     Each slot has 2 variants with a different picture/statement pair. */
   {
     title:"Right or wrong?",
     rule:`<div class="rule-head"><span class="rule-title">👋 Right or wrong?</span><button class="speak-mini" data-say="Look and listen. Tap yes if it is right. Tap no if it is wrong.">🔊 Rule</button></div>
           <p>Look at the picture and listen.</p><p>Tap ✅ <b>yes</b> if it is right. Tap ❌ <b>no</b> if it is wrong.</p>`,
-    questions:[
-      {type:"swipe",theme:"🍌 Check",emoji:"🍌",text:"This is a banana.",answer:true,aff:"Erkannt! Gutes Auge! 🏎️",wrong:"💛 Fast! 🍌 ist a banana — richtig."},
-      {type:"swipe",theme:"🥕 Check",emoji:"🥕",text:"This is a cucumber.",answer:false,aff:"Richtig! Sicher wie ein Elfmeter! ⚽",wrong:"💛 Fast! 🥕 ist a carrot, nicht a cucumber."},
-      {type:"swipe",theme:"🍇 Check",emoji:"🍇",text:"These are grapes.",answer:true,aff:"Tor! Genau! ⚽",wrong:"💛 Fast! 🍇 sind grapes — richtig."},
-      {type:"swipe",theme:"🍅 Check",emoji:"🍅",text:"This is a pepper.",answer:false,aff:"Stark gebremst und richtig! 🏁",wrong:"💛 Fast! 🍅 ist a tomato, nicht a pepper."},
-      {type:"swipe",theme:"🍉 Check",emoji:"🍉",text:"This is a watermelon.",answer:true,aff:"Sauber! ⚽",wrong:"💛 Fast! 🍉 ist a watermelon — richtig."}
+    pool:[
+      [
+        {type:"swipe",theme:"🍌 Check",emoji:"🍌",text:"This is a banana.",answer:true,aff:"Erkannt! Gutes Auge! 🏎️",wrong:"💛 Fast! 🍌 ist a banana — richtig."},
+        {type:"swipe",theme:"🍊 Check",emoji:"🍊",text:"This is an orange.",answer:true,aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! 🍊 ist an orange — richtig."}
+      ],
+      [
+        {type:"swipe",theme:"🥕 Check",emoji:"🥕",text:"This is a cucumber.",answer:false,aff:"Richtig! Sicher wie ein Elfmeter! ⚽",wrong:"💛 Fast! 🥕 ist a carrot, nicht a cucumber."},
+        {type:"swipe",theme:"🍐 Check",emoji:"🍐",text:"This is an apple.",answer:false,aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! 🍐 ist a pear, nicht an apple."}
+      ],
+      [
+        {type:"swipe",theme:"🍇 Check",emoji:"🍇",text:"These are grapes.",answer:true,aff:"Tor! Genau! ⚽",wrong:"💛 Fast! 🍇 sind grapes — richtig."},
+        {type:"swipe",theme:"🍍 Check",emoji:"🍍",text:"This is a pineapple.",answer:true,aff:"Zielgerade! 🏁",wrong:"💛 Fast! 🍍 ist a pineapple — richtig."}
+      ],
+      [
+        {type:"swipe",theme:"🍅 Check",emoji:"🍅",text:"This is a pepper.",answer:false,aff:"Stark gebremst und richtig! 🏁",wrong:"💛 Fast! 🍅 ist a tomato, nicht a pepper."},
+        {type:"swipe",theme:"🥒 Check",emoji:"🥒",text:"This is a carrot.",answer:false,aff:"Super Dribbling! ⚽",wrong:"💛 Fast! 🥒 ist a cucumber, nicht a carrot."}
+      ],
+      [
+        {type:"swipe",theme:"🍉 Check",emoji:"🍉",text:"This is a watermelon.",answer:true,aff:"Sauber! ⚽",wrong:"💛 Fast! 🍉 ist a watermelon — richtig."},
+        {type:"swipe",theme:"🍎 Check",emoji:"🍎",text:"This is an apple.",answer:true,aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! 🍎 ist an apple — richtig."}
+      ]
     ]
   },
 
-  /* 4 — Build the sentence (puzzle) */
+  /* 4 — Build the sentence (puzzle)
+     Each slot has 2 variants reusing vocabulary from the games above. */
   {
     title:"Build the sentence",
     rule:`<div class="rule-head"><span class="rule-title">🧩 Build the sentence</span><button class="speak-mini" data-say="Tap the words in the right order.">🔊 Rule</button></div>
           <p>Tap the words in the right order.</p><p>Tap 🔊 to hear the whole sentence.</p>`,
-    questions:[
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["In","my","smoothie","there","are","strawberries."],aff:"Satz steht! ⚽",wrong:"💛 Fast! Beginne mit \"In\"."},
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["Do","you","like","carrots?"],aff:"Frage gebaut wie ein Profi! 🏎️",wrong:"💛 Fast! Beginne mit \"Do\"."},
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["I","like","apples","and","pears."],aff:"Perfekt! 🏆",wrong:"💛 Fast! Beginne mit \"I\"."}
+    pool:[
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["In","my","smoothie","there","are","strawberries."],aff:"Satz steht! ⚽",wrong:"💛 Fast! Beginne mit \"In\"."},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["In","my","smoothie","there","are","bananas."],aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! Beginne mit \"In\"."}
+      ],
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["Do","you","like","carrots?"],aff:"Frage gebaut wie ein Profi! 🏎️",wrong:"💛 Fast! Beginne mit \"Do\"."},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["Do","you","like","tomatoes?"],aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Beginne mit \"Do\"."}
+      ],
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["I","like","apples","and","pears."],aff:"Perfekt! 🏆",wrong:"💛 Fast! Beginne mit \"I\"."},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["I","like","oranges","and","grapes."],aff:"Zielgerade! 🏁",wrong:"💛 Fast! Beginne mit \"I\"."}
+      ]
     ]
   }
 ];
 
+/* ---------- variant picking (no-repeat-on-replay) ---------- */
+function getLastVariants(){ try{ return JSON.parse(localStorage.getItem("comeIn4.lastVariant")||"{}"); }catch(e){ return {}; } }
+function setLastVariants(m){ try{ localStorage.setItem("comeIn4.lastVariant", JSON.stringify(m)); }catch(e){} }
+function pickVariant(topicIdx,slotIdx,variants){
+  if(variants.length===1) return variants[0];
+  var map=getLastVariants(), key=UNIT_KEY+"."+topicIdx+"."+slotIdx, last=map[key];
+  var choices=[]; for(var i=0;i<variants.length;i++){ if(i!==last) choices.push(i); }
+  var pick=choices[Math.floor(Math.random()*choices.length)];
+  map[key]=pick; setLastVariants(map);
+  return variants[pick];
+}
+function buildQuestions(topicIdx){
+  return topics[topicIdx].pool.map(function(slot,slotIdx){ return pickVariant(topicIdx,slotIdx,slot); });
+}
+
+
 /* =========================================================
    SHARED ENGINE (generic + grid + swatch + speed + read-along + progress)
    ========================================================= */
-var curTopic=0, curQ=0, answered=false;
+var curTopic=0, curQ=0, answered=false, sessionQuestions=[];
 function $(id){return document.getElementById(id);}
 
 function startTopic(i){
-  curTopic=i; curQ=0;
+  curTopic=i; curQ=0; sessionQuestions=buildQuestions(i);
   $("menu").classList.add("hidden"); $("done").classList.add("hidden"); $("quiz").classList.remove("hidden");
   $("screenTitle").textContent=topics[i].title;
   $("ruleSlot").innerHTML='<div class="rule">'+topics[i].rule+'</div>';
@@ -307,8 +404,8 @@ function setBar(p){ $("progressFill").style.width=p+"%"; }
 
 function loadQuestion(){
   answered=false; clearReading();
-  var t=topics[curTopic], q=t.questions[curQ];
-  setBar(Math.round(curQ/t.questions.length*100));
+  var q=sessionQuestions[curQ];
+  setBar(Math.round(curQ/sessionQuestions.length*100));
   $("feedback").className="feedback"; $("feedback").innerHTML="";
   $("nextBtn").classList.add("hidden"); $("checkBtn").classList.remove("hidden"); $("checkBtn").disabled=false;
   var html='<span class="theme-tag '+(q.teal?"teal":"")+'">'+(q.theme||"")+'</span>';
@@ -446,7 +543,7 @@ function syncBank(){
   });
 }
 function checkAnswer(){
-  var q=topics[curTopic].questions[curQ];
+  var q=sessionQuestions[curQ];
   if(q.type!=="puzzle" || answered) return;
   if(puzBuild.join(" ")===q.words.join(" ")){ answered=true; win(q.aff,""); speak(q.words.join(" ")); showNext(); }
   else{ soft(q.wrong,""); }
@@ -457,11 +554,11 @@ function win(msg,rule){ var f=$("feedback"); f.className="feedback good show"; f
 function soft(msg,rule){ var f=$("feedback"); f.className="feedback soft show"; f.innerHTML=msg+(rule?'<div class="fb-rule">'+rule+'</div>':""); }
 function showNext(){ $("checkBtn").classList.add("hidden"); $("nextBtn").classList.remove("hidden"); }
 function nextQuestion(){
-  var t=topics[curTopic]; curQ++;
-  if(curQ>=t.questions.length){
+  curQ++;
+  if(curQ>=sessionQuestions.length){
     setBar(100); markGameDone(curTopic);
     $("quiz").classList.add("hidden"); $("done").classList.remove("hidden");
-    $("doneMsg").textContent="Super! You finished "+t.title+"! 🏆"; speak("Well done!"); burst(); return;
+    $("doneMsg").textContent="Super! You finished "+topics[curTopic].title+"! 🏆"; speak("Well done!"); burst(); return;
   }
   loadQuestion();
 }

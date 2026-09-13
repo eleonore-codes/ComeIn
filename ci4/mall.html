@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Come In 4 — At the mall</title>
+<title>English 4 — At the mall</title>
 <style>
   :root{
     --navy:#1a2a4a;--navy-2:#23365c;--teal:#1fb6c4;--teal-soft:#7fd9e2;
@@ -108,7 +108,7 @@
 <body>
 <div class="wrap">
   <header>
-    <p class="unit-name">Come In 4</p>
+    <p class="unit-name">English 4</p>
     <div class="hdr-row">
       <h1 id="screenTitle">🛍️ At the mall</h1>
       <button class="speedbtn" id="speedBtn" onclick="toggleRate()">🐇 normal</button>
@@ -203,94 +203,191 @@ function paintMenuDone(){
 var UNIT_NAME="At the mall";
 
 var topics=[
-  /* 0 — Listen & tap (grid emoji) — Shops */
+  /* 0 — Listen & tap (grid emoji) — Shops
+     Each slot has 2 variants (same picture trio, different target picture). */
   {
     title:"Listen & tap",
     rule:`<div class="rule-head"><span class="rule-title">🛍️ Listen &amp; tap</span><button class="speak-mini" data-say="Listen, then tap the right shop.">🔊 Rule</button></div>
           <p>Tap <b>🔊 Listen</b>, then tap the right shop.</p>`,
-    questions:[
-      {type:"choose",grid:true,theme:"🛍️ Listen",teal:true,prompt:"Which shop?",say:"bakery",
-        options:[{t:"🥖",s:"bakery"},{t:"🥩",s:"butcher shop"},{t:"📚",s:"book shop"}],correct:0,aff:"Tooor! Genau richtig! ⚽",wrong:"💛 Fast! 🥖 ist bakery."},
-      {type:"choose",grid:true,theme:"🛍️ Listen",teal:true,prompt:"Which shop?",say:"supermarket",
-        options:[{t:"🛒",s:"supermarket"},{t:"🍦",s:"ice-cream stand"},{t:"🎸",s:"music shop"}],correct:0,aff:"Volltreffer! 🛒⚽",wrong:"💛 Fast! 🛒 ist supermarket."},
-      {type:"choose",grid:true,theme:"🛍️ Listen",teal:true,prompt:"Which shop?",say:"restaurant",
-        options:[{t:"🍽️",s:"restaurant"},{t:"⚽",s:"sports shop"},{t:"👗",s:"fashion store"}],correct:0,aff:"Pole Position! 🏁",wrong:"💛 Fast! 🍽️ ist restaurant."},
-      {type:"choose",grid:true,theme:"🛍️ Listen",teal:true,prompt:"Which shop?",say:"ice-cream stand",
-        options:[{t:"🍦",s:"ice-cream stand"},{t:"🥖",s:"bakery"},{t:"🛒",s:"supermarket"}],correct:0,aff:"Stark! 🍦⚽",wrong:"💛 Fast! 🍦 ist ice-cream stand."},
-      {type:"choose",grid:true,theme:"🛍️ Listen",teal:true,prompt:"Which shop?",say:"sports shop",
-        options:[{t:"⚽",s:"sports shop"},{t:"🎸",s:"music shop"},{t:"🥩",s:"butcher shop"}],correct:0,aff:"Schnell wie ein Rennwagen! 🏎️💨",wrong:"💛 Fast! ⚽ ist sports shop."}
+    pool:[
+      [
+        {type:"choose",grid:true,theme:"🛍️ Listen",teal:true,prompt:"Which shop?",say:"bakery",
+          options:[{t:"🥖",s:"bakery"},{t:"🥩",s:"butcher shop"},{t:"📚",s:"book shop"}],correct:0,aff:"Tooor! Genau richtig! ⚽",wrong:"💛 Fast! 🥖 ist bakery."},
+        {type:"choose",grid:true,theme:"🛍️ Listen",teal:true,prompt:"Which shop?",say:"butcher shop",
+          options:[{t:"🥖",s:"bakery"},{t:"🥩",s:"butcher shop"},{t:"📚",s:"book shop"}],correct:1,aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! 🥩 ist butcher shop."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🛍️ Listen",teal:true,prompt:"Which shop?",say:"supermarket",
+          options:[{t:"🛒",s:"supermarket"},{t:"🍦",s:"ice-cream stand"},{t:"🎸",s:"music shop"}],correct:0,aff:"Volltreffer! 🛒⚽",wrong:"💛 Fast! 🛒 ist supermarket."},
+        {type:"choose",grid:true,theme:"🛍️ Listen",teal:true,prompt:"Which shop?",say:"ice-cream stand",
+          options:[{t:"🛒",s:"supermarket"},{t:"🍦",s:"ice-cream stand"},{t:"🎸",s:"music shop"}],correct:1,aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! 🍦 ist ice-cream stand."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🛍️ Listen",teal:true,prompt:"Which shop?",say:"restaurant",
+          options:[{t:"🍽️",s:"restaurant"},{t:"⚽",s:"sports shop"},{t:"👗",s:"fashion store"}],correct:0,aff:"Pole Position! 🏁",wrong:"💛 Fast! 🍽️ ist restaurant."},
+        {type:"choose",grid:true,theme:"🛍️ Listen",teal:true,prompt:"Which shop?",say:"fashion store",
+          options:[{t:"🍽️",s:"restaurant"},{t:"⚽",s:"sports shop"},{t:"👗",s:"fashion store"}],correct:2,aff:"Zielgerade! 🏁",wrong:"💛 Fast! 👗 ist fashion store."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🛍️ Listen",teal:true,prompt:"Which shop?",say:"ice-cream stand",
+          options:[{t:"🍦",s:"ice-cream stand"},{t:"🥖",s:"bakery"},{t:"🛒",s:"supermarket"}],correct:0,aff:"Stark! 🍦⚽",wrong:"💛 Fast! 🍦 ist ice-cream stand."},
+        {type:"choose",grid:true,theme:"🛍️ Listen",teal:true,prompt:"Which shop?",say:"bakery",
+          options:[{t:"🍦",s:"ice-cream stand"},{t:"🥖",s:"bakery"},{t:"🛒",s:"supermarket"}],correct:1,aff:"Super Dribbling! ⚽",wrong:"💛 Fast! 🥖 ist bakery."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🛍️ Listen",teal:true,prompt:"Which shop?",say:"sports shop",
+          options:[{t:"⚽",s:"sports shop"},{t:"🎸",s:"music shop"},{t:"🥩",s:"butcher shop"}],correct:0,aff:"Schnell wie ein Rennwagen! 🏎️💨",wrong:"💛 Fast! ⚽ ist sports shop."},
+        {type:"choose",grid:true,theme:"🛍️ Listen",teal:true,prompt:"Which shop?",say:"music shop",
+          options:[{t:"⚽",s:"sports shop"},{t:"🎸",s:"music shop"},{t:"🥩",s:"butcher shop"}],correct:1,aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! 🎸 ist music shop."}
+      ]
     ]
   },
 
-  /* 1 — Match word <-> emoji */
+  /* 1 — Match word <-> emoji
+     Each slot has 2 variants drawing on the unit's full clothing vocabulary. */
   {
     title:"Match it",
     rule:`<div class="rule-head"><span class="rule-title">🔗 Match it</span><button class="speak-mini" data-say="Tap a word, then tap its picture.">🔊 Rule</button></div>
           <p>Tap a <b>word</b>, then tap its <b>picture</b>.</p><p>Tap 🔊 on a word to hear it.</p>`,
-    questions:[
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["bag","👜"],["jacket","🧥"],["jeans","👖"],["T-shirt","👕"]],
-        aff:"Alle Paare! Mannschaftsleistung! ⚽🏆",wrong:"💛 Fast! Tippe das Wort, dann das Bild."},
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["scarf","🧣"],["shoes","👞"],["shorts","🩳"],["sunglasses","🕶️"]],
-        aff:"Perfekt verbunden! 🏁",wrong:"💛 Fast! Probier es in Ruhe."},
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["dress","👗"],["pullover","🧶"],["wallet","👛"]],
-        aff:"Geschafft — Doppelpass sitzt! ⚽",wrong:"💛 Fast! Schau nochmal hin."}
+    pool:[
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["bag","👜"],["jacket","🧥"],["jeans","👖"],["T-shirt","👕"]],
+          aff:"Alle Paare! Mannschaftsleistung! ⚽🏆",wrong:"💛 Fast! Tippe das Wort, dann das Bild."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["socks","🧦"],["cap","🧢"],["gloves","🧤"],["boots","👢"]],
+          aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! Tippe das Wort, dann das Bild."}
+      ],
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["scarf","🧣"],["shoes","👞"],["shorts","🩳"],["sunglasses","🕶️"]],
+          aff:"Perfekt verbunden! 🏁",wrong:"💛 Fast! Probier es in Ruhe."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["bag","👜"],["jacket","🧥"],["jeans","👖"],["T-shirt","👕"]],
+          aff:"Zielgerade! 🏁",wrong:"💛 Fast! Probier es in Ruhe."}
+      ],
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["dress","👗"],["pullover","🧶"],["wallet","👛"]],
+          aff:"Geschafft — Doppelpass sitzt! ⚽",wrong:"💛 Fast! Schau nochmal hin."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["scarf","🧣"],["shoes","👞"],["shorts","🩳"]],
+          aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Schau nochmal hin."}
+      ]
     ]
   },
 
-  /* 2 — How much is it? (choose, money) */
+  /* 2 — How much is it? (choose, money)
+     Each slot has 2 variants with a different item and price. */
   {
     title:"How much is it?",
     rule:`<div class="rule-head"><span class="rule-title">💷 How much is it?</span><button class="speak-mini" data-say="Listen, then tap the right price.">🔊 Rule</button></div>
           <p>£ = pounds, p = pence. Tap <b>🔊 Listen</b>, then tap the right price.</p>`,
-    questions:[
-      {type:"choose",theme:"👖 Listen",teal:true,show:"👖",prompt:"How much are the jeans?",say:"It's twelve pounds.",
-        options:["It's twelve pounds.","It's twelve pence.","It's two pounds."],correct:0,aff:"Tor! ⚽",wrong:"💛 Fast! Es war: It's twelve pounds."},
-      {type:"choose",theme:"🧣 Listen",teal:true,show:"🧣",prompt:"How much is the scarf?",say:"It's five pounds and fifty pence.",
-        options:["It's five pounds and fifty pence.","It's fifty pounds.","It's five pence."],correct:0,aff:"Volltreffer! ⚽",wrong:"💛 Fast! Es war: It's five pounds and fifty pence."},
-      {type:"choose",theme:"👞 Listen",teal:true,show:"👞",prompt:"How much are the shoes?",say:"It's twenty pounds.",
-        options:["It's two pounds.","It's twenty pounds.","It's twelve pounds."],correct:1,aff:"Pole Position! 🏎️",wrong:"💛 Fast! Es war: It's twenty pounds."},
-      {type:"choose",theme:"🕶️ Listen",teal:true,show:"🕶️",prompt:"How much are the sunglasses?",say:"It's eight pounds.",
-        options:["It's eight pounds.","It's eighteen pounds.","It's eighty pence."],correct:0,aff:"Sauber! ⚽",wrong:"💛 Fast! Es war: It's eight pounds."},
-      {type:"choose",theme:"👜 Listen",teal:true,show:"👜",prompt:"How much is the bag?",say:"It's fifteen pounds.",
-        options:["It's fifty pounds.","It's fifteen pence.","It's fifteen pounds."],correct:2,aff:"Stark! ⚽",wrong:"💛 Fast! Es war: It's fifteen pounds."}
+    pool:[
+      [
+        {type:"choose",theme:"👖 Listen",teal:true,show:"👖",prompt:"How much are the jeans?",say:"It's twelve pounds.",
+          options:["It's twelve pounds.","It's twelve pence.","It's two pounds."],correct:0,aff:"Tor! ⚽",wrong:"💛 Fast! Es war: It's twelve pounds."},
+        {type:"choose",theme:"🧦 Listen",teal:true,show:"🧦",prompt:"How much are the socks?",say:"It's three pounds.",
+          options:["It's three pounds.","It's thirty pounds.","It's three pence."],correct:0,aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! Es war: It's three pounds."}
+      ],
+      [
+        {type:"choose",theme:"🧣 Listen",teal:true,show:"🧣",prompt:"How much is the scarf?",say:"It's five pounds and fifty pence.",
+          options:["It's five pounds and fifty pence.","It's fifty pounds.","It's five pence."],correct:0,aff:"Volltreffer! ⚽",wrong:"💛 Fast! Es war: It's five pounds and fifty pence."},
+        {type:"choose",theme:"🧢 Listen",teal:true,show:"🧢",prompt:"How much is the cap?",say:"It's seven pounds.",
+          options:["It's seven pounds.","It's seventeen pounds.","It's seven pence."],correct:0,aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! Es war: It's seven pounds."}
+      ],
+      [
+        {type:"choose",theme:"👞 Listen",teal:true,show:"👞",prompt:"How much are the shoes?",say:"It's twenty pounds.",
+          options:["It's two pounds.","It's twenty pounds.","It's twelve pounds."],correct:1,aff:"Pole Position! 🏎️",wrong:"💛 Fast! Es war: It's twenty pounds."},
+        {type:"choose",theme:"👢 Listen",teal:true,show:"👢",prompt:"How much are the boots?",say:"It's twenty-five pounds.",
+          options:["It's twenty-five pence.","It's twenty-five pounds.","It's twenty-two pounds."],correct:1,aff:"Zielgerade! 🏁",wrong:"💛 Fast! Es war: It's twenty-five pounds."}
+      ],
+      [
+        {type:"choose",theme:"🕶️ Listen",teal:true,show:"🕶️",prompt:"How much are the sunglasses?",say:"It's eight pounds.",
+          options:["It's eight pounds.","It's eighteen pounds.","It's eighty pence."],correct:0,aff:"Sauber! ⚽",wrong:"💛 Fast! Es war: It's eight pounds."},
+        {type:"choose",theme:"🧤 Listen",teal:true,show:"🧤",prompt:"How much are the gloves?",say:"It's six pounds.",
+          options:["It's six pounds.","It's sixteen pounds.","It's sixty pence."],correct:0,aff:"Super Dribbling! ⚽",wrong:"💛 Fast! Es war: It's six pounds."}
+      ],
+      [
+        {type:"choose",theme:"👜 Listen",teal:true,show:"👜",prompt:"How much is the bag?",say:"It's fifteen pounds.",
+          options:["It's fifty pounds.","It's fifteen pence.","It's fifteen pounds."],correct:2,aff:"Stark! ⚽",wrong:"💛 Fast! Es war: It's fifteen pounds."},
+        {type:"choose",theme:"👕 Listen",teal:true,show:"👕",prompt:"How much is the T-shirt?",say:"It's ten pounds.",
+          options:["It's ten pence.","It's one pound.","It's ten pounds."],correct:2,aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Es war: It's ten pounds."}
+      ]
     ]
   },
 
-  /* 3 — Right or wrong? (swipe) */
+  /* 3 — Right or wrong? (swipe)
+     Each slot has 2 variants with a different food/drink and statement. */
   {
     title:"Right or wrong?",
     rule:`<div class="rule-head"><span class="rule-title">👋 Right or wrong?</span><button class="speak-mini" data-say="Look and listen. Tap yes if it is right. Tap no if it is wrong.">🔊 Rule</button></div>
           <p>Look at the picture and listen.</p><p>Tap ✅ <b>yes</b> if it is right. Tap ❌ <b>no</b> if it is wrong.</p>`,
-    questions:[
-      {type:"swipe",theme:"🍕 Check",emoji:"🍕",text:"This is pizza.",answer:true,aff:"Erkannt! Gutes Auge! 🏎️",wrong:"💛 Fast! 🍕 ist pizza — richtig."},
-      {type:"swipe",theme:"🥪 Check",emoji:"🥪",text:"This is soup.",answer:false,aff:"Richtig! Sicher wie ein Elfmeter! ⚽",wrong:"💛 Fast! 🥪 ist a sandwich, nicht soup."},
-      {type:"swipe",theme:"🥛 Check",emoji:"🥛",text:"This is milk.",answer:true,aff:"Tor! Genau! ⚽",wrong:"💛 Fast! 🥛 ist milk — richtig."},
-      {type:"swipe",theme:"🍵 Check",emoji:"🍵",text:"This is coffee.",answer:false,aff:"Stark gebremst und richtig! 🏁",wrong:"💛 Fast! 🍵 ist tea, nicht coffee."},
-      {type:"swipe",theme:"🍲 Check",emoji:"🍲",text:"This is soup.",answer:true,aff:"Sauber! ⚽",wrong:"💛 Fast! 🍲 ist soup — richtig."}
+    pool:[
+      [
+        {type:"swipe",theme:"🍕 Check",emoji:"🍕",text:"This is pizza.",answer:true,aff:"Erkannt! Gutes Auge! 🏎️",wrong:"💛 Fast! 🍕 ist pizza — richtig."},
+        {type:"swipe",theme:"🍔 Check",emoji:"🍔",text:"This is a burger.",answer:true,aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! 🍔 ist a burger — richtig."}
+      ],
+      [
+        {type:"swipe",theme:"🥪 Check",emoji:"🥪",text:"This is soup.",answer:false,aff:"Richtig! Sicher wie ein Elfmeter! ⚽",wrong:"💛 Fast! 🥪 ist a sandwich, nicht soup."},
+        {type:"swipe",theme:"🍟 Check",emoji:"🍟",text:"This is ice cream.",answer:false,aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! 🍟 sind chips, nicht ice cream."}
+      ],
+      [
+        {type:"swipe",theme:"🥛 Check",emoji:"🥛",text:"This is milk.",answer:true,aff:"Tor! Genau! ⚽",wrong:"💛 Fast! 🥛 ist milk — richtig."},
+        {type:"swipe",theme:"🧃 Check",emoji:"🧃",text:"This is juice.",answer:true,aff:"Zielgerade! 🏁",wrong:"💛 Fast! 🧃 ist juice — richtig."}
+      ],
+      [
+        {type:"swipe",theme:"🍵 Check",emoji:"🍵",text:"This is coffee.",answer:false,aff:"Stark gebremst und richtig! 🏁",wrong:"💛 Fast! 🍵 ist tea, nicht coffee."},
+        {type:"swipe",theme:"🍩 Check",emoji:"🍩",text:"This is bread.",answer:false,aff:"Super Dribbling! ⚽",wrong:"💛 Fast! 🍩 ist a donut, nicht bread."}
+      ],
+      [
+        {type:"swipe",theme:"🍲 Check",emoji:"🍲",text:"This is soup.",answer:true,aff:"Sauber! ⚽",wrong:"💛 Fast! 🍲 ist soup — richtig."},
+        {type:"swipe",theme:"🥤 Check",emoji:"🥤",text:"This is a drink.",answer:true,aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! 🥤 ist a drink — richtig."}
+      ]
     ]
   },
 
-  /* 4 — Build the sentence (puzzle) */
+  /* 4 — Build the sentence (puzzle)
+     Each slot has 2 variants reusing vocabulary from the games above. */
   {
     title:"Build the sentence",
     rule:`<div class="rule-head"><span class="rule-title">🧩 Build the sentence</span><button class="speak-mini" data-say="Tap the words in the right order.">🔊 Rule</button></div>
           <p>Tap the words in the right order.</p><p>Tap 🔊 to hear the whole sentence.</p>`,
-    questions:[
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["How","much","is","the","jacket?"],aff:"Satz steht! ⚽",wrong:"💛 Fast! Beginne mit \"How\"."},
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["I'd","like","a","sandwich."],aff:"Frage gebaut wie ein Profi! 🏎️",wrong:"💛 Fast! Beginne mit \"I'd\"."},
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["No,","it's","too","big."],aff:"Perfekt! 🏆",wrong:"💛 Fast! Beginne mit \"No,\"."}
+    pool:[
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["How","much","is","the","jacket?"],aff:"Satz steht! ⚽",wrong:"💛 Fast! Beginne mit \"How\"."},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["How","much","are","the","shoes?"],aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! Beginne mit \"How\"."}
+      ],
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["I'd","like","a","sandwich."],aff:"Frage gebaut wie ein Profi! 🏎️",wrong:"💛 Fast! Beginne mit \"I'd\"."},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["I'd","like","an","ice","cream."],aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Beginne mit \"I'd\"."}
+      ],
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["No,","it's","too","big."],aff:"Perfekt! 🏆",wrong:"💛 Fast! Beginne mit \"No,\"."},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["No,","it's","too","small."],aff:"Zielgerade! 🏁",wrong:"💛 Fast! Beginne mit \"No,\"."}
+      ]
     ]
   }
 ];
 
+/* ---------- variant picking (no-repeat-on-replay) ---------- */
+function getLastVariants(){ try{ return JSON.parse(localStorage.getItem("comeIn4.lastVariant")||"{}"); }catch(e){ return {}; } }
+function setLastVariants(m){ try{ localStorage.setItem("comeIn4.lastVariant", JSON.stringify(m)); }catch(e){} }
+function pickVariant(topicIdx,slotIdx,variants){
+  if(variants.length===1) return variants[0];
+  var map=getLastVariants(), key=UNIT_KEY+"."+topicIdx+"."+slotIdx, last=map[key];
+  var choices=[]; for(var i=0;i<variants.length;i++){ if(i!==last) choices.push(i); }
+  var pick=choices[Math.floor(Math.random()*choices.length)];
+  map[key]=pick; setLastVariants(map);
+  return variants[pick];
+}
+function buildQuestions(topicIdx){
+  return topics[topicIdx].pool.map(function(slot,slotIdx){ return pickVariant(topicIdx,slotIdx,slot); });
+}
+
+
 /* =========================================================
    SHARED ENGINE (generic + grid + swatch + speed + read-along + progress)
    ========================================================= */
-var curTopic=0, curQ=0, answered=false;
+var curTopic=0, curQ=0, answered=false, sessionQuestions=[];
 function $(id){return document.getElementById(id);}
 
 function startTopic(i){
-  curTopic=i; curQ=0;
+  curTopic=i; curQ=0; sessionQuestions=buildQuestions(i);
   $("menu").classList.add("hidden"); $("done").classList.add("hidden"); $("quiz").classList.remove("hidden");
   $("screenTitle").textContent=topics[i].title;
   $("ruleSlot").innerHTML='<div class="rule">'+topics[i].rule+'</div>';
@@ -307,8 +404,8 @@ function setBar(p){ $("progressFill").style.width=p+"%"; }
 
 function loadQuestion(){
   answered=false; clearReading();
-  var t=topics[curTopic], q=t.questions[curQ];
-  setBar(Math.round(curQ/t.questions.length*100));
+  var q=sessionQuestions[curQ];
+  setBar(Math.round(curQ/sessionQuestions.length*100));
   $("feedback").className="feedback"; $("feedback").innerHTML="";
   $("nextBtn").classList.add("hidden"); $("checkBtn").classList.remove("hidden"); $("checkBtn").disabled=false;
   var html='<span class="theme-tag '+(q.teal?"teal":"")+'">'+(q.theme||"")+'</span>';
@@ -446,7 +543,7 @@ function syncBank(){
   });
 }
 function checkAnswer(){
-  var q=topics[curTopic].questions[curQ];
+  var q=sessionQuestions[curQ];
   if(q.type!=="puzzle" || answered) return;
   if(puzBuild.join(" ")===q.words.join(" ")){ answered=true; win(q.aff,""); speak(q.words.join(" ")); showNext(); }
   else{ soft(q.wrong,""); }
@@ -457,11 +554,11 @@ function win(msg,rule){ var f=$("feedback"); f.className="feedback good show"; f
 function soft(msg,rule){ var f=$("feedback"); f.className="feedback soft show"; f.innerHTML=msg+(rule?'<div class="fb-rule">'+rule+'</div>':""); }
 function showNext(){ $("checkBtn").classList.add("hidden"); $("nextBtn").classList.remove("hidden"); }
 function nextQuestion(){
-  var t=topics[curTopic]; curQ++;
-  if(curQ>=t.questions.length){
+  curQ++;
+  if(curQ>=sessionQuestions.length){
     setBar(100); markGameDone(curTopic);
     $("quiz").classList.add("hidden"); $("done").classList.remove("hidden");
-    $("doneMsg").textContent="Super! You finished "+t.title+"! 🏆"; speak("Well done!"); burst(); return;
+    $("doneMsg").textContent="Super! You finished "+topics[curTopic].title+"! 🏆"; speak("Well done!"); burst(); return;
   }
   loadQuestion();
 }

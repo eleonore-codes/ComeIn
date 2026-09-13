@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Come In 4 — Animals</title>
+<title>English 4 — Animals</title>
 <style>
   :root{
     --navy:#1a2a4a;--navy-2:#23365c;--teal:#1fb6c4;--teal-soft:#7fd9e2;
@@ -108,7 +108,7 @@
 <body>
 <div class="wrap">
   <header>
-    <p class="unit-name">Come In 4</p>
+    <p class="unit-name">English 4</p>
     <div class="hdr-row">
       <h1 id="screenTitle">🦁 Animals</h1>
       <button class="speedbtn" id="speedBtn" onclick="toggleRate()">🐇 normal</button>
@@ -203,94 +203,191 @@ function paintMenuDone(){
 var UNIT_NAME="Animals";
 
 var topics=[
-  /* 0 — Listen & tap (grid emoji) — Wild animals */
+  /* 0 — Listen & tap (grid emoji) — Wild animals
+     Each slot has 2 variants (same picture trio, different target picture). */
   {
     title:"Listen & tap",
     rule:`<div class="rule-head"><span class="rule-title">🦁 Listen &amp; tap</span><button class="speak-mini" data-say="Listen, then tap the right picture.">🔊 Rule</button></div>
           <p>Tap <b>🔊 Listen</b>, then tap the right picture.</p>`,
-    questions:[
-      {type:"choose",grid:true,theme:"🦁 Listen",teal:true,prompt:"Which picture?",say:"lion",
-        options:[{t:"🦁",s:"lion"},{t:"🐯",s:"tiger"},{t:"🐘",s:"elephant"}],correct:0,aff:"Tooor! Genau richtig! ⚽",wrong:"💛 Fast! 🦁 ist lion."},
-      {type:"choose",grid:true,theme:"🦁 Listen",teal:true,prompt:"Which picture?",say:"elephant",
-        options:[{t:"🐘",s:"elephant"},{t:"🦛",s:"hippo"},{t:"🦒",s:"giraffe"}],correct:0,aff:"Volltreffer! 🐘⚽",wrong:"💛 Fast! 🐘 ist elephant."},
-      {type:"choose",grid:true,theme:"🦁 Listen",teal:true,prompt:"Which picture?",say:"giraffe",
-        options:[{t:"🦒",s:"giraffe"},{t:"🦓",s:"zebra"},{t:"🐘",s:"elephant"}],correct:0,aff:"Pole Position! 🏁",wrong:"💛 Fast! 🦒 ist giraffe."},
-      {type:"choose",grid:true,theme:"🦁 Listen",teal:true,prompt:"Which picture?",say:"monkey",
-        options:[{t:"🐒",s:"monkey"},{t:"🦜",s:"parrot"},{t:"🐧",s:"penguin"}],correct:0,aff:"Stark! 🐒⚽",wrong:"💛 Fast! 🐒 ist monkey."},
-      {type:"choose",grid:true,theme:"🦁 Listen",teal:true,prompt:"Which picture?",say:"crocodile",
-        options:[{t:"🐊",s:"crocodile"},{t:"🐍",s:"snake"},{t:"🐢",s:"turtle"}],correct:0,aff:"Schnell wie ein Rennwagen! 🏎️💨",wrong:"💛 Fast! 🐊 ist crocodile."}
+    pool:[
+      [
+        {type:"choose",grid:true,theme:"🦁 Listen",teal:true,prompt:"Which picture?",say:"lion",
+          options:[{t:"🦁",s:"lion"},{t:"🐯",s:"tiger"},{t:"🐘",s:"elephant"}],correct:0,aff:"Tooor! Genau richtig! ⚽",wrong:"💛 Fast! 🦁 ist lion."},
+        {type:"choose",grid:true,theme:"🦁 Listen",teal:true,prompt:"Which picture?",say:"tiger",
+          options:[{t:"🦁",s:"lion"},{t:"🐯",s:"tiger"},{t:"🐘",s:"elephant"}],correct:1,aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! 🐯 ist tiger."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🦁 Listen",teal:true,prompt:"Which picture?",say:"elephant",
+          options:[{t:"🐘",s:"elephant"},{t:"🦛",s:"hippo"},{t:"🦒",s:"giraffe"}],correct:0,aff:"Volltreffer! 🐘⚽",wrong:"💛 Fast! 🐘 ist elephant."},
+        {type:"choose",grid:true,theme:"🦁 Listen",teal:true,prompt:"Which picture?",say:"hippo",
+          options:[{t:"🐘",s:"elephant"},{t:"🦛",s:"hippo"},{t:"🦒",s:"giraffe"}],correct:1,aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! 🦛 ist hippo."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🦁 Listen",teal:true,prompt:"Which picture?",say:"giraffe",
+          options:[{t:"🦒",s:"giraffe"},{t:"🦓",s:"zebra"},{t:"🐘",s:"elephant"}],correct:0,aff:"Pole Position! 🏁",wrong:"💛 Fast! 🦒 ist giraffe."},
+        {type:"choose",grid:true,theme:"🦁 Listen",teal:true,prompt:"Which picture?",say:"zebra",
+          options:[{t:"🦒",s:"giraffe"},{t:"🦓",s:"zebra"},{t:"🐘",s:"elephant"}],correct:1,aff:"Zielgerade! 🏁",wrong:"💛 Fast! 🦓 ist zebra."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🦁 Listen",teal:true,prompt:"Which picture?",say:"monkey",
+          options:[{t:"🐒",s:"monkey"},{t:"🦜",s:"parrot"},{t:"🐧",s:"penguin"}],correct:0,aff:"Stark! 🐒⚽",wrong:"💛 Fast! 🐒 ist monkey."},
+        {type:"choose",grid:true,theme:"🦁 Listen",teal:true,prompt:"Which picture?",say:"parrot",
+          options:[{t:"🐒",s:"monkey"},{t:"🦜",s:"parrot"},{t:"🐧",s:"penguin"}],correct:1,aff:"Super Dribbling! ⚽",wrong:"💛 Fast! 🦜 ist parrot."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🦁 Listen",teal:true,prompt:"Which picture?",say:"crocodile",
+          options:[{t:"🐊",s:"crocodile"},{t:"🐍",s:"snake"},{t:"🐢",s:"turtle"}],correct:0,aff:"Schnell wie ein Rennwagen! 🏎️💨",wrong:"💛 Fast! 🐊 ist crocodile."},
+        {type:"choose",grid:true,theme:"🦁 Listen",teal:true,prompt:"Which picture?",say:"snake",
+          options:[{t:"🐊",s:"crocodile"},{t:"🐍",s:"snake"},{t:"🐢",s:"turtle"}],correct:1,aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! 🐍 ist snake."}
+      ]
     ]
   },
 
-  /* 1 — Match word <-> emoji */
+  /* 1 — Match word <-> emoji
+     Each slot has 2 variants drawing on the unit's full animal vocabulary. */
   {
     title:"Match it",
     rule:`<div class="rule-head"><span class="rule-title">🔗 Match it</span><button class="speak-mini" data-say="Tap a word, then tap its picture.">🔊 Rule</button></div>
           <p>Tap a <b>word</b>, then tap its <b>picture</b>.</p><p>Tap 🔊 on a word to hear it.</p>`,
-    questions:[
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["lion","🦁"],["tiger","🐯"],["elephant","🐘"],["giraffe","🦒"]],
-        aff:"Alle Paare! Mannschaftsleistung! ⚽🏆",wrong:"💛 Fast! Tippe das Wort, dann das Bild."},
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["monkey","🐒"],["parrot","🦜"],["penguin","🐧"],["zebra","🦓"]],
-        aff:"Perfekt verbunden! 🏁",wrong:"💛 Fast! Probier es in Ruhe."},
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["eagle","🦅"],["kangaroo","🦘"],["shark","🦈"],["turtle","🐢"]],
-        aff:"Geschafft — Doppelpass sitzt! ⚽",wrong:"💛 Fast! Schau nochmal hin."}
+    pool:[
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["lion","🦁"],["tiger","🐯"],["elephant","🐘"],["giraffe","🦒"]],
+          aff:"Alle Paare! Mannschaftsleistung! ⚽🏆",wrong:"💛 Fast! Tippe das Wort, dann das Bild."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["hippo","🦛"],["crocodile","🐊"],["snake","🐍"],["bear","🐻"]],
+          aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! Tippe das Wort, dann das Bild."}
+      ],
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["monkey","🐒"],["parrot","🦜"],["penguin","🐧"],["zebra","🦓"]],
+          aff:"Perfekt verbunden! 🏁",wrong:"💛 Fast! Probier es in Ruhe."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["lion","🦁"],["tiger","🐯"],["elephant","🐘"],["giraffe","🦒"]],
+          aff:"Zielgerade! 🏁",wrong:"💛 Fast! Probier es in Ruhe."}
+      ],
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["eagle","🦅"],["kangaroo","🦘"],["shark","🦈"],["turtle","🐢"]],
+          aff:"Geschafft — Doppelpass sitzt! ⚽",wrong:"💛 Fast! Schau nochmal hin."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["monkey","🐒"],["parrot","🦜"],["penguin","🐧"],["zebra","🦓"]],
+          aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Schau nochmal hin."}
+      ]
     ]
   },
 
-  /* 2 — Comparatives (choose text) */
+  /* 2 — Comparatives (choose text)
+     Each slot has 2 variants targeting a different adjective. */
   {
     title:"Comparatives",
     rule:`<div class="rule-head"><span class="rule-title">📏 Comparatives</span><button class="speak-mini" data-say="Listen, then tap what comes next.">🔊 Rule</button></div>
           <p>slow → slow<b>er</b> → slow<b>est</b>. Tap <b>🔊 Listen</b>, dann tippe, was als Nächstes kommt.</p>`,
-    questions:[
-      {type:"choose",theme:"🐢 slow",teal:true,show:"🐢",prompt:"slow, slower, ...?",say:"slowest",
-        options:["slowest","slowier","more slow"],correct:0,aff:"Tor! ⚽",wrong:"💛 Fast! slow → slower → slowest."},
-      {type:"choose",theme:"🐍 long",teal:true,show:"🐍",prompt:"long, longer, ...?",say:"longest",
-        options:["longest","longiest","more long"],correct:0,aff:"Volltreffer! ⚽",wrong:"💛 Fast! long → longer → longest."},
-      {type:"choose",theme:"🦁 dangerous",teal:true,show:"🦁",prompt:"dangerous, more dangerous, ...?",say:"most dangerous",
-        options:["dangerousest","most dangerous","more dangerouser"],correct:1,aff:"Pole Position! 🏎️",wrong:"💛 Fast! dangerous → more dangerous → most dangerous."},
-      {type:"choose",theme:"🐜 small",teal:true,show:"🐜",prompt:"small, smaller, ...?",say:"smallest",
-        options:["smallest","more small","smallier"],correct:0,aff:"Sauber! ⚽",wrong:"💛 Fast! small → smaller → smallest."},
-      {type:"choose",theme:"🐘 big",teal:true,show:"🐘",prompt:"big, bigger, ...?",say:"biggest",
-        options:["biggest","bigier","more big"],correct:0,aff:"Stark! ⚽",wrong:"💛 Fast! big → bigger → biggest."}
+    pool:[
+      [
+        {type:"choose",theme:"🐢 slow",teal:true,show:"🐢",prompt:"slow, slower, ...?",say:"slowest",
+          options:["slowest","slowier","more slow"],correct:0,aff:"Tor! ⚽",wrong:"💛 Fast! slow → slower → slowest."},
+        {type:"choose",theme:"🐆 fast",teal:true,show:"🐆",prompt:"fast, faster, ...?",say:"fastest",
+          options:["fastest","fastier","more fast"],correct:0,aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! fast → faster → fastest."}
+      ],
+      [
+        {type:"choose",theme:"🐍 long",teal:true,show:"🐍",prompt:"long, longer, ...?",say:"longest",
+          options:["longest","longiest","more long"],correct:0,aff:"Volltreffer! ⚽",wrong:"💛 Fast! long → longer → longest."},
+        {type:"choose",theme:"🦒 tall",teal:true,show:"🦒",prompt:"tall, taller, ...?",say:"tallest",
+          options:["tallest","talliest","more tall"],correct:0,aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! tall → taller → tallest."}
+      ],
+      [
+        {type:"choose",theme:"🦁 dangerous",teal:true,show:"🦁",prompt:"dangerous, more dangerous, ...?",say:"most dangerous",
+          options:["dangerousest","most dangerous","more dangerouser"],correct:1,aff:"Pole Position! 🏎️",wrong:"💛 Fast! dangerous → more dangerous → most dangerous."},
+        {type:"choose",theme:"🦚 beautiful",teal:true,show:"🦚",prompt:"beautiful, more beautiful, ...?",say:"most beautiful",
+          options:["beautifulest","most beautiful","more beautifuler"],correct:1,aff:"Zielgerade! 🏁",wrong:"💛 Fast! beautiful → more beautiful → most beautiful."}
+      ],
+      [
+        {type:"choose",theme:"🐜 small",teal:true,show:"🐜",prompt:"small, smaller, ...?",say:"smallest",
+          options:["smallest","more small","smallier"],correct:0,aff:"Sauber! ⚽",wrong:"💛 Fast! small → smaller → smallest."},
+        {type:"choose",theme:"🐁 short",teal:true,show:"🐁",prompt:"short, shorter, ...?",say:"shortest",
+          options:["shortest","shortiest","more short"],correct:0,aff:"Super Dribbling! ⚽",wrong:"💛 Fast! short → shorter → shortest."}
+      ],
+      [
+        {type:"choose",theme:"🐘 big",teal:true,show:"🐘",prompt:"big, bigger, ...?",say:"biggest",
+          options:["biggest","bigier","more big"],correct:0,aff:"Stark! ⚽",wrong:"💛 Fast! big → bigger → biggest."},
+        {type:"choose",theme:"🦍 strong",teal:true,show:"🦍",prompt:"strong, stronger, ...?",say:"strongest",
+          options:["strongest","strongier","more strong"],correct:0,aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! strong → stronger → strongest."}
+      ]
     ]
   },
 
-  /* 3 — Right or wrong? (swipe) */
+  /* 3 — Right or wrong? (swipe)
+     Each slot has 2 variants with a different animal fact. */
   {
     title:"Right or wrong?",
     rule:`<div class="rule-head"><span class="rule-title">👋 Right or wrong?</span><button class="speak-mini" data-say="Look and listen. Tap yes if it is right. Tap no if it is wrong.">🔊 Rule</button></div>
           <p>Look at the picture and listen.</p><p>Tap ✅ <b>yes</b> if it is right. Tap ❌ <b>no</b> if it is wrong.</p>`,
-    questions:[
-      {type:"swipe",theme:"🦅 Check",emoji:"🦅",text:"An eagle can fly.",answer:true,aff:"Erkannt! Gutes Auge! 🏎️",wrong:"💛 Fast! An eagle can fly — richtig."},
-      {type:"swipe",theme:"🐢 Check",emoji:"🐢",text:"A turtle is fast.",answer:false,aff:"Richtig! Sicher wie ein Elfmeter! ⚽",wrong:"💛 Fast! A turtle is slow, nicht fast."},
-      {type:"swipe",theme:"🦁 Check",emoji:"🦁",text:"A lion eats meat.",answer:true,aff:"Tor! Genau! ⚽",wrong:"💛 Fast! A lion eats meat — richtig."},
-      {type:"swipe",theme:"🐘 Check",emoji:"🐘",text:"An elephant is small.",answer:false,aff:"Stark gebremst und richtig! 🏁",wrong:"💛 Fast! An elephant is big, nicht small."},
-      {type:"swipe",theme:"🐍 Check",emoji:"🐍",text:"A snake can't walk.",answer:true,aff:"Sauber! ⚽",wrong:"💛 Fast! A snake can't walk — richtig."}
+    pool:[
+      [
+        {type:"swipe",theme:"🦅 Check",emoji:"🦅",text:"An eagle can fly.",answer:true,aff:"Erkannt! Gutes Auge! 🏎️",wrong:"💛 Fast! An eagle can fly — richtig."},
+        {type:"swipe",theme:"🐆 Check",emoji:"🐆",text:"A cheetah is fast.",answer:true,aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! A cheetah is fast — richtig."}
+      ],
+      [
+        {type:"swipe",theme:"🐢 Check",emoji:"🐢",text:"A turtle is fast.",answer:false,aff:"Richtig! Sicher wie ein Elfmeter! ⚽",wrong:"💛 Fast! A turtle is slow, nicht fast."},
+        {type:"swipe",theme:"🐌 Check",emoji:"🐌",text:"A snail is fast.",answer:false,aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! A snail is slow, nicht fast."}
+      ],
+      [
+        {type:"swipe",theme:"🦁 Check",emoji:"🦁",text:"A lion eats meat.",answer:true,aff:"Tor! Genau! ⚽",wrong:"💛 Fast! A lion eats meat — richtig."},
+        {type:"swipe",theme:"🐘 Check",emoji:"🐘",text:"An elephant eats meat.",answer:false,aff:"Zielgerade! 🏁",wrong:"💛 Fast! An elephant eats plants, nicht meat."}
+      ],
+      [
+        {type:"swipe",theme:"🐘 Check",emoji:"🐘",text:"An elephant is small.",answer:false,aff:"Stark gebremst und richtig! 🏁",wrong:"💛 Fast! An elephant is big, nicht small."},
+        {type:"swipe",theme:"🐁 Check",emoji:"🐁",text:"A mouse is small.",answer:true,aff:"Super Dribbling! ⚽",wrong:"💛 Fast! A mouse is small — richtig."}
+      ],
+      [
+        {type:"swipe",theme:"🐍 Check",emoji:"🐍",text:"A snake can't walk.",answer:true,aff:"Sauber! ⚽",wrong:"💛 Fast! A snake can't walk — richtig."},
+        {type:"swipe",theme:"🦍 Check",emoji:"🦍",text:"A gorilla is strong.",answer:true,aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! A gorilla is strong — richtig."}
+      ]
     ]
   },
 
-  /* 4 — Build the sentence (puzzle) */
+  /* 4 — Build the sentence (puzzle)
+     Each slot has 2 variants reusing vocabulary from the games above. */
   {
     title:"Build the sentence",
     rule:`<div class="rule-head"><span class="rule-title">🧩 Build the sentence</span><button class="speak-mini" data-say="Tap the words in the right order.">🔊 Rule</button></div>
           <p>Tap the words in the right order.</p><p>Tap 🔊 to hear the whole sentence.</p>`,
-    questions:[
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["It's","a","lion."],aff:"Satz steht! ⚽",wrong:"💛 Fast! Beginne mit \"It's\"."},
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["My","animal","eats","grass."],aff:"Frage gebaut wie ein Profi! 🏎️",wrong:"💛 Fast! Beginne mit \"My\"."},
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["An","elephant","is","big","and","strong."],aff:"Perfekt! 🏆",wrong:"💛 Fast! Beginne mit \"An\"."}
+    pool:[
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["It's","a","lion."],aff:"Satz steht! ⚽",wrong:"💛 Fast! Beginne mit \"It's\"."},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["It's","a","tiger."],aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! Beginne mit \"It's\"."}
+      ],
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["My","animal","eats","grass."],aff:"Frage gebaut wie ein Profi! 🏎️",wrong:"💛 Fast! Beginne mit \"My\"."},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["My","animal","eats","meat."],aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Beginne mit \"My\"."}
+      ],
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["An","elephant","is","big","and","strong."],aff:"Perfekt! 🏆",wrong:"💛 Fast! Beginne mit \"An\"."},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["A","cheetah","is","fast","and","strong."],aff:"Zielgerade! 🏁",wrong:"💛 Fast! Beginne mit \"A\"."}
+      ]
     ]
   }
 ];
 
+/* ---------- variant picking (no-repeat-on-replay) ---------- */
+function getLastVariants(){ try{ return JSON.parse(localStorage.getItem("comeIn4.lastVariant")||"{}"); }catch(e){ return {}; } }
+function setLastVariants(m){ try{ localStorage.setItem("comeIn4.lastVariant", JSON.stringify(m)); }catch(e){} }
+function pickVariant(topicIdx,slotIdx,variants){
+  if(variants.length===1) return variants[0];
+  var map=getLastVariants(), key=UNIT_KEY+"."+topicIdx+"."+slotIdx, last=map[key];
+  var choices=[]; for(var i=0;i<variants.length;i++){ if(i!==last) choices.push(i); }
+  var pick=choices[Math.floor(Math.random()*choices.length)];
+  map[key]=pick; setLastVariants(map);
+  return variants[pick];
+}
+function buildQuestions(topicIdx){
+  return topics[topicIdx].pool.map(function(slot,slotIdx){ return pickVariant(topicIdx,slotIdx,slot); });
+}
+
+
 /* =========================================================
    SHARED ENGINE (generic + grid + swatch + speed + read-along + progress)
    ========================================================= */
-var curTopic=0, curQ=0, answered=false;
+var curTopic=0, curQ=0, answered=false, sessionQuestions=[];
 function $(id){return document.getElementById(id);}
 
 function startTopic(i){
-  curTopic=i; curQ=0;
+  curTopic=i; curQ=0; sessionQuestions=buildQuestions(i);
   $("menu").classList.add("hidden"); $("done").classList.add("hidden"); $("quiz").classList.remove("hidden");
   $("screenTitle").textContent=topics[i].title;
   $("ruleSlot").innerHTML='<div class="rule">'+topics[i].rule+'</div>';
@@ -307,8 +404,8 @@ function setBar(p){ $("progressFill").style.width=p+"%"; }
 
 function loadQuestion(){
   answered=false; clearReading();
-  var t=topics[curTopic], q=t.questions[curQ];
-  setBar(Math.round(curQ/t.questions.length*100));
+  var q=sessionQuestions[curQ];
+  setBar(Math.round(curQ/sessionQuestions.length*100));
   $("feedback").className="feedback"; $("feedback").innerHTML="";
   $("nextBtn").classList.add("hidden"); $("checkBtn").classList.remove("hidden"); $("checkBtn").disabled=false;
   var html='<span class="theme-tag '+(q.teal?"teal":"")+'">'+(q.theme||"")+'</span>';
@@ -446,7 +543,7 @@ function syncBank(){
   });
 }
 function checkAnswer(){
-  var q=topics[curTopic].questions[curQ];
+  var q=sessionQuestions[curQ];
   if(q.type!=="puzzle" || answered) return;
   if(puzBuild.join(" ")===q.words.join(" ")){ answered=true; win(q.aff,""); speak(q.words.join(" ")); showNext(); }
   else{ soft(q.wrong,""); }
@@ -457,11 +554,11 @@ function win(msg,rule){ var f=$("feedback"); f.className="feedback good show"; f
 function soft(msg,rule){ var f=$("feedback"); f.className="feedback soft show"; f.innerHTML=msg+(rule?'<div class="fb-rule">'+rule+'</div>':""); }
 function showNext(){ $("checkBtn").classList.add("hidden"); $("nextBtn").classList.remove("hidden"); }
 function nextQuestion(){
-  var t=topics[curTopic]; curQ++;
-  if(curQ>=t.questions.length){
+  curQ++;
+  if(curQ>=sessionQuestions.length){
     setBar(100); markGameDone(curTopic);
     $("quiz").classList.add("hidden"); $("done").classList.remove("hidden");
-    $("doneMsg").textContent="Super! You finished "+t.title+"! 🏆"; speak("Well done!"); burst(); return;
+    $("doneMsg").textContent="Super! You finished "+topics[curTopic].title+"! 🏆"; speak("Well done!"); burst(); return;
   }
   loadQuestion();
 }

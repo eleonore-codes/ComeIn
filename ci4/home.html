@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Come In 4 — At home</title>
+<title>English 4 — At home</title>
 <style>
   :root{
     --navy:#1a2a4a;--navy-2:#23365c;--teal:#1fb6c4;--teal-soft:#7fd9e2;
@@ -108,7 +108,7 @@
 <body>
 <div class="wrap">
   <header>
-    <p class="unit-name">Come In 4</p>
+    <p class="unit-name">English 4</p>
     <div class="hdr-row">
       <h1 id="screenTitle">🏠 At home</h1>
       <button class="speedbtn" id="speedBtn" onclick="toggleRate()">🐇 normal</button>
@@ -203,99 +203,201 @@ function paintMenuDone(){
 var UNIT_NAME="At home";
 
 var topics=[
-  /* 0 — Listen & tap (grid emoji) — Furniture */
+  /* 0 — Listen & tap (grid emoji) — Furniture
+     Each slot has 2 variants (same picture trio, different target picture). */
   {
     title:"Listen & tap",
     rule:`<div class="rule-head"><span class="rule-title">🏠 Listen &amp; tap</span><button class="speak-mini" data-say="Listen, then tap the right picture.">🔊 Rule</button></div>
           <p>Tap <b>🔊 Listen</b>, then tap the right picture.</p>`,
-    questions:[
-      {type:"choose",grid:true,theme:"🏠 Listen",teal:true,prompt:"Which picture?",say:"bed",
-        options:[{t:"🛏️",s:"bed"},{t:"🪑",s:"chair"},{t:"🛋️",s:"sofa"}],correct:0,aff:"Tooor! Genau richtig! ⚽",wrong:"💛 Fast! 🛏️ ist bed."},
-      {type:"choose",grid:true,theme:"🏠 Listen",teal:true,prompt:"Which picture?",say:"window",
-        options:[{t:"🪟",s:"window"},{t:"🚪",s:"door"},{t:"💡",s:"lamp"}],correct:0,aff:"Volltreffer! 🪟⚽",wrong:"💛 Fast! 🪟 ist window."},
-      {type:"choose",grid:true,theme:"🏠 Listen",teal:true,prompt:"Which picture?",say:"toilet",
-        options:[{t:"🚽",s:"toilet"},{t:"🚿",s:"shower"},{t:"🚰",s:"washbasin"}],correct:0,aff:"Pole Position! 🏁",wrong:"💛 Fast! 🚽 ist toilet."},
-      {type:"choose",grid:true,theme:"🏠 Listen",teal:true,prompt:"Which picture?",say:"kitchen",
-        options:[{t:"🍳",s:"kitchen"},{t:"🛁",s:"bathroom"},{t:"🌳",s:"garden"}],correct:0,aff:"Stark! ⚽",wrong:"💛 Fast! 🍳 ist kitchen."},
-      {type:"choose",grid:true,theme:"🏠 Listen",teal:true,prompt:"Which picture?",say:"stairs",
-        options:[{t:"🪜",s:"stairs"},{t:"🪟",s:"window"},{t:"🚪",s:"door"}],correct:0,aff:"Schnell wie ein Rennwagen! 🏎️💨",wrong:"💛 Fast! 🪜 ist stairs."}
+    pool:[
+      [
+        {type:"choose",grid:true,theme:"🏠 Listen",teal:true,prompt:"Which picture?",say:"bed",
+          options:[{t:"🛏️",s:"bed"},{t:"🪑",s:"chair"},{t:"🛋️",s:"sofa"}],correct:0,aff:"Tooor! Genau richtig! ⚽",wrong:"💛 Fast! 🛏️ ist bed."},
+        {type:"choose",grid:true,theme:"🏠 Listen",teal:true,prompt:"Which picture?",say:"chair",
+          options:[{t:"🛏️",s:"bed"},{t:"🪑",s:"chair"},{t:"🛋️",s:"sofa"}],correct:1,aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! 🪑 ist chair."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🏠 Listen",teal:true,prompt:"Which picture?",say:"window",
+          options:[{t:"🪟",s:"window"},{t:"🚪",s:"door"},{t:"💡",s:"lamp"}],correct:0,aff:"Volltreffer! 🪟⚽",wrong:"💛 Fast! 🪟 ist window."},
+        {type:"choose",grid:true,theme:"🏠 Listen",teal:true,prompt:"Which picture?",say:"lamp",
+          options:[{t:"🪟",s:"window"},{t:"🚪",s:"door"},{t:"💡",s:"lamp"}],correct:2,aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! 💡 ist lamp."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🏠 Listen",teal:true,prompt:"Which picture?",say:"toilet",
+          options:[{t:"🚽",s:"toilet"},{t:"🚿",s:"shower"},{t:"🚰",s:"washbasin"}],correct:0,aff:"Pole Position! 🏁",wrong:"💛 Fast! 🚽 ist toilet."},
+        {type:"choose",grid:true,theme:"🏠 Listen",teal:true,prompt:"Which picture?",say:"shower",
+          options:[{t:"🚽",s:"toilet"},{t:"🚿",s:"shower"},{t:"🚰",s:"washbasin"}],correct:1,aff:"Zielgerade! 🏁",wrong:"💛 Fast! 🚿 ist shower."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🏠 Listen",teal:true,prompt:"Which picture?",say:"kitchen",
+          options:[{t:"🍳",s:"kitchen"},{t:"🛁",s:"bathroom"},{t:"🌳",s:"garden"}],correct:0,aff:"Stark! ⚽",wrong:"💛 Fast! 🍳 ist kitchen."},
+        {type:"choose",grid:true,theme:"🏠 Listen",teal:true,prompt:"Which picture?",say:"bathroom",
+          options:[{t:"🍳",s:"kitchen"},{t:"🛁",s:"bathroom"},{t:"🌳",s:"garden"}],correct:1,aff:"Super Dribbling! ⚽",wrong:"💛 Fast! 🛁 ist bathroom."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🏠 Listen",teal:true,prompt:"Which picture?",say:"stairs",
+          options:[{t:"🪜",s:"stairs"},{t:"🪟",s:"window"},{t:"🚪",s:"door"}],correct:0,aff:"Schnell wie ein Rennwagen! 🏎️💨",wrong:"💛 Fast! 🪜 ist stairs."},
+        {type:"choose",grid:true,theme:"🏠 Listen",teal:true,prompt:"Which picture?",say:"door",
+          options:[{t:"🪜",s:"stairs"},{t:"🪟",s:"window"},{t:"🚪",s:"door"}],correct:2,aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! 🚪 ist door."}
+      ]
     ]
   },
 
-  /* 1 — Match word <-> emoji */
+  /* 1 — Match word <-> emoji
+     Each slot has 2 variants drawing on the unit's full home vocabulary. */
   {
     title:"Match it",
     rule:`<div class="rule-head"><span class="rule-title">🔗 Match it</span><button class="speak-mini" data-say="Tap a word, then tap its picture.">🔊 Rule</button></div>
           <p>Tap a <b>word</b>, then tap its <b>picture</b>.</p><p>Tap 🔊 on a word to hear it.</p>`,
-    questions:[
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["bed","🛏️"],["chair","🪑"],["sofa","🛋️"],["TV","📺"]],
-        aff:"Alle Paare! Mannschaftsleistung! ⚽🏆",wrong:"💛 Fast! Tippe das Wort, dann das Bild."},
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["door","🚪"],["lamp","💡"],["window","🪟"],["shower","🚿"]],
-        aff:"Perfekt verbunden! 🏁",wrong:"💛 Fast! Probier es in Ruhe."},
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["bathroom","🛁"],["kitchen","🍳"],["garden","🌳"],["stairs","🪜"]],
-        aff:"Geschafft — Doppelpass sitzt! ⚽",wrong:"💛 Fast! Schau nochmal hin."}
+    pool:[
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["bed","🛏️"],["chair","🪑"],["sofa","🛋️"],["TV","📺"]],
+          aff:"Alle Paare! Mannschaftsleistung! ⚽🏆",wrong:"💛 Fast! Tippe das Wort, dann das Bild."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["toilet","🚽"],["washbasin","🚰"],["mirror","🪞"],["plant","🪴"]],
+          aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! Tippe das Wort, dann das Bild."}
+      ],
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["door","🚪"],["lamp","💡"],["window","🪟"],["shower","🚿"]],
+          aff:"Perfekt verbunden! 🏁",wrong:"💛 Fast! Probier es in Ruhe."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["bed","🛏️"],["chair","🪑"],["sofa","🛋️"],["TV","📺"]],
+          aff:"Zielgerade! 🏁",wrong:"💛 Fast! Probier es in Ruhe."}
+      ],
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["bathroom","🛁"],["kitchen","🍳"],["garden","🌳"],["stairs","🪜"]],
+          aff:"Geschafft — Doppelpass sitzt! ⚽",wrong:"💛 Fast! Schau nochmal hin."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["door","🚪"],["lamp","💡"],["window","🪟"],["shower","🚿"]],
+          aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Schau nochmal hin."}
+      ]
     ]
   },
 
-  /* 2 — A or an? (choose text) */
+  /* 2 — A or an? (choose text)
+     Each slot has 2 variants targeting a different noun. */
   {
     title:"A or an?",
     rule:`<div class="rule-head"><span class="rule-title">➕ A or an?</span><button class="speak-mini" data-say="Consonant, then a. Vowel, then an. Listen, then tap the right one.">🔊 Rule</button></div>
           <p>Konsonant → <b>a</b>. Vokal (a,e,i,o,u) → <b>an</b>. Tap <b>🔊 Listen</b>, dann tippe.</p>`,
-    questions:[
-      {type:"choose",theme:"➕ table",teal:true,prompt:"a or an?",say:"a table",
-        options:["a table","an table"],correct:0,aff:"Tor! ⚽",wrong:"💛 Fast! table beginnt mit Konsonant → a table."},
-      {type:"choose",theme:"➕ attic",teal:true,prompt:"a or an?",say:"an attic",
-        options:["a attic","an attic"],correct:1,aff:"Volltreffer! ⚽",wrong:"💛 Fast! attic beginnt mit Vokal → an attic."},
-      {type:"choose",theme:"➕ wardrobe",teal:true,prompt:"a or an?",say:"a wardrobe",
-        options:["a wardrobe","an wardrobe"],correct:0,aff:"Pole Position! 🏎️",wrong:"💛 Fast! wardrobe beginnt mit Konsonant → a wardrobe."},
-      {type:"choose",theme:"➕ umbrella",teal:true,prompt:"a or an?",say:"an umbrella",
-        options:["a umbrella","an umbrella"],correct:1,aff:"Sauber! ⚽",wrong:"💛 Fast! umbrella beginnt mit Vokal → an umbrella."},
-      {type:"choose",theme:"➕ floor",teal:true,prompt:"a or an?",say:"a floor",
-        options:["a floor","an floor"],correct:0,aff:"Stark! ⚽",wrong:"💛 Fast! floor beginnt mit Konsonant → a floor."}
+    pool:[
+      [
+        {type:"choose",theme:"➕ table",teal:true,prompt:"a or an?",say:"a table",
+          options:["a table","an table"],correct:0,aff:"Tor! ⚽",wrong:"💛 Fast! table beginnt mit Konsonant → a table."},
+        {type:"choose",theme:"➕ oven",teal:true,prompt:"a or an?",say:"an oven",
+          options:["a oven","an oven"],correct:1,aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! oven beginnt mit Vokal → an oven."}
+      ],
+      [
+        {type:"choose",theme:"➕ attic",teal:true,prompt:"a or an?",say:"an attic",
+          options:["a attic","an attic"],correct:1,aff:"Volltreffer! ⚽",wrong:"💛 Fast! attic beginnt mit Vokal → an attic."},
+        {type:"choose",theme:"➕ bedroom",teal:true,prompt:"a or an?",say:"a bedroom",
+          options:["a bedroom","an bedroom"],correct:0,aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! bedroom beginnt mit Konsonant → a bedroom."}
+      ],
+      [
+        {type:"choose",theme:"➕ wardrobe",teal:true,prompt:"a or an?",say:"a wardrobe",
+          options:["a wardrobe","an wardrobe"],correct:0,aff:"Pole Position! 🏎️",wrong:"💛 Fast! wardrobe beginnt mit Konsonant → a wardrobe."},
+        {type:"choose",theme:"➕ armchair",teal:true,prompt:"a or an?",say:"an armchair",
+          options:["a armchair","an armchair"],correct:1,aff:"Zielgerade! 🏁",wrong:"💛 Fast! armchair beginnt mit Vokal → an armchair."}
+      ],
+      [
+        {type:"choose",theme:"➕ umbrella",teal:true,prompt:"a or an?",say:"an umbrella",
+          options:["a umbrella","an umbrella"],correct:1,aff:"Sauber! ⚽",wrong:"💛 Fast! umbrella beginnt mit Vokal → an umbrella."},
+        {type:"choose",theme:"➕ sofa",teal:true,prompt:"a or an?",say:"a sofa",
+          options:["a sofa","an sofa"],correct:0,aff:"Super Dribbling! ⚽",wrong:"💛 Fast! sofa beginnt mit Konsonant → a sofa."}
+      ],
+      [
+        {type:"choose",theme:"➕ floor",teal:true,prompt:"a or an?",say:"a floor",
+          options:["a floor","an floor"],correct:0,aff:"Stark! ⚽",wrong:"💛 Fast! floor beginnt mit Konsonant → a floor."},
+        {type:"choose",theme:"➕ iron",teal:true,prompt:"a or an?",say:"an iron",
+          options:["a iron","an iron"],correct:1,aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! iron beginnt mit Vokal → an iron."}
+      ]
     ]
   },
 
-  /* 3 — Where is it? (choose, prepositions) */
+  /* 3 — Where is it? (choose, prepositions)
+     Each slot has 2 variants with a different object/place pair. */
   {
     title:"Where is it?",
     rule:`<div class="rule-head"><span class="rule-title">🧭 Where is it?</span><button class="speak-mini" data-say="Listen, then tap the right place.">🔊 Rule</button></div>
           <p>Tap <b>🔊 Listen</b>, then tap the right place.</p>`,
-    questions:[
-      {type:"choose",theme:"🛋️🪟",teal:true,show:"🛋️ 🪟",prompt:"Where's the sofa?",say:"The sofa is next to the window.",
-        options:["next to the window","under the window","behind the window"],correct:0,aff:"Tor! ⚽",wrong:"💛 Fast! Es war: next to the window."},
-      {type:"choose",theme:"💡🪑",teal:true,show:"💡 🪑",prompt:"Where's the lamp?",say:"The lamp is on the table.",
-        options:["under the table","on the table","in the table"],correct:1,aff:"Volltreffer! ⚽",wrong:"💛 Fast! Es war: on the table."},
-      {type:"choose",theme:"🐈🛏️",teal:true,show:"🐈 🛏️",prompt:"Where's the cat?",say:"The cat is under the bed.",
-        options:["under the bed","on the bed","next to the bed"],correct:0,aff:"Pole Position! 🏎️",wrong:"💛 Fast! Es war: under the bed."},
-      {type:"choose",theme:"📺🛋️",teal:true,show:"📺 🛋️",prompt:"Where's the TV?",say:"The TV is in front of the sofa.",
-        options:["behind the sofa","next to the sofa","in front of the sofa"],correct:2,aff:"Sauber! ⚽",wrong:"💛 Fast! Es war: in front of the sofa."},
-      {type:"choose",theme:"🚪🪟",teal:true,show:"🚪 🪟",prompt:"Where's the door?",say:"The door is behind the window.",
-        options:["behind the window","on the window","under the window"],correct:0,aff:"Stark! ⚽",wrong:"💛 Fast! Es war: behind the window."}
+    pool:[
+      [
+        {type:"choose",theme:"🛋️🪟",teal:true,show:"🛋️ 🪟",prompt:"Where's the sofa?",say:"The sofa is next to the window.",
+          options:["next to the window","under the window","behind the window"],correct:0,aff:"Tor! ⚽",wrong:"💛 Fast! Es war: next to the window."},
+        {type:"choose",theme:"🪑🚪",teal:true,show:"🪑 🚪",prompt:"Where's the chair?",say:"The chair is next to the door.",
+          options:["next to the door","under the door","in front of the door"],correct:0,aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! Es war: next to the door."}
+      ],
+      [
+        {type:"choose",theme:"💡🪑",teal:true,show:"💡 🪑",prompt:"Where's the lamp?",say:"The lamp is on the table.",
+          options:["under the table","on the table","in the table"],correct:1,aff:"Volltreffer! ⚽",wrong:"💛 Fast! Es war: on the table."},
+        {type:"choose",theme:"📺🪑",teal:true,show:"📺 🪑",prompt:"Where's the TV?",say:"The TV is on the chair.",
+          options:["under the chair","on the chair","in the chair"],correct:1,aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! Es war: on the chair."}
+      ],
+      [
+        {type:"choose",theme:"🐈🛏️",teal:true,show:"🐈 🛏️",prompt:"Where's the cat?",say:"The cat is under the bed.",
+          options:["under the bed","on the bed","next to the bed"],correct:0,aff:"Pole Position! 🏎️",wrong:"💛 Fast! Es war: under the bed."},
+        {type:"choose",theme:"🐕🛋️",teal:true,show:"🐕 🛋️",prompt:"Where's the dog?",say:"The dog is on the sofa.",
+          options:["under the sofa","on the sofa","next to the sofa"],correct:1,aff:"Zielgerade! 🏁",wrong:"💛 Fast! Es war: on the sofa."}
+      ],
+      [
+        {type:"choose",theme:"📺🛋️",teal:true,show:"📺 🛋️",prompt:"Where's the TV?",say:"The TV is in front of the sofa.",
+          options:["behind the sofa","next to the sofa","in front of the sofa"],correct:2,aff:"Sauber! ⚽",wrong:"💛 Fast! Es war: in front of the sofa."},
+        {type:"choose",theme:"💡🛏️",teal:true,show:"💡 🛏️",prompt:"Where's the lamp?",say:"The lamp is next to the bed.",
+          options:["behind the bed","under the bed","next to the bed"],correct:2,aff:"Super Dribbling! ⚽",wrong:"💛 Fast! Es war: next to the bed."}
+      ],
+      [
+        {type:"choose",theme:"🚪🪟",teal:true,show:"🚪 🪟",prompt:"Where's the door?",say:"The door is behind the window.",
+          options:["behind the window","on the window","under the window"],correct:0,aff:"Stark! ⚽",wrong:"💛 Fast! Es war: behind the window."},
+        {type:"choose",theme:"🪞🛁",teal:true,show:"🪞 🛁",prompt:"Where's the mirror?",say:"The mirror is in the bathroom.",
+          options:["under the bathroom","behind the bathroom","in the bathroom"],correct:2,aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Es war: in the bathroom."}
+      ]
     ]
   },
 
-  /* 4 — Build the sentence (puzzle) */
+  /* 4 — Build the sentence (puzzle)
+     Each slot has 2 variants reusing vocabulary from the games above. */
   {
     title:"Build the sentence",
     rule:`<div class="rule-head"><span class="rule-title">🧩 Build the sentence</span><button class="speak-mini" data-say="Tap the words in the right order.">🔊 Rule</button></div>
           <p>Tap the words in the right order.</p><p>Tap 🔊 to hear the whole sentence.</p>`,
-    questions:[
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["What's","in","your","room?"],aff:"Satz steht! ⚽",wrong:"💛 Fast! Beginne mit \"What's\"."},
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["There's","a","lamp","on","the","table."],aff:"Frage gebaut wie ein Profi! 🏎️",wrong:"💛 Fast! Beginne mit \"There's\"."},
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["The","cat","is","under","the","bed."],aff:"Perfekt! 🏆",wrong:"💛 Fast! Beginne mit \"The\"."}
+    pool:[
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["What's","in","your","room?"],aff:"Satz steht! ⚽",wrong:"💛 Fast! Beginne mit \"What's\"."},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["What's","under","the","bed?"],aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! Beginne mit \"What's\"."}
+      ],
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["There's","a","lamp","on","the","table."],aff:"Frage gebaut wie ein Profi! 🏎️",wrong:"💛 Fast! Beginne mit \"There's\"."},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["There's","a","chair","in","the","kitchen."],aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Beginne mit \"There's\"."}
+      ],
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["The","cat","is","under","the","bed."],aff:"Perfekt! 🏆",wrong:"💛 Fast! Beginne mit \"The\"."},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["The","dog","is","on","the","sofa."],aff:"Zielgerade! 🏁",wrong:"💛 Fast! Beginne mit \"The\"."}
+      ]
     ]
   }
 ];
 
+/* ---------- variant picking (no-repeat-on-replay) ---------- */
+function getLastVariants(){ try{ return JSON.parse(localStorage.getItem("comeIn4.lastVariant")||"{}"); }catch(e){ return {}; } }
+function setLastVariants(m){ try{ localStorage.setItem("comeIn4.lastVariant", JSON.stringify(m)); }catch(e){} }
+function pickVariant(topicIdx,slotIdx,variants){
+  if(variants.length===1) return variants[0];
+  var map=getLastVariants(), key=UNIT_KEY+"."+topicIdx+"."+slotIdx, last=map[key];
+  var choices=[]; for(var i=0;i<variants.length;i++){ if(i!==last) choices.push(i); }
+  var pick=choices[Math.floor(Math.random()*choices.length)];
+  map[key]=pick; setLastVariants(map);
+  return variants[pick];
+}
+function buildQuestions(topicIdx){
+  return topics[topicIdx].pool.map(function(slot,slotIdx){ return pickVariant(topicIdx,slotIdx,slot); });
+}
+
+
 /* =========================================================
    SHARED ENGINE (generic + grid + swatch + speed + read-along + progress)
    ========================================================= */
-var curTopic=0, curQ=0, answered=false;
+var curTopic=0, curQ=0, answered=false, sessionQuestions=[];
 function $(id){return document.getElementById(id);}
 
 function startTopic(i){
-  curTopic=i; curQ=0;
+  curTopic=i; curQ=0; sessionQuestions=buildQuestions(i);
   $("menu").classList.add("hidden"); $("done").classList.add("hidden"); $("quiz").classList.remove("hidden");
   $("screenTitle").textContent=topics[i].title;
   $("ruleSlot").innerHTML='<div class="rule">'+topics[i].rule+'</div>';
@@ -312,8 +414,8 @@ function setBar(p){ $("progressFill").style.width=p+"%"; }
 
 function loadQuestion(){
   answered=false; clearReading();
-  var t=topics[curTopic], q=t.questions[curQ];
-  setBar(Math.round(curQ/t.questions.length*100));
+  var q=sessionQuestions[curQ];
+  setBar(Math.round(curQ/sessionQuestions.length*100));
   $("feedback").className="feedback"; $("feedback").innerHTML="";
   $("nextBtn").classList.add("hidden"); $("checkBtn").classList.remove("hidden"); $("checkBtn").disabled=false;
   var html='<span class="theme-tag '+(q.teal?"teal":"")+'">'+(q.theme||"")+'</span>';
@@ -451,7 +553,7 @@ function syncBank(){
   });
 }
 function checkAnswer(){
-  var q=topics[curTopic].questions[curQ];
+  var q=sessionQuestions[curQ];
   if(q.type!=="puzzle" || answered) return;
   if(puzBuild.join(" ")===q.words.join(" ")){ answered=true; win(q.aff,""); speak(q.words.join(" ")); showNext(); }
   else{ soft(q.wrong,""); }
@@ -462,11 +564,11 @@ function win(msg,rule){ var f=$("feedback"); f.className="feedback good show"; f
 function soft(msg,rule){ var f=$("feedback"); f.className="feedback soft show"; f.innerHTML=msg+(rule?'<div class="fb-rule">'+rule+'</div>':""); }
 function showNext(){ $("checkBtn").classList.add("hidden"); $("nextBtn").classList.remove("hidden"); }
 function nextQuestion(){
-  var t=topics[curTopic]; curQ++;
-  if(curQ>=t.questions.length){
+  curQ++;
+  if(curQ>=sessionQuestions.length){
     setBar(100); markGameDone(curTopic);
     $("quiz").classList.add("hidden"); $("done").classList.remove("hidden");
-    $("doneMsg").textContent="Super! You finished "+t.title+"! 🏆"; speak("Well done!"); burst(); return;
+    $("doneMsg").textContent="Super! You finished "+topics[curTopic].title+"! 🏆"; speak("Well done!"); burst(); return;
   }
   loadQuestion();
 }

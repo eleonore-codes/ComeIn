@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Come In 4 — Hobbies</title>
+<title>English 4 — Hobbies</title>
 <style>
   :root{
     --navy:#1a2a4a;--navy-2:#23365c;--teal:#1fb6c4;--teal-soft:#7fd9e2;
@@ -108,7 +108,7 @@
 <body>
 <div class="wrap">
   <header>
-    <p class="unit-name">Come In 4</p>
+    <p class="unit-name">English 4</p>
     <div class="hdr-row">
       <h1 id="screenTitle">🎨 Hobbies</h1>
       <button class="speedbtn" id="speedBtn" onclick="toggleRate()">🐇 normal</button>
@@ -203,94 +203,191 @@ function paintMenuDone(){
 var UNIT_NAME="Hobbies";
 
 var topics=[
-  /* 0 — Listen & tap (grid emoji) — Hobbies */
+  /* 0 — Listen & tap (grid emoji) — Hobbies
+     Each slot has 2 variants (same picture trio, different target picture). */
   {
     title:"Listen & tap",
     rule:`<div class="rule-head"><span class="rule-title">🎨 Listen &amp; tap</span><button class="speak-mini" data-say="Listen, then tap the right picture.">🔊 Rule</button></div>
           <p>Tap <b>🔊 Listen</b>, then tap the right picture.</p>`,
-    questions:[
-      {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which picture?",say:"play football",
-        options:[{t:"⚽",s:"play football"},{t:"🏀",s:"play basketball"},{t:"🎾",s:"play tennis"}],correct:0,aff:"Tooor! Genau richtig! ⚽",wrong:"💛 Fast! ⚽ ist play football."},
-      {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which picture?",say:"ride a bike",
-        options:[{t:"🐴",s:"ride a horse"},{t:"🚲",s:"ride a bike"},{t:"🏂",s:"snowboard"}],correct:1,aff:"Volltreffer! 🚲⚽",wrong:"💛 Fast! 🚲 ist ride a bike."},
-      {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which picture?",say:"swim",
-        options:[{t:"🏊",s:"swim"},{t:"💃",s:"dance"},{t:"🎨",s:"draw"}],correct:0,aff:"Pole Position! 🏁",wrong:"💛 Fast! 🏊 ist swim."},
-      {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which picture?",say:"play the drums",
-        options:[{t:"🎤",s:"sing"},{t:"🥁",s:"play the drums"},{t:"📖",s:"read"}],correct:1,aff:"Stark! 🥁⚽",wrong:"💛 Fast! 🥁 ist play the drums."},
-      {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which picture?",say:"watch TV",
-        options:[{t:"📺",s:"watch TV"},{t:"🎮",s:"play computer games"},{t:"🎴",s:"swap cards"}],correct:0,aff:"Schnell wie ein Rennwagen! 🏎️💨",wrong:"💛 Fast! 📺 ist watch TV."}
+    pool:[
+      [
+        {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which picture?",say:"play football",
+          options:[{t:"⚽",s:"play football"},{t:"🏀",s:"play basketball"},{t:"🎾",s:"play tennis"}],correct:0,aff:"Tooor! Genau richtig! ⚽",wrong:"💛 Fast! ⚽ ist play football."},
+        {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which picture?",say:"play tennis",
+          options:[{t:"⚽",s:"play football"},{t:"🏀",s:"play basketball"},{t:"🎾",s:"play tennis"}],correct:2,aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! 🎾 ist play tennis."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which picture?",say:"ride a bike",
+          options:[{t:"🐴",s:"ride a horse"},{t:"🚲",s:"ride a bike"},{t:"🏂",s:"snowboard"}],correct:1,aff:"Volltreffer! 🚲⚽",wrong:"💛 Fast! 🚲 ist ride a bike."},
+        {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which picture?",say:"snowboard",
+          options:[{t:"🐴",s:"ride a horse"},{t:"🚲",s:"ride a bike"},{t:"🏂",s:"snowboard"}],correct:2,aff:"Zielgerade! 🏁",wrong:"💛 Fast! 🏂 ist snowboard."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which picture?",say:"swim",
+          options:[{t:"🏊",s:"swim"},{t:"💃",s:"dance"},{t:"🎨",s:"draw"}],correct:0,aff:"Pole Position! 🏁",wrong:"💛 Fast! 🏊 ist swim."},
+        {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which picture?",say:"dance",
+          options:[{t:"🏊",s:"swim"},{t:"💃",s:"dance"},{t:"🎨",s:"draw"}],correct:1,aff:"Super Dribbling! ⚽",wrong:"💛 Fast! 💃 ist dance."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which picture?",say:"play the drums",
+          options:[{t:"🎤",s:"sing"},{t:"🥁",s:"play the drums"},{t:"📖",s:"read"}],correct:1,aff:"Stark! 🥁⚽",wrong:"💛 Fast! 🥁 ist play the drums."},
+        {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which picture?",say:"sing",
+          options:[{t:"🎤",s:"sing"},{t:"🥁",s:"play the drums"},{t:"📖",s:"read"}],correct:0,aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! 🎤 ist sing."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which picture?",say:"watch TV",
+          options:[{t:"📺",s:"watch TV"},{t:"🎮",s:"play computer games"},{t:"🎴",s:"swap cards"}],correct:0,aff:"Schnell wie ein Rennwagen! 🏎️💨",wrong:"💛 Fast! 📺 ist watch TV."},
+        {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which picture?",say:"play computer games",
+          options:[{t:"📺",s:"watch TV"},{t:"🎮",s:"play computer games"},{t:"🎴",s:"swap cards"}],correct:1,aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! 🎮 ist play computer games."}
+      ]
     ]
   },
 
-  /* 1 — Match word <-> emoji */
+  /* 1 — Match word <-> emoji
+     Each slot has 2 variants drawing on the unit's full hobby vocabulary. */
   {
     title:"Match it",
     rule:`<div class="rule-head"><span class="rule-title">🔗 Match it</span><button class="speak-mini" data-say="Tap a word, then tap its picture.">🔊 Rule</button></div>
           <p>Tap a <b>word</b>, then tap its <b>picture</b>.</p><p>Tap 🔊 on a word to hear it.</p>`,
-    questions:[
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["dance","💃"],["draw","🎨"],["sing","🎤"],["swim","🏊"]],
-        aff:"Alle Paare! Mannschaftsleistung! ⚽🏆",wrong:"💛 Fast! Tippe das Wort, dann das Bild."},
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["play tennis","🎾"],["play basketball","🏀"],["play football","⚽"],["snowboard","🏂"]],
-        aff:"Perfekt verbunden! 🏁",wrong:"💛 Fast! Probier es in Ruhe."},
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["ride a horse","🐴"],["swap cards","🎴"],["read","📖"]],
-        aff:"Geschafft — Doppelpass sitzt! ⚽",wrong:"💛 Fast! Schau nochmal hin."}
+    pool:[
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["dance","💃"],["draw","🎨"],["sing","🎤"],["swim","🏊"]],
+          aff:"Alle Paare! Mannschaftsleistung! ⚽🏆",wrong:"💛 Fast! Tippe das Wort, dann das Bild."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["ride a bike","🚲"],["play the drums","🥁"],["watch TV","📺"],["play computer games","🎮"]],
+          aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! Tippe das Wort, dann das Bild."}
+      ],
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["play tennis","🎾"],["play basketball","🏀"],["play football","⚽"],["snowboard","🏂"]],
+          aff:"Perfekt verbunden! 🏁",wrong:"💛 Fast! Probier es in Ruhe."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["dance","💃"],["draw","🎨"],["sing","🎤"],["swim","🏊"]],
+          aff:"Zielgerade! 🏁",wrong:"💛 Fast! Probier es in Ruhe."}
+      ],
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["ride a horse","🐴"],["swap cards","🎴"],["read","📖"]],
+          aff:"Geschafft — Doppelpass sitzt! ⚽",wrong:"💛 Fast! Schau nochmal hin."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["play tennis","🎾"],["play basketball","🏀"],["play football","⚽"]],
+          aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Schau nochmal hin."}
+      ]
     ]
   },
 
-  /* 2 — What's the time? (choose, clock anchor) */
+  /* 2 — What's the time? (choose, clock anchor)
+     Each slot has 2 variants with a different clock time. */
   {
     title:"What's the time?",
     rule:`<div class="rule-head"><span class="rule-title">🕒 What's the time?</span><button class="speak-mini" data-say="Listen, then tap the right time.">🔊 Rule</button></div>
           <p>Tap <b>🔊 Listen</b>, then tap the right time.</p>`,
-    questions:[
-      {type:"choose",theme:"🕒 Listen",teal:true,show:"🕒",prompt:"What's the time?",say:"It's quarter past three.",
-        options:["quarter past three","half past three","quarter to three"],correct:0,aff:"Tor! ⚽",wrong:"💛 Fast! Es war quarter past three."},
-      {type:"choose",theme:"🕡 Listen",teal:true,show:"🕡",prompt:"What's the time?",say:"It's half past six.",
-        options:["quarter to six","half past six","six o'clock"],correct:1,aff:"Volltreffer! ⚽",wrong:"💛 Fast! Es war half past six."},
-      {type:"choose",theme:"🕤 Listen",teal:true,show:"🕤",prompt:"What's the time?",say:"It's quarter to nine.",
-        options:["quarter past nine","nine o'clock","quarter to nine"],correct:2,aff:"Pole Position! 🏎️",wrong:"💛 Fast! Es war quarter to nine."},
-      {type:"choose",theme:"🕛 Listen",teal:true,show:"🕛",prompt:"What's the time?",say:"It's twelve o'clock.",
-        options:["twelve o'clock","half past twelve","quarter past twelve"],correct:0,aff:"Sauber! ⚽",wrong:"💛 Fast! Es war twelve o'clock."},
-      {type:"choose",theme:"🕘 Listen",teal:true,show:"🕘",prompt:"What's the time?",say:"It's nine o'clock.",
-        options:["quarter to nine","nine o'clock","half past nine"],correct:1,aff:"Stark! ⚽",wrong:"💛 Fast! Es war nine o'clock."}
+    pool:[
+      [
+        {type:"choose",theme:"🕒 Listen",teal:true,show:"🕒",prompt:"What's the time?",say:"It's quarter past three.",
+          options:["quarter past three","half past three","quarter to three"],correct:0,aff:"Tor! ⚽",wrong:"💛 Fast! Es war quarter past three."},
+        {type:"choose",theme:"🕓 Listen",teal:true,show:"🕓",prompt:"What's the time?",say:"It's four o'clock.",
+          options:["four o'clock","half past four","quarter past four"],correct:0,aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! Es war four o'clock."}
+      ],
+      [
+        {type:"choose",theme:"🕡 Listen",teal:true,show:"🕡",prompt:"What's the time?",say:"It's half past six.",
+          options:["quarter to six","half past six","six o'clock"],correct:1,aff:"Volltreffer! ⚽",wrong:"💛 Fast! Es war half past six."},
+        {type:"choose",theme:"🕖 Listen",teal:true,show:"🕖",prompt:"What's the time?",say:"It's seven o'clock.",
+          options:["quarter to seven","seven o'clock","half past seven"],correct:1,aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! Es war seven o'clock."}
+      ],
+      [
+        {type:"choose",theme:"🕤 Listen",teal:true,show:"🕤",prompt:"What's the time?",say:"It's quarter to nine.",
+          options:["quarter past nine","nine o'clock","quarter to nine"],correct:2,aff:"Pole Position! 🏎️",wrong:"💛 Fast! Es war quarter to nine."},
+        {type:"choose",theme:"🕝 Listen",teal:true,show:"🕝",prompt:"What's the time?",say:"It's half past two.",
+          options:["quarter past two","half past two","two o'clock"],correct:1,aff:"Zielgerade! 🏁",wrong:"💛 Fast! Es war half past two."}
+      ],
+      [
+        {type:"choose",theme:"🕛 Listen",teal:true,show:"🕛",prompt:"What's the time?",say:"It's twelve o'clock.",
+          options:["twelve o'clock","half past twelve","quarter past twelve"],correct:0,aff:"Sauber! ⚽",wrong:"💛 Fast! Es war twelve o'clock."},
+        {type:"choose",theme:"🕐 Listen",teal:true,show:"🕐",prompt:"What's the time?",say:"It's one o'clock.",
+          options:["one o'clock","half past one","quarter to one"],correct:0,aff:"Super Dribbling! ⚽",wrong:"💛 Fast! Es war one o'clock."}
+      ],
+      [
+        {type:"choose",theme:"🕘 Listen",teal:true,show:"🕘",prompt:"What's the time?",say:"It's nine o'clock.",
+          options:["quarter to nine","nine o'clock","half past nine"],correct:1,aff:"Stark! ⚽",wrong:"💛 Fast! Es war nine o'clock."},
+        {type:"choose",theme:"🕠 Listen",teal:true,show:"🕠",prompt:"What's the time?",say:"It's half past five.",
+          options:["quarter to five","half past five","five o'clock"],correct:1,aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Es war half past five."}
+      ]
     ]
   },
 
-  /* 3 — Right or wrong? (swipe) */
+  /* 3 — Right or wrong? (swipe)
+     Each slot has 2 variants with a different picture/statement pair. */
   {
     title:"Right or wrong?",
     rule:`<div class="rule-head"><span class="rule-title">👋 Right or wrong?</span><button class="speak-mini" data-say="Look and listen. Tap yes if it is right. Tap no if it is wrong.">🔊 Rule</button></div>
           <p>Look at the picture and listen.</p><p>Tap ✅ <b>yes</b> if it is right. Tap ❌ <b>no</b> if it is wrong.</p>`,
-    questions:[
-      {type:"swipe",theme:"🎾 Check",emoji:"🎾",text:"This is play tennis.",answer:true,aff:"Erkannt! Gutes Auge! 🏎️",wrong:"💛 Fast! 🎾 ist play tennis — richtig."},
-      {type:"swipe",theme:"🥁 Check",emoji:"🥁",text:"This is play the flute.",answer:false,aff:"Richtig! Sicher wie ein Elfmeter! ⚽",wrong:"💛 Fast! 🥁 ist play the drums, nicht play the flute."},
-      {type:"swipe",theme:"🚲 Check",emoji:"🚲",text:"This is ride a bike.",answer:true,aff:"Tor! Genau! ⚽",wrong:"💛 Fast! 🚲 ist ride a bike — richtig."},
-      {type:"swipe",theme:"📺 Check",emoji:"📺",text:"This is watch TV.",answer:true,aff:"Stark gebremst und richtig! 🏁",wrong:"💛 Fast! 📺 ist watch TV — richtig."},
-      {type:"swipe",theme:"🏂 Check",emoji:"🏂",text:"This is swim.",answer:false,aff:"Sauber! ⚽",wrong:"💛 Fast! 🏂 ist snowboard, nicht swim."}
+    pool:[
+      [
+        {type:"swipe",theme:"🎾 Check",emoji:"🎾",text:"This is play tennis.",answer:true,aff:"Erkannt! Gutes Auge! 🏎️",wrong:"💛 Fast! 🎾 ist play tennis — richtig."},
+        {type:"swipe",theme:"🏀 Check",emoji:"🏀",text:"This is play basketball.",answer:true,aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! 🏀 ist play basketball — richtig."}
+      ],
+      [
+        {type:"swipe",theme:"🥁 Check",emoji:"🥁",text:"This is play the flute.",answer:false,aff:"Richtig! Sicher wie ein Elfmeter! ⚽",wrong:"💛 Fast! 🥁 ist play the drums, nicht play the flute."},
+        {type:"swipe",theme:"🎤 Check",emoji:"🎤",text:"This is play the guitar.",answer:false,aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! 🎤 ist sing, nicht play the guitar."}
+      ],
+      [
+        {type:"swipe",theme:"🚲 Check",emoji:"🚲",text:"This is ride a bike.",answer:true,aff:"Tor! Genau! ⚽",wrong:"💛 Fast! 🚲 ist ride a bike — richtig."},
+        {type:"swipe",theme:"🐴 Check",emoji:"🐴",text:"This is ride a horse.",answer:true,aff:"Zielgerade! 🏁",wrong:"💛 Fast! 🐴 ist ride a horse — richtig."}
+      ],
+      [
+        {type:"swipe",theme:"📺 Check",emoji:"📺",text:"This is watch TV.",answer:true,aff:"Stark gebremst und richtig! 🏁",wrong:"💛 Fast! 📺 ist watch TV — richtig."},
+        {type:"swipe",theme:"🎮 Check",emoji:"🎮",text:"This is play computer games.",answer:true,aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! 🎮 ist play computer games — richtig."}
+      ],
+      [
+        {type:"swipe",theme:"🏂 Check",emoji:"🏂",text:"This is swim.",answer:false,aff:"Sauber! ⚽",wrong:"💛 Fast! 🏂 ist snowboard, nicht swim."},
+        {type:"swipe",theme:"🎨 Check",emoji:"🎨",text:"This is play football.",answer:false,aff:"Super Dribbling! ⚽",wrong:"💛 Fast! 🎨 ist draw, nicht play football."}
+      ]
     ]
   },
 
-  /* 4 — Build the sentence (puzzle) */
+  /* 4 — Build the sentence (puzzle)
+     Each slot has 2 variants reusing vocabulary from the games above. */
   {
     title:"Build the sentence",
     rule:`<div class="rule-head"><span class="rule-title">🧩 Build the sentence</span><button class="speak-mini" data-say="Tap the words in the right order.">🔊 Rule</button></div>
           <p>Tap the words in the right order.</p><p>Tap 🔊 to hear the whole sentence.</p>`,
-    questions:[
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["Can","you","play","tennis?"],aff:"Satz steht! ⚽",wrong:"💛 Fast! Beginne mit \"Can\"."},
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["I","can","swim."],aff:"Frage gebaut wie ein Profi! 🏎️",wrong:"💛 Fast! Beginne mit \"I\"."},
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["When","do","you","read?"],aff:"Perfekt! 🏆",wrong:"💛 Fast! Beginne mit \"When\"."}
+    pool:[
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["Can","you","play","tennis?"],aff:"Satz steht! ⚽",wrong:"💛 Fast! Beginne mit \"Can\"."},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["Can","you","play","football?"],aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! Beginne mit \"Can\"."}
+      ],
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["I","can","swim."],aff:"Frage gebaut wie ein Profi! 🏎️",wrong:"💛 Fast! Beginne mit \"I\"."},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["I","can","dance."],aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Beginne mit \"I\"."}
+      ],
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["When","do","you","read?"],aff:"Perfekt! 🏆",wrong:"💛 Fast! Beginne mit \"When\"."},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["When","do","you","swim?"],aff:"Zielgerade! 🏁",wrong:"💛 Fast! Beginne mit \"When\"."}
+      ]
     ]
   }
 ];
 
+/* ---------- variant picking (no-repeat-on-replay) ---------- */
+function getLastVariants(){ try{ return JSON.parse(localStorage.getItem("comeIn4.lastVariant")||"{}"); }catch(e){ return {}; } }
+function setLastVariants(m){ try{ localStorage.setItem("comeIn4.lastVariant", JSON.stringify(m)); }catch(e){} }
+function pickVariant(topicIdx,slotIdx,variants){
+  if(variants.length===1) return variants[0];
+  var map=getLastVariants(), key=UNIT_KEY+"."+topicIdx+"."+slotIdx, last=map[key];
+  var choices=[]; for(var i=0;i<variants.length;i++){ if(i!==last) choices.push(i); }
+  var pick=choices[Math.floor(Math.random()*choices.length)];
+  map[key]=pick; setLastVariants(map);
+  return variants[pick];
+}
+function buildQuestions(topicIdx){
+  return topics[topicIdx].pool.map(function(slot,slotIdx){ return pickVariant(topicIdx,slotIdx,slot); });
+}
+
+
 /* =========================================================
    SHARED ENGINE (generic + grid + swatch + speed + read-along + progress)
    ========================================================= */
-var curTopic=0, curQ=0, answered=false;
+var curTopic=0, curQ=0, answered=false, sessionQuestions=[];
 function $(id){return document.getElementById(id);}
 
 function startTopic(i){
-  curTopic=i; curQ=0;
+  curTopic=i; curQ=0; sessionQuestions=buildQuestions(i);
   $("menu").classList.add("hidden"); $("done").classList.add("hidden"); $("quiz").classList.remove("hidden");
   $("screenTitle").textContent=topics[i].title;
   $("ruleSlot").innerHTML='<div class="rule">'+topics[i].rule+'</div>';
@@ -307,8 +404,8 @@ function setBar(p){ $("progressFill").style.width=p+"%"; }
 
 function loadQuestion(){
   answered=false; clearReading();
-  var t=topics[curTopic], q=t.questions[curQ];
-  setBar(Math.round(curQ/t.questions.length*100));
+  var q=sessionQuestions[curQ];
+  setBar(Math.round(curQ/sessionQuestions.length*100));
   $("feedback").className="feedback"; $("feedback").innerHTML="";
   $("nextBtn").classList.add("hidden"); $("checkBtn").classList.remove("hidden"); $("checkBtn").disabled=false;
   var html='<span class="theme-tag '+(q.teal?"teal":"")+'">'+(q.theme||"")+'</span>';
@@ -446,7 +543,7 @@ function syncBank(){
   });
 }
 function checkAnswer(){
-  var q=topics[curTopic].questions[curQ];
+  var q=sessionQuestions[curQ];
   if(q.type!=="puzzle" || answered) return;
   if(puzBuild.join(" ")===q.words.join(" ")){ answered=true; win(q.aff,""); speak(q.words.join(" ")); showNext(); }
   else{ soft(q.wrong,""); }
@@ -457,11 +554,11 @@ function win(msg,rule){ var f=$("feedback"); f.className="feedback good show"; f
 function soft(msg,rule){ var f=$("feedback"); f.className="feedback soft show"; f.innerHTML=msg+(rule?'<div class="fb-rule">'+rule+'</div>':""); }
 function showNext(){ $("checkBtn").classList.add("hidden"); $("nextBtn").classList.remove("hidden"); }
 function nextQuestion(){
-  var t=topics[curTopic]; curQ++;
-  if(curQ>=t.questions.length){
+  curQ++;
+  if(curQ>=sessionQuestions.length){
     setBar(100); markGameDone(curTopic);
     $("quiz").classList.add("hidden"); $("done").classList.remove("hidden");
-    $("doneMsg").textContent="Super! You finished "+t.title+"! 🏆"; speak("Well done!"); burst(); return;
+    $("doneMsg").textContent="Super! You finished "+topics[curTopic].title+"! 🏆"; speak("Well done!"); burst(); return;
   }
   loadQuestion();
 }

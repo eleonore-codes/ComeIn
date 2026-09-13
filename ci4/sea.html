@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Come In 4 — Under the sea</title>
+<title>English 4 — Under the sea</title>
 <style>
   :root{
     --navy:#1a2a4a;--navy-2:#23365c;--teal:#1fb6c4;--teal-soft:#7fd9e2;
@@ -108,7 +108,7 @@
 <body>
 <div class="wrap">
   <header>
-    <p class="unit-name">Come In 4</p>
+    <p class="unit-name">English 4</p>
     <div class="hdr-row">
       <h1 id="screenTitle">🐙 Under the sea</h1>
       <button class="speedbtn" id="speedBtn" onclick="toggleRate()">🐇 normal</button>
@@ -203,92 +203,185 @@ function paintMenuDone(){
 var UNIT_NAME="Under the sea";
 
 var topics=[
-  /* 0 — Listen & tap (grid emoji) — Sea creatures */
+  /* 0 — Listen & tap (grid emoji) — Sea creatures
+     Each slot has 2 variants (same picture trio, different target picture). */
   {
     title:"Listen & tap",
     rule:`<div class="rule-head"><span class="rule-title">🐙 Listen &amp; tap</span><button class="speak-mini" data-say="Listen, then tap the right picture.">🔊 Rule</button></div>
           <p>Tap <b>🔊 Listen</b>, then tap the right picture.</p>`,
-    questions:[
-      {type:"choose",grid:true,theme:"🐙 Listen",teal:true,prompt:"Which picture?",say:"crab",
-        options:[{t:"🦀",s:"crab"},{t:"🐙",s:"octopus"},{t:"🐬",s:"dolphin"}],correct:0,aff:"Tooor! Genau richtig! ⚽",wrong:"💛 Fast! 🦀 ist crab."},
-      {type:"choose",grid:true,theme:"🐙 Listen",teal:true,prompt:"Which picture?",say:"dolphin",
-        options:[{t:"🐳",s:"whale"},{t:"🐬",s:"dolphin"},{t:"🦭",s:"seal"}],correct:1,aff:"Volltreffer! 🐬⚽",wrong:"💛 Fast! 🐬 ist dolphin."},
-      {type:"choose",grid:true,theme:"🐙 Listen",teal:true,prompt:"Which picture?",say:"jellyfish",
-        options:[{t:"🪼",s:"jellyfish"},{t:"🐡",s:"pufferfish"},{t:"⭐",s:"starfish"}],correct:0,aff:"Pole Position! 🏁",wrong:"💛 Fast! 🪼 ist jellyfish."},
-      {type:"choose",grid:true,theme:"🐙 Listen",teal:true,prompt:"Which picture?",say:"octopus",
-        options:[{t:"🦀",s:"crab"},{t:"🐙",s:"octopus"},{t:"🦭",s:"seal"}],correct:1,aff:"Stark! 🐙⚽",wrong:"💛 Fast! 🐙 ist octopus."},
-      {type:"choose",grid:true,theme:"🐙 Listen",teal:true,prompt:"Which picture?",say:"whale",
-        options:[{t:"🐳",s:"whale"},{t:"🐬",s:"dolphin"},{t:"🐡",s:"pufferfish"}],correct:0,aff:"Schnell wie ein Rennwagen! 🏎️💨",wrong:"💛 Fast! 🐳 ist whale."}
+    pool:[
+      [
+        {type:"choose",grid:true,theme:"🐙 Listen",teal:true,prompt:"Which picture?",say:"crab",
+          options:[{t:"🦀",s:"crab"},{t:"🐙",s:"octopus"},{t:"🐬",s:"dolphin"}],correct:0,aff:"Tooor! Genau richtig! ⚽",wrong:"💛 Fast! 🦀 ist crab."},
+        {type:"choose",grid:true,theme:"🐙 Listen",teal:true,prompt:"Which picture?",say:"dolphin",
+          options:[{t:"🦀",s:"crab"},{t:"🐙",s:"octopus"},{t:"🐬",s:"dolphin"}],correct:2,aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! 🐬 ist dolphin."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🐙 Listen",teal:true,prompt:"Which picture?",say:"dolphin",
+          options:[{t:"🐳",s:"whale"},{t:"🐬",s:"dolphin"},{t:"🦭",s:"seal"}],correct:1,aff:"Volltreffer! 🐬⚽",wrong:"💛 Fast! 🐬 ist dolphin."},
+        {type:"choose",grid:true,theme:"🐙 Listen",teal:true,prompt:"Which picture?",say:"whale",
+          options:[{t:"🐳",s:"whale"},{t:"🐬",s:"dolphin"},{t:"🦭",s:"seal"}],correct:0,aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! 🐳 ist whale."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🐙 Listen",teal:true,prompt:"Which picture?",say:"jellyfish",
+          options:[{t:"🪼",s:"jellyfish"},{t:"🐡",s:"pufferfish"},{t:"⭐",s:"starfish"}],correct:0,aff:"Pole Position! 🏁",wrong:"💛 Fast! 🪼 ist jellyfish."},
+        {type:"choose",grid:true,theme:"🐙 Listen",teal:true,prompt:"Which picture?",say:"pufferfish",
+          options:[{t:"🪼",s:"jellyfish"},{t:"🐡",s:"pufferfish"},{t:"⭐",s:"starfish"}],correct:1,aff:"Zielgerade! 🏁",wrong:"💛 Fast! 🐡 ist pufferfish."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🐙 Listen",teal:true,prompt:"Which picture?",say:"octopus",
+          options:[{t:"🦀",s:"crab"},{t:"🐙",s:"octopus"},{t:"🦭",s:"seal"}],correct:1,aff:"Stark! 🐙⚽",wrong:"💛 Fast! 🐙 ist octopus."},
+        {type:"choose",grid:true,theme:"🐙 Listen",teal:true,prompt:"Which picture?",say:"crab",
+          options:[{t:"🦀",s:"crab"},{t:"🐙",s:"octopus"},{t:"🦭",s:"seal"}],correct:0,aff:"Super Dribbling! ⚽",wrong:"💛 Fast! 🦀 ist crab."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🐙 Listen",teal:true,prompt:"Which picture?",say:"whale",
+          options:[{t:"🐳",s:"whale"},{t:"🐬",s:"dolphin"},{t:"🐡",s:"pufferfish"}],correct:0,aff:"Schnell wie ein Rennwagen! 🏎️💨",wrong:"💛 Fast! 🐳 ist whale."},
+        {type:"choose",grid:true,theme:"🐙 Listen",teal:true,prompt:"Which picture?",say:"dolphin",
+          options:[{t:"🐳",s:"whale"},{t:"🐬",s:"dolphin"},{t:"🐡",s:"pufferfish"}],correct:1,aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! 🐬 ist dolphin."}
+      ]
     ]
   },
 
-  /* 1 — Match word <-> emoji */
+  /* 1 — Match word <-> emoji
+     Each slot has 2 variants drawing on the unit's full sea vocabulary. */
   {
     title:"Match it",
     rule:`<div class="rule-head"><span class="rule-title">🔗 Match it</span><button class="speak-mini" data-say="Tap a word, then tap its picture.">🔊 Rule</button></div>
           <p>Tap a <b>word</b>, then tap its <b>picture</b>.</p><p>Tap 🔊 on a word to hear it.</p>`,
-    questions:[
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["crab","🦀"],["dolphin","🐬"],["octopus","🐙"],["whale","🐳"]],
-        aff:"Alle Paare! Mannschaftsleistung! ⚽🏆",wrong:"💛 Fast! Tippe das Wort, dann das Bild."},
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["jellyfish","🪼"],["pufferfish","🐡"],["seal","🦭"],["starfish","⭐"]],
-        aff:"Perfekt verbunden! 🏁",wrong:"💛 Fast! Probier es in Ruhe."}
+    pool:[
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["crab","🦀"],["dolphin","🐬"],["octopus","🐙"],["whale","🐳"]],
+          aff:"Alle Paare! Mannschaftsleistung! ⚽🏆",wrong:"💛 Fast! Tippe das Wort, dann das Bild."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["shark","🦈"],["turtle","🐢"],["jellyfish","🪼"],["pufferfish","🐡"]],
+          aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! Tippe das Wort, dann das Bild."}
+      ],
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["jellyfish","🪼"],["pufferfish","🐡"],["seal","🦭"],["starfish","⭐"]],
+          aff:"Perfekt verbunden! 🏁",wrong:"💛 Fast! Probier es in Ruhe."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["crab","🦀"],["dolphin","🐬"],["octopus","🐙"],["whale","🐳"]],
+          aff:"Zielgerade! 🏁",wrong:"💛 Fast! Probier es in Ruhe."}
+      ]
     ]
   },
 
-  /* 2 — Which word? (text) */
+  /* 2 — Which word? (text)
+     Each slot has 2 variants targeting a different word. */
   {
     title:"Which word?",
     rule:`<div class="rule-head"><span class="rule-title">👂 Which word?</span><button class="speak-mini" data-say="Listen, then tap the right word.">🔊 Rule</button></div>
           <p>Tap <b>🔊 Listen</b>, then tap the right word.</p><p>Tap 🔊 on a word to hear it.</p>`,
-    questions:[
-      {type:"choose",theme:"👂 Listen",teal:true,prompt:"Which word?",say:"seahorse",
-        options:["seahorse","starfish","stingray"],correct:0,aff:"Tor! ⚽",wrong:"💛 Fast! Es war seahorse."},
-      {type:"choose",theme:"👂 Listen",teal:true,prompt:"Which word?",say:"stingray",
-        options:["swordfish","stingray","seahorse"],correct:1,aff:"Volltreffer! ⚽",wrong:"💛 Fast! Es war stingray."},
-      {type:"choose",theme:"👂 Listen",teal:true,prompt:"Which word?",say:"swordfish",
-        options:["swordfish","stingray","pufferfish"],correct:0,aff:"Pole Position! 🏎️",wrong:"💛 Fast! Es war swordfish."},
-      {type:"choose",theme:"👂 Listen",teal:true,prompt:"Which word?",say:"starfish",
-        options:["starfish","jellyfish","octopus"],correct:0,aff:"Sauber! ⚽",wrong:"💛 Fast! Es war starfish."},
-      {type:"choose",theme:"👂 Listen",teal:true,prompt:"Which word?",say:"seal",
-        options:["seal","crab","whale"],correct:0,aff:"Stark! ⚽",wrong:"💛 Fast! Es war seal."}
+    pool:[
+      [
+        {type:"choose",theme:"👂 Listen",teal:true,prompt:"Which word?",say:"seahorse",
+          options:["seahorse","starfish","stingray"],correct:0,aff:"Tor! ⚽",wrong:"💛 Fast! Es war seahorse."},
+        {type:"choose",theme:"👂 Listen",teal:true,prompt:"Which word?",say:"crab",
+          options:["crab","octopus","whale"],correct:0,aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! Es war crab."}
+      ],
+      [
+        {type:"choose",theme:"👂 Listen",teal:true,prompt:"Which word?",say:"stingray",
+          options:["swordfish","stingray","seahorse"],correct:1,aff:"Volltreffer! ⚽",wrong:"💛 Fast! Es war stingray."},
+        {type:"choose",theme:"👂 Listen",teal:true,prompt:"Which word?",say:"jellyfish",
+          options:["starfish","jellyfish","seahorse"],correct:1,aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! Es war jellyfish."}
+      ],
+      [
+        {type:"choose",theme:"👂 Listen",teal:true,prompt:"Which word?",say:"swordfish",
+          options:["swordfish","stingray","pufferfish"],correct:0,aff:"Pole Position! 🏎️",wrong:"💛 Fast! Es war swordfish."},
+        {type:"choose",theme:"👂 Listen",teal:true,prompt:"Which word?",say:"dolphin",
+          options:["dolphin","whale","seal"],correct:0,aff:"Zielgerade! 🏁",wrong:"💛 Fast! Es war dolphin."}
+      ],
+      [
+        {type:"choose",theme:"👂 Listen",teal:true,prompt:"Which word?",say:"starfish",
+          options:["starfish","jellyfish","octopus"],correct:0,aff:"Sauber! ⚽",wrong:"💛 Fast! Es war starfish."},
+        {type:"choose",theme:"👂 Listen",teal:true,prompt:"Which word?",say:"pufferfish",
+          options:["pufferfish","crab","octopus"],correct:0,aff:"Super Dribbling! ⚽",wrong:"💛 Fast! Es war pufferfish."}
+      ],
+      [
+        {type:"choose",theme:"👂 Listen",teal:true,prompt:"Which word?",say:"seal",
+          options:["seal","crab","whale"],correct:0,aff:"Stark! ⚽",wrong:"💛 Fast! Es war seal."},
+        {type:"choose",theme:"👂 Listen",teal:true,prompt:"Which word?",say:"octopus",
+          options:["octopus","whale","dolphin"],correct:0,aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Es war octopus."}
+      ]
     ]
   },
 
-  /* 3 — Right or wrong? (swipe) */
+  /* 3 — Right or wrong? (swipe)
+     Each slot has 2 variants with a different picture/statement pair. */
   {
     title:"Right or wrong?",
     rule:`<div class="rule-head"><span class="rule-title">👋 Right or wrong?</span><button class="speak-mini" data-say="Listen. Tap yes if it is right. Tap no if it is wrong.">🔊 Rule</button></div>
           <p>Listen to the sentence.</p><p>Tap ✅ <b>yes</b> if it is right. Tap ❌ <b>no</b> if it is wrong.</p>`,
-    questions:[
-      {type:"swipe",theme:"🦀 Check",emoji:"🦀",text:"This is a crab.",answer:true,aff:"Erkannt! Gutes Auge! 🏎️",wrong:"💛 Fast! 🦀 ist a crab — richtig."},
-      {type:"swipe",theme:"🐙 Check",emoji:"🐙",text:"This is a whale.",answer:false,aff:"Richtig! Sicher wie ein Elfmeter! ⚽",wrong:"💛 Fast! 🐙 ist an octopus, nicht a whale."},
-      {type:"swipe",theme:"🌊 Check",emoji:"🌊",text:"A stingray lives in the sea.",answer:true,aff:"Tor! Genau! ⚽",wrong:"💛 Fast! Ein stingray lebt im Meer — richtig."},
-      {type:"swipe",theme:"🦭 Check",emoji:"🦭",text:"This is a seal.",answer:true,aff:"Stark gebremst und richtig! 🏁",wrong:"💛 Fast! 🦭 ist a seal — richtig."},
-      {type:"swipe",theme:"🌊 Check",emoji:"🌊",text:"A swordfish can fly in the sky.",answer:false,aff:"Sauber! ⚽",wrong:"💛 Fast! Ein swordfish schwimmt im Meer, es fliegt nicht."}
+    pool:[
+      [
+        {type:"swipe",theme:"🦀 Check",emoji:"🦀",text:"This is a crab.",answer:true,aff:"Erkannt! Gutes Auge! 🏎️",wrong:"💛 Fast! 🦀 ist a crab — richtig."},
+        {type:"swipe",theme:"🐬 Check",emoji:"🐬",text:"This is a dolphin.",answer:true,aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! 🐬 ist a dolphin — richtig."}
+      ],
+      [
+        {type:"swipe",theme:"🐙 Check",emoji:"🐙",text:"This is a whale.",answer:false,aff:"Richtig! Sicher wie ein Elfmeter! ⚽",wrong:"💛 Fast! 🐙 ist an octopus, nicht a whale."},
+        {type:"swipe",theme:"🐳 Check",emoji:"🐳",text:"This is a dolphin.",answer:false,aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! 🐳 ist a whale, nicht a dolphin."}
+      ],
+      [
+        {type:"swipe",theme:"🌊 Check",emoji:"🌊",text:"A stingray lives in the sea.",answer:true,aff:"Tor! Genau! ⚽",wrong:"💛 Fast! Ein stingray lebt im Meer — richtig."},
+        {type:"swipe",theme:"🌊 Check",emoji:"🌊",text:"A seahorse lives in the sea.",answer:true,aff:"Zielgerade! 🏁",wrong:"💛 Fast! Ein seahorse lebt im Meer — richtig."}
+      ],
+      [
+        {type:"swipe",theme:"🦭 Check",emoji:"🦭",text:"This is a seal.",answer:true,aff:"Stark gebremst und richtig! 🏁",wrong:"💛 Fast! 🦭 ist a seal — richtig."},
+        {type:"swipe",theme:"🪼 Check",emoji:"🪼",text:"This is a jellyfish.",answer:true,aff:"Super Dribbling! ⚽",wrong:"💛 Fast! 🪼 ist a jellyfish — richtig."}
+      ],
+      [
+        {type:"swipe",theme:"🌊 Check",emoji:"🌊",text:"A swordfish can fly in the sky.",answer:false,aff:"Sauber! ⚽",wrong:"💛 Fast! Ein swordfish schwimmt im Meer, es fliegt nicht."},
+        {type:"swipe",theme:"🌊 Check",emoji:"🌊",text:"A crab can walk on the beach.",answer:true,aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Ein crab kann am Strand laufen — richtig."}
+      ]
     ]
   },
 
-  /* 4 — Build the sentence (puzzle) */
+  /* 4 — Build the sentence (puzzle)
+     Each slot has 2 variants reusing vocabulary from the games above. */
   {
     title:"Build the sentence",
     rule:`<div class="rule-head"><span class="rule-title">🧩 Build the sentence</span><button class="speak-mini" data-say="Tap the words in the right order.">🔊 Rule</button></div>
           <p>Tap the words in the right order.</p><p>Tap 🔊 to hear the whole sentence.</p>`,
-    questions:[
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["Please","listen","to","me!"],aff:"Satz steht! ⚽",wrong:"💛 Fast! Beginne mit \"Please\"."},
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["I","can","see","a","whale."],aff:"Frage gebaut wie ein Profi! 🏎️",wrong:"💛 Fast! Beginne mit \"I\"."},
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["The","octopus","is","in","the","sea."],aff:"Perfekt! 🏆",wrong:"💛 Fast! Beginne mit \"The\"."}
+    pool:[
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["Please","listen","to","me!"],aff:"Satz steht! ⚽",wrong:"💛 Fast! Beginne mit \"Please\"."},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["Please","look","at","this!"],aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! Beginne mit \"Please\"."}
+      ],
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["I","can","see","a","whale."],aff:"Frage gebaut wie ein Profi! 🏎️",wrong:"💛 Fast! Beginne mit \"I\"."},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["I","can","see","a","dolphin."],aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Beginne mit \"I\"."}
+      ],
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["The","octopus","is","in","the","sea."],aff:"Perfekt! 🏆",wrong:"💛 Fast! Beginne mit \"The\"."},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["The","crab","is","on","the","beach."],aff:"Zielgerade! 🏁",wrong:"💛 Fast! Beginne mit \"The\"."}
+      ]
     ]
   }
 ];
 
+/* ---------- variant picking (no-repeat-on-replay) ---------- */
+function getLastVariants(){ try{ return JSON.parse(localStorage.getItem("comeIn4.lastVariant")||"{}"); }catch(e){ return {}; } }
+function setLastVariants(m){ try{ localStorage.setItem("comeIn4.lastVariant", JSON.stringify(m)); }catch(e){} }
+function pickVariant(topicIdx,slotIdx,variants){
+  if(variants.length===1) return variants[0];
+  var map=getLastVariants(), key=UNIT_KEY+"."+topicIdx+"."+slotIdx, last=map[key];
+  var choices=[]; for(var i=0;i<variants.length;i++){ if(i!==last) choices.push(i); }
+  var pick=choices[Math.floor(Math.random()*choices.length)];
+  map[key]=pick; setLastVariants(map);
+  return variants[pick];
+}
+function buildQuestions(topicIdx){
+  return topics[topicIdx].pool.map(function(slot,slotIdx){ return pickVariant(topicIdx,slotIdx,slot); });
+}
+
+
 /* =========================================================
    SHARED ENGINE (generic + grid + swatch + speed + read-along + progress)
    ========================================================= */
-var curTopic=0, curQ=0, answered=false;
+var curTopic=0, curQ=0, answered=false, sessionQuestions=[];
 function $(id){return document.getElementById(id);}
 
 function startTopic(i){
-  curTopic=i; curQ=0;
+  curTopic=i; curQ=0; sessionQuestions=buildQuestions(i);
   $("menu").classList.add("hidden"); $("done").classList.add("hidden"); $("quiz").classList.remove("hidden");
   $("screenTitle").textContent=topics[i].title;
   $("ruleSlot").innerHTML='<div class="rule">'+topics[i].rule+'</div>';
@@ -305,8 +398,8 @@ function setBar(p){ $("progressFill").style.width=p+"%"; }
 
 function loadQuestion(){
   answered=false; clearReading();
-  var t=topics[curTopic], q=t.questions[curQ];
-  setBar(Math.round(curQ/t.questions.length*100));
+  var q=sessionQuestions[curQ];
+  setBar(Math.round(curQ/sessionQuestions.length*100));
   $("feedback").className="feedback"; $("feedback").innerHTML="";
   $("nextBtn").classList.add("hidden"); $("checkBtn").classList.remove("hidden"); $("checkBtn").disabled=false;
   var html='<span class="theme-tag '+(q.teal?"teal":"")+'">'+(q.theme||"")+'</span>';
@@ -444,7 +537,7 @@ function syncBank(){
   });
 }
 function checkAnswer(){
-  var q=topics[curTopic].questions[curQ];
+  var q=sessionQuestions[curQ];
   if(q.type!=="puzzle" || answered) return;
   if(puzBuild.join(" ")===q.words.join(" ")){ answered=true; win(q.aff,""); speak(q.words.join(" ")); showNext(); }
   else{ soft(q.wrong,""); }
@@ -455,11 +548,11 @@ function win(msg,rule){ var f=$("feedback"); f.className="feedback good show"; f
 function soft(msg,rule){ var f=$("feedback"); f.className="feedback soft show"; f.innerHTML=msg+(rule?'<div class="fb-rule">'+rule+'</div>':""); }
 function showNext(){ $("checkBtn").classList.add("hidden"); $("nextBtn").classList.remove("hidden"); }
 function nextQuestion(){
-  var t=topics[curTopic]; curQ++;
-  if(curQ>=t.questions.length){
+  curQ++;
+  if(curQ>=sessionQuestions.length){
     setBar(100); markGameDone(curTopic);
     $("quiz").classList.add("hidden"); $("done").classList.remove("hidden");
-    $("doneMsg").textContent="Super! You finished "+t.title+"! 🏆"; speak("Well done!"); burst(); return;
+    $("doneMsg").textContent="Super! You finished "+topics[curTopic].title+"! 🏆"; speak("Well done!"); burst(); return;
   }
   loadQuestion();
 }

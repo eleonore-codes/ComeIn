@@ -203,94 +203,193 @@ function paintMenuDone(){
 var UNIT_NAME="Welcome back";
 
 var topics=[
-  /* 0 — Listen & tap (grid swatch) — Colours */
+  /* 0 — Listen & tap (grid swatch) — Colours
+     Each slot has 2 variants (same swatch trio, different target colour) so a
+     repeat playthrough doesn't always drill the same word. */
   {
     title:"Listen & tap",
     rule:`<div class="rule-head"><span class="rule-title">🎨 Listen &amp; tap</span><button class="speak-mini" data-say="Listen, then tap the right colour.">🔊 Rule</button></div>
           <p>Tap <b>🔊 Listen</b>, then tap the right colour.</p>`,
-    questions:[
-      {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which colour?",say:"red",
-        options:[{swatch:"#e23b3b",s:"red"},{swatch:"#2f6fe0",s:"blue"},{swatch:"#2fae5a",s:"green"}],correct:0,aff:"Tooor! Genau richtig! ⚽",wrong:"💛 Fast! Das war red."},
-      {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which colour?",say:"yellow",
-        options:[{swatch:"#8a8f98",s:"grey"},{swatch:"#f4c020",s:"yellow"},{swatch:"#f06fa8",s:"pink"}],correct:1,aff:"Volltreffer! ⚽",wrong:"💛 Fast! Das war yellow."},
-      {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which colour?",say:"brown",
-        options:[{swatch:"#6b4423",s:"brown"},{swatch:"#f07d1a",s:"orange"},{swatch:"#1a1a1a",s:"black"}],correct:0,aff:"Pole Position! 🏁",wrong:"💛 Fast! Das war brown."},
-      {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which colour?",say:"white",
-        options:[{swatch:"#ffffff",s:"white"},{swatch:"#1a1a1a",s:"black"},{swatch:"#2f6fe0",s:"blue"}],correct:0,aff:"Stark! ⚽",wrong:"💛 Fast! Das war white."},
-      {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which colour?",say:"purple",
-        options:[{swatch:"#6b4fc4",s:"purple"},{swatch:"#2fae5a",s:"green"},{swatch:"#f06fa8",s:"pink"}],correct:0,aff:"Schnell wie ein Rennwagen! 🏎️💨",wrong:"💛 Fast! Das war purple."}
+    pool:[
+      [
+        {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which colour?",say:"red",
+          options:[{swatch:"#e23b3b",s:"red"},{swatch:"#2f6fe0",s:"blue"},{swatch:"#2fae5a",s:"green"}],correct:0,aff:"Tooor! Genau richtig! ⚽",wrong:"💛 Fast! Das war red."},
+        {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which colour?",say:"blue",
+          options:[{swatch:"#e23b3b",s:"red"},{swatch:"#2f6fe0",s:"blue"},{swatch:"#2fae5a",s:"green"}],correct:1,aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! Das war blue."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which colour?",say:"yellow",
+          options:[{swatch:"#8a8f98",s:"grey"},{swatch:"#f4c020",s:"yellow"},{swatch:"#f06fa8",s:"pink"}],correct:1,aff:"Volltreffer! ⚽",wrong:"💛 Fast! Das war yellow."},
+        {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which colour?",say:"pink",
+          options:[{swatch:"#8a8f98",s:"grey"},{swatch:"#f4c020",s:"yellow"},{swatch:"#f06fa8",s:"pink"}],correct:2,aff:"Super Dribbling! ⚽",wrong:"💛 Fast! Das war pink."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which colour?",say:"brown",
+          options:[{swatch:"#6b4423",s:"brown"},{swatch:"#f07d1a",s:"orange"},{swatch:"#1a1a1a",s:"black"}],correct:0,aff:"Pole Position! 🏁",wrong:"💛 Fast! Das war brown."},
+        {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which colour?",say:"orange",
+          options:[{swatch:"#6b4423",s:"brown"},{swatch:"#f07d1a",s:"orange"},{swatch:"#1a1a1a",s:"black"}],correct:1,aff:"Zielgerade! 🏁",wrong:"💛 Fast! Das war orange."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which colour?",say:"white",
+          options:[{swatch:"#ffffff",s:"white"},{swatch:"#1a1a1a",s:"black"},{swatch:"#2f6fe0",s:"blue"}],correct:0,aff:"Stark! ⚽",wrong:"💛 Fast! Das war white."},
+        {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which colour?",say:"black",
+          options:[{swatch:"#ffffff",s:"white"},{swatch:"#1a1a1a",s:"black"},{swatch:"#2f6fe0",s:"blue"}],correct:1,aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! Das war black."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which colour?",say:"purple",
+          options:[{swatch:"#6b4fc4",s:"purple"},{swatch:"#2fae5a",s:"green"},{swatch:"#f06fa8",s:"pink"}],correct:0,aff:"Schnell wie ein Rennwagen! 🏎️💨",wrong:"💛 Fast! Das war purple."},
+        {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which colour?",say:"green",
+          options:[{swatch:"#6b4fc4",s:"purple"},{swatch:"#2fae5a",s:"green"},{swatch:"#f06fa8",s:"pink"}],correct:1,aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Das war green."}
+      ]
     ]
   },
 
-  /* 1 — Match number word <-> digit */
+  /* 1 — Match number word <-> digit
+     Each slot has 2 variants covering different numbers of the same
+     difficulty band, so the numbers drilled change on a replay. */
   {
     title:"Match it",
     rule:`<div class="rule-head"><span class="rule-title">🔗 Match it</span><button class="speak-mini" data-say="Tap a word, then tap its number.">🔊 Rule</button></div>
           <p>Tap a <b>word</b>, then tap its <b>number</b>.</p><p>Tap 🔊 on a word to hear it.</p>`,
-    questions:[
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["five","5"],["seven","7"],["ten","10"],["three","3"]],
-        aff:"Alle Paare! Mannschaftsleistung! ⚽🏆",wrong:"💛 Fast! Tippe das Wort, dann die Zahl."},
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["eleven","11"],["twelve","12"],["fifteen","15"],["twenty","20"]],
-        aff:"Perfekt verbunden! 🏁",wrong:"💛 Fast! Probier es in Ruhe."},
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["thirty","30"],["fifty","50"],["one hundred","100"]],
-        aff:"Geschafft — Doppelpass sitzt! ⚽",wrong:"💛 Fast! Schau nochmal hin."}
+    pool:[
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["five","5"],["seven","7"],["ten","10"],["three","3"]],
+          aff:"Alle Paare! Mannschaftsleistung! ⚽🏆",wrong:"💛 Fast! Tippe das Wort, dann die Zahl."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["two","2"],["four","4"],["six","6"],["nine","9"]],
+          aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! Tippe das Wort, dann die Zahl."}
+      ],
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["eleven","11"],["twelve","12"],["fifteen","15"],["twenty","20"]],
+          aff:"Perfekt verbunden! 🏁",wrong:"💛 Fast! Probier es in Ruhe."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["thirteen","13"],["fourteen","14"],["sixteen","16"],["eighteen","18"]],
+          aff:"Zielgerade! 🏁",wrong:"💛 Fast! Probier es in Ruhe."}
+      ],
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["thirty","30"],["fifty","50"],["one hundred","100"]],
+          aff:"Geschafft — Doppelpass sitzt! ⚽",wrong:"💛 Fast! Schau nochmal hin."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["forty","40"],["sixty","60"],["ninety","90"]],
+          aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Schau nochmal hin."}
+      ]
     ]
   },
 
-  /* 2 — Which weather? (grid emoji) */
+  /* 2 — Which weather? (grid emoji)
+     Each slot has 2 variants (same picture trio, different target picture). */
   {
     title:"Which weather?",
     rule:`<div class="rule-head"><span class="rule-title">🌦️ Which weather?</span><button class="speak-mini" data-say="Listen, then tap the right picture.">🔊 Rule</button></div>
           <p>Tap <b>🔊 Listen</b>, then tap the right picture.</p>`,
-    questions:[
-      {type:"choose",grid:true,theme:"🌦️ Listen",teal:true,prompt:"Which picture?",say:"sunny",
-        options:[{t:"☀️",s:"sunny"},{t:"☁️",s:"cloudy"},{t:"🌧️",s:"rainy"}],correct:0,aff:"Tor! ⚽",wrong:"💛 Fast! ☀️ ist sunny."},
-      {type:"choose",grid:true,theme:"🌦️ Listen",teal:true,prompt:"Which picture?",say:"snowy",
-        options:[{t:"❄️",s:"snowy"},{t:"⛈️",s:"stormy"},{t:"🌫️",s:"foggy"}],correct:0,aff:"Volltreffer! ⚽",wrong:"💛 Fast! ❄️ ist snowy."},
-      {type:"choose",grid:true,theme:"🌦️ Listen",teal:true,prompt:"Which picture?",say:"windy",
-        options:[{t:"💨",s:"windy"},{t:"☀️",s:"sunny"},{t:"🥶",s:"cold"}],correct:0,aff:"Pole Position! 🏎️",wrong:"💛 Fast! 💨 ist windy."},
-      {type:"choose",grid:true,theme:"🌦️ Listen",teal:true,prompt:"Which picture?",say:"hot",
-        options:[{t:"🥵",s:"hot"},{t:"🧊",s:"frosty"},{t:"🌤️",s:"warm"}],correct:0,aff:"Sauber! ⚽",wrong:"💛 Fast! 🥵 ist hot."},
-      {type:"choose",grid:true,theme:"🌦️ Listen",teal:true,prompt:"Which picture?",say:"cold",
-        options:[{t:"🥶",s:"cold"},{t:"🥵",s:"hot"},{t:"☁️",s:"cloudy"}],correct:0,aff:"Stark! ⚽",wrong:"💛 Fast! 🥶 ist cold."}
+    pool:[
+      [
+        {type:"choose",grid:true,theme:"🌦️ Listen",teal:true,prompt:"Which picture?",say:"sunny",
+          options:[{t:"☀️",s:"sunny"},{t:"☁️",s:"cloudy"},{t:"🌧️",s:"rainy"}],correct:0,aff:"Tor! ⚽",wrong:"💛 Fast! ☀️ ist sunny."},
+        {type:"choose",grid:true,theme:"🌦️ Listen",teal:true,prompt:"Which picture?",say:"cloudy",
+          options:[{t:"☀️",s:"sunny"},{t:"☁️",s:"cloudy"},{t:"🌧️",s:"rainy"}],correct:1,aff:"Super Dribbling! ⚽",wrong:"💛 Fast! ☁️ ist cloudy."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🌦️ Listen",teal:true,prompt:"Which picture?",say:"snowy",
+          options:[{t:"❄️",s:"snowy"},{t:"⛈️",s:"stormy"},{t:"🌫️",s:"foggy"}],correct:0,aff:"Volltreffer! ⚽",wrong:"💛 Fast! ❄️ ist snowy."},
+        {type:"choose",grid:true,theme:"🌦️ Listen",teal:true,prompt:"Which picture?",say:"stormy",
+          options:[{t:"❄️",s:"snowy"},{t:"⛈️",s:"stormy"},{t:"🌫️",s:"foggy"}],correct:1,aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! ⛈️ ist stormy."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🌦️ Listen",teal:true,prompt:"Which picture?",say:"windy",
+          options:[{t:"💨",s:"windy"},{t:"☀️",s:"sunny"},{t:"🥶",s:"cold"}],correct:0,aff:"Pole Position! 🏎️",wrong:"💛 Fast! 💨 ist windy."},
+        {type:"choose",grid:true,theme:"🌦️ Listen",teal:true,prompt:"Which picture?",say:"cold",
+          options:[{t:"💨",s:"windy"},{t:"☀️",s:"sunny"},{t:"🥶",s:"cold"}],correct:2,aff:"Zielgerade! 🏁",wrong:"💛 Fast! 🥶 ist cold."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🌦️ Listen",teal:true,prompt:"Which picture?",say:"hot",
+          options:[{t:"🥵",s:"hot"},{t:"🧊",s:"frosty"},{t:"🌤️",s:"warm"}],correct:0,aff:"Sauber! ⚽",wrong:"💛 Fast! 🥵 ist hot."},
+        {type:"choose",grid:true,theme:"🌦️ Listen",teal:true,prompt:"Which picture?",say:"warm",
+          options:[{t:"🥵",s:"hot"},{t:"🧊",s:"frosty"},{t:"🌤️",s:"warm"}],correct:2,aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! 🌤️ ist warm."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🌦️ Listen",teal:true,prompt:"Which picture?",say:"cold",
+          options:[{t:"🥶",s:"cold"},{t:"🥵",s:"hot"},{t:"☁️",s:"cloudy"}],correct:0,aff:"Stark! ⚽",wrong:"💛 Fast! 🥶 ist cold."},
+        {type:"choose",grid:true,theme:"🌦️ Listen",teal:true,prompt:"Which picture?",say:"cloudy",
+          options:[{t:"🥶",s:"cold"},{t:"🥵",s:"hot"},{t:"☁️",s:"cloudy"}],correct:2,aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! ☁️ ist cloudy."}
+      ]
     ]
   },
 
-  /* 3 — Right or wrong? (swipe) — Days of the week */
+  /* 3 — Right or wrong? (swipe) — Days of the week
+     Each slot has 2 variants with a different true/false statement. */
   {
     title:"Right or wrong?",
     rule:`<div class="rule-head"><span class="rule-title">👋 Right or wrong?</span><button class="speak-mini" data-say="Listen. Tap yes if it is right. Tap no if it is wrong.">🔊 Rule</button></div>
           <p>Listen to the sentence.</p><p>Tap ✅ <b>yes</b> if it is right. Tap ❌ <b>no</b> if it is wrong.</p>`,
-    questions:[
-      {type:"swipe",theme:"📅 Check",emoji:"📅",text:"Monday is the first day of the school week.",answer:true,aff:"Erkannt! Gutes Auge! 🏎️",wrong:"💛 Fast! Monday ist der erste Schultag — richtig."},
-      {type:"swipe",theme:"📅 Check",emoji:"📅",text:"Sunday comes before Saturday.",answer:false,aff:"Richtig! Sicher wie ein Elfmeter! ⚽",wrong:"💛 Fast! Saturday kommt vor Sunday."},
-      {type:"swipe",theme:"📅 Check",emoji:"📅",text:"There are seven days in a week.",answer:true,aff:"Tor! Genau! ⚽",wrong:"💛 Fast! Eine Woche hat sieben Tage — richtig."},
-      {type:"swipe",theme:"📅 Check",emoji:"📅",text:"Friday is a weekend day.",answer:false,aff:"Stark gebremst und richtig! 🏁",wrong:"💛 Fast! Friday ist noch kein Wochenende."},
-      {type:"swipe",theme:"📅 Check",emoji:"📅",text:"Wednesday comes after Tuesday.",answer:true,aff:"Sauber! ⚽",wrong:"💛 Fast! Wednesday kommt nach Tuesday — richtig."}
+    pool:[
+      [
+        {type:"swipe",theme:"📅 Check",emoji:"📅",text:"Monday is the first day of the school week.",answer:true,aff:"Erkannt! Gutes Auge! 🏎️",wrong:"💛 Fast! Monday ist der erste Schultag — richtig."},
+        {type:"swipe",theme:"📅 Check",emoji:"📅",text:"Thursday comes before Wednesday.",answer:false,aff:"Gutes Auge! 🏎️",wrong:"💛 Fast! Wednesday kommt vor Thursday."}
+      ],
+      [
+        {type:"swipe",theme:"📅 Check",emoji:"📅",text:"Sunday comes before Saturday.",answer:false,aff:"Richtig! Sicher wie ein Elfmeter! ⚽",wrong:"💛 Fast! Saturday kommt vor Sunday."},
+        {type:"swipe",theme:"📅 Check",emoji:"📅",text:"Saturday and Sunday are the weekend.",answer:true,aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Saturday und Sunday sind das Wochenende — richtig."}
+      ],
+      [
+        {type:"swipe",theme:"📅 Check",emoji:"📅",text:"There are seven days in a week.",answer:true,aff:"Tor! Genau! ⚽",wrong:"💛 Fast! Eine Woche hat sieben Tage — richtig."},
+        {type:"swipe",theme:"📅 Check",emoji:"📅",text:"There are seven days in a weekend.",answer:false,aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! Das Wochenende hat nur zwei Tage."}
+      ],
+      [
+        {type:"swipe",theme:"📅 Check",emoji:"📅",text:"Friday is a weekend day.",answer:false,aff:"Stark gebremst und richtig! 🏁",wrong:"💛 Fast! Friday ist noch kein Wochenende."},
+        {type:"swipe",theme:"📅 Check",emoji:"📅",text:"School usually starts on a Monday.",answer:true,aff:"Zielgerade! 🏁",wrong:"💛 Fast! Die Schulwoche beginnt meist am Monday — richtig."}
+      ],
+      [
+        {type:"swipe",theme:"📅 Check",emoji:"📅",text:"Wednesday comes after Tuesday.",answer:true,aff:"Sauber! ⚽",wrong:"💛 Fast! Wednesday kommt nach Tuesday — richtig."},
+        {type:"swipe",theme:"📅 Check",emoji:"📅",text:"Friday comes before Thursday.",answer:false,aff:"Super Dribbling! ⚽",wrong:"💛 Fast! Thursday kommt vor Friday."}
+      ]
     ]
   },
 
-  /* 4 — Build the sentence (puzzle) */
+  /* 4 — Build the sentence (puzzle)
+     Each slot has 2 variants reusing vocabulary from the games above. */
   {
     title:"Build the sentence",
     rule:`<div class="rule-head"><span class="rule-title">🧩 Build the sentence</span><button class="speak-mini" data-say="Tap the words in the right order.">🔊 Rule</button></div>
           <p>Tap the words in the right order.</p><p>Tap 🔊 to hear the whole sentence.</p>`,
-    questions:[
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["It's","sunny","today."],aff:"Satz steht! ⚽",wrong:"💛 Fast! Beginne mit \"It's\"."},
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["The","car","is","blue."],aff:"Frage gebaut wie ein Profi! 🏎️",wrong:"💛 Fast! Beginne mit \"The\"."},
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["Today","is","Monday."],aff:"Perfekt! 🏆",wrong:"💛 Fast! Beginne mit \"Today\"."}
+    pool:[
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["It's","sunny","today."],aff:"Satz steht! ⚽",wrong:"💛 Fast! Beginne mit \"It's\"."},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["It's","windy","today."],aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! Beginne mit \"It's\"."}
+      ],
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["The","car","is","blue."],aff:"Frage gebaut wie ein Profi! 🏎️",wrong:"💛 Fast! Beginne mit \"The\"."},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["The","ball","is","red."],aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Beginne mit \"The\"."}
+      ],
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["Today","is","Monday."],aff:"Perfekt! 🏆",wrong:"💛 Fast! Beginne mit \"Today\"."},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["Today","is","Friday."],aff:"Zielgerade! 🏁",wrong:"💛 Fast! Beginne mit \"Today\"."}
+      ]
     ]
   }
 ];
 
+/* ---------- variant picking (no-repeat-on-replay) ---------- */
+function getLastVariants(){ try{ return JSON.parse(localStorage.getItem("comeIn4.lastVariant")||"{}"); }catch(e){ return {}; } }
+function setLastVariants(m){ try{ localStorage.setItem("comeIn4.lastVariant", JSON.stringify(m)); }catch(e){} }
+function pickVariant(topicIdx,slotIdx,variants){
+  if(variants.length===1) return variants[0];
+  var map=getLastVariants(), key=UNIT_KEY+"."+topicIdx+"."+slotIdx, last=map[key];
+  var choices=[]; for(var i=0;i<variants.length;i++){ if(i!==last) choices.push(i); }
+  var pick=choices[Math.floor(Math.random()*choices.length)];
+  map[key]=pick; setLastVariants(map);
+  return variants[pick];
+}
+function buildQuestions(topicIdx){
+  return topics[topicIdx].pool.map(function(slot,slotIdx){ return pickVariant(topicIdx,slotIdx,slot); });
+}
+
+
 /* =========================================================
    SHARED ENGINE (generic + grid + swatch + speed + read-along + progress)
    ========================================================= */
-var curTopic=0, curQ=0, answered=false;
+var curTopic=0, curQ=0, answered=false, sessionQuestions=[];
 function $(id){return document.getElementById(id);}
 
 function startTopic(i){
-  curTopic=i; curQ=0;
+  curTopic=i; curQ=0; sessionQuestions=buildQuestions(i);
   $("menu").classList.add("hidden"); $("done").classList.add("hidden"); $("quiz").classList.remove("hidden");
   $("screenTitle").textContent=topics[i].title;
   $("ruleSlot").innerHTML='<div class="rule">'+topics[i].rule+'</div>';
@@ -307,8 +406,8 @@ function setBar(p){ $("progressFill").style.width=p+"%"; }
 
 function loadQuestion(){
   answered=false; clearReading();
-  var t=topics[curTopic], q=t.questions[curQ];
-  setBar(Math.round(curQ/t.questions.length*100));
+  var q=sessionQuestions[curQ];
+  setBar(Math.round(curQ/sessionQuestions.length*100));
   $("feedback").className="feedback"; $("feedback").innerHTML="";
   $("nextBtn").classList.add("hidden"); $("checkBtn").classList.remove("hidden"); $("checkBtn").disabled=false;
   var html='<span class="theme-tag '+(q.teal?"teal":"")+'">'+(q.theme||"")+'</span>';
@@ -446,7 +545,7 @@ function syncBank(){
   });
 }
 function checkAnswer(){
-  var q=topics[curTopic].questions[curQ];
+  var q=sessionQuestions[curQ];
   if(q.type!=="puzzle" || answered) return;
   if(puzBuild.join(" ")===q.words.join(" ")){ answered=true; win(q.aff,""); speak(q.words.join(" ")); showNext(); }
   else{ soft(q.wrong,""); }
@@ -457,11 +556,11 @@ function win(msg,rule){ var f=$("feedback"); f.className="feedback good show"; f
 function soft(msg,rule){ var f=$("feedback"); f.className="feedback soft show"; f.innerHTML=msg+(rule?'<div class="fb-rule">'+rule+'</div>':""); }
 function showNext(){ $("checkBtn").classList.add("hidden"); $("nextBtn").classList.remove("hidden"); }
 function nextQuestion(){
-  var t=topics[curTopic]; curQ++;
-  if(curQ>=t.questions.length){
+  curQ++;
+  if(curQ>=sessionQuestions.length){
     setBar(100); markGameDone(curTopic);
     $("quiz").classList.add("hidden"); $("done").classList.remove("hidden");
-    $("doneMsg").textContent="Super! You finished "+t.title+"! 🏆"; speak("Well done!"); burst(); return;
+    $("doneMsg").textContent="Super! You finished "+topics[curTopic].title+"! 🏆"; speak("Well done!"); burst(); return;
   }
   loadQuestion();
 }

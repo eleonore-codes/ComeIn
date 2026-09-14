@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Come In 3 — Champion-Test</title>
+<title>English 3 — Champion-Test</title>
 <style>
   :root{
     --navy:#1a2a4a;--navy-2:#23365c;--teal:#1fb6c4;--teal-soft:#7fd9e2;
@@ -129,7 +129,7 @@
 <body>
 <div class="wrap">
   <header>
-    <p class="unit-name">Come In 3</p>
+    <p class="unit-name">English 3</p>
     <div class="hdr-row">
       <h1 id="screenTitle">🏆 Champion</h1>
       <button class="speedbtn" id="speedBtn" onclick="toggleRate()">🐇 normal</button>
@@ -194,35 +194,95 @@ var UNITS=[
   {key:"d", label:"Block 4 · Units 12–14",file:"test4.html"}
 ];
 
-/* TEST QUESTIONS (mixed, tagged by unit) */
-var TEST=[
-  {unit:"a",type:"choose",grid:true,say:"ten",prompt:"Which number?",options:[{t:"10",s:"ten"},{t:"4",s:"four"},{t:"7",s:"seven"}],correct:0},
-  {unit:"a",type:"choose",grid:true,say:"pencil",prompt:"Which picture?",options:[{t:"✏️",s:"pencil"},{t:"📏",s:"ruler"},{t:"✂️",s:"scissors"}],correct:0},
-  {unit:"a",type:"spell",word:"bat",emoji:"🦇"},
-  {unit:"a",type:"swipe",emoji:"👃",text:"This is your nose.",answer:true},
-
-  {unit:"b",type:"choose",grid:true,say:"rainy",prompt:"Which weather?",options:[{t:"☀️",s:"sunny"},{t:"🌧️",s:"rainy"},{t:"❄️",s:"snowy"}],correct:1},
-  {unit:"b",type:"choose",say:"reindeer",prompt:"Which word?",options:["reindeer","present","star"],correct:0},
-  {unit:"b",type:"spell",word:"milk",emoji:"🥛"},
-  {unit:"b",type:"swipe",emoji:"🚌",text:"This is a bus.",answer:true},
-
-  {unit:"c",type:"choose",grid:true,say:"tiger",prompt:"Which animal?",options:[{t:"🦁",s:"lion"},{t:"🐯",s:"tiger"},{t:"🐘",s:"elephant"}],correct:1},
-  {unit:"c",type:"choose",show:"The egg is ___ the chair.",say:"The egg is under the chair.",prompt:"Tap the missing word.",options:["on","in","under"],correct:2},
-  {unit:"c",type:"choose",grid:true,say:"grandpa",prompt:"Who is it?",options:[{t:"👵",s:"grandma"},{t:"👴",s:"grandpa"},{t:"👶",s:"baby"}],correct:1},
-  {unit:"c",type:"spell",word:"lion",emoji:"🦁"},
-
-  {unit:"d",type:"choose",grid:true,say:"six o'clock",prompt:"Which clock?",options:[{t:"🕒",s:"three o'clock"},{t:"🕕",s:"six o'clock"},{t:"🕘",s:"nine o'clock"}],correct:1},
-  {unit:"d",type:"choose",say:"December",prompt:"Which month?",options:["March","December","June"],correct:1},
-  {unit:"d",type:"choose",grid:true,say:"sail a boat",prompt:"Which one?",options:[{t:"⛵",s:"sail a boat"},{t:"🪁",s:"fly a kite"},{t:"🐚",s:"collect shells"}],correct:0},
-  {unit:"d",type:"spell",word:"kite",emoji:"🪁"}
+/* TEST QUESTIONS (mixed, tagged by unit) — pool with no-repeat variants */
+var TEST_KEY="testfinal";
+var TEST_POOL=[
+  [
+    {unit:"a",type:"choose",grid:true,say:"ten",prompt:"Which number?",options:[{t:"10",s:"ten"},{t:"4",s:"four"},{t:"7",s:"seven"}],correct:0},
+    {unit:"a",type:"choose",grid:true,say:"seven",prompt:"Which number?",options:[{t:"7",s:"seven"},{t:"3",s:"three"},{t:"9",s:"nine"}],correct:0}
+  ],
+  [
+    {unit:"a",type:"choose",grid:true,say:"pencil",prompt:"Which picture?",options:[{t:"✏️",s:"pencil"},{t:"📏",s:"ruler"},{t:"✂️",s:"scissors"}],correct:0},
+    {unit:"a",type:"choose",grid:true,say:"book",prompt:"Which picture?",options:[{t:"📚",s:"book"},{t:"📓",s:"notebook"},{t:"📁",s:"folder"}],correct:0}
+  ],
+  [
+    {unit:"a",type:"spell",word:"bat",emoji:"🦇"},
+    {unit:"a",type:"spell",word:"ghost",emoji:"👻"}
+  ],
+  [
+    {unit:"a",type:"swipe",emoji:"👃",text:"This is your nose.",answer:true},
+    {unit:"a",type:"swipe",emoji:"👂",text:"This is your ear.",answer:true}
+  ],
+  [
+    {unit:"b",type:"choose",grid:true,say:"rainy",prompt:"Which weather?",options:[{t:"☀️",s:"sunny"},{t:"🌧️",s:"rainy"},{t:"❄️",s:"snowy"}],correct:1},
+    {unit:"b",type:"choose",grid:true,say:"cloudy",prompt:"Which weather?",options:[{t:"☁️",s:"cloudy"},{t:"☀️",s:"sunny"},{t:"⛈️",s:"stormy"}],correct:0}
+  ],
+  [
+    {unit:"b",type:"choose",say:"reindeer",prompt:"Which word?",options:["reindeer","present","star"],correct:0},
+    {unit:"b",type:"choose",say:"candle",prompt:"Which word?",options:["candle","star","present"],correct:0}
+  ],
+  [
+    {unit:"b",type:"spell",word:"milk",emoji:"🥛"},
+    {unit:"b",type:"spell",word:"toast",emoji:"🍞"}
+  ],
+  [
+    {unit:"b",type:"swipe",emoji:"🚌",text:"This is a bus.",answer:true},
+    {unit:"b",type:"swipe",emoji:"🚕",text:"This is a taxi.",answer:true}
+  ],
+  [
+    {unit:"c",type:"choose",grid:true,say:"tiger",prompt:"Which animal?",options:[{t:"🦁",s:"lion"},{t:"🐯",s:"tiger"},{t:"🐘",s:"elephant"}],correct:1},
+    {unit:"c",type:"choose",grid:true,say:"elephant",prompt:"Which animal?",options:[{t:"🦒",s:"giraffe"},{t:"🐘",s:"elephant"},{t:"🦓",s:"zebra"}],correct:1}
+  ],
+  [
+    {unit:"c",type:"choose",show:"The egg is ___ the chair.",say:"The egg is under the chair.",prompt:"Tap the missing word.",options:["on","in","under"],correct:2},
+    {unit:"c",type:"choose",show:"The bunny is ___ the basket.",say:"The bunny is in the basket.",prompt:"Tap the missing word.",options:["in","on","under"],correct:0}
+  ],
+  [
+    {unit:"c",type:"choose",grid:true,say:"grandpa",prompt:"Who is it?",options:[{t:"👵",s:"grandma"},{t:"👴",s:"grandpa"},{t:"👶",s:"baby"}],correct:1},
+    {unit:"c",type:"choose",grid:true,say:"sister",prompt:"Who is it?",options:[{t:"👦",s:"brother"},{t:"👧",s:"sister"},{t:"👶",s:"baby"}],correct:1}
+  ],
+  [
+    {unit:"c",type:"spell",word:"lion",emoji:"🦁"},
+    {unit:"c",type:"spell",word:"tiger",emoji:"🐯"}
+  ],
+  [
+    {unit:"d",type:"choose",grid:true,say:"six o'clock",prompt:"Which clock?",options:[{t:"🕒",s:"three o'clock"},{t:"🕕",s:"six o'clock"},{t:"🕘",s:"nine o'clock"}],correct:1},
+    {unit:"d",type:"choose",grid:true,say:"nine o'clock",prompt:"Which clock?",options:[{t:"🕒",s:"three o'clock"},{t:"🕕",s:"six o'clock"},{t:"🕘",s:"nine o'clock"}],correct:2}
+  ],
+  [
+    {unit:"d",type:"choose",say:"December",prompt:"Which month?",options:["March","December","June"],correct:1},
+    {unit:"d",type:"choose",say:"July",prompt:"Which month?",options:["April","July","January"],correct:1}
+  ],
+  [
+    {unit:"d",type:"choose",grid:true,say:"sail a boat",prompt:"Which one?",options:[{t:"⛵",s:"sail a boat"},{t:"🪁",s:"fly a kite"},{t:"🐚",s:"collect shells"}],correct:0},
+    {unit:"d",type:"choose",grid:true,say:"collect shells",prompt:"Which one?",options:[{t:"⛵",s:"sail a boat"},{t:"🐚",s:"collect shells"},{t:"🪁",s:"fly a kite"}],correct:1}
+  ],
+  [
+    {unit:"d",type:"spell",word:"kite",emoji:"🪁"},
+    {unit:"d",type:"spell",word:"May",emoji:"📅"}
+  ]
 ];
+var TEST=[];
+
+/* ---------- variant picking (no-repeat-on-replay) ---------- */
+function getLastVariants(){ try{ return JSON.parse(localStorage.getItem("comeIn3.lastVariant")||"{}"); }catch(e){ return {}; } }
+function setLastVariants(m){ try{ localStorage.setItem("comeIn3.lastVariant", JSON.stringify(m)); }catch(e){} }
+function pickVariant(slotIdx,variants){
+  if(variants.length===1) return variants[0];
+  var map=getLastVariants(), key=TEST_KEY+"."+slotIdx, last=map[key];
+  var choices=[]; for(var i=0;i<variants.length;i++){ if(i!==last) choices.push(i); }
+  var pick=choices[Math.floor(Math.random()*choices.length)];
+  map[key]=pick; setLastVariants(map);
+  return variants[pick];
+}
+function buildTest(){ return TEST_POOL.map(function(slot,slotIdx){ return pickVariant(slotIdx,slot); }); }
 
 /* STATE */
 var idx=0, answered=false, results={};
 function $(id){return document.getElementById(id);}
 
 function startTest(){
-  idx=0; results={};
+  idx=0; results={}; TEST=buildTest();
   $("intro").classList.add("hidden"); $("report").classList.add("hidden"); $("quiz").classList.remove("hidden");
   loadQ();
 }

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Come In 3 — Test 1</title>
+<title>English 3 — Test 1</title>
 <style>
   :root{
     --navy:#1a2a4a;--navy-2:#23365c;--teal:#1fb6c4;--teal-soft:#7fd9e2;
@@ -129,7 +129,7 @@
 <body>
 <div class="wrap">
   <header>
-    <p class="unit-name">Come In 3</p>
+    <p class="unit-name">English 3</p>
     <div class="hdr-row">
       <h1 id="screenTitle">📝 Test 1</h1>
       <button class="speedbtn" id="speedBtn" onclick="toggleRate()">🐇 normal</button>
@@ -194,35 +194,95 @@ var UNITS=[
   {key:"body",     label:"🧍 Body",          file:"body.html"}
 ];
 
-/* TEST QUESTIONS (mixed, tagged by unit) */
-var TEST=[
-  {unit:"welcome",type:"choose",grid:true,say:"red",prompt:"Which colour?",options:[{swatch:COL.red,s:"red"},{swatch:COL.blue,s:"blue"},{swatch:COL.green,s:"green"}],correct:0},
-  {unit:"welcome",type:"choose",grid:true,say:"seven",prompt:"Which number?",options:[{t:"7",s:"seven"},{t:"3",s:"three"},{t:"9",s:"nine"}],correct:0},
-  {unit:"welcome",type:"spell",word:"blue",swatch:COL.blue},
-  {unit:"welcome",type:"swipe",swatch:COL.red,text:"This is red.",answer:true},
-
-  {unit:"school",type:"choose",grid:true,say:"scissors",prompt:"Which picture?",options:[{t:"✂️",s:"scissors"},{t:"📏",s:"ruler"},{t:"📚",s:"book"}],correct:0},
-  {unit:"school",type:"choose",say:"glue",prompt:"Which word?",options:["glue","ruler","book"],correct:0},
-  {unit:"school",type:"spell",word:"book",emoji:"📚"},
-  {unit:"school",type:"swipe",emoji:"🪑",text:"This is a chair.",answer:true},
-
-  {unit:"halloween",type:"choose",grid:true,say:"ghost",prompt:"Which picture?",options:[{t:"👻",s:"ghost"},{t:"🦇",s:"bat"},{t:"🕷️",s:"spider"}],correct:0},
-  {unit:"halloween",type:"choose",show:"🐱 🐱",say:"two cats",prompt:"How many?",options:["cat","cats","cates"],correct:1},
-  {unit:"halloween",type:"spell",word:"bat",emoji:"🦇"},
-  {unit:"halloween",type:"swipe",emoji:"🕷️",text:"This is a bat.",answer:false},
-
-  {unit:"body",type:"choose",grid:true,say:"nose",prompt:"Which one?",options:[{t:"👃",s:"nose"},{t:"👂",s:"ear"},{t:"👁️",s:"eye"}],correct:0},
-  {unit:"body",type:"choose",show:"🦶 🦶",say:"two feet",prompt:"How many?",options:["foot","feet","foots"],correct:1},
-  {unit:"body",type:"spell",word:"hand",emoji:"✋"},
-  {unit:"body",type:"swipe",emoji:"👂",text:"This is your ear.",answer:true}
+/* TEST QUESTIONS (mixed, tagged by unit) — pool with no-repeat variants */
+var TEST_KEY="test1";
+var TEST_POOL=[
+  [
+    {unit:"welcome",type:"choose",grid:true,say:"red",prompt:"Which colour?",options:[{swatch:COL.red,s:"red"},{swatch:COL.blue,s:"blue"},{swatch:COL.green,s:"green"}],correct:0},
+    {unit:"welcome",type:"choose",grid:true,say:"green",prompt:"Which colour?",options:[{swatch:COL.green,s:"green"},{swatch:COL.red,s:"red"},{swatch:COL.yellow,s:"yellow"}],correct:0}
+  ],
+  [
+    {unit:"welcome",type:"choose",grid:true,say:"seven",prompt:"Which number?",options:[{t:"7",s:"seven"},{t:"3",s:"three"},{t:"9",s:"nine"}],correct:0},
+    {unit:"welcome",type:"choose",grid:true,say:"four",prompt:"Which number?",options:[{t:"4",s:"four"},{t:"8",s:"eight"},{t:"2",s:"two"}],correct:0}
+  ],
+  [
+    {unit:"welcome",type:"spell",word:"blue",swatch:COL.blue},
+    {unit:"welcome",type:"spell",word:"red",swatch:COL.red}
+  ],
+  [
+    {unit:"welcome",type:"swipe",swatch:COL.red,text:"This is red.",answer:true},
+    {unit:"welcome",type:"swipe",swatch:COL.yellow,text:"This is yellow.",answer:true}
+  ],
+  [
+    {unit:"school",type:"choose",grid:true,say:"scissors",prompt:"Which picture?",options:[{t:"✂️",s:"scissors"},{t:"📏",s:"ruler"},{t:"📚",s:"book"}],correct:0},
+    {unit:"school",type:"choose",grid:true,say:"pencil",prompt:"Which picture?",options:[{t:"✏️",s:"pencil"},{t:"🎒",s:"schoolbag"},{t:"🪑",s:"chair"}],correct:0}
+  ],
+  [
+    {unit:"school",type:"choose",say:"glue",prompt:"Which word?",options:["glue","ruler","book"],correct:0},
+    {unit:"school",type:"choose",say:"crayon",prompt:"Which word?",options:["crayon","notebook","rubber"],correct:0}
+  ],
+  [
+    {unit:"school",type:"spell",word:"book",emoji:"📚"},
+    {unit:"school",type:"spell",word:"pen",emoji:"🖊️"}
+  ],
+  [
+    {unit:"school",type:"swipe",emoji:"🪑",text:"This is a chair.",answer:true},
+    {unit:"school",type:"swipe",emoji:"📚",text:"This is a pencil.",answer:false}
+  ],
+  [
+    {unit:"halloween",type:"choose",grid:true,say:"ghost",prompt:"Which picture?",options:[{t:"👻",s:"ghost"},{t:"🦇",s:"bat"},{t:"🕷️",s:"spider"}],correct:0},
+    {unit:"halloween",type:"choose",grid:true,say:"witch",prompt:"Which picture?",options:[{t:"🧙",s:"witch"},{t:"🧛",s:"vampire"},{t:"💀",s:"skeleton"}],correct:0}
+  ],
+  [
+    {unit:"halloween",type:"choose",show:"🐱 🐱",say:"two cats",prompt:"How many?",options:["cat","cats","cates"],correct:1},
+    {unit:"halloween",type:"choose",show:"🦉 🦉",say:"two owls",prompt:"How many?",options:["owl","owls","owles"],correct:1}
+  ],
+  [
+    {unit:"halloween",type:"spell",word:"bat",emoji:"🦇"},
+    {unit:"halloween",type:"spell",word:"cat",emoji:"🐱"}
+  ],
+  [
+    {unit:"halloween",type:"swipe",emoji:"🕷️",text:"This is a bat.",answer:false},
+    {unit:"halloween",type:"swipe",emoji:"👻",text:"This is a ghost.",answer:true}
+  ],
+  [
+    {unit:"body",type:"choose",grid:true,say:"nose",prompt:"Which one?",options:[{t:"👃",s:"nose"},{t:"👂",s:"ear"},{t:"👁️",s:"eye"}],correct:0},
+    {unit:"body",type:"choose",grid:true,say:"mouth",prompt:"Which one?",options:[{t:"👄",s:"mouth"},{t:"💪",s:"arm"},{t:"🦵",s:"leg"}],correct:0}
+  ],
+  [
+    {unit:"body",type:"choose",show:"🦶 🦶",say:"two feet",prompt:"How many?",options:["foot","feet","foots"],correct:1},
+    {unit:"body",type:"choose",show:"🦷 🦷",say:"two teeth",prompt:"How many?",options:["tooth","teeth","tooths"],correct:1}
+  ],
+  [
+    {unit:"body",type:"spell",word:"hand",emoji:"✋"},
+    {unit:"body",type:"spell",word:"arm",emoji:"💪"}
+  ],
+  [
+    {unit:"body",type:"swipe",emoji:"👂",text:"This is your ear.",answer:true},
+    {unit:"body",type:"swipe",emoji:"👄",text:"This is your ear.",answer:false}
+  ]
 ];
+var TEST=[];
+
+/* ---------- variant picking (no-repeat-on-replay) ---------- */
+function getLastVariants(){ try{ return JSON.parse(localStorage.getItem("comeIn3.lastVariant")||"{}"); }catch(e){ return {}; } }
+function setLastVariants(m){ try{ localStorage.setItem("comeIn3.lastVariant", JSON.stringify(m)); }catch(e){} }
+function pickVariant(slotIdx,variants){
+  if(variants.length===1) return variants[0];
+  var map=getLastVariants(), key=TEST_KEY+"."+slotIdx, last=map[key];
+  var choices=[]; for(var i=0;i<variants.length;i++){ if(i!==last) choices.push(i); }
+  var pick=choices[Math.floor(Math.random()*choices.length)];
+  map[key]=pick; setLastVariants(map);
+  return variants[pick];
+}
+function buildTest(){ return TEST_POOL.map(function(slot,slotIdx){ return pickVariant(slotIdx,slot); }); }
 
 /* STATE */
 var idx=0, answered=false, results={};
 function $(id){return document.getElementById(id);}
 
 function startTest(){
-  idx=0; results={};
+  idx=0; results={}; TEST=buildTest();
   $("intro").classList.add("hidden"); $("report").classList.add("hidden"); $("quiz").classList.remove("hidden");
   loadQ();
 }

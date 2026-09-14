@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Come In 3 — Halloween</title>
+<title>English 3 — Halloween</title>
 <style>
   :root{
     --navy:#1a2a4a;--navy-2:#23365c;--teal:#1fb6c4;--teal-soft:#7fd9e2;
@@ -108,7 +108,7 @@
 <body>
 <div class="wrap">
   <header>
-    <p class="unit-name">Come In 3</p>
+    <p class="unit-name">English 3</p>
     <div class="hdr-row">
       <h1 id="screenTitle">🎃 Halloween</h1>
       <button class="speedbtn" id="speedBtn" onclick="toggleRate()">🐇 normal</button>
@@ -203,94 +203,191 @@ function paintMenuDone(){
 var UNIT_NAME="Halloween";
 
 var topics=[
-  /* 0 — Listen & tap (grid emoji) */
+  /* 0 — Listen & tap (grid emoji)
+     Each slot has 2 variants (same trio, different target picture). */
   {
     title:"Listen & tap",
     rule:`<div class="rule-head"><span class="rule-title">🎃 Listen &amp; tap</span><button class="speak-mini" data-say="Listen, then tap the right picture.">🔊 Rule</button></div>
           <p>Tap <b>🔊 Listen</b>, then tap the right picture.</p>`,
-    questions:[
-      {type:"choose",grid:true,theme:"🎃 Listen",teal:true,prompt:"Which picture?",say:"ghost",
-        options:[{t:"👻",s:"ghost"},{t:"🦇",s:"bat"},{t:"🕷️",s:"spider"}],correct:0,aff:"Tooor! Genau richtig! ⚽",wrong:"💛 Fast! 👻 ist ghost."},
-      {type:"choose",grid:true,theme:"🎃 Listen",teal:true,prompt:"Which picture?",say:"spider",
-        options:[{t:"🐱",s:"cat"},{t:"🕷️",s:"spider"},{t:"🦉",s:"owl"}],correct:1,aff:"Gruselig gut! 🕷️⚽",wrong:"💛 Fast! 🕷️ ist spider."},
-      {type:"choose",grid:true,theme:"🎃 Listen",teal:true,prompt:"Which picture?",say:"bat",
-        options:[{t:"🦇",s:"bat"},{t:"🐭",s:"mouse"},{t:"🧛",s:"vampire"}],correct:0,aff:"Pole Position! 🏁",wrong:"💛 Fast! 🦇 ist bat."},
-      {type:"choose",grid:true,theme:"🎃 Listen",teal:true,prompt:"Which picture?",say:"witch",
-        options:[{t:"💀",s:"skeleton"},{t:"🧙",s:"witch"},{t:"👹",s:"monster"}],correct:1,aff:"Stark! 🧙⚽",wrong:"💛 Fast! 🧙 ist witch."},
-      {type:"choose",grid:true,theme:"🎃 Listen",teal:true,prompt:"Which picture?",say:"skeleton",
-        options:[{t:"🦉",s:"owl"},{t:"🐀",s:"rat"},{t:"💀",s:"skeleton"}],correct:2,aff:"Schnell wie ein Rennwagen! 🏎️💨",wrong:"💛 Fast! 💀 ist skeleton."}
+    pool:[
+      [
+        {type:"choose",grid:true,theme:"🎃 Listen",teal:true,prompt:"Which picture?",say:"ghost",
+          options:[{t:"👻",s:"ghost"},{t:"🦇",s:"bat"},{t:"🕷️",s:"spider"}],correct:0,aff:"Tooor! Genau richtig! ⚽",wrong:"💛 Fast! 👻 ist ghost."},
+        {type:"choose",grid:true,theme:"🎃 Listen",teal:true,prompt:"Which picture?",say:"bat",
+          options:[{t:"👻",s:"ghost"},{t:"🦇",s:"bat"},{t:"🕷️",s:"spider"}],correct:1,aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! 🦇 ist bat."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🎃 Listen",teal:true,prompt:"Which picture?",say:"spider",
+          options:[{t:"🐱",s:"cat"},{t:"🕷️",s:"spider"},{t:"🦉",s:"owl"}],correct:1,aff:"Gruselig gut! 🕷️⚽",wrong:"💛 Fast! 🕷️ ist spider."},
+        {type:"choose",grid:true,theme:"🎃 Listen",teal:true,prompt:"Which picture?",say:"owl",
+          options:[{t:"🐱",s:"cat"},{t:"🕷️",s:"spider"},{t:"🦉",s:"owl"}],correct:2,aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! 🦉 ist owl."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🎃 Listen",teal:true,prompt:"Which picture?",say:"bat",
+          options:[{t:"🦇",s:"bat"},{t:"🐭",s:"mouse"},{t:"🧛",s:"vampire"}],correct:0,aff:"Pole Position! 🏁",wrong:"💛 Fast! 🦇 ist bat."},
+        {type:"choose",grid:true,theme:"🎃 Listen",teal:true,prompt:"Which picture?",say:"vampire",
+          options:[{t:"🦇",s:"bat"},{t:"🐭",s:"mouse"},{t:"🧛",s:"vampire"}],correct:2,aff:"Zielgerade! 🏁",wrong:"💛 Fast! 🧛 ist vampire."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🎃 Listen",teal:true,prompt:"Which picture?",say:"witch",
+          options:[{t:"💀",s:"skeleton"},{t:"🧙",s:"witch"},{t:"👹",s:"monster"}],correct:1,aff:"Stark! 🧙⚽",wrong:"💛 Fast! 🧙 ist witch."},
+        {type:"choose",grid:true,theme:"🎃 Listen",teal:true,prompt:"Which picture?",say:"monster",
+          options:[{t:"💀",s:"skeleton"},{t:"🧙",s:"witch"},{t:"👹",s:"monster"}],correct:2,aff:"Super Dribbling! ⚽",wrong:"💛 Fast! 👹 ist monster."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🎃 Listen",teal:true,prompt:"Which picture?",say:"skeleton",
+          options:[{t:"🦉",s:"owl"},{t:"🐀",s:"rat"},{t:"💀",s:"skeleton"}],correct:2,aff:"Schnell wie ein Rennwagen! 🏎️💨",wrong:"💛 Fast! 💀 ist skeleton."},
+        {type:"choose",grid:true,theme:"🎃 Listen",teal:true,prompt:"Which picture?",say:"owl",
+          options:[{t:"🦉",s:"owl"},{t:"🐀",s:"rat"},{t:"💀",s:"skeleton"}],correct:0,aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! 🦉 ist owl."}
+      ]
     ]
   },
 
-  /* 1 — Match word <-> emoji */
+  /* 1 — Match word <-> emoji
+     Each slot has 2 variants drawing on the unit's full Halloween vocabulary. */
   {
     title:"Match it",
     rule:`<div class="rule-head"><span class="rule-title">🔗 Match it</span><button class="speak-mini" data-say="Tap a word, then tap its picture.">🔊 Rule</button></div>
           <p>Tap a <b>word</b>, then tap its <b>picture</b>.</p><p>Tap 🔊 on a word to hear it.</p>`,
-    questions:[
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["ghost","👻"],["bat","🦇"],["spider","🕷️"],["cat","🐱"]],
-        aff:"Alle Paare! Mannschaftsleistung! ⚽🏆",wrong:"💛 Fast! Tippe das Wort, dann das Bild."},
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["witch","🧙"],["vampire","🧛"],["monster","👹"],["skeleton","💀"]],
-        aff:"Perfekt verbunden! 🏁",wrong:"💛 Fast! Probier es in Ruhe."},
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["owl","🦉"],["mouse","🐭"],["rat","🐀"]],
-        aff:"Geschafft — Doppelpass sitzt! ⚽",wrong:"💛 Fast! Schau nochmal hin."}
+    pool:[
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["ghost","👻"],["bat","🦇"],["spider","🕷️"],["cat","🐱"]],
+          aff:"Alle Paare! Mannschaftsleistung! ⚽🏆",wrong:"💛 Fast! Tippe das Wort, dann das Bild."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["witch","🧙"],["vampire","🧛"],["monster","👹"],["skeleton","💀"]],
+          aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! Tippe das Wort, dann das Bild."}
+      ],
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["witch","🧙"],["vampire","🧛"],["monster","👹"],["skeleton","💀"]],
+          aff:"Perfekt verbunden! 🏁",wrong:"💛 Fast! Probier es in Ruhe."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["ghost","👻"],["bat","🦇"],["spider","🕷️"],["cat","🐱"]],
+          aff:"Zielgerade! 🏁",wrong:"💛 Fast! Probier es in Ruhe."}
+      ],
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["owl","🦉"],["mouse","🐭"],["rat","🐀"]],
+          aff:"Geschafft — Doppelpass sitzt! ⚽",wrong:"💛 Fast! Schau nochmal hin."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["ghost","👻"],["witch","🧙"],["cat","🐱"]],
+          aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Schau nochmal hin."}
+      ]
     ]
   },
 
-  /* 2 — One or many? (plurals, choose text) */
+  /* 2 — One or many? (plurals, choose text)
+     Each slot has 2 variants (same grammar point, different creature). */
   {
     title:"One or many?",
     rule:`<div class="rule-head"><span class="rule-title">🔢 One or many?</span><button class="speak-mini" data-say="One cat. Two cats. Tap the right word.">🔊 Rule</button></div>
           <p>One 🐱 = <b>cat</b>. Two 🐱🐱 = <b>cats</b>.</p><p>Look, listen, and tap the right word.</p>`,
-    questions:[
-      {type:"choose",theme:"🔢 Plural",teal:true,show:"🐱 🐱",prompt:"How many? Tap the word.",say:"two cats",
-        options:["cat","cats","cates"],correct:1,aff:"Tooor! ⚽",wrong:"💛 Fast! Zwei = cats (mit -s)."},
-      {type:"choose",theme:"🔢 Plural",teal:true,show:"🦇 🦇 🦇",prompt:"How many? Tap the word.",say:"three bats",
-        options:["bat","bats","bates"],correct:1,aff:"Volltreffer! ⚽",wrong:"💛 Fast! Drei = bats (mit -s)."},
-      {type:"choose",theme:"🔢 Plural",teal:true,show:"🧙 🧙",prompt:"How many? Tap the word.",say:"two witches",
-        options:["witch","witches","witchs"],correct:1,aff:"Stark! 🧙⚽",wrong:"💛 Fast! witch → witches (mit -es)."},
-      {type:"choose",theme:"🔢 Plural",teal:true,show:"🐭 🐭",prompt:"How many? Tap the word.",say:"two mice",
-        options:["mouse","mice","mouses"],correct:1,aff:"Pole Position! 🏁",wrong:"💛 Fast! mouse → mice (besonderes Wort!)."},
-      {type:"choose",theme:"🔢 Plural",teal:true,show:"👻 👻 👻",prompt:"How many? Tap the word.",say:"three ghosts",
-        options:["ghost","ghostes","ghosts"],correct:2,aff:"Schnell und richtig! 🏎️💨",wrong:"💛 Fast! Drei = ghosts (mit -s)."}
+    pool:[
+      [
+        {type:"choose",theme:"🔢 Plural",teal:true,show:"🐱 🐱",prompt:"How many? Tap the word.",say:"two cats",
+          options:["cat","cats","cates"],correct:1,aff:"Tooor! ⚽",wrong:"💛 Fast! Zwei = cats (mit -s)."},
+        {type:"choose",theme:"🔢 Plural",teal:true,show:"🦇 🦇 🦇",prompt:"How many? Tap the word.",say:"three bats",
+          options:["bat","bats","bates"],correct:1,aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! Drei = bats (mit -s)."}
+      ],
+      [
+        {type:"choose",theme:"🔢 Plural",teal:true,show:"🦇 🦇 🦇",prompt:"How many? Tap the word.",say:"three bats",
+          options:["bat","bats","bates"],correct:1,aff:"Volltreffer! ⚽",wrong:"💛 Fast! Drei = bats (mit -s)."},
+        {type:"choose",theme:"🔢 Plural",teal:true,show:"🐱 🐱",prompt:"How many? Tap the word.",say:"two cats",
+          options:["cat","cats","cates"],correct:1,aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! Zwei = cats (mit -s)."}
+      ],
+      [
+        {type:"choose",theme:"🔢 Plural",teal:true,show:"🧙 🧙",prompt:"How many? Tap the word.",say:"two witches",
+          options:["witch","witches","witchs"],correct:1,aff:"Stark! 🧙⚽",wrong:"💛 Fast! witch → witches (mit -es)."},
+        {type:"choose",theme:"🔢 Plural",teal:true,show:"🐭 🐭",prompt:"How many? Tap the word.",say:"two mice",
+          options:["mouse","mice","mouses"],correct:1,aff:"Super Dribbling! 🏁",wrong:"💛 Fast! mouse → mice (besonderes Wort!)."}
+      ],
+      [
+        {type:"choose",theme:"🔢 Plural",teal:true,show:"🐭 🐭",prompt:"How many? Tap the word.",say:"two mice",
+          options:["mouse","mice","mouses"],correct:1,aff:"Pole Position! 🏁",wrong:"💛 Fast! mouse → mice (besonderes Wort!)."},
+        {type:"choose",theme:"🔢 Plural",teal:true,show:"🧙 🧙",prompt:"How many? Tap the word.",say:"two witches",
+          options:["witch","witches","witchs"],correct:1,aff:"Zielgerade! 🧙🏁",wrong:"💛 Fast! witch → witches (mit -es)."}
+      ],
+      [
+        {type:"choose",theme:"🔢 Plural",teal:true,show:"👻 👻 👻",prompt:"How many? Tap the word.",say:"three ghosts",
+          options:["ghost","ghostes","ghosts"],correct:2,aff:"Schnell und richtig! 🏎️💨",wrong:"💛 Fast! Drei = ghosts (mit -s)."},
+        {type:"choose",theme:"🔢 Plural",teal:true,show:"🐀 🐀",prompt:"How many? Tap the word.",say:"two rats",
+          options:["rat","ratees","rats"],correct:2,aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Zwei = rats (mit -s)."}
+      ]
     ]
   },
 
-  /* 3 — Right or wrong? (swipe) */
+  /* 3 — Right or wrong? (swipe)
+     Each slot has 2 variants with a different picture/statement pair. */
   {
     title:"Right or wrong?",
     rule:`<div class="rule-head"><span class="rule-title">👋 Right or wrong?</span><button class="speak-mini" data-say="Look and listen. Tap yes if it is right. Tap no if it is wrong.">🔊 Rule</button></div>
           <p>Look at the picture and listen.</p><p>Tap ✅ <b>yes</b> if it is right. Tap ❌ <b>no</b> if it is wrong.</p>`,
-    questions:[
-      {type:"swipe",theme:"👻 Check",emoji:"👻",text:"This is a ghost.",answer:true,aff:"Richtig! Sicher wie ein Elfmeter! ⚽",wrong:"💛 Fast! 👻 ist a ghost — richtig."},
-      {type:"swipe",theme:"🕷️ Check",emoji:"🕷️",text:"This is a bat.",answer:false,aff:"Erkannt! Gutes Auge! 🏎️",wrong:"💛 Fast! 🕷️ ist a spider, nicht a bat."},
-      {type:"swipe",theme:"🧛 Check",emoji:"🧛",text:"This is a vampire.",answer:true,aff:"Tor! Genau! ⚽",wrong:"💛 Fast! 🧛 ist a vampire — richtig."},
-      {type:"swipe",theme:"🐭 Check",emoji:"🐭",text:"This is an owl.",answer:false,aff:"Stark gebremst und richtig! 🏁",wrong:"💛 Fast! 🐭 ist a mouse, nicht an owl."},
-      {type:"swipe",theme:"🧙 Check",emoji:"🧙",text:"This is a witch.",answer:true,aff:"Sauber! ⚽",wrong:"💛 Fast! 🧙 ist a witch — richtig."}
+    pool:[
+      [
+        {type:"swipe",theme:"👻 Check",emoji:"👻",text:"This is a ghost.",answer:true,aff:"Richtig! Sicher wie ein Elfmeter! ⚽",wrong:"💛 Fast! 👻 ist a ghost — richtig."},
+        {type:"swipe",theme:"🧛 Check",emoji:"🧛",text:"This is a vampire.",answer:true,aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! 🧛 ist a vampire — richtig."}
+      ],
+      [
+        {type:"swipe",theme:"🕷️ Check",emoji:"🕷️",text:"This is a bat.",answer:false,aff:"Erkannt! Gutes Auge! 🏎️",wrong:"💛 Fast! 🕷️ ist a spider, nicht a bat."},
+        {type:"swipe",theme:"🦇 Check",emoji:"🦇",text:"This is a spider.",answer:false,aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! 🦇 ist a bat, nicht a spider."}
+      ],
+      [
+        {type:"swipe",theme:"🧛 Check",emoji:"🧛",text:"This is a vampire.",answer:true,aff:"Tor! Genau! ⚽",wrong:"💛 Fast! 🧛 ist a vampire — richtig."},
+        {type:"swipe",theme:"🧙 Check",emoji:"🧙",text:"This is a witch.",answer:true,aff:"Zielgerade! 🏁",wrong:"💛 Fast! 🧙 ist a witch — richtig."}
+      ],
+      [
+        {type:"swipe",theme:"🐭 Check",emoji:"🐭",text:"This is an owl.",answer:false,aff:"Stark gebremst und richtig! 🏁",wrong:"💛 Fast! 🐭 ist a mouse, nicht an owl."},
+        {type:"swipe",theme:"🦉 Check",emoji:"🦉",text:"This is a mouse.",answer:false,aff:"Super Dribbling! ⚽",wrong:"💛 Fast! 🦉 ist an owl, nicht a mouse."}
+      ],
+      [
+        {type:"swipe",theme:"🧙 Check",emoji:"🧙",text:"This is a witch.",answer:true,aff:"Sauber! ⚽",wrong:"💛 Fast! 🧙 ist a witch — richtig."},
+        {type:"swipe",theme:"👻 Check",emoji:"👻",text:"This is a ghost.",answer:true,aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! 👻 ist a ghost — richtig."}
+      ]
     ]
   },
 
-  /* 4 — Build the sentence (puzzle) */
+  /* 4 — Build the sentence (puzzle)
+     Each slot has 2 variants reusing vocabulary and grammar from the games above. */
   {
     title:"Build the sentence",
     rule:`<div class="rule-head"><span class="rule-title">🧩 Build the sentence</span><button class="speak-mini" data-say="Tap the words in the right order.">🔊 Rule</button></div>
           <p>Tap the words in the right order.</p><p>Tap 🔊 to hear the whole sentence.</p>`,
-    questions:[
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["Are","you","scared","of","spiders?"],aff:"Frage gebaut wie ein Profi! ⚽",wrong:`💛 Fast! Beginne mit "Are".`},
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["Is","it","a","ghost?"],aff:"Satz steht! 🏎️",wrong:`💛 Fast! Beginne mit "Is".`},
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["I'm","not","scared!"],aff:"Perfekt! 🏆",wrong:`💛 Fast! Beginne mit "I'm".`}
+    pool:[
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["Are","you","scared","of","spiders?"],aff:"Frage gebaut wie ein Profi! ⚽",wrong:`💛 Fast! Beginne mit "Are".`},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["Are","you","scared","of","ghosts?"],aff:"Klasse Zuspiel! ⚽",wrong:`💛 Fast! Beginne mit "Are".`}
+      ],
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["Is","it","a","ghost?"],aff:"Satz steht! 🏎️",wrong:`💛 Fast! Beginne mit "Is".`},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["Is","it","a","witch?"],aff:"Volle Punktzahl! 🏆",wrong:`💛 Fast! Beginne mit "Is".`}
+      ],
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["I'm","not","scared!"],aff:"Perfekt! 🏆",wrong:`💛 Fast! Beginne mit "I'm".`},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["I'm","very","scared!"],aff:"Zielgerade! 🏁",wrong:`💛 Fast! Beginne mit "I'm".`}
+      ]
     ]
   }
 ];
 
+/* ---------- variant picking (no-repeat-on-replay) ---------- */
+function getLastVariants(){ try{ return JSON.parse(localStorage.getItem("comeIn3.lastVariant")||"{}"); }catch(e){ return {}; } }
+function setLastVariants(m){ try{ localStorage.setItem("comeIn3.lastVariant", JSON.stringify(m)); }catch(e){} }
+function pickVariant(topicIdx,slotIdx,variants){
+  if(variants.length===1) return variants[0];
+  var map=getLastVariants(), key=UNIT_KEY+"."+topicIdx+"."+slotIdx, last=map[key];
+  var choices=[]; for(var i=0;i<variants.length;i++){ if(i!==last) choices.push(i); }
+  var pick=choices[Math.floor(Math.random()*choices.length)];
+  map[key]=pick; setLastVariants(map);
+  return variants[pick];
+}
+function buildQuestions(topicIdx){
+  return topics[topicIdx].pool.map(function(slot,slotIdx){ return pickVariant(topicIdx,slotIdx,slot); });
+}
+
+
 /* =========================================================
    SHARED ENGINE (generic + grid + swatch + speed + read-along + progress)
    ========================================================= */
-var curTopic=0, curQ=0, answered=false;
+var curTopic=0, curQ=0, answered=false, sessionQuestions=[];
 function $(id){return document.getElementById(id);}
 
 function startTopic(i){
-  curTopic=i; curQ=0;
+  curTopic=i; curQ=0; sessionQuestions=buildQuestions(i);
   $("menu").classList.add("hidden"); $("done").classList.add("hidden"); $("quiz").classList.remove("hidden");
   $("screenTitle").textContent=topics[i].title;
   $("ruleSlot").innerHTML='<div class="rule">'+topics[i].rule+'</div>';
@@ -307,8 +404,8 @@ function setBar(p){ $("progressFill").style.width=p+"%"; }
 
 function loadQuestion(){
   answered=false; clearReading();
-  var t=topics[curTopic], q=t.questions[curQ];
-  setBar(Math.round(curQ/t.questions.length*100));
+  var q=sessionQuestions[curQ];
+  setBar(Math.round(curQ/sessionQuestions.length*100));
   $("feedback").className="feedback"; $("feedback").innerHTML="";
   $("nextBtn").classList.add("hidden"); $("checkBtn").classList.remove("hidden"); $("checkBtn").disabled=false;
   var html='<span class="theme-tag '+(q.teal?"teal":"")+'">'+(q.theme||"")+'</span>';
@@ -446,7 +543,7 @@ function syncBank(){
   });
 }
 function checkAnswer(){
-  var q=topics[curTopic].questions[curQ];
+  var q=sessionQuestions[curQ];
   if(q.type!=="puzzle" || answered) return;
   if(puzBuild.join(" ")===q.words.join(" ")){ answered=true; win(q.aff,""); speak(q.words.join(" ")); showNext(); }
   else{ soft(q.wrong,""); }
@@ -457,11 +554,11 @@ function win(msg,rule){ var f=$("feedback"); f.className="feedback good show"; f
 function soft(msg,rule){ var f=$("feedback"); f.className="feedback soft show"; f.innerHTML=msg+(rule?'<div class="fb-rule">'+rule+'</div>':""); }
 function showNext(){ $("checkBtn").classList.add("hidden"); $("nextBtn").classList.remove("hidden"); }
 function nextQuestion(){
-  var t=topics[curTopic]; curQ++;
-  if(curQ>=t.questions.length){
+  curQ++;
+  if(curQ>=sessionQuestions.length){
     setBar(100); markGameDone(curTopic);
     $("quiz").classList.add("hidden"); $("done").classList.remove("hidden");
-    $("doneMsg").textContent="Super! You finished "+t.title+"! 🏆"; speak("Well done!"); burst(); return;
+    $("doneMsg").textContent="Super! You finished "+topics[curTopic].title+"! 🏆"; speak("Well done!"); burst(); return;
   }
   loadQuestion();
 }

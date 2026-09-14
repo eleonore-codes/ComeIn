@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Come In 3 — Test 4</title>
+<title>English 3 — Test 4</title>
 <style>
   :root{
     --navy:#1a2a4a;--navy-2:#23365c;--teal:#1fb6c4;--teal-soft:#7fd9e2;
@@ -129,7 +129,7 @@
 <body>
 <div class="wrap">
   <header>
-    <p class="unit-name">Come In 3</p>
+    <p class="unit-name">English 3</p>
     <div class="hdr-row">
       <h1 id="screenTitle">📝 Test 4</h1>
       <button class="speedbtn" id="speedBtn" onclick="toggleRate()">🐇 normal</button>
@@ -193,33 +193,91 @@ var UNITS=[
   {key:"beach", label:"🏖️ At the beach",  file:"beach.html"}
 ];
 
-/* TEST QUESTIONS (mixed, tagged by unit) */
-var TEST=[
-  {unit:"time",type:"choose",grid:true,say:"three o'clock",prompt:"Which clock?",options:[{t:"🕒",s:"three o'clock"},{t:"🕕",s:"six o'clock"},{t:"🕘",s:"nine o'clock"}],correct:0},
-  {unit:"time",type:"choose",say:"It's ten o'clock.",prompt:"How many o'clock?",options:["two","ten","five"],correct:1},
-  {unit:"time",type:"choose",say:"It's twelve o'clock.",prompt:"How many o'clock?",options:["twelve","seven","four"],correct:0},
-  {unit:"time",type:"spell",word:"time",emoji:"⏰"},
-  {unit:"time",type:"swipe",emoji:"🕘",text:"It's nine o'clock.",answer:true},
-
-  {unit:"year",type:"choose",say:"December",prompt:"Which month?",options:["March","December","June"],correct:1},
-  {unit:"year",type:"choose",say:"September",prompt:"Which month?",options:["September","December","March"],correct:0},
-  {unit:"year",type:"choose",say:"spring",prompt:"Which season?",options:["spring","autumn","winter"],correct:0},
-  {unit:"year",type:"spell",word:"June",emoji:"📅"},
-  {unit:"year",type:"swipe",emoji:"❄️",text:"This is summer.",answer:false},
-
-  {unit:"beach",type:"choose",grid:true,say:"fly a kite",prompt:"Which one?",options:[{t:"🪁",s:"fly a kite"},{t:"🐚",s:"collect shells"},{t:"🍦",s:"eat ice-cream"}],correct:0},
-  {unit:"beach",type:"choose",grid:true,say:"collect shells",prompt:"Which one?",options:[{t:"⛵",s:"sail a boat"},{t:"🐚",s:"collect shells"},{t:"🤿",s:"snorkel in the sea"}],correct:1},
-  {unit:"beach",type:"choose",grid:true,say:"eat ice-cream",prompt:"Which one?",options:[{t:"🍦",s:"eat ice-cream"},{t:"🪁",s:"fly a kite"},{t:"🐚",s:"collect shells"}],correct:0},
-  {unit:"beach",type:"spell",word:"kite",emoji:"🪁"},
-  {unit:"beach",type:"swipe",emoji:"🪁",text:"I sail a boat.",answer:false}
+/* TEST QUESTIONS (mixed, tagged by unit) — pool with no-repeat variants */
+var TEST_KEY="test4";
+var TEST_POOL=[
+  [
+    {unit:"time",type:"choose",grid:true,say:"three o'clock",prompt:"Which clock?",options:[{t:"🕒",s:"three o'clock"},{t:"🕕",s:"six o'clock"},{t:"🕘",s:"nine o'clock"}],correct:0},
+    {unit:"time",type:"choose",grid:true,say:"six o'clock",prompt:"Which clock?",options:[{t:"🕕",s:"six o'clock"},{t:"🕒",s:"three o'clock"},{t:"🕘",s:"nine o'clock"}],correct:0}
+  ],
+  [
+    {unit:"time",type:"choose",say:"It's ten o'clock.",prompt:"How many o'clock?",options:["two","ten","five"],correct:1},
+    {unit:"time",type:"choose",say:"It's five o'clock.",prompt:"How many o'clock?",options:["five","ten","two"],correct:0}
+  ],
+  [
+    {unit:"time",type:"choose",say:"It's twelve o'clock.",prompt:"How many o'clock?",options:["twelve","seven","four"],correct:0},
+    {unit:"time",type:"choose",say:"It's seven o'clock.",prompt:"How many o'clock?",options:["seven","twelve","four"],correct:0}
+  ],
+  [
+    {unit:"time",type:"spell",word:"time",emoji:"⏰"},
+    {unit:"time",type:"spell",word:"clock",emoji:"🕐"}
+  ],
+  [
+    {unit:"time",type:"swipe",emoji:"🕘",text:"It's nine o'clock.",answer:true},
+    {unit:"time",type:"swipe",emoji:"🕒",text:"It's three o'clock.",answer:true}
+  ],
+  [
+    {unit:"year",type:"choose",say:"December",prompt:"Which month?",options:["March","December","June"],correct:1},
+    {unit:"year",type:"choose",say:"July",prompt:"Which month?",options:["April","July","January"],correct:1}
+  ],
+  [
+    {unit:"year",type:"choose",say:"September",prompt:"Which month?",options:["September","December","March"],correct:0},
+    {unit:"year",type:"choose",say:"April",prompt:"Which month?",options:["April","November","August"],correct:0}
+  ],
+  [
+    {unit:"year",type:"choose",say:"spring",prompt:"Which season?",options:["spring","autumn","winter"],correct:0},
+    {unit:"year",type:"choose",say:"winter",prompt:"Which season?",options:["winter","summer","autumn"],correct:0}
+  ],
+  [
+    {unit:"year",type:"spell",word:"June",emoji:"📅"},
+    {unit:"year",type:"spell",word:"May",emoji:"📅"}
+  ],
+  [
+    {unit:"year",type:"swipe",emoji:"❄️",text:"This is summer.",answer:false},
+    {unit:"year",type:"swipe",emoji:"☀️",text:"This is winter.",answer:false}
+  ],
+  [
+    {unit:"beach",type:"choose",grid:true,say:"fly a kite",prompt:"Which one?",options:[{t:"🪁",s:"fly a kite"},{t:"🐚",s:"collect shells"},{t:"🍦",s:"eat ice-cream"}],correct:0},
+    {unit:"beach",type:"choose",grid:true,say:"build sandcastles",prompt:"Which one?",options:[{t:"🏰",s:"build sandcastles"},{t:"🪁",s:"fly a kite"},{t:"🍦",s:"eat ice-cream"}],correct:0}
+  ],
+  [
+    {unit:"beach",type:"choose",grid:true,say:"collect shells",prompt:"Which one?",options:[{t:"⛵",s:"sail a boat"},{t:"🐚",s:"collect shells"},{t:"🤿",s:"snorkel in the sea"}],correct:1},
+    {unit:"beach",type:"choose",grid:true,say:"snorkel in the sea",prompt:"Which one?",options:[{t:"⛵",s:"sail a boat"},{t:"🤿",s:"snorkel in the sea"},{t:"🐚",s:"collect shells"}],correct:1}
+  ],
+  [
+    {unit:"beach",type:"choose",grid:true,say:"eat ice-cream",prompt:"Which one?",options:[{t:"🍦",s:"eat ice-cream"},{t:"🪁",s:"fly a kite"},{t:"🐚",s:"collect shells"}],correct:0},
+    {unit:"beach",type:"choose",grid:true,say:"relax in the sun",prompt:"Which one?",options:[{t:"☀️",s:"relax in the sun"},{t:"🪁",s:"fly a kite"},{t:"🐚",s:"collect shells"}],correct:0}
+  ],
+  [
+    {unit:"beach",type:"spell",word:"kite",emoji:"🪁"},
+    {unit:"beach",type:"spell",word:"sun",emoji:"☀️"}
+  ],
+  [
+    {unit:"beach",type:"swipe",emoji:"🪁",text:"I sail a boat.",answer:false},
+    {unit:"beach",type:"swipe",emoji:"🏰",text:"I build sandcastles.",answer:true}
+  ]
 ];
+var TEST=[];
+
+/* ---------- variant picking (no-repeat-on-replay) ---------- */
+function getLastVariants(){ try{ return JSON.parse(localStorage.getItem("comeIn3.lastVariant")||"{}"); }catch(e){ return {}; } }
+function setLastVariants(m){ try{ localStorage.setItem("comeIn3.lastVariant", JSON.stringify(m)); }catch(e){} }
+function pickVariant(slotIdx,variants){
+  if(variants.length===1) return variants[0];
+  var map=getLastVariants(), key=TEST_KEY+"."+slotIdx, last=map[key];
+  var choices=[]; for(var i=0;i<variants.length;i++){ if(i!==last) choices.push(i); }
+  var pick=choices[Math.floor(Math.random()*choices.length)];
+  map[key]=pick; setLastVariants(map);
+  return variants[pick];
+}
+function buildTest(){ return TEST_POOL.map(function(slot,slotIdx){ return pickVariant(slotIdx,slot); }); }
 
 /* STATE */
 var idx=0, answered=false, results={};
 function $(id){return document.getElementById(id);}
 
 function startTest(){
-  idx=0; results={};
+  idx=0; results={}; TEST=buildTest();
   $("intro").classList.add("hidden"); $("report").classList.add("hidden"); $("quiz").classList.remove("hidden");
   loadQ();
 }

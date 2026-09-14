@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Come In 3 — The year</title>
+<title>English 3 — The year</title>
 <style>
   :root{
     --navy:#1a2a4a;--navy-2:#23365c;--teal:#1fb6c4;--teal-soft:#7fd9e2;
@@ -108,7 +108,7 @@
 <body>
 <div class="wrap">
   <header>
-    <p class="unit-name">Come In 3</p>
+    <p class="unit-name">English 3</p>
     <div class="hdr-row">
       <h1 id="screenTitle">📅 The year</h1>
       <button class="speedbtn" id="speedBtn" onclick="toggleRate()">🐇 normal</button>
@@ -231,125 +231,243 @@ var UNIT_NAME="The year";
 function S(name,em){ return {t:em+" "+name, s:name}; }
 
 var topics=[
-  /* 0 — Which month? (listen & choose) */
+  /* 0 — Which month? (listen & choose)
+     Each slot has 2 variants (same trio, different target month). */
   {
     title:"Which month?",
     rule:`<div class="rule-head"><span class="rule-title">📅 Which month?</span>
           <button class="speak-mini" data-say="Listen and tap the right month.">🔊 Rule</button></div>
           <p>Tap <b>🔊 Listen</b>, then tap the month you hear.</p>
           <p>You can tap 🔊 on each month too.</p>`,
-    questions:[
-      {type:"choose", theme:"📅 Listen", teal:true, prompt:"Which month?", say:"March",
-        options:["January","March","July"], correct:1,
-        aff:"Tooor! Genau richtig! ⚽", wrong:"💛 Fast! Hör nochmal: es war March."},
-      {type:"choose", theme:"📅 Listen", teal:true, prompt:"Which month?", say:"June",
-        options:["April","December","June"], correct:2,
-        aff:"Volltreffer! ⚽", wrong:"💛 Fast! Das war June."},
-      {type:"choose", theme:"📅 Listen", teal:true, prompt:"Which month?", say:"September",
-        options:["September","February","May"], correct:0,
-        aff:"Pole Position! 🏁", wrong:"💛 Fast! Das war September."},
-      {type:"choose", theme:"📅 Listen", teal:true, prompt:"Which month?", say:"December",
-        options:["October","December","August"], correct:1,
-        aff:"Stark! ⚽", wrong:"💛 Fast! Das war December."},
-      {type:"choose", theme:"📅 Listen", teal:true, prompt:"Which month?", say:"April",
-        options:["November","July","April"], correct:2,
-        aff:"Schnell und sicher — wie ein Rennwagen! 🏎️💨", wrong:"💛 Fast! Das war April."}
+    pool:[
+      [
+        {type:"choose", theme:"📅 Listen", teal:true, prompt:"Which month?", say:"March",
+          options:["January","March","July"], correct:1,
+          aff:"Tooor! Genau richtig! ⚽", wrong:"💛 Fast! Hör nochmal: es war March."},
+        {type:"choose", theme:"📅 Listen", teal:true, prompt:"Which month?", say:"January",
+          options:["January","March","July"], correct:0,
+          aff:"Klasse Zuspiel! ⚽", wrong:"💛 Fast! Das war January."}
+      ],
+      [
+        {type:"choose", theme:"📅 Listen", teal:true, prompt:"Which month?", say:"June",
+          options:["April","December","June"], correct:2,
+          aff:"Volltreffer! ⚽", wrong:"💛 Fast! Das war June."},
+        {type:"choose", theme:"📅 Listen", teal:true, prompt:"Which month?", say:"April",
+          options:["April","December","June"], correct:0,
+          aff:"Ins Schwarze getroffen! 🎯", wrong:"💛 Fast! Das war April."}
+      ],
+      [
+        {type:"choose", theme:"📅 Listen", teal:true, prompt:"Which month?", say:"September",
+          options:["September","February","May"], correct:0,
+          aff:"Pole Position! 🏁", wrong:"💛 Fast! Das war September."},
+        {type:"choose", theme:"📅 Listen", teal:true, prompt:"Which month?", say:"February",
+          options:["September","February","May"], correct:1,
+          aff:"Zielgerade! 🏁", wrong:"💛 Fast! Das war February."}
+      ],
+      [
+        {type:"choose", theme:"📅 Listen", teal:true, prompt:"Which month?", say:"December",
+          options:["October","December","August"], correct:1,
+          aff:"Stark! ⚽", wrong:"💛 Fast! Das war December."},
+        {type:"choose", theme:"📅 Listen", teal:true, prompt:"Which month?", say:"October",
+          options:["October","December","August"], correct:0,
+          aff:"Super Dribbling! ⚽", wrong:"💛 Fast! Das war October."}
+      ],
+      [
+        {type:"choose", theme:"📅 Listen", teal:true, prompt:"Which month?", say:"April",
+          options:["November","July","April"], correct:2,
+          aff:"Schnell und sicher — wie ein Rennwagen! 🏎️💨", wrong:"💛 Fast! Das war April."},
+        {type:"choose", theme:"📅 Listen", teal:true, prompt:"Which month?", say:"November",
+          options:["November","July","April"], correct:0,
+          aff:"Volle Punktzahl! 🏆", wrong:"💛 Fast! Das war November."}
+      ]
     ]
   },
 
-  /* 1 — Match seasons + birthday words */
+  /* 1 — Match seasons + birthday words
+     Each slot has 2 variants drawing on the unit's full vocabulary. */
   {
     title:"Match it",
     rule:`<div class="rule-head"><span class="rule-title">🔗 Match it</span>
           <button class="speak-mini" data-say="Tap a word, then tap its picture.">🔊 Rule</button></div>
           <p>Tap a <b>word</b>, then tap its <b>picture</b>.</p>
           <p>Tap 🔊 on a word to hear it.</p>`,
-    questions:[
-      {type:"match", theme:"🔗 Seasons", teal:true,
-        pairs:[["spring","🌷"],["summer","☀️"],["autumn","🍂"],["winter","❄️"]],
-        aff:"Alle Paare! Mannschaftsleistung! ⚽🏆", wrong:"💛 Fast! Tippe das Wort, dann das Bild."},
-      {type:"match", theme:"🎂 Birthday", teal:true,
-        pairs:[["cake","🎂"],["present","🎁"],["candle","🕯️"],["crown","👑"]],
-        aff:"Perfekt verbunden! 🏁", wrong:"💛 Fast! Probier es in Ruhe."},
-      {type:"match", theme:"🎂 Birthday", teal:true,
-        pairs:[["card","💌"],["garland","🎉"],["song","🎵"]],
-        aff:"Geschafft — Doppelpass sitzt! ⚽", wrong:"💛 Fast! Schau nochmal hin."}
+    pool:[
+      [
+        {type:"match", theme:"🔗 Seasons", teal:true,
+          pairs:[["spring","🌷"],["summer","☀️"],["autumn","🍂"],["winter","❄️"]],
+          aff:"Alle Paare! Mannschaftsleistung! ⚽🏆", wrong:"💛 Fast! Tippe das Wort, dann das Bild."},
+        {type:"match", theme:"🎂 Birthday", teal:true,
+          pairs:[["cake","🎂"],["present","🎁"],["candle","🕯️"],["crown","👑"]],
+          aff:"Klasse Zuspiel! ⚽", wrong:"💛 Fast! Tippe das Wort, dann das Bild."}
+      ],
+      [
+        {type:"match", theme:"🎂 Birthday", teal:true,
+          pairs:[["cake","🎂"],["present","🎁"],["candle","🕯️"],["crown","👑"]],
+          aff:"Perfekt verbunden! 🏁", wrong:"💛 Fast! Probier es in Ruhe."},
+        {type:"match", theme:"🔗 Seasons", teal:true,
+          pairs:[["spring","🌷"],["summer","☀️"],["autumn","🍂"],["winter","❄️"]],
+          aff:"Zielgerade! 🏁", wrong:"💛 Fast! Probier es in Ruhe."}
+      ],
+      [
+        {type:"match", theme:"🎂 Birthday", teal:true,
+          pairs:[["card","💌"],["garland","🎉"],["song","🎵"]],
+          aff:"Geschafft — Doppelpass sitzt! ⚽", wrong:"💛 Fast! Schau nochmal hin."},
+        {type:"match", theme:"🎂 Birthday", teal:true,
+          pairs:[["cake","🎂"],["card","💌"],["song","🎵"]],
+          aff:"Volle Punktzahl! 🏆", wrong:"💛 Fast! Schau nochmal hin."}
+      ]
     ]
   },
 
-  /* 2 — Which season? (listen to a clue, choose season) */
+  /* 2 — Which season? (listen to a clue, choose season)
+     Each slot has 2 variants (same season trio, different clue and target). */
   {
     title:"Which season?",
     rule:`<div class="rule-head"><span class="rule-title">🌦️ Which season?</span>
           <button class="speak-mini" data-say="Listen. Is it spring, summer, autumn or winter?">🔊 Rule</button></div>
           <p>Seasons: <b>🌷 spring, ☀️ summer, 🍂 autumn, ❄️ winter</b>.</p>
           <p>Listen to the sentence. Which season is it?</p>`,
-    questions:[
-      {type:"choose", theme:"🍂 Clue", show:"The leaves fall off the tree.", say:"The leaves fall off the tree.",
-        prompt:"Which season?", options:[S("spring","🌷"),S("autumn","🍂"),S("summer","☀️")], correct:1,
-        aff:"Tor! Du hast es gehört! ⚽", wrong:"💛 Fast! Wenn Blätter fallen, ist es autumn 🍂."},
-      {type:"choose", theme:"☀️ Clue", show:"We jump into the pool and eat ice-cream.", say:"We jump into the pool and eat ice cream.",
-        prompt:"Which season?", options:[S("summer","☀️"),S("winter","❄️"),S("spring","🌷")], correct:0,
-        aff:"Volltreffer! ☀️⚽", wrong:"💛 Fast! Pool und Eis — das ist summer ☀️."},
-      {type:"choose", theme:"❄️ Clue", show:"It is cold and snowy. We wear a woolly hat.", say:"It is cold and snowy. We wear a woolly hat.",
-        prompt:"Which season?", options:[S("autumn","🍂"),S("winter","❄️"),S("spring","🌷")], correct:1,
-        aff:"Stark erkannt! 🏁", wrong:"💛 Fast! Schnee und Mütze — das ist winter ❄️."},
-      {type:"choose", theme:"🌷 Clue", show:"The flowers start to bloom.", say:"The flowers start to bloom.",
-        prompt:"Which season?", options:[S("spring","🌷"),S("autumn","🍂"),S("summer","☀️")], correct:0,
-        aff:"Sauber! 🌷⚽", wrong:"💛 Fast! Wenn Blumen blühen, ist es spring 🌷."},
-      {type:"choose", theme:"❄️ Clue", show:"December is in this season.", say:"December is in this season.",
-        prompt:"Which season?", options:[S("summer","☀️"),S("winter","❄️"),S("autumn","🍂")], correct:1,
-        aff:"Pole Position! 🏎️", wrong:"💛 Fast! December gehört zu winter ❄️."}
+    pool:[
+      [
+        {type:"choose", theme:"🍂 Clue", show:"The leaves fall off the tree.", say:"The leaves fall off the tree.",
+          prompt:"Which season?", options:[S("spring","🌷"),S("autumn","🍂"),S("summer","☀️")], correct:1,
+          aff:"Tor! Du hast es gehört! ⚽", wrong:"💛 Fast! Wenn Blätter fallen, ist es autumn 🍂."},
+        {type:"choose", theme:"☀️ Clue", show:"We jump into the pool and eat ice-cream.", say:"We jump into the pool and eat ice cream.",
+          prompt:"Which season?", options:[S("spring","🌷"),S("autumn","🍂"),S("summer","☀️")], correct:2,
+          aff:"Klasse Zuspiel! ☀️⚽", wrong:"💛 Fast! Pool und Eis — das ist summer ☀️."}
+      ],
+      [
+        {type:"choose", theme:"☀️ Clue", show:"We jump into the pool and eat ice-cream.", say:"We jump into the pool and eat ice cream.",
+          prompt:"Which season?", options:[S("summer","☀️"),S("winter","❄️"),S("spring","🌷")], correct:0,
+          aff:"Volltreffer! ☀️⚽", wrong:"💛 Fast! Pool und Eis — das ist summer ☀️."},
+        {type:"choose", theme:"🌷 Clue", show:"The flowers start to bloom.", say:"The flowers start to bloom.",
+          prompt:"Which season?", options:[S("summer","☀️"),S("winter","❄️"),S("spring","🌷")], correct:2,
+          aff:"Ins Schwarze getroffen! 🎯", wrong:"💛 Fast! Wenn Blumen blühen, ist es spring 🌷."}
+      ],
+      [
+        {type:"choose", theme:"❄️ Clue", show:"It is cold and snowy. We wear a woolly hat.", say:"It is cold and snowy. We wear a woolly hat.",
+          prompt:"Which season?", options:[S("autumn","🍂"),S("winter","❄️"),S("spring","🌷")], correct:1,
+          aff:"Stark erkannt! 🏁", wrong:"💛 Fast! Schnee und Mütze — das ist winter ❄️."},
+        {type:"choose", theme:"🍂 Clue", show:"The leaves fall off the tree.", say:"The leaves fall off the tree.",
+          prompt:"Which season?", options:[S("autumn","🍂"),S("winter","❄️"),S("spring","🌷")], correct:0,
+          aff:"Super Dribbling! 🍂⚽", wrong:"💛 Fast! Wenn Blätter fallen, ist es autumn 🍂."}
+      ],
+      [
+        {type:"choose", theme:"🌷 Clue", show:"The flowers start to bloom.", say:"The flowers start to bloom.",
+          prompt:"Which season?", options:[S("spring","🌷"),S("autumn","🍂"),S("summer","☀️")], correct:0,
+          aff:"Sauber! 🌷⚽", wrong:"💛 Fast! Wenn Blumen blühen, ist es spring 🌷."},
+        {type:"choose", theme:"🍂 Clue", show:"The leaves fall off the tree.", say:"The leaves fall off the tree.",
+          prompt:"Which season?", options:[S("spring","🌷"),S("autumn","🍂"),S("summer","☀️")], correct:1,
+          aff:"Zielgerade! 🍂🏁", wrong:"💛 Fast! Wenn Blätter fallen, ist es autumn 🍂."}
+      ],
+      [
+        {type:"choose", theme:"❄️ Clue", show:"December is in this season.", say:"December is in this season.",
+          prompt:"Which season?", options:[S("summer","☀️"),S("winter","❄️"),S("autumn","🍂")], correct:1,
+          aff:"Pole Position! 🏎️", wrong:"💛 Fast! December gehört zu winter ❄️."},
+        {type:"choose", theme:"☀️ Clue", show:"We jump into the pool and eat ice-cream.", say:"We jump into the pool and eat ice cream.",
+          prompt:"Which season?", options:[S("summer","☀️"),S("winter","❄️"),S("autumn","🍂")], correct:0,
+          aff:"Volle Punktzahl! 🏆", wrong:"💛 Fast! Pool und Eis — das ist summer ☀️."}
+      ]
     ]
   },
 
-  /* 3 — Right or wrong? (swipe) */
+  /* 3 — Right or wrong? (swipe)
+     Each slot has 2 variants with a different picture/statement pair. */
   {
     title:"Right or wrong?",
     rule:`<div class="rule-head"><span class="rule-title">👋 Right or wrong?</span>
           <button class="speak-mini" data-say="Listen. Tap yes if it is right. Tap no if it is wrong.">🔊 Rule</button></div>
           <p>Listen to the sentence.</p>
           <p>Tap ✅ <b>yes</b> if it is right. Tap ❌ <b>no</b> if it is wrong.</p>`,
-    questions:[
-      {type:"swipe", theme:"☀️ Check", emoji:"☀️", text:"Summer is hot.", answer:true,
-        aff:"Richtig! Sicher wie ein Elfmeter! ⚽", wrong:"💛 Fast! Summer ist heiß — das ist richtig."},
-      {type:"swipe", theme:"❄️ Check", emoji:"❄️", text:"Winter is hot.", answer:false,
-        aff:"Erkannt! Gutes Auge! 🏎️", wrong:"💛 Fast! Winter ist kalt, nicht heiß."},
-      {type:"swipe", theme:"🍂 Check", emoji:"🍂", text:"Autumn comes after summer.", answer:true,
-        aff:"Tor! Genau! ⚽", wrong:"💛 Fast! Nach summer kommt autumn — richtig."},
-      {type:"swipe", theme:"📅 Check", emoji:"📅", text:"There are ten months in a year.", answer:false,
-        aff:"Stark gebremst und richtig! 🏁", wrong:"💛 Fast! Ein Jahr hat zwölf (12) Monate."},
-      {type:"swipe", theme:"🎂 Check", emoji:"🎂", text:"We eat cake on a birthday.", answer:true,
-        aff:"Sauber! 🎂⚽", wrong:"💛 Fast! Am Geburtstag essen wir Kuchen — richtig."}
+    pool:[
+      [
+        {type:"swipe", theme:"☀️ Check", emoji:"☀️", text:"Summer is hot.", answer:true,
+          aff:"Richtig! Sicher wie ein Elfmeter! ⚽", wrong:"💛 Fast! Summer ist heiß — das ist richtig."},
+        {type:"swipe", theme:"🍂 Check", emoji:"🍂", text:"Autumn comes after summer.", answer:true,
+          aff:"Klasse Zuspiel! ⚽", wrong:"💛 Fast! Nach summer kommt autumn — richtig."}
+      ],
+      [
+        {type:"swipe", theme:"❄️ Check", emoji:"❄️", text:"Winter is hot.", answer:false,
+          aff:"Erkannt! Gutes Auge! 🏎️", wrong:"💛 Fast! Winter ist kalt, nicht heiß."},
+        {type:"swipe", theme:"☀️ Check", emoji:"☀️", text:"Summer is cold.", answer:false,
+          aff:"Ins Schwarze getroffen! 🎯", wrong:"💛 Fast! Summer ist heiß, nicht kalt."}
+      ],
+      [
+        {type:"swipe", theme:"🍂 Check", emoji:"🍂", text:"Autumn comes after summer.", answer:true,
+          aff:"Tor! Genau! ⚽", wrong:"💛 Fast! Nach summer kommt autumn — richtig."},
+        {type:"swipe", theme:"❄️ Check", emoji:"❄️", text:"Winter is cold.", answer:true,
+          aff:"Zielgerade! 🏁", wrong:"💛 Fast! Winter ist kalt — richtig."}
+      ],
+      [
+        {type:"swipe", theme:"📅 Check", emoji:"📅", text:"There are ten months in a year.", answer:false,
+          aff:"Stark gebremst und richtig! 🏁", wrong:"💛 Fast! Ein Jahr hat zwölf (12) Monate."},
+        {type:"swipe", theme:"📅 Check", emoji:"📅", text:"There are twenty months in a year.", answer:false,
+          aff:"Super Dribbling! ⚽", wrong:"💛 Fast! Ein Jahr hat zwölf (12) Monate."}
+      ],
+      [
+        {type:"swipe", theme:"🎂 Check", emoji:"🎂", text:"We eat cake on a birthday.", answer:true,
+          aff:"Sauber! 🎂⚽", wrong:"💛 Fast! Am Geburtstag essen wir Kuchen — richtig."},
+        {type:"swipe", theme:"🎁 Check", emoji:"🎁", text:"We give presents on a birthday.", answer:true,
+          aff:"Volle Punktzahl! 🏆", wrong:"💛 Fast! Am Geburtstag schenken wir etwas — richtig."}
+      ]
     ]
   },
 
-  /* 4 — Build the sentence (puzzle) */
+  /* 4 — Build the sentence (puzzle)
+     Each slot has 2 variants reusing vocabulary and grammar from the games above. */
   {
     title:"Build the sentence",
     rule:`<div class="rule-head"><span class="rule-title">🧩 Build the sentence</span>
           <button class="speak-mini" data-say="Tap the words in the right order.">🔊 Rule</button></div>
           <p>Tap the words in the right order.</p>
           <p>Tip: a question ends with <b>?</b></p>`,
-    questions:[
-      {type:"puzzle", theme:"🧩 Order", teal:true, words:["When's","your","birthday?"],
-        aff:"Frage gebaut wie ein Profi! ⚽", wrong:"💛 Fast! Beginne mit \"When's\". Tippe 🔊 zum Hören."},
-      {type:"puzzle", theme:"🧩 Order", teal:true, words:["My","birthday","is","in","May."],
-        aff:"Satz steht! 🏎️", wrong:"💛 Fast! Beginne mit \"My\"."},
-      {type:"puzzle", theme:"🧩 Order", teal:true, words:["Happy","birthday","to","you!"],
-        aff:"Perfekt! 🏆", wrong:"💛 Fast! Beginne mit \"Happy\"."}
+    pool:[
+      [
+        {type:"puzzle", theme:"🧩 Order", teal:true, words:["When's","your","birthday?"],
+          aff:"Frage gebaut wie ein Profi! ⚽", wrong:"💛 Fast! Beginne mit \"When's\". Tippe 🔊 zum Hören."},
+        {type:"puzzle", theme:"🧩 Order", teal:true, words:["What's","your","favourite","season?"],
+          aff:"Klasse Zuspiel! ⚽", wrong:"💛 Fast! Beginne mit \"What's\"."}
+      ],
+      [
+        {type:"puzzle", theme:"🧩 Order", teal:true, words:["My","birthday","is","in","May."],
+          aff:"Satz steht! 🏎️", wrong:"💛 Fast! Beginne mit \"My\"."},
+        {type:"puzzle", theme:"🧩 Order", teal:true, words:["My","birthday","is","in","June."],
+          aff:"Volle Punktzahl! 🏆", wrong:"💛 Fast! Beginne mit \"My\"."}
+      ],
+      [
+        {type:"puzzle", theme:"🧩 Order", teal:true, words:["Happy","birthday","to","you!"],
+          aff:"Perfekt! 🏆", wrong:"💛 Fast! Beginne mit \"Happy\"."},
+        {type:"puzzle", theme:"🧩 Order", teal:true, words:["Happy","New","Year!"],
+          aff:"Zielgerade! 🏁", wrong:"💛 Fast! Beginne mit \"Happy\"."}
+      ]
     ]
   }
 ];
 
+/* ---------- variant picking (no-repeat-on-replay) ---------- */
+function getLastVariants(){ try{ return JSON.parse(localStorage.getItem("comeIn3.lastVariant")||"{}"); }catch(e){ return {}; } }
+function setLastVariants(m){ try{ localStorage.setItem("comeIn3.lastVariant", JSON.stringify(m)); }catch(e){} }
+function pickVariant(topicIdx,slotIdx,variants){
+  if(variants.length===1) return variants[0];
+  var map=getLastVariants(), key=UNIT_KEY+"."+topicIdx+"."+slotIdx, last=map[key];
+  var choices=[]; for(var i=0;i<variants.length;i++){ if(i!==last) choices.push(i); }
+  var pick=choices[Math.floor(Math.random()*choices.length)];
+  map[key]=pick; setLastVariants(map);
+  return variants[pick];
+}
+function buildQuestions(topicIdx){
+  return topics[topicIdx].pool.map(function(slot,slotIdx){ return pickVariant(topicIdx,slotIdx,slot); });
+}
+
+
 /* =========================================================
    SHARED ENGINE (generic + grid + swatch + speed + read-along + progress)
    ========================================================= */
-var curTopic=0, curQ=0, answered=false;
+var curTopic=0, curQ=0, answered=false, sessionQuestions=[];
 function $(id){return document.getElementById(id);}
 
 function startTopic(i){
-  curTopic=i; curQ=0;
+  curTopic=i; curQ=0; sessionQuestions=buildQuestions(i);
   $("menu").classList.add("hidden"); $("done").classList.add("hidden"); $("quiz").classList.remove("hidden");
   $("screenTitle").textContent=topics[i].title;
   $("ruleSlot").innerHTML='<div class="rule">'+topics[i].rule+'</div>';
@@ -366,8 +484,8 @@ function setBar(p){ $("progressFill").style.width=p+"%"; }
 
 function loadQuestion(){
   answered=false; clearReading();
-  var t=topics[curTopic], q=t.questions[curQ];
-  setBar(Math.round(curQ/t.questions.length*100));
+  var q=sessionQuestions[curQ];
+  setBar(Math.round(curQ/sessionQuestions.length*100));
   $("feedback").className="feedback"; $("feedback").innerHTML="";
   $("nextBtn").classList.add("hidden"); $("checkBtn").classList.remove("hidden"); $("checkBtn").disabled=false;
   var html='<span class="theme-tag '+(q.teal?"teal":"")+'">'+(q.theme||"")+'</span>';
@@ -505,7 +623,7 @@ function syncBank(){
   });
 }
 function checkAnswer(){
-  var q=topics[curTopic].questions[curQ];
+  var q=sessionQuestions[curQ];
   if(q.type!=="puzzle" || answered) return;
   if(puzBuild.join(" ")===q.words.join(" ")){ answered=true; win(q.aff,""); speak(q.words.join(" ")); showNext(); }
   else{ soft(q.wrong,""); }
@@ -516,11 +634,11 @@ function win(msg,rule){ var f=$("feedback"); f.className="feedback good show"; f
 function soft(msg,rule){ var f=$("feedback"); f.className="feedback soft show"; f.innerHTML=msg+(rule?'<div class="fb-rule">'+rule+'</div>':""); }
 function showNext(){ $("checkBtn").classList.add("hidden"); $("nextBtn").classList.remove("hidden"); }
 function nextQuestion(){
-  var t=topics[curTopic]; curQ++;
-  if(curQ>=t.questions.length){
+  curQ++;
+  if(curQ>=sessionQuestions.length){
     setBar(100); markGameDone(curTopic);
     $("quiz").classList.add("hidden"); $("done").classList.remove("hidden");
-    $("doneMsg").textContent="Super! You finished "+t.title+"! 🏆"; speak("Well done!"); burst(); return;
+    $("doneMsg").textContent="Super! You finished "+topics[curTopic].title+"! 🏆"; speak("Well done!"); burst(); return;
   }
   loadQuestion();
 }

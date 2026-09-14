@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Come In 3 — Test 3</title>
+<title>English 3 — Test 3</title>
 <style>
   :root{
     --navy:#1a2a4a;--navy-2:#23365c;--teal:#1fb6c4;--teal-soft:#7fd9e2;
@@ -129,7 +129,7 @@
 <body>
 <div class="wrap">
   <header>
-    <p class="unit-name">Come In 3</p>
+    <p class="unit-name">English 3</p>
     <div class="hdr-row">
       <h1 id="screenTitle">📝 Test 3</h1>
       <button class="speedbtn" id="speedBtn" onclick="toggleRate()">🐇 normal</button>
@@ -193,33 +193,91 @@ var UNITS=[
   {key:"family",  label:"👪 Family &amp; friends", file:"family.html"}
 ];
 
-/* TEST QUESTIONS (mixed, tagged by unit) */
-var TEST=[
-  {unit:"animals",type:"choose",grid:true,say:"lion",prompt:"Which animal?",options:[{t:"🦁",s:"lion"},{t:"🐯",s:"tiger"},{t:"🐻",s:"bear"}],correct:0},
-  {unit:"animals",type:"choose",grid:true,say:"elephant",prompt:"Which animal?",options:[{t:"🦒",s:"giraffe"},{t:"🐘",s:"elephant"},{t:"🦓",s:"zebra"}],correct:1},
-  {unit:"animals",type:"choose",say:"crocodile",prompt:"Which word?",options:["crocodile","kangaroo","tiger"],correct:0},
-  {unit:"animals",type:"spell",word:"lion",emoji:"🦁"},
-  {unit:"animals",type:"swipe",emoji:"🐍",text:"This is a snake.",answer:true},
-
-  {unit:"easter",type:"choose",grid:true,say:"bunny",prompt:"Which picture?",options:[{t:"🐰",s:"bunny"},{t:"🐤",s:"chick"},{t:"🐑",s:"lamb"}],correct:0},
-  {unit:"easter",type:"choose",grid:true,say:"egg",prompt:"Which picture?",options:[{t:"🥚",s:"egg"},{t:"🧺",s:"basket"},{t:"🪺",s:"nest"}],correct:0},
-  {unit:"easter",type:"choose",show:"The egg is ___ the basket.",say:"The egg is in the basket.",prompt:"Tap the missing word.",options:["in","on","under"],correct:0},
-  {unit:"easter",type:"spell",word:"egg",emoji:"🥚"},
-  {unit:"easter",type:"swipe",emoji:"🐤",text:"This is a chick.",answer:true},
-
-  {unit:"family",type:"choose",grid:true,say:"mum",prompt:"Who is it?",options:[{t:"👩",s:"mum"},{t:"👨",s:"dad"},{t:"👶",s:"baby"}],correct:0},
-  {unit:"family",type:"choose",grid:true,say:"baby",prompt:"Who is it?",options:[{t:"👶",s:"baby"},{t:"👦",s:"brother"},{t:"👴",s:"grandpa"}],correct:0},
-  {unit:"family",type:"choose",say:"uncle",prompt:"Which word?",options:["aunt","uncle","cousin"],correct:1},
-  {unit:"family",type:"spell",word:"mum",emoji:"👩"},
-  {unit:"family",type:"swipe",emoji:"👨",text:"This is my mum.",answer:false}
+/* TEST QUESTIONS (mixed, tagged by unit) — pool with no-repeat variants */
+var TEST_KEY="test3";
+var TEST_POOL=[
+  [
+    {unit:"animals",type:"choose",grid:true,say:"lion",prompt:"Which animal?",options:[{t:"🦁",s:"lion"},{t:"🐯",s:"tiger"},{t:"🐻",s:"bear"}],correct:0},
+    {unit:"animals",type:"choose",grid:true,say:"monkey",prompt:"Which animal?",options:[{t:"🐒",s:"monkey"},{t:"🐼",s:"panda"},{t:"🦛",s:"hippo"}],correct:0}
+  ],
+  [
+    {unit:"animals",type:"choose",grid:true,say:"elephant",prompt:"Which animal?",options:[{t:"🦒",s:"giraffe"},{t:"🐘",s:"elephant"},{t:"🦓",s:"zebra"}],correct:1},
+    {unit:"animals",type:"choose",grid:true,say:"penguin",prompt:"Which animal?",options:[{t:"🦜",s:"parrot"},{t:"🐧",s:"penguin"},{t:"🐊",s:"crocodile"}],correct:1}
+  ],
+  [
+    {unit:"animals",type:"choose",say:"crocodile",prompt:"Which word?",options:["crocodile","kangaroo","tiger"],correct:0},
+    {unit:"animals",type:"choose",say:"zebra",prompt:"Which word?",options:["zebra","giraffe","bear"],correct:0}
+  ],
+  [
+    {unit:"animals",type:"spell",word:"lion",emoji:"🦁"},
+    {unit:"animals",type:"spell",word:"tiger",emoji:"🐯"}
+  ],
+  [
+    {unit:"animals",type:"swipe",emoji:"🐍",text:"This is a snake.",answer:true},
+    {unit:"animals",type:"swipe",emoji:"🦒",text:"This is a giraffe.",answer:true}
+  ],
+  [
+    {unit:"easter",type:"choose",grid:true,say:"bunny",prompt:"Which picture?",options:[{t:"🐰",s:"bunny"},{t:"🐤",s:"chick"},{t:"🐑",s:"lamb"}],correct:0},
+    {unit:"easter",type:"choose",grid:true,say:"lamb",prompt:"Which picture?",options:[{t:"🐑",s:"lamb"},{t:"🐰",s:"bunny"},{t:"🐤",s:"chick"}],correct:0}
+  ],
+  [
+    {unit:"easter",type:"choose",grid:true,say:"egg",prompt:"Which picture?",options:[{t:"🥚",s:"egg"},{t:"🧺",s:"basket"},{t:"🪺",s:"nest"}],correct:0},
+    {unit:"easter",type:"choose",grid:true,say:"basket",prompt:"Which picture?",options:[{t:"🧺",s:"basket"},{t:"🪺",s:"nest"},{t:"🥚",s:"egg"}],correct:0}
+  ],
+  [
+    {unit:"easter",type:"choose",show:"The egg is ___ the basket.",say:"The egg is in the basket.",prompt:"Tap the missing word.",options:["in","on","under"],correct:0},
+    {unit:"easter",type:"choose",show:"The chick is ___ the nest.",say:"The chick is on the nest.",prompt:"Tap the missing word.",options:["on","in","under"],correct:0}
+  ],
+  [
+    {unit:"easter",type:"spell",word:"egg",emoji:"🥚"},
+    {unit:"easter",type:"spell",word:"chick",emoji:"🐤"}
+  ],
+  [
+    {unit:"easter",type:"swipe",emoji:"🐤",text:"This is a chick.",answer:true},
+    {unit:"easter",type:"swipe",emoji:"🐰",text:"This is a bunny.",answer:true}
+  ],
+  [
+    {unit:"family",type:"choose",grid:true,say:"mum",prompt:"Who is it?",options:[{t:"👩",s:"mum"},{t:"👨",s:"dad"},{t:"👶",s:"baby"}],correct:0},
+    {unit:"family",type:"choose",grid:true,say:"grandma",prompt:"Who is it?",options:[{t:"👵",s:"grandma"},{t:"👴",s:"grandpa"},{t:"👧",s:"sister"}],correct:0}
+  ],
+  [
+    {unit:"family",type:"choose",grid:true,say:"baby",prompt:"Who is it?",options:[{t:"👶",s:"baby"},{t:"👦",s:"brother"},{t:"👴",s:"grandpa"}],correct:0},
+    {unit:"family",type:"choose",grid:true,say:"brother",prompt:"Who is it?",options:[{t:"👦",s:"brother"},{t:"👧",s:"sister"},{t:"👶",s:"baby"}],correct:0}
+  ],
+  [
+    {unit:"family",type:"choose",say:"uncle",prompt:"Which word?",options:["aunt","uncle","cousin"],correct:1},
+    {unit:"family",type:"choose",say:"cousin",prompt:"Which word?",options:["cousin","aunt","uncle"],correct:0}
+  ],
+  [
+    {unit:"family",type:"spell",word:"mum",emoji:"👩"},
+    {unit:"family",type:"spell",word:"dad",emoji:"👨"}
+  ],
+  [
+    {unit:"family",type:"swipe",emoji:"👨",text:"This is my mum.",answer:false},
+    {unit:"family",type:"swipe",emoji:"👩",text:"This is my grandma.",answer:false}
+  ]
 ];
+var TEST=[];
+
+/* ---------- variant picking (no-repeat-on-replay) ---------- */
+function getLastVariants(){ try{ return JSON.parse(localStorage.getItem("comeIn3.lastVariant")||"{}"); }catch(e){ return {}; } }
+function setLastVariants(m){ try{ localStorage.setItem("comeIn3.lastVariant", JSON.stringify(m)); }catch(e){} }
+function pickVariant(slotIdx,variants){
+  if(variants.length===1) return variants[0];
+  var map=getLastVariants(), key=TEST_KEY+"."+slotIdx, last=map[key];
+  var choices=[]; for(var i=0;i<variants.length;i++){ if(i!==last) choices.push(i); }
+  var pick=choices[Math.floor(Math.random()*choices.length)];
+  map[key]=pick; setLastVariants(map);
+  return variants[pick];
+}
+function buildTest(){ return TEST_POOL.map(function(slot,slotIdx){ return pickVariant(slotIdx,slot); }); }
 
 /* STATE */
 var idx=0, answered=false, results={};
 function $(id){return document.getElementById(id);}
 
 function startTest(){
-  idx=0; results={};
+  idx=0; results={}; TEST=buildTest();
   $("intro").classList.add("hidden"); $("report").classList.add("hidden"); $("quiz").classList.remove("hidden");
   loadQ();
 }

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Come In 3 — Time</title>
+<title>English 3 — Time</title>
 <style>
   :root{
     --navy:#1a2a4a;--navy-2:#23365c;--teal:#1fb6c4;--teal-soft:#7fd9e2;
@@ -109,7 +109,7 @@
 <body>
 <div class="wrap">
   <header>
-    <p class="unit-name">Come In 3</p>
+    <p class="unit-name">English 3</p>
     <div class="hdr-row">
       <h1 id="screenTitle">⏰ Time</h1>
       <button class="speedbtn" id="speedBtn" onclick="toggleRate()">🐇 normal</button>
@@ -229,113 +229,228 @@ function clockSVG(hour){
 var UNIT_NAME="Time";
 
 var topics=[
-  /* 0 — Listen & choose the clock */
+  /* 0 — Listen & choose the clock
+     Each slot has 2 variants (same trio of clocks, different target time). */
   {
     title:"What's the time?",
     rule:`<div class="rule-head"><span class="rule-title">⏰ What's the time?</span><button class="speak-mini" data-say="What is the time? It is three o clock.">🔊 Rule</button></div>
           <p>Ask: <b>What's the time?</b></p><p>Answer: <b>It's … o'clock.</b></p>
           <p>Tap <b>🔊 Listen</b>, then tap the right clock.</p>`,
-    questions:[
-      {type:"choose",grid:true,theme:"🔊 Listen",teal:true,prompt:"Which clock?",say:"It is three o clock.",
-        options:[{clock:3,s:"It is three o clock."},{clock:7,s:"It is seven o clock."},{clock:10,s:"It is ten o clock."}],correct:0,
-        aff:"Tooor! Genau richtig! ⚽",wrong:"💛 Fast! It's three o'clock."},
-      {type:"choose",grid:true,theme:"🔊 Listen",teal:true,prompt:"Which clock?",say:"It is eight o clock.",
-        options:[{clock:5,s:"It is five o clock."},{clock:8,s:"It is eight o clock."},{clock:2,s:"It is two o clock."}],correct:1,
-        aff:"Volltreffer! ⚽",wrong:"💛 Fast! It's eight o'clock."},
-      {type:"choose",grid:true,theme:"🔊 Listen",teal:true,prompt:"Which clock?",say:"It is six o clock.",
-        options:[{clock:9,s:"It is nine o clock."},{clock:1,s:"It is one o clock."},{clock:6,s:"It is six o clock."}],correct:2,
-        aff:"Pole Position! 🏁",wrong:"💛 Fast! It's six o'clock."},
-      {type:"choose",grid:true,theme:"🔊 Listen",teal:true,prompt:"Which clock?",say:"It is eleven o clock.",
-        options:[{clock:11,s:"It is eleven o clock."},{clock:4,s:"It is four o clock."},{clock:8,s:"It is eight o clock."}],correct:0,
-        aff:"Stark! ⚽",wrong:"💛 Fast! It's eleven o'clock."},
-      {type:"choose",grid:true,theme:"🔊 Listen",teal:true,prompt:"Which clock?",say:"It is five o clock.",
-        options:[{clock:12,s:"It is twelve o clock."},{clock:5,s:"It is five o clock."},{clock:3,s:"It is three o clock."}],correct:1,
-        aff:"Schnell wie ein Rennwagen! 🏎️💨",wrong:"💛 Fast! It's five o'clock."}
+    pool:[
+      [
+        {type:"choose",grid:true,theme:"🔊 Listen",teal:true,prompt:"Which clock?",say:"It is three o clock.",
+          options:[{clock:3,s:"It is three o clock."},{clock:7,s:"It is seven o clock."},{clock:10,s:"It is ten o clock."}],correct:0,
+          aff:"Tooor! Genau richtig! ⚽",wrong:"💛 Fast! It's three o'clock."},
+        {type:"choose",grid:true,theme:"🔊 Listen",teal:true,prompt:"Which clock?",say:"It is seven o clock.",
+          options:[{clock:3,s:"It is three o clock."},{clock:7,s:"It is seven o clock."},{clock:10,s:"It is ten o clock."}],correct:1,
+          aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! It's seven o'clock."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🔊 Listen",teal:true,prompt:"Which clock?",say:"It is eight o clock.",
+          options:[{clock:5,s:"It is five o clock."},{clock:8,s:"It is eight o clock."},{clock:2,s:"It is two o clock."}],correct:1,
+          aff:"Volltreffer! ⚽",wrong:"💛 Fast! It's eight o'clock."},
+        {type:"choose",grid:true,theme:"🔊 Listen",teal:true,prompt:"Which clock?",say:"It is five o clock.",
+          options:[{clock:5,s:"It is five o clock."},{clock:8,s:"It is eight o clock."},{clock:2,s:"It is two o clock."}],correct:0,
+          aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! It's five o'clock."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🔊 Listen",teal:true,prompt:"Which clock?",say:"It is six o clock.",
+          options:[{clock:9,s:"It is nine o clock."},{clock:1,s:"It is one o clock."},{clock:6,s:"It is six o clock."}],correct:2,
+          aff:"Pole Position! 🏁",wrong:"💛 Fast! It's six o'clock."},
+        {type:"choose",grid:true,theme:"🔊 Listen",teal:true,prompt:"Which clock?",say:"It is one o clock.",
+          options:[{clock:9,s:"It is nine o clock."},{clock:1,s:"It is one o clock."},{clock:6,s:"It is six o clock."}],correct:1,
+          aff:"Zielgerade! 🏁",wrong:"💛 Fast! It's one o'clock."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🔊 Listen",teal:true,prompt:"Which clock?",say:"It is eleven o clock.",
+          options:[{clock:11,s:"It is eleven o clock."},{clock:4,s:"It is four o clock."},{clock:8,s:"It is eight o clock."}],correct:0,
+          aff:"Stark! ⚽",wrong:"💛 Fast! It's eleven o'clock."},
+        {type:"choose",grid:true,theme:"🔊 Listen",teal:true,prompt:"Which clock?",say:"It is four o clock.",
+          options:[{clock:11,s:"It is eleven o clock."},{clock:4,s:"It is four o clock."},{clock:8,s:"It is eight o clock."}],correct:1,
+          aff:"Super Dribbling! ⚽",wrong:"💛 Fast! It's four o'clock."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🔊 Listen",teal:true,prompt:"Which clock?",say:"It is five o clock.",
+          options:[{clock:12,s:"It is twelve o clock."},{clock:5,s:"It is five o clock."},{clock:3,s:"It is three o clock."}],correct:1,
+          aff:"Schnell wie ein Rennwagen! 🏎️💨",wrong:"💛 Fast! It's five o'clock."},
+        {type:"choose",grid:true,theme:"🔊 Listen",teal:true,prompt:"Which clock?",say:"It is twelve o clock.",
+          options:[{clock:12,s:"It is twelve o clock."},{clock:5,s:"It is five o clock."},{clock:3,s:"It is three o clock."}],correct:0,
+          aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! It's twelve o'clock."}
+      ]
     ]
   },
 
-  /* 1 — Clock shown, choose the hour */
+  /* 1 — Clock shown, choose the hour
+     Each slot has 2 variants (same trio of hour-words, different clock shown). */
   {
     title:"It's … o'clock",
     rule:`<div class="rule-head"><span class="rule-title">🔢 It's … o'clock</span><button class="speak-mini" data-say="It is four o clock.">🔊 Rule</button></div>
           <p>Look at the clock. Which hour is it?</p><p><b>It's four o'clock.</b> 🕓</p>`,
-    questions:[
-      {type:"choose",grid:true,theme:"🏎️ Auto-Zeit",clockHour:4,prompt:"It's ___ o'clock.",say:"It is four o clock.",
-        options:[{t:"3",s:"three"},{t:"4",s:"four"},{t:"5",s:"five"}],correct:1,
-        aff:"Volltreffer! Wie ein perfekter Boxenstopp! 🏎️",wrong:"💛 Fast! Es ist four o'clock."},
-      {type:"choose",grid:true,theme:"⚽ Fußball-Zeit",clockHour:7,prompt:"It's ___ o'clock.",say:"It is seven o clock.",
-        options:[{t:"7",s:"seven"},{t:"9",s:"nine"},{t:"2",s:"two"}],correct:0,
-        aff:"Tooor! Genau richtig! ⚽",wrong:"💛 Fast! It's seven o'clock."},
-      {type:"choose",grid:true,theme:"🏎️ Auto-Zeit",clockHour:10,prompt:"It's ___ o'clock.",say:"It is ten o clock.",
-        options:[{t:"1",s:"one"},{t:"10",s:"ten"},{t:"12",s:"twelve"}],correct:1,
-        aff:"Pole Position! 🏁",wrong:"💛 Fast! It's ten o'clock."},
-      {type:"choose",grid:true,theme:"⚽ Fußball-Zeit",clockHour:2,prompt:"It's ___ o'clock.",say:"It is two o clock.",
-        options:[{t:"2",s:"two"},{t:"6",s:"six"},{t:"8",s:"eight"}],correct:0,
-        aff:"Stark! Du bist im Spiel! ⚽",wrong:"💛 Fast! It's two o'clock."},
-      {type:"choose",grid:true,theme:"🏎️ Auto-Zeit",clockHour:9,prompt:"It's ___ o'clock.",say:"It is nine o clock.",
-        options:[{t:"3",s:"three"},{t:"11",s:"eleven"},{t:"9",s:"nine"}],correct:2,
-        aff:"Schnell und richtig! 🏎️💨",wrong:"💛 Fast! It's nine o'clock."}
+    pool:[
+      [
+        {type:"choose",grid:true,theme:"🏎️ Auto-Zeit",clockHour:4,prompt:"It's ___ o'clock.",say:"It is four o clock.",
+          options:[{t:"3",s:"three"},{t:"4",s:"four"},{t:"5",s:"five"}],correct:1,
+          aff:"Volltreffer! Wie ein perfekter Boxenstopp! 🏎️",wrong:"💛 Fast! Es ist four o'clock."},
+        {type:"choose",grid:true,theme:"🏎️ Auto-Zeit",clockHour:3,prompt:"It's ___ o'clock.",say:"It is three o clock.",
+          options:[{t:"3",s:"three"},{t:"4",s:"four"},{t:"5",s:"five"}],correct:0,
+          aff:"Klasse Zuspiel! 🏎️",wrong:"💛 Fast! Es ist three o'clock."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"⚽ Fußball-Zeit",clockHour:7,prompt:"It's ___ o'clock.",say:"It is seven o clock.",
+          options:[{t:"7",s:"seven"},{t:"9",s:"nine"},{t:"2",s:"two"}],correct:0,
+          aff:"Tooor! Genau richtig! ⚽",wrong:"💛 Fast! It's seven o'clock."},
+        {type:"choose",grid:true,theme:"⚽ Fußball-Zeit",clockHour:9,prompt:"It's ___ o'clock.",say:"It is nine o clock.",
+          options:[{t:"7",s:"seven"},{t:"9",s:"nine"},{t:"2",s:"two"}],correct:1,
+          aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! It's nine o'clock."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🏎️ Auto-Zeit",clockHour:10,prompt:"It's ___ o'clock.",say:"It is ten o clock.",
+          options:[{t:"1",s:"one"},{t:"10",s:"ten"},{t:"12",s:"twelve"}],correct:1,
+          aff:"Pole Position! 🏁",wrong:"💛 Fast! It's ten o'clock."},
+        {type:"choose",grid:true,theme:"🏎️ Auto-Zeit",clockHour:12,prompt:"It's ___ o'clock.",say:"It is twelve o clock.",
+          options:[{t:"1",s:"one"},{t:"10",s:"ten"},{t:"12",s:"twelve"}],correct:2,
+          aff:"Zielgerade! 🏁",wrong:"💛 Fast! It's twelve o'clock."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"⚽ Fußball-Zeit",clockHour:2,prompt:"It's ___ o'clock.",say:"It is two o clock.",
+          options:[{t:"2",s:"two"},{t:"6",s:"six"},{t:"8",s:"eight"}],correct:0,
+          aff:"Stark! Du bist im Spiel! ⚽",wrong:"💛 Fast! It's two o'clock."},
+        {type:"choose",grid:true,theme:"⚽ Fußball-Zeit",clockHour:6,prompt:"It's ___ o'clock.",say:"It is six o clock.",
+          options:[{t:"2",s:"two"},{t:"6",s:"six"},{t:"8",s:"eight"}],correct:1,
+          aff:"Super Dribbling! ⚽",wrong:"💛 Fast! It's six o'clock."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🏎️ Auto-Zeit",clockHour:9,prompt:"It's ___ o'clock.",say:"It is nine o clock.",
+          options:[{t:"3",s:"three"},{t:"11",s:"eleven"},{t:"9",s:"nine"}],correct:2,
+          aff:"Schnell und richtig! 🏎️💨",wrong:"💛 Fast! It's nine o'clock."},
+        {type:"choose",grid:true,theme:"🏎️ Auto-Zeit",clockHour:11,prompt:"It's ___ o'clock.",say:"It is eleven o clock.",
+          options:[{t:"3",s:"three"},{t:"11",s:"eleven"},{t:"9",s:"nine"}],correct:1,
+          aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! It's eleven o'clock."}
+      ]
     ]
   },
 
-  /* 2 — Match feelings */
+  /* 2 — Match feelings
+     Each slot has 2 variants drawing on the unit's full feelings vocabulary. */
   {
     title:"How are you?",
     rule:`<div class="rule-head"><span class="rule-title">😊 How are you?</span><button class="speak-mini" data-say="How are you? I am tired.">🔊 Rule</button></div>
           <p>Ask: <b>How are you?</b></p><p>Answer: <b>I'm tired. / I'm happy.</b></p><p>Tap a word, then tap its picture.</p>`,
-    questions:[
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["tired","😴"],["happy","😊"],["hungry","🍽️"]],
-        aff:"Alle Paare! Mannschaftsleistung! ⚽🏆",wrong:"💛 Fast! Tippe ein Wort und dann das Bild."},
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["sad","😢"],["angry","😠"],["thirsty","🥤"]],
-        aff:"Perfekt verbunden! 🏁",wrong:"💛 Fast! Tippe das Wort, dann das passende Bild."},
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["scared","😨"],["grumpy","😤"],["happy","😄"]],
-        aff:"Geschafft — Doppelpass sitzt! ⚽",wrong:"💛 Fast! Probier es in Ruhe."}
+    pool:[
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["tired","😴"],["happy","😊"],["hungry","🍽️"]],
+          aff:"Alle Paare! Mannschaftsleistung! ⚽🏆",wrong:"💛 Fast! Tippe ein Wort und dann das Bild."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["sad","😢"],["angry","😠"],["thirsty","🥤"]],
+          aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! Tippe ein Wort und dann das Bild."}
+      ],
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["sad","😢"],["angry","😠"],["thirsty","🥤"]],
+          aff:"Perfekt verbunden! 🏁",wrong:"💛 Fast! Tippe das Wort, dann das passende Bild."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["tired","😴"],["happy","😊"],["hungry","🍽️"]],
+          aff:"Zielgerade! 🏁",wrong:"💛 Fast! Tippe das Wort, dann das passende Bild."}
+      ],
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["scared","😨"],["grumpy","😤"],["happy","😄"]],
+          aff:"Geschafft — Doppelpass sitzt! ⚽",wrong:"💛 Fast! Probier es in Ruhe."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["tired","😴"],["sad","😢"],["thirsty","🥤"]],
+          aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Probier es in Ruhe."}
+      ]
     ]
   },
 
-  /* 3 — Swipe with clock */
+  /* 3 — Swipe with clock
+     Each slot has 2 variants with a different clock/statement pair. */
   {
     title:"Right or wrong?",
     rule:`<div class="rule-head"><span class="rule-title">👋 Right or wrong?</span><button class="speak-mini" data-say="Look at the clock. Is it right?">🔊 Rule</button></div>
           <p>Look at the clock and listen.</p><p>Tap ✅ <b>yes</b> if it is right. Tap ❌ <b>no</b> if it is wrong.</p>`,
-    questions:[
-      {type:"swipe",theme:"⚽ Check",clock:5,text:"It's five o'clock.",answer:true,
-        aff:"Richtig! Sicher wie ein Elfmeter! ⚽",wrong:"💛 Fast! Der blaue Zeiger zeigt auf 5."},
-      {type:"swipe",theme:"🏎️ Check",clock:8,text:"It's three o'clock.",answer:false,
-        aff:"Erkannt! Gutes Auge! 🏎️",wrong:"💛 Fast! Der Zeiger zeigt auf 8. It's eight o'clock."},
-      {type:"swipe",theme:"⚽ Check",clock:12,text:"It's twelve o'clock.",answer:true,
-        aff:"Tor! Genau! ⚽",wrong:"💛 Fast! Beide Zeiger oben — twelve o'clock, richtig."},
-      {type:"swipe",theme:"🏎️ Check",clock:1,text:"It's ten o'clock.",answer:false,
-        aff:"Stark gebremst und richtig! 🏁",wrong:"💛 Fast! Der Zeiger zeigt auf 1. It's one o'clock."},
-      {type:"swipe",theme:"⚽ Check",clock:9,text:"It's nine o'clock.",answer:true,
-        aff:"Sauber! ⚽",wrong:"💛 Fast! Der blaue Zeiger zeigt auf 9 — richtig!"}
+    pool:[
+      [
+        {type:"swipe",theme:"⚽ Check",clock:5,text:"It's five o'clock.",answer:true,
+          aff:"Richtig! Sicher wie ein Elfmeter! ⚽",wrong:"💛 Fast! Der blaue Zeiger zeigt auf 5."},
+        {type:"swipe",theme:"⚽ Check",clock:9,text:"It's nine o'clock.",answer:true,
+          aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! Der blaue Zeiger zeigt auf 9."}
+      ],
+      [
+        {type:"swipe",theme:"🏎️ Check",clock:8,text:"It's three o'clock.",answer:false,
+          aff:"Erkannt! Gutes Auge! 🏎️",wrong:"💛 Fast! Der Zeiger zeigt auf 8. It's eight o'clock."},
+        {type:"swipe",theme:"🏎️ Check",clock:5,text:"It's eight o'clock.",answer:false,
+          aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! Der Zeiger zeigt auf 5. It's five o'clock."}
+      ],
+      [
+        {type:"swipe",theme:"⚽ Check",clock:12,text:"It's twelve o'clock.",answer:true,
+          aff:"Tor! Genau! ⚽",wrong:"💛 Fast! Beide Zeiger oben — twelve o'clock, richtig."},
+        {type:"swipe",theme:"⚽ Check",clock:1,text:"It's one o'clock.",answer:true,
+          aff:"Zielgerade! 🏁",wrong:"💛 Fast! Der Zeiger zeigt auf 1 — one o'clock, richtig."}
+      ],
+      [
+        {type:"swipe",theme:"🏎️ Check",clock:1,text:"It's ten o'clock.",answer:false,
+          aff:"Stark gebremst und richtig! 🏁",wrong:"💛 Fast! Der Zeiger zeigt auf 1. It's one o'clock."},
+        {type:"swipe",theme:"🏎️ Check",clock:8,text:"It's one o'clock.",answer:false,
+          aff:"Super Dribbling! ⚽",wrong:"💛 Fast! Der Zeiger zeigt auf 8. It's eight o'clock."}
+      ],
+      [
+        {type:"swipe",theme:"⚽ Check",clock:9,text:"It's nine o'clock.",answer:true,
+          aff:"Sauber! ⚽",wrong:"💛 Fast! Der blaue Zeiger zeigt auf 9 — richtig!"},
+        {type:"swipe",theme:"⚽ Check",clock:12,text:"It's twelve o'clock.",answer:true,
+          aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Beide Zeiger oben — twelve o'clock, richtig."}
+      ]
     ]
   },
 
-  /* 4 — Puzzle */
+  /* 4 — Puzzle
+     Each slot has 2 variants reusing vocabulary and grammar from the games above. */
   {
     title:"Build the question",
     rule:`<div class="rule-head"><span class="rule-title">🧩 Build the question</span><button class="speak-mini" data-say="What is the time?">🔊 Rule</button></div>
           <p>Tap the words in the right order.</p><p>Tip: a question ends with <b>?</b></p>`,
-    questions:[
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["What's","the","time?"],
-        aff:"Frage gebaut wie ein Profi! ⚽",wrong:`💛 Fast! Beginne mit "What's".`},
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["It's","six","o'clock."],
-        aff:"Satz steht! 🏎️",wrong:`💛 Fast! Beginne mit "It's".`},
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["How","are","you?"],
-        aff:"Perfekt! 🏆",wrong:`💛 Fast! Beginne mit "How".`}
+    pool:[
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["What's","the","time?"],
+          aff:"Frage gebaut wie ein Profi! ⚽",wrong:`💛 Fast! Beginne mit "What's".`},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["How","are","you?"],
+          aff:"Klasse Zuspiel! ⚽",wrong:`💛 Fast! Beginne mit "How".`}
+      ],
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["It's","six","o'clock."],
+          aff:"Satz steht! 🏎️",wrong:`💛 Fast! Beginne mit "It's".`},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["It's","four","o'clock."],
+          aff:"Volle Punktzahl! 🏆",wrong:`💛 Fast! Beginne mit "It's".`}
+      ],
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["How","are","you?"],
+          aff:"Perfekt! 🏆",wrong:`💛 Fast! Beginne mit "How".`},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["What's","the","time?"],
+          aff:"Zielgerade! 🏁",wrong:`💛 Fast! Beginne mit "What's".`}
+      ]
     ]
   }
 ];
 
+/* ---------- variant picking (no-repeat-on-replay) ---------- */
+function getLastVariants(){ try{ return JSON.parse(localStorage.getItem("comeIn3.lastVariant")||"{}"); }catch(e){ return {}; } }
+function setLastVariants(m){ try{ localStorage.setItem("comeIn3.lastVariant", JSON.stringify(m)); }catch(e){} }
+function pickVariant(topicIdx,slotIdx,variants){
+  if(variants.length===1) return variants[0];
+  var map=getLastVariants(), key=UNIT_KEY+"."+topicIdx+"."+slotIdx, last=map[key];
+  var choices=[]; for(var i=0;i<variants.length;i++){ if(i!==last) choices.push(i); }
+  var pick=choices[Math.floor(Math.random()*choices.length)];
+  map[key]=pick; setLastVariants(map);
+  return variants[pick];
+}
+function buildQuestions(topicIdx){
+  return topics[topicIdx].pool.map(function(slot,slotIdx){ return pickVariant(topicIdx,slotIdx,slot); });
+}
+
+
 /* =========================================================
    SHARED ENGINE (generic + grid + swatch + speed + read-along + progress)
    ========================================================= */
-var curTopic=0, curQ=0, answered=false;
+var curTopic=0, curQ=0, answered=false, sessionQuestions=[];
 function $(id){return document.getElementById(id);}
 
 function startTopic(i){
-  curTopic=i; curQ=0;
+  curTopic=i; curQ=0; sessionQuestions=buildQuestions(i);
   $("menu").classList.add("hidden"); $("done").classList.add("hidden"); $("quiz").classList.remove("hidden");
   $("screenTitle").textContent=topics[i].title;
   $("ruleSlot").innerHTML='<div class="rule">'+topics[i].rule+'</div>';
@@ -352,8 +467,8 @@ function setBar(p){ $("progressFill").style.width=p+"%"; }
 
 function loadQuestion(){
   answered=false; clearReading();
-  var t=topics[curTopic], q=t.questions[curQ];
-  setBar(Math.round(curQ/t.questions.length*100));
+  var q=sessionQuestions[curQ];
+  setBar(Math.round(curQ/sessionQuestions.length*100));
   $("feedback").className="feedback"; $("feedback").innerHTML="";
   $("nextBtn").classList.add("hidden"); $("checkBtn").classList.remove("hidden"); $("checkBtn").disabled=false;
   var html='<span class="theme-tag '+(q.teal?"teal":"")+'">'+(q.theme||"")+'</span>';
@@ -492,7 +607,7 @@ function syncBank(){
   });
 }
 function checkAnswer(){
-  var q=topics[curTopic].questions[curQ];
+  var q=sessionQuestions[curQ];
   if(q.type!=="puzzle" || answered) return;
   if(puzBuild.join(" ")===q.words.join(" ")){ answered=true; win(q.aff,""); speak(q.words.join(" ")); showNext(); }
   else{ soft(q.wrong,""); }
@@ -503,11 +618,11 @@ function win(msg,rule){ var f=$("feedback"); f.className="feedback good show"; f
 function soft(msg,rule){ var f=$("feedback"); f.className="feedback soft show"; f.innerHTML=msg+(rule?'<div class="fb-rule">'+rule+'</div>':""); }
 function showNext(){ $("checkBtn").classList.add("hidden"); $("nextBtn").classList.remove("hidden"); }
 function nextQuestion(){
-  var t=topics[curTopic]; curQ++;
-  if(curQ>=t.questions.length){
+  curQ++;
+  if(curQ>=sessionQuestions.length){
     setBar(100); markGameDone(curTopic);
     $("quiz").classList.add("hidden"); $("done").classList.remove("hidden");
-    $("doneMsg").textContent="Super! You finished "+t.title+"! 🏆"; speak("Well done!"); burst(); return;
+    $("doneMsg").textContent="Super! You finished "+topics[curTopic].title+"! 🏆"; speak("Well done!"); burst(); return;
   }
   loadQuestion();
 }

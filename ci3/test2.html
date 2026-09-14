@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Come In 3 — Test 2</title>
+<title>English 3 — Test 2</title>
 <style>
   :root{
     --navy:#1a2a4a;--navy-2:#23365c;--teal:#1fb6c4;--teal-soft:#7fd9e2;
@@ -129,7 +129,7 @@
 <body>
 <div class="wrap">
   <header>
-    <p class="unit-name">Come In 3</p>
+    <p class="unit-name">English 3</p>
     <div class="hdr-row">
       <h1 id="screenTitle">📝 Test 2</h1>
       <button class="speedbtn" id="speedBtn" onclick="toggleRate()">🐇 normal</button>
@@ -194,35 +194,95 @@ var UNITS=[
   {key:"london",   label:"🇬🇧 London",         file:"london.html"}
 ];
 
-/* TEST QUESTIONS (mixed, tagged by unit) */
-var TEST=[
-  {unit:"weather",type:"choose",grid:true,say:"sunny",prompt:"Which weather?",options:[{t:"☀️",s:"sunny"},{t:"🌧️",s:"rainy"},{t:"☁️",s:"cloudy"}],correct:0},
-  {unit:"weather",type:"choose",say:"cold",prompt:"Which word?",options:["cold","hot","warm"],correct:0},
-  {unit:"weather",type:"spell",word:"cold",emoji:"🥶"},
-  {unit:"weather",type:"swipe",emoji:"❄️",text:"It's snowy.",answer:true},
-
-  {unit:"christmas",type:"choose",grid:true,say:"Santa",prompt:"Which picture?",options:[{t:"🎅",s:"Santa"},{t:"🦌",s:"reindeer"},{t:"🎄",s:"Christmas tree"}],correct:0},
-  {unit:"christmas",type:"choose",say:"candle",prompt:"Which word?",options:["candle","present","star"],correct:0},
-  {unit:"christmas",type:"spell",word:"star",emoji:"⭐"},
-  {unit:"christmas",type:"swipe",emoji:"🎁",text:"This is a present.",answer:true},
-
-  {unit:"morning",type:"choose",grid:true,say:"milk",prompt:"Which one?",options:[{t:"🥛",s:"milk"},{t:"☕",s:"coffee"},{t:"🧃",s:"orange juice"}],correct:0},
-  {unit:"morning",type:"choose",grid:true,say:"brush my teeth",prompt:"Which one?",options:[{t:"🪥",s:"brush my teeth"},{t:"👕",s:"get dressed"},{t:"🎒",s:"pack my schoolbag"}],correct:0},
-  {unit:"morning",type:"spell",word:"milk",emoji:"🥛"},
-  {unit:"morning",type:"swipe",emoji:"🍞",text:"This is cheese.",answer:false},
-
-  {unit:"london",type:"choose",grid:true,say:"double-decker bus",prompt:"Which picture?",options:[{t:"🚌",s:"double-decker bus"},{t:"🚕",s:"taxi"},{t:"🚇",s:"underground"}],correct:0},
-  {unit:"london",type:"choose",say:"Big Ben",prompt:"Which words?",options:["Big Ben","Tower Bridge","River Thames"],correct:0},
-  {unit:"london",type:"spell",word:"bus",emoji:"🚌"},
-  {unit:"london",type:"swipe",emoji:"🎡",text:"This is Tower Bridge.",answer:false}
+/* TEST QUESTIONS (mixed, tagged by unit) — pool with no-repeat variants */
+var TEST_KEY="test2";
+var TEST_POOL=[
+  [
+    {unit:"weather",type:"choose",grid:true,say:"sunny",prompt:"Which weather?",options:[{t:"☀️",s:"sunny"},{t:"🌧️",s:"rainy"},{t:"☁️",s:"cloudy"}],correct:0},
+    {unit:"weather",type:"choose",grid:true,say:"windy",prompt:"Which weather?",options:[{t:"🌬️",s:"windy"},{t:"🌫️",s:"foggy"},{t:"⛈️",s:"stormy"}],correct:0}
+  ],
+  [
+    {unit:"weather",type:"choose",say:"cold",prompt:"Which word?",options:["cold","hot","warm"],correct:0},
+    {unit:"weather",type:"choose",say:"warm",prompt:"Which word?",options:["warm","frosty","windy"],correct:0}
+  ],
+  [
+    {unit:"weather",type:"spell",word:"cold",emoji:"🥶"},
+    {unit:"weather",type:"spell",word:"hot",emoji:"🥵"}
+  ],
+  [
+    {unit:"weather",type:"swipe",emoji:"❄️",text:"It's snowy.",answer:true},
+    {unit:"weather",type:"swipe",emoji:"🌫️",text:"It's foggy.",answer:true}
+  ],
+  [
+    {unit:"christmas",type:"choose",grid:true,say:"Santa",prompt:"Which picture?",options:[{t:"🎅",s:"Santa"},{t:"🦌",s:"reindeer"},{t:"🎄",s:"Christmas tree"}],correct:0},
+    {unit:"christmas",type:"choose",grid:true,say:"snowman",prompt:"Which picture?",options:[{t:"⛄",s:"snowman"},{t:"😇",s:"angel"},{t:"🧦",s:"stocking"}],correct:0}
+  ],
+  [
+    {unit:"christmas",type:"choose",say:"candle",prompt:"Which word?",options:["candle","present","star"],correct:0},
+    {unit:"christmas",type:"choose",say:"sleigh",prompt:"Which word?",options:["sleigh","angel","stocking"],correct:0}
+  ],
+  [
+    {unit:"christmas",type:"spell",word:"star",emoji:"⭐"},
+    {unit:"christmas",type:"spell",word:"angel",emoji:"😇"}
+  ],
+  [
+    {unit:"christmas",type:"swipe",emoji:"🎁",text:"This is a present.",answer:true},
+    {unit:"christmas",type:"swipe",emoji:"🧦",text:"This is a stocking.",answer:true}
+  ],
+  [
+    {unit:"morning",type:"choose",grid:true,say:"milk",prompt:"Which one?",options:[{t:"🥛",s:"milk"},{t:"☕",s:"coffee"},{t:"🧃",s:"orange juice"}],correct:0},
+    {unit:"morning",type:"choose",grid:true,say:"toast",prompt:"Which one?",options:[{t:"🍞",s:"toast"},{t:"🥣",s:"cornflakes"},{t:"🍯",s:"honey"}],correct:0}
+  ],
+  [
+    {unit:"morning",type:"choose",grid:true,say:"brush my teeth",prompt:"Which one?",options:[{t:"🪥",s:"brush my teeth"},{t:"👕",s:"get dressed"},{t:"🎒",s:"pack my schoolbag"}],correct:0},
+    {unit:"morning",type:"choose",grid:true,say:"wash my face",prompt:"Which one?",options:[{t:"🧼",s:"wash my face"},{t:"🍳",s:"have breakfast"},{t:"🚸",s:"go to school"}],correct:0}
+  ],
+  [
+    {unit:"morning",type:"spell",word:"milk",emoji:"🥛"},
+    {unit:"morning",type:"spell",word:"toast",emoji:"🍞"}
+  ],
+  [
+    {unit:"morning",type:"swipe",emoji:"🍞",text:"This is cheese.",answer:false},
+    {unit:"morning",type:"swipe",emoji:"🥚",text:"This is toast.",answer:false}
+  ],
+  [
+    {unit:"london",type:"choose",grid:true,say:"double-decker bus",prompt:"Which picture?",options:[{t:"🚌",s:"double-decker bus"},{t:"🚕",s:"taxi"},{t:"🚇",s:"underground"}],correct:0},
+    {unit:"london",type:"choose",grid:true,say:"umbrella",prompt:"Which picture?",options:[{t:"☂️",s:"umbrella"},{t:"🚕",s:"taxi"},{t:"🚇",s:"underground"}],correct:0}
+  ],
+  [
+    {unit:"london",type:"choose",say:"Big Ben",prompt:"Which words?",options:["Big Ben","Tower Bridge","River Thames"],correct:0},
+    {unit:"london",type:"choose",say:"Tower Bridge",prompt:"Which words?",options:["Tower Bridge","Big Ben","River Thames"],correct:0}
+  ],
+  [
+    {unit:"london",type:"spell",word:"bus",emoji:"🚌"},
+    {unit:"london",type:"spell",word:"taxi",emoji:"🚕"}
+  ],
+  [
+    {unit:"london",type:"swipe",emoji:"🎡",text:"This is Tower Bridge.",answer:false},
+    {unit:"london",type:"swipe",emoji:"🎡",text:"This is the London Eye.",answer:true}
+  ]
 ];
+var TEST=[];
+
+/* ---------- variant picking (no-repeat-on-replay) ---------- */
+function getLastVariants(){ try{ return JSON.parse(localStorage.getItem("comeIn3.lastVariant")||"{}"); }catch(e){ return {}; } }
+function setLastVariants(m){ try{ localStorage.setItem("comeIn3.lastVariant", JSON.stringify(m)); }catch(e){} }
+function pickVariant(slotIdx,variants){
+  if(variants.length===1) return variants[0];
+  var map=getLastVariants(), key=TEST_KEY+"."+slotIdx, last=map[key];
+  var choices=[]; for(var i=0;i<variants.length;i++){ if(i!==last) choices.push(i); }
+  var pick=choices[Math.floor(Math.random()*choices.length)];
+  map[key]=pick; setLastVariants(map);
+  return variants[pick];
+}
+function buildTest(){ return TEST_POOL.map(function(slot,slotIdx){ return pickVariant(slotIdx,slot); }); }
 
 /* STATE */
 var idx=0, answered=false, results={};
 function $(id){return document.getElementById(id);}
 
 function startTest(){
-  idx=0; results={};
+  idx=0; results={}; TEST=buildTest();
   $("intro").classList.add("hidden"); $("report").classList.add("hidden"); $("quiz").classList.remove("hidden");
   loadQ();
 }

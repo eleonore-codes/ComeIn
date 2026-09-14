@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Come In 3 — Welcome</title>
+<title>English 3 — Welcome</title>
 <style>
   :root{
     --navy:#1a2a4a;--navy-2:#23365c;--teal:#1fb6c4;--teal-soft:#7fd9e2;
@@ -108,7 +108,7 @@
 <body>
 <div class="wrap">
   <header>
-    <p class="unit-name">Come In 3</p>
+    <p class="unit-name">English 3</p>
     <div class="hdr-row">
       <h1 id="screenTitle">👋 Welcome</h1>
       <button class="speedbtn" id="speedBtn" onclick="toggleRate()">🐇 normal</button>
@@ -208,94 +208,191 @@ function C(name){ return {swatch:COL[name], s:name}; }
 function N(d,word){ return {t:String(d), s:word}; }
 
 var topics=[
-  /* 0 — Colours: listen & tap (grid, swatches) */
+  /* 0 — Colours: listen & tap (grid, swatches)
+     Each slot has 2 variants (same trio, different target colour). */
   {
     title:"Colours",
     rule:`<div class="rule-head"><span class="rule-title">🎨 Colours</span><button class="speak-mini" data-say="Listen, then tap the right colour.">🔊 Rule</button></div>
           <p>Tap <b>🔊 Listen</b>, then tap the right colour.</p>`,
-    questions:[
-      {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which colour?",say:"blue",
-        options:[C("blue"),C("red"),C("green")],correct:0,aff:"Tooor! Genau richtig! ⚽",wrong:"💛 Fast! Das war blue 🔵."},
-      {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which colour?",say:"yellow",
-        options:[C("green"),C("yellow"),C("purple")],correct:1,aff:"Volltreffer! ⚽",wrong:"💛 Fast! Das war yellow."},
-      {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which colour?",say:"red",
-        options:[C("red"),C("orange"),C("brown")],correct:0,aff:"Pole Position! 🏁",wrong:"💛 Fast! Das war red."},
-      {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which colour?",say:"pink",
-        options:[C("purple"),C("pink"),C("grey")],correct:1,aff:"Stark! ⚽",wrong:"💛 Fast! Das war pink."},
-      {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which colour?",say:"green",
-        options:[C("blue"),C("grey"),C("green")],correct:2,aff:"Schnell wie ein Rennwagen! 🏎️💨",wrong:"💛 Fast! Das war green."}
+    pool:[
+      [
+        {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which colour?",say:"blue",
+          options:[C("blue"),C("red"),C("green")],correct:0,aff:"Tooor! Genau richtig! ⚽",wrong:"💛 Fast! Das war blue 🔵."},
+        {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which colour?",say:"green",
+          options:[C("blue"),C("red"),C("green")],correct:2,aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! Das war green."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which colour?",say:"yellow",
+          options:[C("green"),C("yellow"),C("purple")],correct:1,aff:"Volltreffer! ⚽",wrong:"💛 Fast! Das war yellow."},
+        {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which colour?",say:"purple",
+          options:[C("green"),C("yellow"),C("purple")],correct:2,aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! Das war purple."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which colour?",say:"red",
+          options:[C("red"),C("orange"),C("brown")],correct:0,aff:"Pole Position! 🏁",wrong:"💛 Fast! Das war red."},
+        {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which colour?",say:"orange",
+          options:[C("red"),C("orange"),C("brown")],correct:1,aff:"Zielgerade! 🏁",wrong:"💛 Fast! Das war orange."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which colour?",say:"pink",
+          options:[C("purple"),C("pink"),C("grey")],correct:1,aff:"Stark! ⚽",wrong:"💛 Fast! Das war pink."},
+        {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which colour?",say:"grey",
+          options:[C("purple"),C("pink"),C("grey")],correct:2,aff:"Super Dribbling! ⚽",wrong:"💛 Fast! Das war grey."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which colour?",say:"green",
+          options:[C("blue"),C("grey"),C("green")],correct:2,aff:"Schnell wie ein Rennwagen! 🏎️💨",wrong:"💛 Fast! Das war green."},
+        {type:"choose",grid:true,theme:"🎨 Listen",teal:true,prompt:"Which colour?",say:"blue",
+          options:[C("blue"),C("grey"),C("green")],correct:0,aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Das war blue."}
+      ]
     ]
   },
 
-  /* 1 — Match colours (word <-> swatch) */
+  /* 1 — Match colours (word <-> swatch)
+     Each slot has 2 variants drawing on the unit's full colour vocabulary. */
   {
     title:"Match colours",
     rule:`<div class="rule-head"><span class="rule-title">🔗 Match colours</span><button class="speak-mini" data-say="Tap a word, then tap its colour.">🔊 Rule</button></div>
           <p>Tap a <b>word</b>, then tap its <b>colour</b>.</p><p>Tap 🔊 on a word to hear it.</p>`,
-    questions:[
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["red",COL.red],["blue",COL.blue],["green",COL.green],["yellow",COL.yellow]],
-        aff:"Alle Paare! Mannschaftsleistung! ⚽🏆",wrong:"💛 Fast! Tippe das Wort, dann die Farbe."},
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["orange",COL.orange],["purple",COL.purple],["pink",COL.pink],["brown",COL.brown]],
-        aff:"Perfekt verbunden! 🏁",wrong:"💛 Fast! Probier es in Ruhe."},
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["black",COL.black],["white",COL.white],["grey",COL.grey]],
-        aff:"Geschafft — Doppelpass sitzt! ⚽",wrong:"💛 Fast! Schau nochmal hin."}
+    pool:[
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["red",COL.red],["blue",COL.blue],["green",COL.green],["yellow",COL.yellow]],
+          aff:"Alle Paare! Mannschaftsleistung! ⚽🏆",wrong:"💛 Fast! Tippe das Wort, dann die Farbe."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["orange",COL.orange],["purple",COL.purple],["pink",COL.pink],["brown",COL.brown]],
+          aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! Tippe das Wort, dann die Farbe."}
+      ],
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["orange",COL.orange],["purple",COL.purple],["pink",COL.pink],["brown",COL.brown]],
+          aff:"Perfekt verbunden! 🏁",wrong:"💛 Fast! Probier es in Ruhe."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["red",COL.red],["blue",COL.blue],["green",COL.green],["yellow",COL.yellow]],
+          aff:"Zielgerade! 🏁",wrong:"💛 Fast! Probier es in Ruhe."}
+      ],
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["black",COL.black],["white",COL.white],["grey",COL.grey]],
+          aff:"Geschafft — Doppelpass sitzt! ⚽",wrong:"💛 Fast! Schau nochmal hin."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["blue",COL.blue],["orange",COL.orange],["purple",COL.purple]],
+          aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Schau nochmal hin."}
+      ]
     ]
   },
 
-  /* 2 — Numbers: listen & tap (grid, big digits) */
+  /* 2 — Numbers: listen & tap (grid, big digits)
+     Each slot has 2 variants (same trio, different target number). */
   {
     title:"Numbers",
     rule:`<div class="rule-head"><span class="rule-title">🔢 Numbers 1–20</span><button class="speak-mini" data-say="Listen, then tap the right number.">🔊 Rule</button></div>
           <p>Tap <b>🔊 Listen</b>, then tap the right number.</p>`,
-    questions:[
-      {type:"choose",grid:true,theme:"🔢 Listen",teal:true,prompt:"Which number?",say:"seven",
-        options:[N(7,"seven"),N(11,"eleven"),N(4,"four")],correct:0,aff:"Tor! ⚽",wrong:"💛 Fast! Das war seven (7)."},
-      {type:"choose",grid:true,theme:"🔢 Listen",teal:true,prompt:"Which number?",say:"twelve",
-        options:[N(2,"two"),N(12,"twelve"),N(20,"twenty")],correct:1,aff:"Volltreffer! ⚽",wrong:"💛 Fast! Das war twelve (12)."},
-      {type:"choose",grid:true,theme:"🔢 Listen",teal:true,prompt:"Which number?",say:"fifteen",
-        options:[N(15,"fifteen"),N(5,"five"),N(13,"thirteen")],correct:0,aff:"Pole Position! 🏁",wrong:"💛 Fast! Das war fifteen (15)."},
-      {type:"choose",grid:true,theme:"🔢 Listen",teal:true,prompt:"Which number?",say:"three",
-        options:[N(13,"thirteen"),N(8,"eight"),N(3,"three")],correct:2,aff:"Stark! ⚽",wrong:"💛 Fast! Das war three (3)."},
-      {type:"choose",grid:true,theme:"🔢 Listen",teal:true,prompt:"Which number?",say:"twenty",
-        options:[N(20,"twenty"),N(12,"twelve"),N(2,"two")],correct:0,aff:"Schnell und sicher! 🏎️💨",wrong:"💛 Fast! Das war twenty (20)."}
+    pool:[
+      [
+        {type:"choose",grid:true,theme:"🔢 Listen",teal:true,prompt:"Which number?",say:"seven",
+          options:[N(7,"seven"),N(11,"eleven"),N(4,"four")],correct:0,aff:"Tor! ⚽",wrong:"💛 Fast! Das war seven (7)."},
+        {type:"choose",grid:true,theme:"🔢 Listen",teal:true,prompt:"Which number?",say:"eleven",
+          options:[N(7,"seven"),N(11,"eleven"),N(4,"four")],correct:1,aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! Das war eleven (11)."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🔢 Listen",teal:true,prompt:"Which number?",say:"twelve",
+          options:[N(2,"two"),N(12,"twelve"),N(20,"twenty")],correct:1,aff:"Volltreffer! ⚽",wrong:"💛 Fast! Das war twelve (12)."},
+        {type:"choose",grid:true,theme:"🔢 Listen",teal:true,prompt:"Which number?",say:"two",
+          options:[N(2,"two"),N(12,"twelve"),N(20,"twenty")],correct:0,aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! Das war two (2)."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🔢 Listen",teal:true,prompt:"Which number?",say:"fifteen",
+          options:[N(15,"fifteen"),N(5,"five"),N(13,"thirteen")],correct:0,aff:"Pole Position! 🏁",wrong:"💛 Fast! Das war fifteen (15)."},
+        {type:"choose",grid:true,theme:"🔢 Listen",teal:true,prompt:"Which number?",say:"five",
+          options:[N(15,"fifteen"),N(5,"five"),N(13,"thirteen")],correct:1,aff:"Zielgerade! 🏁",wrong:"💛 Fast! Das war five (5)."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🔢 Listen",teal:true,prompt:"Which number?",say:"three",
+          options:[N(13,"thirteen"),N(8,"eight"),N(3,"three")],correct:2,aff:"Stark! ⚽",wrong:"💛 Fast! Das war three (3)."},
+        {type:"choose",grid:true,theme:"🔢 Listen",teal:true,prompt:"Which number?",say:"eight",
+          options:[N(13,"thirteen"),N(8,"eight"),N(3,"three")],correct:1,aff:"Super Dribbling! ⚽",wrong:"💛 Fast! Das war eight (8)."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🔢 Listen",teal:true,prompt:"Which number?",say:"twenty",
+          options:[N(20,"twenty"),N(12,"twelve"),N(2,"two")],correct:0,aff:"Schnell und sicher! 🏎️💨",wrong:"💛 Fast! Das war twenty (20)."},
+        {type:"choose",grid:true,theme:"🔢 Listen",teal:true,prompt:"Which number?",say:"twelve",
+          options:[N(20,"twenty"),N(12,"twelve"),N(2,"two")],correct:1,aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Das war twelve (12)."}
+      ]
     ]
   },
 
-  /* 3 — Right or wrong? (swipe, swatch) */
+  /* 3 — Right or wrong? (swipe, swatch)
+     Each slot has 2 variants with a different colour/statement pair. */
   {
     title:"Right or wrong?",
     rule:`<div class="rule-head"><span class="rule-title">👋 Right or wrong?</span><button class="speak-mini" data-say="Look and listen. Tap yes if it is right. Tap no if it is wrong.">🔊 Rule</button></div>
           <p>Look at the colour and listen.</p><p>Tap ✅ <b>yes</b> if it is right. Tap ❌ <b>no</b> if it is wrong.</p>`,
-    questions:[
-      {type:"swipe",theme:"🎨 Check",swatch:COL.red,text:"This is red.",answer:true,aff:"Richtig! Sicher wie ein Elfmeter! ⚽",wrong:"💛 Fast! Das ist red — richtig."},
-      {type:"swipe",theme:"🎨 Check",swatch:COL.blue,text:"This is green.",answer:false,aff:"Erkannt! Gutes Auge! 🏎️",wrong:"💛 Fast! Das ist blue, nicht green."},
-      {type:"swipe",theme:"🎨 Check",swatch:COL.yellow,text:"This is yellow.",answer:true,aff:"Tor! Genau! ⚽",wrong:"💛 Fast! Das ist yellow — richtig."},
-      {type:"swipe",theme:"🎨 Check",swatch:COL.purple,text:"This is pink.",answer:false,aff:"Stark gebremst und richtig! 🏁",wrong:"💛 Fast! Das ist purple, nicht pink."},
-      {type:"swipe",theme:"🎨 Check",swatch:COL.green,text:"This is green.",answer:true,aff:"Sauber! ⚽",wrong:"💛 Fast! Das ist green — richtig."}
+    pool:[
+      [
+        {type:"swipe",theme:"🎨 Check",swatch:COL.red,text:"This is red.",answer:true,aff:"Richtig! Sicher wie ein Elfmeter! ⚽",wrong:"💛 Fast! Das ist red — richtig."},
+        {type:"swipe",theme:"🎨 Check",swatch:COL.orange,text:"This is orange.",answer:true,aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! Das ist orange — richtig."}
+      ],
+      [
+        {type:"swipe",theme:"🎨 Check",swatch:COL.blue,text:"This is green.",answer:false,aff:"Erkannt! Gutes Auge! 🏎️",wrong:"💛 Fast! Das ist blue, nicht green."},
+        {type:"swipe",theme:"🎨 Check",swatch:COL.purple,text:"This is brown.",answer:false,aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! Das ist purple, nicht brown."}
+      ],
+      [
+        {type:"swipe",theme:"🎨 Check",swatch:COL.yellow,text:"This is yellow.",answer:true,aff:"Tor! Genau! ⚽",wrong:"💛 Fast! Das ist yellow — richtig."},
+        {type:"swipe",theme:"🎨 Check",swatch:COL.grey,text:"This is grey.",answer:true,aff:"Zielgerade! 🏁",wrong:"💛 Fast! Das ist grey — richtig."}
+      ],
+      [
+        {type:"swipe",theme:"🎨 Check",swatch:COL.purple,text:"This is pink.",answer:false,aff:"Stark gebremst und richtig! 🏁",wrong:"💛 Fast! Das ist purple, nicht pink."},
+        {type:"swipe",theme:"🎨 Check",swatch:COL.black,text:"This is white.",answer:false,aff:"Super Dribbling! ⚽",wrong:"💛 Fast! Das ist black, nicht white."}
+      ],
+      [
+        {type:"swipe",theme:"🎨 Check",swatch:COL.green,text:"This is green.",answer:true,aff:"Sauber! ⚽",wrong:"💛 Fast! Das ist green — richtig."},
+        {type:"swipe",theme:"🎨 Check",swatch:COL.pink,text:"This is pink.",answer:true,aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Das ist pink — richtig."}
+      ]
     ]
   },
 
-  /* 4 — Build the sentence (puzzle) */
+  /* 4 — Build the sentence (puzzle)
+     Each slot has 2 variants reusing vocabulary from the games above. */
   {
     title:"Build the sentence",
     rule:`<div class="rule-head"><span class="rule-title">🧩 Build the sentence</span><button class="speak-mini" data-say="Tap the words in the right order.">🔊 Rule</button></div>
           <p>Tap the words in the right order.</p><p>Tap 🔊 to hear the whole sentence.</p>`,
-    questions:[
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["What's","your","name?"],aff:"Frage gebaut wie ein Profi! ⚽",wrong:"💛 Fast! Beginne mit \"What's\"."},
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["My","name","is","Tom."],aff:"Satz steht! 🏎️",wrong:"💛 Fast! Beginne mit \"My\"."},
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["The","car","is","blue."],aff:"Perfekt! 🏆",wrong:"💛 Fast! Beginne mit \"The\"."}
+    pool:[
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["What's","your","name?"],aff:"Frage gebaut wie ein Profi! ⚽",wrong:"💛 Fast! Beginne mit \"What's\"."},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["What's","your","favourite","colour?"],aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! Beginne mit \"What's\"."}
+      ],
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["My","name","is","Tom."],aff:"Satz steht! 🏎️",wrong:"💛 Fast! Beginne mit \"My\"."},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["My","name","is","Anna."],aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Beginne mit \"My\"."}
+      ],
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["The","car","is","blue."],aff:"Perfekt! 🏆",wrong:"💛 Fast! Beginne mit \"The\"."},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["The","cat","is","black."],aff:"Zielgerade! 🏁",wrong:"💛 Fast! Beginne mit \"The\"."}
+      ]
     ]
   }
 ];
 
+/* ---------- variant picking (no-repeat-on-replay) ---------- */
+function getLastVariants(){ try{ return JSON.parse(localStorage.getItem("comeIn3.lastVariant")||"{}"); }catch(e){ return {}; } }
+function setLastVariants(m){ try{ localStorage.setItem("comeIn3.lastVariant", JSON.stringify(m)); }catch(e){} }
+function pickVariant(topicIdx,slotIdx,variants){
+  if(variants.length===1) return variants[0];
+  var map=getLastVariants(), key=UNIT_KEY+"."+topicIdx+"."+slotIdx, last=map[key];
+  var choices=[]; for(var i=0;i<variants.length;i++){ if(i!==last) choices.push(i); }
+  var pick=choices[Math.floor(Math.random()*choices.length)];
+  map[key]=pick; setLastVariants(map);
+  return variants[pick];
+}
+function buildQuestions(topicIdx){
+  return topics[topicIdx].pool.map(function(slot,slotIdx){ return pickVariant(topicIdx,slotIdx,slot); });
+}
+
+
 /* =========================================================
    SHARED ENGINE (generic + grid + swatch + speed + read-along + progress)
    ========================================================= */
-var curTopic=0, curQ=0, answered=false;
+var curTopic=0, curQ=0, answered=false, sessionQuestions=[];
 function $(id){return document.getElementById(id);}
 
 function startTopic(i){
-  curTopic=i; curQ=0;
+  curTopic=i; curQ=0; sessionQuestions=buildQuestions(i);
   $("menu").classList.add("hidden"); $("done").classList.add("hidden"); $("quiz").classList.remove("hidden");
   $("screenTitle").textContent=topics[i].title;
   $("ruleSlot").innerHTML='<div class="rule">'+topics[i].rule+'</div>';
@@ -312,8 +409,8 @@ function setBar(p){ $("progressFill").style.width=p+"%"; }
 
 function loadQuestion(){
   answered=false; clearReading();
-  var t=topics[curTopic], q=t.questions[curQ];
-  setBar(Math.round(curQ/t.questions.length*100));
+  var q=sessionQuestions[curQ];
+  setBar(Math.round(curQ/sessionQuestions.length*100));
   $("feedback").className="feedback"; $("feedback").innerHTML="";
   $("nextBtn").classList.add("hidden"); $("checkBtn").classList.remove("hidden"); $("checkBtn").disabled=false;
   var html='<span class="theme-tag '+(q.teal?"teal":"")+'">'+(q.theme||"")+'</span>';
@@ -451,7 +548,7 @@ function syncBank(){
   });
 }
 function checkAnswer(){
-  var q=topics[curTopic].questions[curQ];
+  var q=sessionQuestions[curQ];
   if(q.type!=="puzzle" || answered) return;
   if(puzBuild.join(" ")===q.words.join(" ")){ answered=true; win(q.aff,""); speak(q.words.join(" ")); showNext(); }
   else{ soft(q.wrong,""); }
@@ -462,11 +559,11 @@ function win(msg,rule){ var f=$("feedback"); f.className="feedback good show"; f
 function soft(msg,rule){ var f=$("feedback"); f.className="feedback soft show"; f.innerHTML=msg+(rule?'<div class="fb-rule">'+rule+'</div>':""); }
 function showNext(){ $("checkBtn").classList.add("hidden"); $("nextBtn").classList.remove("hidden"); }
 function nextQuestion(){
-  var t=topics[curTopic]; curQ++;
-  if(curQ>=t.questions.length){
+  curQ++;
+  if(curQ>=sessionQuestions.length){
     setBar(100); markGameDone(curTopic);
     $("quiz").classList.add("hidden"); $("done").classList.remove("hidden");
-    $("doneMsg").textContent="Super! You finished "+t.title+"! 🏆"; speak("Well done!"); burst(); return;
+    $("doneMsg").textContent="Super! You finished "+topics[curTopic].title+"! 🏆"; speak("Well done!"); burst(); return;
   }
   loadQuestion();
 }

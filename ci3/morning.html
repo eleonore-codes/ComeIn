@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Come In 3 — In the morning</title>
+<title>English 3 — In the morning</title>
 <style>
   :root{
     --navy:#1a2a4a;--navy-2:#23365c;--teal:#1fb6c4;--teal-soft:#7fd9e2;
@@ -108,7 +108,7 @@
 <body>
 <div class="wrap">
   <header>
-    <p class="unit-name">Come In 3</p>
+    <p class="unit-name">English 3</p>
     <div class="hdr-row">
       <h1 id="screenTitle">🍳 In the morning</h1>
       <button class="speedbtn" id="speedBtn" onclick="toggleRate()">🐇 normal</button>
@@ -203,94 +203,191 @@ function paintMenuDone(){
 var UNIT_NAME="In the morning";
 
 var topics=[
-  /* 0 — Breakfast: Listen & tap (grid) */
+  /* 0 — Breakfast: Listen & tap (grid)
+     Each slot has 2 variants (same trio, different target food). */
   {
     title:"Breakfast",
     rule:`<div class="rule-head"><span class="rule-title">🍳 Breakfast</span><button class="speak-mini" data-say="Listen, then tap the right food.">🔊 Rule</button></div>
           <p>Tap <b>🔊 Listen</b>, then tap the right food.</p>`,
-    questions:[
-      {type:"choose",grid:true,theme:"🍳 Listen",teal:true,prompt:"Which one?",say:"milk",
-        options:[{t:"🥛",s:"milk"},{t:"☕",s:"coffee"},{t:"🧃",s:"orange juice"}],correct:0,aff:"Tooor! Genau richtig! ⚽",wrong:"💛 Fast! 🥛 ist milk."},
-      {type:"choose",grid:true,theme:"🍳 Listen",teal:true,prompt:"Which one?",say:"toast",
-        options:[{t:"🥣",s:"cornflakes"},{t:"🍞",s:"toast"},{t:"🧀",s:"cheese"}],correct:1,aff:"Volltreffer! 🍞⚽",wrong:"💛 Fast! 🍞 ist toast."},
-      {type:"choose",grid:true,theme:"🍳 Listen",teal:true,prompt:"Which one?",say:"cheese",
-        options:[{t:"🧀",s:"cheese"},{t:"🍯",s:"honey"},{t:"🥪",s:"sandwich"}],correct:0,aff:"Pole Position! 🏁",wrong:"💛 Fast! 🧀 ist cheese."},
-      {type:"choose",grid:true,theme:"🍳 Listen",teal:true,prompt:"Which one?",say:"orange juice",
-        options:[{t:"🥛",s:"milk"},{t:"💧",s:"water"},{t:"🧃",s:"orange juice"}],correct:2,aff:"Stark! 🧃⚽",wrong:"💛 Fast! 🧃 ist orange juice."},
-      {type:"choose",grid:true,theme:"🍳 Listen",teal:true,prompt:"Which one?",say:"cornflakes",
-        options:[{t:"🥣",s:"cornflakes"},{t:"🍞",s:"toast"},{t:"🍳",s:"eggs"}],correct:0,aff:"Schnell wie ein Rennwagen! 🏎️💨",wrong:"💛 Fast! 🥣 ist cornflakes."}
+    pool:[
+      [
+        {type:"choose",grid:true,theme:"🍳 Listen",teal:true,prompt:"Which one?",say:"milk",
+          options:[{t:"🥛",s:"milk"},{t:"☕",s:"coffee"},{t:"🧃",s:"orange juice"}],correct:0,aff:"Tooor! Genau richtig! ⚽",wrong:"💛 Fast! 🥛 ist milk."},
+        {type:"choose",grid:true,theme:"🍳 Listen",teal:true,prompt:"Which one?",say:"orange juice",
+          options:[{t:"🥛",s:"milk"},{t:"☕",s:"coffee"},{t:"🧃",s:"orange juice"}],correct:2,aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! 🧃 ist orange juice."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🍳 Listen",teal:true,prompt:"Which one?",say:"toast",
+          options:[{t:"🥣",s:"cornflakes"},{t:"🍞",s:"toast"},{t:"🧀",s:"cheese"}],correct:1,aff:"Volltreffer! 🍞⚽",wrong:"💛 Fast! 🍞 ist toast."},
+        {type:"choose",grid:true,theme:"🍳 Listen",teal:true,prompt:"Which one?",say:"cheese",
+          options:[{t:"🥣",s:"cornflakes"},{t:"🍞",s:"toast"},{t:"🧀",s:"cheese"}],correct:2,aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! 🧀 ist cheese."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🍳 Listen",teal:true,prompt:"Which one?",say:"cheese",
+          options:[{t:"🧀",s:"cheese"},{t:"🍯",s:"honey"},{t:"🥪",s:"sandwich"}],correct:0,aff:"Pole Position! 🏁",wrong:"💛 Fast! 🧀 ist cheese."},
+        {type:"choose",grid:true,theme:"🍳 Listen",teal:true,prompt:"Which one?",say:"honey",
+          options:[{t:"🧀",s:"cheese"},{t:"🍯",s:"honey"},{t:"🥪",s:"sandwich"}],correct:1,aff:"Zielgerade! 🏁",wrong:"💛 Fast! 🍯 ist honey."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🍳 Listen",teal:true,prompt:"Which one?",say:"orange juice",
+          options:[{t:"🥛",s:"milk"},{t:"💧",s:"water"},{t:"🧃",s:"orange juice"}],correct:2,aff:"Stark! 🧃⚽",wrong:"💛 Fast! 🧃 ist orange juice."},
+        {type:"choose",grid:true,theme:"🍳 Listen",teal:true,prompt:"Which one?",say:"water",
+          options:[{t:"🥛",s:"milk"},{t:"💧",s:"water"},{t:"🧃",s:"orange juice"}],correct:1,aff:"Super Dribbling! ⚽",wrong:"💛 Fast! 💧 ist water."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🍳 Listen",teal:true,prompt:"Which one?",say:"cornflakes",
+          options:[{t:"🥣",s:"cornflakes"},{t:"🍞",s:"toast"},{t:"🍳",s:"eggs"}],correct:0,aff:"Schnell wie ein Rennwagen! 🏎️💨",wrong:"💛 Fast! 🥣 ist cornflakes."},
+        {type:"choose",grid:true,theme:"🍳 Listen",teal:true,prompt:"Which one?",say:"eggs",
+          options:[{t:"🥣",s:"cornflakes"},{t:"🍞",s:"toast"},{t:"🍳",s:"eggs"}],correct:2,aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! 🍳 ist eggs."}
+      ]
     ]
   },
 
-  /* 1 — Match food <-> emoji */
+  /* 1 — Match food <-> emoji
+     Each slot has 2 variants drawing on the unit's full breakfast vocabulary. */
   {
     title:"Match it",
     rule:`<div class="rule-head"><span class="rule-title">🔗 Match it</span><button class="speak-mini" data-say="Tap a word, then tap its picture.">🔊 Rule</button></div>
           <p>Tap a <b>word</b>, then tap its <b>picture</b>.</p><p>Tap 🔊 on a word to hear it.</p>`,
-    questions:[
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["milk","🥛"],["toast","🍞"],["cheese","🧀"],["eggs","🍳"]],
-        aff:"Alle Paare! Mannschaftsleistung! ⚽🏆",wrong:"💛 Fast! Tippe das Wort, dann das Bild."},
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["honey","🍯"],["butter","🧈"],["sandwich","🥪"],["coffee","☕"]],
-        aff:"Perfekt verbunden! 🏁",wrong:"💛 Fast! Probier es in Ruhe."},
-      {type:"match",theme:"🔗 Match",teal:true,pairs:[["water","💧"],["tea","🍵"],["cornflakes","🥣"]],
-        aff:"Geschafft — Doppelpass sitzt! ⚽",wrong:"💛 Fast! Schau nochmal hin."}
+    pool:[
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["milk","🥛"],["toast","🍞"],["cheese","🧀"],["eggs","🍳"]],
+          aff:"Alle Paare! Mannschaftsleistung! ⚽🏆",wrong:"💛 Fast! Tippe das Wort, dann das Bild."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["honey","🍯"],["butter","🧈"],["sandwich","🥪"],["coffee","☕"]],
+          aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! Tippe das Wort, dann das Bild."}
+      ],
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["honey","🍯"],["butter","🧈"],["sandwich","🥪"],["coffee","☕"]],
+          aff:"Perfekt verbunden! 🏁",wrong:"💛 Fast! Probier es in Ruhe."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["milk","🥛"],["toast","🍞"],["cheese","🧀"],["eggs","🍳"]],
+          aff:"Zielgerade! 🏁",wrong:"💛 Fast! Probier es in Ruhe."}
+      ],
+      [
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["water","💧"],["tea","🍵"],["cornflakes","🥣"]],
+          aff:"Geschafft — Doppelpass sitzt! ⚽",wrong:"💛 Fast! Schau nochmal hin."},
+        {type:"match",theme:"🔗 Match",teal:true,pairs:[["milk","🥛"],["honey","🍯"],["sandwich","🥪"]],
+          aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! Schau nochmal hin."}
+      ]
     ]
   },
 
-  /* 2 — My morning: Listen & tap (grid, actions) */
+  /* 2 — My morning: Listen & tap (grid, actions)
+     Each slot has 2 variants (same trio, different target action). */
   {
     title:"My morning",
     rule:`<div class="rule-head"><span class="rule-title">🪥 My morning</span><button class="speak-mini" data-say="Listen, then tap the right picture.">🔊 Rule</button></div>
           <p>What do you do in the morning?</p><p>Tap <b>🔊 Listen</b>, then tap the right picture.</p>`,
-    questions:[
-      {type:"choose",grid:true,theme:"🪥 Listen",teal:true,prompt:"Which one?",say:"brush my teeth",
-        options:[{t:"🪥",s:"brush my teeth"},{t:"👕",s:"get dressed"},{t:"🎒",s:"pack my schoolbag"}],correct:0,aff:"Tor! ⚽",wrong:"💛 Fast! 🪥 ist brush my teeth."},
-      {type:"choose",grid:true,theme:"🪥 Listen",teal:true,prompt:"Which one?",say:"get dressed",
-        options:[{t:"🥣",s:"have breakfast"},{t:"👕",s:"get dressed"},{t:"🏫",s:"go to school"}],correct:1,aff:"Volltreffer! ⚽",wrong:"💛 Fast! 👕 ist get dressed."},
-      {type:"choose",grid:true,theme:"🪥 Listen",teal:true,prompt:"Which one?",say:"pack my schoolbag",
-        options:[{t:"🚿",s:"wash my face"},{t:"🪥",s:"brush my teeth"},{t:"🎒",s:"pack my schoolbag"}],correct:2,aff:"Pole Position! 🏁",wrong:"💛 Fast! 🎒 ist pack my schoolbag."},
-      {type:"choose",grid:true,theme:"🪥 Listen",teal:true,prompt:"Which one?",say:"go to school",
-        options:[{t:"🏫",s:"go to school"},{t:"👕",s:"get dressed"},{t:"🥣",s:"have breakfast"}],correct:0,aff:"Stark! ⚽",wrong:"💛 Fast! 🏫 ist go to school."},
-      {type:"choose",grid:true,theme:"🪥 Listen",teal:true,prompt:"Which one?",say:"have breakfast",
-        options:[{t:"🥣",s:"have breakfast"},{t:"🎒",s:"pack my schoolbag"},{t:"🪥",s:"brush my teeth"}],correct:0,aff:"Schnell und richtig! 🏎️💨",wrong:"💛 Fast! 🥣 ist have breakfast."}
+    pool:[
+      [
+        {type:"choose",grid:true,theme:"🪥 Listen",teal:true,prompt:"Which one?",say:"brush my teeth",
+          options:[{t:"🪥",s:"brush my teeth"},{t:"👕",s:"get dressed"},{t:"🎒",s:"pack my schoolbag"}],correct:0,aff:"Tor! ⚽",wrong:"💛 Fast! 🪥 ist brush my teeth."},
+        {type:"choose",grid:true,theme:"🪥 Listen",teal:true,prompt:"Which one?",say:"get dressed",
+          options:[{t:"🪥",s:"brush my teeth"},{t:"👕",s:"get dressed"},{t:"🎒",s:"pack my schoolbag"}],correct:1,aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! 👕 ist get dressed."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🪥 Listen",teal:true,prompt:"Which one?",say:"get dressed",
+          options:[{t:"🥣",s:"have breakfast"},{t:"👕",s:"get dressed"},{t:"🏫",s:"go to school"}],correct:1,aff:"Volltreffer! ⚽",wrong:"💛 Fast! 👕 ist get dressed."},
+        {type:"choose",grid:true,theme:"🪥 Listen",teal:true,prompt:"Which one?",say:"go to school",
+          options:[{t:"🥣",s:"have breakfast"},{t:"👕",s:"get dressed"},{t:"🏫",s:"go to school"}],correct:2,aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! 🏫 ist go to school."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🪥 Listen",teal:true,prompt:"Which one?",say:"pack my schoolbag",
+          options:[{t:"🚿",s:"wash my face"},{t:"🪥",s:"brush my teeth"},{t:"🎒",s:"pack my schoolbag"}],correct:2,aff:"Pole Position! 🏁",wrong:"💛 Fast! 🎒 ist pack my schoolbag."},
+        {type:"choose",grid:true,theme:"🪥 Listen",teal:true,prompt:"Which one?",say:"wash my face",
+          options:[{t:"🚿",s:"wash my face"},{t:"🪥",s:"brush my teeth"},{t:"🎒",s:"pack my schoolbag"}],correct:0,aff:"Zielgerade! 🏁",wrong:"💛 Fast! 🚿 ist wash my face."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🪥 Listen",teal:true,prompt:"Which one?",say:"go to school",
+          options:[{t:"🏫",s:"go to school"},{t:"👕",s:"get dressed"},{t:"🥣",s:"have breakfast"}],correct:0,aff:"Stark! ⚽",wrong:"💛 Fast! 🏫 ist go to school."},
+        {type:"choose",grid:true,theme:"🪥 Listen",teal:true,prompt:"Which one?",say:"have breakfast",
+          options:[{t:"🏫",s:"go to school"},{t:"👕",s:"get dressed"},{t:"🥣",s:"have breakfast"}],correct:2,aff:"Super Dribbling! ⚽",wrong:"💛 Fast! 🥣 ist have breakfast."}
+      ],
+      [
+        {type:"choose",grid:true,theme:"🪥 Listen",teal:true,prompt:"Which one?",say:"have breakfast",
+          options:[{t:"🥣",s:"have breakfast"},{t:"🎒",s:"pack my schoolbag"},{t:"🪥",s:"brush my teeth"}],correct:0,aff:"Schnell und richtig! 🏎️💨",wrong:"💛 Fast! 🥣 ist have breakfast."},
+        {type:"choose",grid:true,theme:"🪥 Listen",teal:true,prompt:"Which one?",say:"brush my teeth",
+          options:[{t:"🥣",s:"have breakfast"},{t:"🎒",s:"pack my schoolbag"},{t:"🪥",s:"brush my teeth"}],correct:2,aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! 🪥 ist brush my teeth."}
+      ]
     ]
   },
 
-  /* 3 — Right or wrong? (swipe, foods) */
+  /* 3 — Right or wrong? (swipe, foods)
+     Each slot has 2 variants with a different picture/statement pair. */
   {
     title:"Right or wrong?",
     rule:`<div class="rule-head"><span class="rule-title">👋 Right or wrong?</span><button class="speak-mini" data-say="Look and listen. Tap yes if it is right. Tap no if it is wrong.">🔊 Rule</button></div>
           <p>Look at the picture and listen.</p><p>Tap ✅ <b>yes</b> if it is right. Tap ❌ <b>no</b> if it is wrong.</p>`,
-    questions:[
-      {type:"swipe",theme:"🥛 Check",emoji:"🥛",text:"This is milk.",answer:true,aff:"Richtig! Sicher wie ein Elfmeter! ⚽",wrong:"💛 Fast! 🥛 ist milk — richtig."},
-      {type:"swipe",theme:"🍞 Check",emoji:"🍞",text:"This is cheese.",answer:false,aff:"Erkannt! Gutes Auge! 🏎️",wrong:"💛 Fast! 🍞 ist toast, nicht cheese."},
-      {type:"swipe",theme:"🍳 Check",emoji:"🍳",text:"These are eggs.",answer:true,aff:"Tor! Genau! ⚽",wrong:"💛 Fast! 🍳 sind eggs — richtig."},
-      {type:"swipe",theme:"☕ Check",emoji:"☕",text:"This is milk.",answer:false,aff:"Stark gebremst und richtig! 🏁",wrong:"💛 Fast! ☕ ist coffee, nicht milk."},
-      {type:"swipe",theme:"🥪 Check",emoji:"🥪",text:"This is a sandwich.",answer:true,aff:"Sauber! ⚽",wrong:"💛 Fast! 🥪 ist a sandwich — richtig."}
+    pool:[
+      [
+        {type:"swipe",theme:"🥛 Check",emoji:"🥛",text:"This is milk.",answer:true,aff:"Richtig! Sicher wie ein Elfmeter! ⚽",wrong:"💛 Fast! 🥛 ist milk — richtig."},
+        {type:"swipe",theme:"🍳 Check",emoji:"🍳",text:"These are eggs.",answer:true,aff:"Klasse Zuspiel! ⚽",wrong:"💛 Fast! 🍳 sind eggs — richtig."}
+      ],
+      [
+        {type:"swipe",theme:"🍞 Check",emoji:"🍞",text:"This is cheese.",answer:false,aff:"Erkannt! Gutes Auge! 🏎️",wrong:"💛 Fast! 🍞 ist toast, nicht cheese."},
+        {type:"swipe",theme:"🧀 Check",emoji:"🧀",text:"This is toast.",answer:false,aff:"Ins Schwarze getroffen! 🎯",wrong:"💛 Fast! 🧀 ist cheese, nicht toast."}
+      ],
+      [
+        {type:"swipe",theme:"🍳 Check",emoji:"🍳",text:"These are eggs.",answer:true,aff:"Tor! Genau! ⚽",wrong:"💛 Fast! 🍳 sind eggs — richtig."},
+        {type:"swipe",theme:"🥪 Check",emoji:"🥪",text:"This is a sandwich.",answer:true,aff:"Zielgerade! 🏁",wrong:"💛 Fast! 🥪 ist a sandwich — richtig."}
+      ],
+      [
+        {type:"swipe",theme:"☕ Check",emoji:"☕",text:"This is milk.",answer:false,aff:"Stark gebremst und richtig! 🏁",wrong:"💛 Fast! ☕ ist coffee, nicht milk."},
+        {type:"swipe",theme:"🥛 Check",emoji:"🥛",text:"This is coffee.",answer:false,aff:"Super Dribbling! ⚽",wrong:"💛 Fast! 🥛 ist milk, nicht coffee."}
+      ],
+      [
+        {type:"swipe",theme:"🥪 Check",emoji:"🥪",text:"This is a sandwich.",answer:true,aff:"Sauber! ⚽",wrong:"💛 Fast! 🥪 ist a sandwich — richtig."},
+        {type:"swipe",theme:"🥛 Check",emoji:"🥛",text:"This is milk.",answer:true,aff:"Volle Punktzahl! 🏆",wrong:"💛 Fast! 🥛 ist milk — richtig."}
+      ]
     ]
   },
 
-  /* 4 — Build the sentence (puzzle) */
+  /* 4 — Build the sentence (puzzle)
+     Each slot has 2 variants reusing vocabulary and grammar from the games above. */
   {
     title:"Build the sentence",
     rule:`<div class="rule-head"><span class="rule-title">🧩 Build the sentence</span><button class="speak-mini" data-say="Tap the words in the right order.">🔊 Rule</button></div>
           <p>Tap the words in the right order.</p><p>Tap 🔊 to hear the whole sentence.</p>`,
-    questions:[
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["I","like","toast","for","breakfast."],aff:"Satz steht! ⚽",wrong:`💛 Fast! Beginne mit "I".`},
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["First","I","get","up."],aff:"Frage gebaut wie ein Profi! 🏎️",wrong:`💛 Fast! Beginne mit "First".`},
-      {type:"puzzle",theme:"🧩 Order",teal:true,words:["What","do","you","like?"],aff:"Perfekt! 🏆",wrong:`💛 Fast! Beginne mit "What".`}
+    pool:[
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["I","like","toast","for","breakfast."],aff:"Satz steht! ⚽",wrong:`💛 Fast! Beginne mit "I".`},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["I","like","eggs","for","breakfast."],aff:"Klasse Zuspiel! ⚽",wrong:`💛 Fast! Beginne mit "I".`}
+      ],
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["First","I","get","up."],aff:"Frage gebaut wie ein Profi! 🏎️",wrong:`💛 Fast! Beginne mit "First".`},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["First","I","brush","my","teeth."],aff:"Volle Punktzahl! 🏆",wrong:`💛 Fast! Beginne mit "First".`}
+      ],
+      [
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["What","do","you","like?"],aff:"Perfekt! 🏆",wrong:`💛 Fast! Beginne mit "What".`},
+        {type:"puzzle",theme:"🧩 Order",teal:true,words:["What","do","you","eat?"],aff:"Zielgerade! 🏁",wrong:`💛 Fast! Beginne mit "What".`}
+      ]
     ]
   }
 ];
 
+/* ---------- variant picking (no-repeat-on-replay) ---------- */
+function getLastVariants(){ try{ return JSON.parse(localStorage.getItem("comeIn3.lastVariant")||"{}"); }catch(e){ return {}; } }
+function setLastVariants(m){ try{ localStorage.setItem("comeIn3.lastVariant", JSON.stringify(m)); }catch(e){} }
+function pickVariant(topicIdx,slotIdx,variants){
+  if(variants.length===1) return variants[0];
+  var map=getLastVariants(), key=UNIT_KEY+"."+topicIdx+"."+slotIdx, last=map[key];
+  var choices=[]; for(var i=0;i<variants.length;i++){ if(i!==last) choices.push(i); }
+  var pick=choices[Math.floor(Math.random()*choices.length)];
+  map[key]=pick; setLastVariants(map);
+  return variants[pick];
+}
+function buildQuestions(topicIdx){
+  return topics[topicIdx].pool.map(function(slot,slotIdx){ return pickVariant(topicIdx,slotIdx,slot); });
+}
+
+
 /* =========================================================
    SHARED ENGINE (generic + grid + swatch + speed + read-along + progress)
    ========================================================= */
-var curTopic=0, curQ=0, answered=false;
+var curTopic=0, curQ=0, answered=false, sessionQuestions=[];
 function $(id){return document.getElementById(id);}
 
 function startTopic(i){
-  curTopic=i; curQ=0;
+  curTopic=i; curQ=0; sessionQuestions=buildQuestions(i);
   $("menu").classList.add("hidden"); $("done").classList.add("hidden"); $("quiz").classList.remove("hidden");
   $("screenTitle").textContent=topics[i].title;
   $("ruleSlot").innerHTML='<div class="rule">'+topics[i].rule+'</div>';
@@ -307,8 +404,8 @@ function setBar(p){ $("progressFill").style.width=p+"%"; }
 
 function loadQuestion(){
   answered=false; clearReading();
-  var t=topics[curTopic], q=t.questions[curQ];
-  setBar(Math.round(curQ/t.questions.length*100));
+  var q=sessionQuestions[curQ];
+  setBar(Math.round(curQ/sessionQuestions.length*100));
   $("feedback").className="feedback"; $("feedback").innerHTML="";
   $("nextBtn").classList.add("hidden"); $("checkBtn").classList.remove("hidden"); $("checkBtn").disabled=false;
   var html='<span class="theme-tag '+(q.teal?"teal":"")+'">'+(q.theme||"")+'</span>';
@@ -446,7 +543,7 @@ function syncBank(){
   });
 }
 function checkAnswer(){
-  var q=topics[curTopic].questions[curQ];
+  var q=sessionQuestions[curQ];
   if(q.type!=="puzzle" || answered) return;
   if(puzBuild.join(" ")===q.words.join(" ")){ answered=true; win(q.aff,""); speak(q.words.join(" ")); showNext(); }
   else{ soft(q.wrong,""); }
@@ -457,11 +554,11 @@ function win(msg,rule){ var f=$("feedback"); f.className="feedback good show"; f
 function soft(msg,rule){ var f=$("feedback"); f.className="feedback soft show"; f.innerHTML=msg+(rule?'<div class="fb-rule">'+rule+'</div>':""); }
 function showNext(){ $("checkBtn").classList.add("hidden"); $("nextBtn").classList.remove("hidden"); }
 function nextQuestion(){
-  var t=topics[curTopic]; curQ++;
-  if(curQ>=t.questions.length){
+  curQ++;
+  if(curQ>=sessionQuestions.length){
     setBar(100); markGameDone(curTopic);
     $("quiz").classList.add("hidden"); $("done").classList.remove("hidden");
-    $("doneMsg").textContent="Super! You finished "+t.title+"! 🏆"; speak("Well done!"); burst(); return;
+    $("doneMsg").textContent="Super! You finished "+topics[curTopic].title+"! 🏆"; speak("Well done!"); burst(); return;
   }
   loadQuestion();
 }
